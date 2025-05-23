@@ -1,27 +1,45 @@
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
-import { Metadata } from "next";
-import "./globals.css";
+'use client';
 
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18next'; // importe ton instance i18n
 
-export default function Home() {
+import Hero from '@/components/Hero';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
+import AboutSection from '@/components/AboutSection';
+import ServicesSection from '@/components/ServicesSection';
+import ClientSection from '@/components/ClientSection';
+import TestimonySection from '@/components/TestimonySection';
+
+interface PageProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default function Home({ params }: PageProps) {
+  const { t } = useTranslation('common');
+
+  useEffect(() => {
+    if (i18n.language !== params.lang) {
+      i18n.changeLanguage(params.lang);
+    }
+  }, [params.lang]);
+
   return (
-     <>
-        <Navbar />
-           <main className="mt-20">
+    <>
+      <Navbar />
+      <main className="mt-20">
         <Hero />
-        {/* Ton contenu principal peut continuer ici */}
+         <AboutSection /> 
+         <ServicesSection />
+         <ClientSection/>
+         <TestimonySection />
       </main>
-
-      {/* Ajoute le bouton ici, en dehors du <main> */}
       <ScrollToTopButton />
-
-      {/* Tu peux aussi remettre le footer si nécessaire */}
       <Footer />
-     </>
-
-    
+    </>
   );
 }

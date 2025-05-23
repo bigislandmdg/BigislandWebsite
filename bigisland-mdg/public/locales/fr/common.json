@@ -1,0 +1,106 @@
+{
+  "hero": {
+    "title": "Développez votre entreprise avec Bigisland MDG.",
+    "description": "BigIsland MDG est votre partenaire idéal pour la création de sites web et d'applications sur mesure. Notre équipe d'experts est prête à transformer vos idées en solutions numériques innovantes. Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions.",
+    "button1": "Discutons",
+    "button2": "Mieux nous connaître"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "expertises": "Expertises",
+    "location": "Location de voiture",
+    "itSolutions": "Solutions IT",
+    "callCenter": "Call center & externalisation",
+    "supplier": "Fournisseur de produits divers",
+    "blog": "Blog",
+    "contact": "Contact",
+    "requestQuote": "Demande un devis"
+  },
+  "footer": {
+    "contact": "Contact",
+    "email": "contact@bigislandmdg.com",
+    "phone": "+261 34 00 000 00",
+    "address": "Antananarivo, Madagascar",
+    "expertise": "Expertise",
+    "itSolutions": "Solutions IT",
+    "location": "Location de voitures",
+    "callCenter": "Call center & Externalisation",
+    "supplier": "Fournisseurs de produits divers",
+    "company": "Entreprise",
+    "services": "Services",
+    "testimonials": "Témoignages",
+    "projects": "Projets",
+    "cgu": "CGU",
+    "newsletter": "Inscrivez-vous à notre newsletter",
+    "emailPlaceholder": "Votre adresse email",
+    "subscribe": "S'abonner",
+    "rightsReserved": "Tous droits réservés."
+  },
+  "about": {
+    "title": "De quelle assistance avez-vous besoin ?",
+    "description": "Nous mettons notre expertise à votre service dans quatre domaines : location de voitures, centre d'appel, solutions IT et fourniture de produits.Notre équipe vous accompagne avec des solutions adaptées, un service réactif et une qualité garantie.",
+    "button": "Planifier un rendez-vous"
+  },
+  "services": {
+  "title": "Nos Expertises",
+  "button": "En savoir plus",
+  "rental": {
+    "title": "Location de voitures",
+    "description": "Location de véhicules fiables à Madagascar, disponible 24/7 avec des tarifs compétitifs."
+  },
+  "callcenter": {
+    "title": "Centre d'appel",
+    "description": "Assistance client professionnelle multilingue, disponible à toute heure."
+  },
+  "it": {
+    "title": "Solutions IT",
+    "description": "Développement logiciel, création de sites web, maintenance et support personnalisés."
+  },
+  "supply": {
+    "title": "Fourniture de produits",
+    "description": "Distribution de matériels et fournitures de qualité pour entreprises et organisations."
+  }
+},
+ "clients": {
+    "title": "Nos Clients,Des partenaires d'exception",
+    "description": "Ils nous font confiance pour la qualité de nos services, notre engagement et notre capacité à offrir des solutions adaptées à leurs besoins.",
+    "list": {
+      "client1": {
+        "name": "Société Alpha",
+        "description": "Leader dans la logistique et le transport"
+      },
+      "client2": {
+        "name": "Groupe Beta",
+        "description": "Entreprise de télécommunications de premier plan"
+      },
+      "client3": {
+        "name": "Delta Technologies",
+        "description": "Fournisseur de solutions informatiques"
+      },
+      "client4": {
+        "name": "Epsilon Services",
+        "description": "Société de gestion de flotte automobile"
+      },
+      "client5": {
+        "name": "Zeta Industries",
+        "description": "Industrie manufacturière partenaire depuis 2018"
+      },
+      "client6": {
+        "name": "Oméga Conseil",
+        "description": "Cabinet de conseil stratégique"
+      }
+    }
+  },
+  "testimony": {
+  "title": "Le mot du CEO",
+  "message": "Chez BigIsland, nous croyons en la puissance de la technologie pour transformer les entreprises. Notre mission est d’offrir des solutions innovantes qui créent de la valeur réelle pour nos clients.",
+  "name": "Andry Rakoto",
+  "position": "PDG de BigIsland"
+}
+
+
+
+
+
+}

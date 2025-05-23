@@ -1,0 +1,106 @@
+{
+  "hero": {
+    "title": "Grow your business with Bigisland MDG.",
+    "description": "BigIsland MDG is your ideal partner for custom website and application development. Our team of experts is ready to turn your ideas into innovative digital solutions. Give your business a digital showcase worthy of your ambitions.",
+    "button1": "Let's Talk",
+    "button2": "Get to Know Us"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "expertises": "Expertise",
+    "location": "Car Rental",
+    "itSolutions": "IT Solutions",
+    "callCenter": "Call Center & Outsourcing",
+    "supplier": "Supplier of Various Products",
+    "blog": "Blog",
+    "contact": "Contact",
+    "requestQuote": "Request a Quote"
+  },
+  "footer": {
+    "contact": "Contact",
+    "email": "contact@bigislandmdg.com",
+    "phone": "+261 34 00 000 00",
+    "address": "Antananarivo, Madagascar",
+    "expertise": "Expertise",
+    "itSolutions": "IT Solutions",
+    "location": "Car Rentals",
+    "callCenter": "Call Center & Outsourcing",
+    "supplier": "Suppliers of Various Products",
+    "company": "Company",
+    "services": "Services",
+    "testimonials": "Testimonials",
+    "projects": "Projects",
+    "cgu": "Terms of Use",
+    "newsletter": "Subscribe to our newsletter",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "rightsReserved": "All rights reserved."
+  },
+  
+  "about": {
+    "title": "What kind of assistance do you need?",
+    "description": "We offer our expertise in four areas: car rental, call center services, IT solutions, and product supply. Our team supports you with tailored solutions, responsive service, and guaranteed quality.",
+    "button": "Schedule an appointment"
+  },
+   "services": {
+    "title": "Our Services",
+    "button": "Learn more",
+    "rental": {
+      "title": "Car Rental",
+      "description": "Big Island MDG Car Rental: vehicle rental in Madagascar, 24/7 service, competitive rates, and available drivers."
+    },
+    "callcenter": {
+      "title": "Call Center",
+      "description": "Professional customer service, multilingual support, available anytime."
+    },
+    "it": {
+      "title": "IT Solutions",
+      "description": "Software development, websites, IT support and custom maintenance."
+    },
+    "supply": {
+      "title": "Product Supply",
+      "description": "Distribution of quality materials and supplies for companies and organizations."
+    }
+  },
+  "clients": {
+  "title": "Our Clients, Exceptional Partners",
+  "description": "They trust us for the quality of our services, our commitment, and our ability to deliver solutions tailored to their needs.",
+  "list": {
+    "client1": {
+      "name": "Alpha Company",
+      "description": "Leader in logistics and transportation"
+    },
+    "client2": {
+      "name": "Beta Group",
+      "description": "Leading telecommunications company"
+    },
+    "client3": {
+      "name": "Delta Technologies",
+      "description": "Provider of IT solutions"
+    },
+    "client4": {
+      "name": "Epsilon Services",
+      "description": "Fleet management company"
+    },
+    "client5": {
+      "name": "Zeta Industries",
+      "description": "Manufacturing partner since 2018"
+    },
+    "client6": {
+      "name": "Omega Consulting",
+      "description": "Strategic consulting firm"
+    }
+  }
+},
+"testimony": {
+  "title": "Word from the CEO",
+  "message": "At BigIsland, we believe in the power of technology to transform businesses. Our mission is to provide innovative solutions that deliver real value to our clients.",
+  "name": "Andry Rakoto",
+  "position": "CEO of BigIsland"
+}
+
+
+
+
+}
