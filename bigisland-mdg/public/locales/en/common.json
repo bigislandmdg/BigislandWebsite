@@ -98,7 +98,103 @@
   "message": "At BigIsland, we believe in the power of technology to transform businesses. Our mission is to provide innovative solutions that deliver real value to our clients.",
   "name": "Andry Rakoto",
   "position": "CEO of BigIsland"
+},
+"team": {
+  "title": "Meet Our Experts",
+  "subtitle": "Get in touch with our experts to benefit from their expertise and personalized advice.",
+  "ceo": {
+    "name": "Jean Rakoto",
+    "role": "CEO - Founder"
+  },
+  "director": {
+    "name": "Marie Andriamatoa",
+    "role": "HR Director"
+  },
+  "it": {
+    "name": "Hery R.",
+    "role": "IT Manager"
+  },
+  "logistics": {
+    "name": "Fetra Ranaivo",
+    "role": "Head of Logistics"
+  },
+  "callcenter": {
+    "name": "Claudine R.",
+    "role": "Call Center Manager"
+  },
+  "supply": {
+    "name": "Bema Tiana",
+    "role": "Supply Manager"
+  }
+},
+"blog": {
+  "title": "Stay at the Heart of Our News",
+  "subtitle": "Explore our latest articles, expert advice, and must-read updates.",
+  "readMore": "Read more",
+  "post1": {
+    "title": "How to Optimize Your Logistics?",
+    "description": "Discover our best practices for improving your logistics operations."
+  },
+  "post2": {
+    "title": "The Impact of Technology on Customer Service",
+    "description": "An analysis of digital tools transforming customer relationships."
+  },
+  "post3": {
+    "title": "Our Commitment to a Sustainable Future",
+    "description": "How our team takes concrete action for a more responsible world."
+  }
+},
+ "contact": {
+    "title": "Your business deserves the best : let's team up now!",
+    "subtitle": "Contact us for a personalized quote or to schedule a meeting with our team.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "placeholderName": "Your name",
+    "placeholderEmail": "Your email address",
+    "placeholderMessage": "Your message",
+    "send": "Send",
+    "scheduleMeeting": "Plan a meeting"
+  },
+"aboutPage": {
+  "title": "About Us",
+  "subtitle": "Welcome to BigIslandMDG, your expert in digital solutions.",
+  "whoWeAre": {
+    "title": "Who We Are",
+    "description": "We are a passionate team dedicated to creating innovative solutions for our clients."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "To provide high-quality services with a focus on transparency, commitment, and sustainability."
+  },
+  "offer": {
+    "title": "What We Offer",
+    "description": "Tailor-made solutions, a collaborative approach, and support throughout your project."
+  },
+   "process": {
+    "title": "Our Process",
+    "steps": [
+      {
+        "title": "Listening",
+        "description": "Understanding your specific needs and goals."
+      },
+      {
+        "title": "Design",
+        "description": "Creating a tailor-made solution adapted to your project."
+      },
+      {
+        "title": "Deployment",
+        "description": "Launching your solution and providing ongoing support."
+      }
+    ]
+  }
 }
+
+
+
+
+
+
 
 
 

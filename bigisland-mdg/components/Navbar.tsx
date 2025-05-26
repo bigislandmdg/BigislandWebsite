@@ -58,8 +58,8 @@ export default function Navbar() {
 
         {/* Desktop navigation */}
         <nav className="hidden lg:flex flex-1 justify-center space-x-6">
-          <a href="#home" className={navLinkClass('home')}>{t('navbar.home')}</a>
-          <a href="#about" className={navLinkClass('about')}>{t('navbar.about')}</a>
+          <a href="/" className={navLinkClass('home')}>{t('navbar.home')}</a>
+          <a href="/about" className={navLinkClass('about')}>{t('navbar.about')}</a>
 
           {/* Dropdown Expertises */}
           <div className="relative group">
@@ -84,13 +84,13 @@ export default function Navbar() {
             </div>
           </div>
 
-          <a href="#blog" className={navLinkClass('blog')}>{t('navbar.blog')}</a>
-          <a href="#contact" className={navLinkClass('contact')}>{t('navbar.contact')}</a>
+          <a href="/blog" className={navLinkClass('blog')}>{t('navbar.blog')}</a>
+          <a href="/contact" className={navLinkClass('contact')}>{t('navbar.contact')}</a>
         </nav>
 
         <div className="hidden lg:block">
           <a
-            href="#contact"
+            href="/contact"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             {t('navbar.requestQuote')}

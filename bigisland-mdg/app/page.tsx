@@ -12,6 +12,9 @@ import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
 import ClientSection from '@/components/ClientSection';
 import TestimonySection from '@/components/TestimonySection';
+import TeamSection from '@/components/TeamSection';
+import BlogSection from '@/components/BlogSection';
+import ContactSection from '@/components/ContactSection';
 
 interface PageProps {
   params: {
@@ -37,6 +40,9 @@ export default function Home({ params }: PageProps) {
          <ServicesSection />
          <ClientSection/>
          <TestimonySection />
+         <TeamSection />
+         <BlogSection />
+         <ContactSection />
       </main>
       <ScrollToTopButton />
       <Footer />

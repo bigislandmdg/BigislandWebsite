@@ -37,7 +37,7 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="px-4 py-16 bg-white">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-gray-800">
           {t('services.title')}
         </h2>
