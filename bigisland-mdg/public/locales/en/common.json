@@ -188,7 +188,144 @@
       }
     ]
   }
-}
+},
+"contactPage": {
+    "title": "Contact Us",
+    "subtitle": "Fill out the form below and we will respond promptly.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send"
+    }
+  },
+   
+  "locationPage": {
+    "pageTitle": "Car Rental | BigIslandMDG",
+    "metaDescription": "Car rental service in Madagascar",
+    "title": "Car Rental Service",
+    "description": "We offer a reliable and flexible car rental service in Madagascar, tailored to the needs of both individuals and professionals.",
+    "cars": {
+      "suv": {
+        "title": "Comfort SUV",
+        "description": "Perfect for off-road adventures."
+      },
+      "sedan": {
+        "title": "Elegant Sedan",
+        "description": "Ideal for city commuting."
+      },
+      "van": {
+        "title": "8-Seater Van",
+        "description": "Great for groups and large families."
+      }
+    },
+    "cta": "Request a quote"
+  },
+   "itPage": {
+  "pageTitle": "IT Solutions",
+  "metaDescription": "Explore our range of IT services including software development, web and mobile apps, and more.",
+  "title": "Our IT Services",
+  "description": "We offer comprehensive IT solutions to help you grow and secure your digital infrastructure.",
+  "cta": "Contact us for a custom quote",
+  "services": {
+    "software": {
+      "title": "Software Development",
+      "description": "Custom software solutions tailored to your business needs."
+    },
+    "web": {
+      "title": "Website Creation",
+      "description": "Responsive and dynamic websites for all platforms."
+    },
+    "mobile": {
+      "title": "Web & Mobile Applications",
+      "description": "Web, iOS and Android apps to boost your reach and interaction."
+    },
+    "support": {
+      "title": "IT Support & Maintenance",
+      "description": "Ongoing support and maintenance for your systems and platforms."
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Engaging and user-centered designs that enhance user experience."
+    },
+    "devops": {
+      "title": "DevOps & Cybersecurity",
+      "description": "Secure deployments and infrastructure optimization with DevOps practices."
+    }
+  }
+},
+ "callCenterPage": {
+    "pageTitle": "Call Center Solutions",
+    "metaDescription": "Discover our call center services tailored to your needs.",
+    "title": "Our Call Center Services",
+    "description": "We offer a complete range of services to enhance customer experience and operational efficiency.",
+    "cta": "Contact us now",
+    "services": {
+      "customerSupport": {
+        "title": "Customer Support",
+        "description": "Professional assistance for your customers 24/7."
+      },
+      "techSupport": {
+        "title": "Technical Support",
+        "description": "Dedicated help for your products and services."
+      },
+      "sales": {
+        "title": "Sales Support",
+        "description": "Helping you convert leads into loyal customers."
+      },
+      "survey": {
+        "title": "Surveys & Polls",
+        "description": "Collect client insights to improve your offerings."
+      },
+      "virtualAssistant": {
+        "title": "Virtual Assistant",
+        "description": "Automated services to boost your productivity."
+      },
+      "inboundOutbound": {
+        "title": "Inbound & Outbound Calls",
+        "description": "Managing incoming and outgoing communications efficiently."
+      }
+    }
+  },
+  "fournisseurPage": {
+    "pageTitle": "Supplier Management",
+    "metaDescription": "Discover our solutions for efficient supplier management.",
+    "title": "Supplier Management Solutions",
+    "description": "We support you throughout the supplier management process, from selection to performance evaluation.",
+    "cta": "Contact us to learn more",
+    "services": {
+      "selection": {
+        "title": "Supplier Selection",
+        "description": "Identify the best suppliers based on your specific needs and quality standards."
+      },
+      "evaluation": {
+        "title": "Supplier Evaluation",
+        "description": "Assess supplier performance with key indicators to ensure reliability."
+      },
+      "negotiation": {
+        "title": "Negotiation",
+        "description": "Negotiate the best pricing and contractual terms to optimize your procurement."
+      },
+      "contract": {
+        "title": "Contract Management",
+        "description": "Create and track supplier contracts in a centralized and secure way."
+      },
+      "performance": {
+        "title": "Performance Monitoring",
+        "description": "Continuously measure and improve supplier performance through adapted KPIs."
+      },
+      "relationship": {
+        "title": "Supplier Relationships",
+        "description": "Strengthen your relationships with suppliers to establish long-term partnerships."
+      }
+    }
+  }
+
+
+
+
+
 
 
 

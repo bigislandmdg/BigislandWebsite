@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { languages } from '@/i18n/settings';
-import ClientLayout from '@/components/ClientLayout';
-import FloatingLanguageToggle from '@/components/FloatingLanguageToogle';
+import ClientLayout from '@/components/layout/ClientLayout';
+import FloatingLanguageToggle from '@/components/utils/FloatingLanguageToogle';
 import './globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });

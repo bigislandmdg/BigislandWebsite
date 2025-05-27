@@ -191,7 +191,143 @@
       }
     ]
   }
-}
+},
+ "contactPage": {
+    "title": "Contactez-nous",
+    "subtitle": "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Objet",
+      "message": "Message",
+      "send": "Envoyer"
+    }
+  },
+  "locationPage": {
+    "pageTitle": "Location de voitures | BigIslandMDG",
+    "metaDescription": "Service de location de voitures à Madagascar",
+    "title": "Service de location de voitures",
+    "description": "Nous proposons un service de location de voitures fiable et flexible à Madagascar, adapté aux besoins des particuliers comme des professionnels.",
+    "cars": {
+      "suv": {
+        "title": "SUV Confort",
+        "description": "Parfait pour les voyages hors des sentiers battus."
+      },
+      "sedan": {
+        "title": "Berline élégante",
+        "description": "Idéale pour les déplacements en ville."
+      },
+      "van": {
+        "title": "Van 8 places",
+        "description": "Idéal pour les groupes et les familles nombreuses."
+      }
+    },
+    "cta": "Demander un devis"
+  },
+  "itPage": {
+  "pageTitle": "Solutions Informatiques",
+  "metaDescription": "Découvrez nos services IT : développement logiciel, applications web et mobiles, design, DevOps, sécurité et plus encore.",
+  "title": "Nos Services IT",
+  "description": "Nous proposons des solutions informatiques complètes pour accompagner la transformation numérique de votre organisation.",
+  "cta": "Contactez-nous pour un devis personnalisé",
+  "services": {
+    "software": {
+      "title": "Développement Logiciel",
+      "description": "Des solutions logicielles sur mesure adaptées aux besoins de votre entreprise."
+    },
+    "web": {
+      "title": "Création de Sites Web",
+      "description": "Sites web modernes, responsives et performants pour tous les supports."
+    },
+    "mobile": {
+      "title": "Applications Web & Mobiles",
+      "description": "Applications iOS et Android et Web pour élargir votre portée et améliorer l’interaction utilisateur."
+    },
+    "support": {
+      "title": "Support & Maintenance",
+      "description": "Assistance continue et maintenance pour vos systèmes informatiques."
+    },
+    "uiux": {
+      "title": "Design UI/UX",
+      "description": "Des interfaces esthétiques et ergonomiques pour une expérience utilisateur optimale."
+    },
+    "devops": {
+      "title": "DevOps & Sécurité",
+      "description": "Déploiements sécurisés, gestion des infrastructures et pratiques DevOps efficaces."
+    }
+  }
+},
+ "callCenterPage": {
+    "pageTitle": "Solutions de Centre d’Appels",
+    "metaDescription": "Découvrez nos services de centre d'appels adaptés à vos besoins.",
+    "title": "Nos Services de Centre d’Appels",
+    "description": "Nous offrons une gamme complète de services pour améliorer l’expérience client et l’efficacité opérationnelle.",
+    "cta": "Contactez-nous dès maintenant",
+    "services": {
+      "customerSupport": {
+        "title": "Support Client",
+        "description": "Assistance professionnelle pour vos clients 24/7."
+      },
+      "techSupport": {
+        "title": "Support Technique",
+        "description": "Aide technique dédiée pour vos produits et services."
+      },
+      "sales": {
+        "title": "Support aux Ventes",
+        "description": "Accompagnement dans la conversion de prospects en clients."
+      },
+      "survey": {
+        "title": "Enquêtes & Sondages",
+        "description": "Collecte de données clients pour améliorer vos offres."
+      },
+      "virtualAssistant": {
+        "title": "Assistant Virtuel",
+        "description": "Services automatisés pour améliorer la productivité."
+      },
+      "inboundOutbound": {
+        "title": "Appels Entrants & Sortants",
+        "description": "Gestion des communications entrantes et sortantes."
+      }
+    }
+  },
+   "fournisseurPage": {
+    "pageTitle": "Gestion des Fournisseurs",
+    "metaDescription": "Découvrez nos solutions pour la gestion efficace des fournisseurs.",
+    "title": "Solutions de Gestion des Fournisseurs",
+    "description": "Nous vous accompagnons dans toutes les étapes de la gestion de vos fournisseurs, de la sélection à l’évaluation de la performance.",
+    "cta": "Contactez-nous pour en savoir plus",
+    "services": {
+      "selection": {
+        "title": "Sélection des Fournisseurs",
+        "description": "Identifiez les meilleurs fournisseurs en fonction de vos besoins spécifiques et de vos critères de qualité."
+      },
+      "evaluation": {
+        "title": "Évaluation des Fournisseurs",
+        "description": "Évaluez les performances des fournisseurs avec des indicateurs clés pour garantir la fiabilité."
+      },
+      "negotiation": {
+        "title": "Négociation",
+        "description": "Négociez les meilleures conditions tarifaires et contractuelles pour optimiser vos achats."
+      },
+      "contract": {
+        "title": "Gestion des Contrats",
+        "description": "Créez et suivez les contrats fournisseurs de manière centralisée et sécurisée."
+      },
+      "performance": {
+        "title": "Suivi de la Performance",
+        "description": "Mesurez et améliorez continuellement la performance des fournisseurs à travers des KPIs adaptés."
+      },
+      "relationship": {
+        "title": "Relations Fournisseurs",
+        "description": "Renforcez les relations avec vos fournisseurs pour établir des partenariats durables."
+      }
+    }
+  }
+
+  
+
+
+
  
 
 

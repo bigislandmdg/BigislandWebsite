@@ -1,10 +1,10 @@
 'use client';
 
-import AboutSection from '@/components/AboutSection';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import AboutScreen from '@/components/AboutScreen';
-import ScrollToTopButton from '@/components/ScrollToTopButton';
+import AboutSection from '@/components/section/AboutSection';
+import Navbar from '@/components/navigation/Navbar';
+import Footer from '@/components/navigation/Footer';
+import AboutScreen from '@/components/screen/AboutScreen';
+import ScrollToTopButton from '@/components/utils/ScrollToTopButton';
 
 export default function AboutPage() {
   return (
