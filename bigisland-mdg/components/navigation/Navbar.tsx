@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-1 py-5 flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-blue-600">
           BigIslandMDG
         </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <a
-            href="/contact"
+            href="/devis"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             {t('navbar.requestQuote')}
@@ -140,7 +140,7 @@ export default function Navbar() {
           <a href="/blog" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.blog')}</a>
           <a href="/contact" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.contact')}</a>
           <a
-            href="/contact"
+            href="/devis"
             className="block bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700 transition"
             onClick={handleLinkClick}
           >

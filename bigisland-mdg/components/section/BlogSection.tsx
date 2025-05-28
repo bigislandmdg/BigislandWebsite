@@ -10,20 +10,20 @@ const blogPosts = [
   {
     titleKey: 'blog.post1.title',
     descriptionKey: 'blog.post1.description',
-    image: '/images/blog1.jpg',
-    link: '/blog/post-1',
+    image: '/images/blog/blog1.jpg',
+    link: '/blog/post/post-1',
   },
   {
     titleKey: 'blog.post2.title',
     descriptionKey: 'blog.post2.description',
-    image: '/images/blog2.jpg',
-    link: '/blog/post-2',
+    image: '/images/blog/blog2.jpg',
+    link: '/blog/post/post-2',
   },
   {
     titleKey: 'blog.post3.title',
     descriptionKey: 'blog.post3.description',
-    image: '/images/blog3.jpg',
-    link: '/blog/post-3',
+    image: '/images/blog/blog3.jpg',
+    link: '/blog/post/post-3',
   },
 ];
 

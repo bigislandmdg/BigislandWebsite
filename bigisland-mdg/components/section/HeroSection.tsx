@@ -15,8 +15,8 @@ export default function Hero() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="hero" className="relative -mt-6 scroll-mt-20 px-2 lg:px-10">
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section id="hero" className="relative -mt-6 scroll-mt-20 px-1 lg:px-10">
+      <div className=" max-w-6xl container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Texte et boutons */}
         <motion.div
           ref={ref}

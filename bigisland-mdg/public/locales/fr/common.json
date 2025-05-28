@@ -126,27 +126,27 @@
     "role": "Responsable Approvisionnement"
   }
 },
-"blog": {
-  "title": "Soyez au cœur de nos actus",
-  "subtitle": "Explorez nos derniers articles, conseils d’experts et actualités à ne pas manquer.",
-  "readMore": "Lire la suite",
-  "backToList": "Retour à la liste des articles",
-  "post1": {
-    "title": "Comment optimiser votre logistique ?",
-    "description": "Découvrez nos meilleures pratiques pour améliorer vos opérations logistiques.",
-     "content": "Voici le contenu complet de l'article 1 avec des paragraphes explicatifs."
+ "blog": {
+    "title": "Soyez au cœur de nos actus",
+    "subtitle": "Explorez nos derniers articles, conseils d’experts et actualités à ne pas manquer.",
+    "readMore": "Lire la suite",
+    "backToList": "Retour à la liste des articles",
+    "post1": {
+      "title": "Comment optimiser votre logistique ?",
+      "description": "Découvrez nos meilleures pratiques pour améliorer vos opérations logistiques.",
+      "content": "Voici le contenu complet de l'article 1 avec des paragraphes explicatifs."
+    },
+    "post2": {
+      "title": "L'impact de la technologie sur le service client",
+      "description": "Analyse des outils digitaux qui transforment la relation client.",
+      "content": "Voici le contenu complet de l'article 2 avec des paragraphes explicatifs."
+    },
+    "post3": {
+      "title": "Nos engagements pour un avenir durable",
+      "description": "Comment notre équipe agit concrètement pour un monde plus responsable.",
+      "content": "Voici le contenu complet de l'article 3 avec des paragraphes explicatifs."
+    }
   },
-  "post2": {
-    "title": "L'impact de la technologie sur le service client",
-    "description": "Analyse des outils digitaux qui transforment la relation client.",
-    "content": "Voici le contenu complet de l'article 2 avec des paragraphes explicatifs."
-  },
-  "post3": {
-    "title": "Nos engagements pour un avenir durable",
-    "description": "Comment notre équipe agit concrètement pour un monde plus responsable.",
-    "content": "Voici le contenu complet de l'article 3 avec des paragraphes explicatifs."
-  }
-},
  "contact": {
     "title": "Un projet en tête, une question ?",
     "subtitle": "Nous sommes à votre écoute pour en discuter.",
@@ -322,7 +322,84 @@
         "description": "Renforcez les relations avec vos fournisseurs pour établir des partenariats durables."
       }
     }
+  },
+    "testimonyPage": {
+    "pageTitle": "Témoignages Clients",
+    "metaDescription": "Découvrez les témoignages de nos clients satisfaits.",
+    "title": "Ce que nos clients disent de nous",
+    "description": "Nous sommes fiers de partager les expériences de nos clients.",
+    "cta": "Nous contacter",
+    "clients": {
+      "client1": {
+        "name": "Marie Dupont",
+        "message": "Service impeccable, je recommande vivement !"
+      },
+      "client2": {
+        "name": "Jean Martin",
+        "message": "Une expérience fluide et professionnelle."
+      },
+      "client3": {
+        "name": "Sophie Durand",
+        "message": "Très satisfait de la location, personnel au top."
+      }
+    }
+  },
+  "projetPage": {
+  "pageTitle": "Nos Projets",
+  "metaDescription": "Découvrez les projets réalisés autour de nos services : location de voiture, call center, solutions IT et fournitures de produits.",
+  "title": "Projets Réalisés",
+  "description": "Voici quelques projets que nous avons menés à bien dans nos principaux domaines de services.",
+  "cta": "Contactez-nous pour en savoir plus",
+  "viewProject": "Voir le projet",
+  "projects": {
+    "project1": {
+      "title": "Plateforme de location de voitures",
+      "description": "Développement d'une application web complète pour réserver, gérer et suivre la location de véhicules en temps réel."
+    },
+    "project2": {
+      "title": "Solution de gestion de Call Center",
+      "description": "Mise en place d’un système de téléphonie cloud avec intégration CRM pour améliorer l'efficacité de la relation client."
+    },
+    "project3": {
+      "title": "Plateforme de gestion de stock et commandes",
+      "description": "Conception d'une solution ERP légère pour gérer les fournitures de bureau et produits divers dans les établissements publics."
+    }
   }
+},
+"cguPage": {
+  "pageTitle": "Conditions Générales d'Utilisation",
+  "metaDescription": "Lisez les conditions générales d'utilisation de notre site.",
+  "title": "Conditions Générales d'Utilisation",
+  "intro": "Veuillez lire attentivement les présentes conditions générales avant d’utiliser ce site.",
+  "sections": {
+    "section1": {
+      "title": "1. Acceptation des conditions",
+      "content": "En accédant à ce site, vous acceptez sans réserve les présentes conditions générales."
+    },
+    "section2": {
+      "title": "2. Utilisation du site",
+      "content": "L'utilisateur s'engage à utiliser le site de manière légale et responsable."
+    },
+    "section3": {
+      "title": "3. Propriété intellectuelle",
+      "content": "Tous les contenus présents sur ce site sont protégés par des droits d’auteur."
+    }
+  }
+},
+ "form": {
+    "fullName": "Nom complet",
+    "email": "Adresse email",
+    "company": "Entreprise",
+    "message": "Message",
+    "send": "Envoyer",
+    "fullNameRequired": "Le nom complet est requis",
+    "emailRequired": "L'adresse email est requise",
+    "invalidEmail": "L'adresse email est invalide",
+    "companyRequired": "Le nom de l'entreprise est requis",
+    "messageRequired": "Le message est requis"
+  }
+
+
 
   
 

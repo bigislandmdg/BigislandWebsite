@@ -24,10 +24,10 @@ export default function FloatingLanguageToggle() {
   }, [lang]);
 
   return (
-    <div className="fixed mt-5 bottom-9 left-10 z-50">
-      <div className="relative w-32 h-8 bg-gray-200 rounded-full shadow-md overflow-hidden">
+    <div className="fixed mt-5 bottom-9 left-14 z-50">
+      <div className="max-w-5xl relative w-32 h-8 bg-gray-200 rounded shadow-md overflow-hidden">
         <div
-          className={`absolute top-0 h-8 w-1/2 bg-blue-500 rounded-full transition-all duration-300 ${
+          className={`absolute top-0 h-8 w-1/2 bg-blue-500 rounded transition-all duration-300 ${
             lang === 'fr' ? 'left-1/2' : 'left-0'
           }`}
         ></div>

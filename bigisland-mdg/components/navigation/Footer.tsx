@@ -79,12 +79,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/temoignages" className="hover:text-blue-400">
+                <a href="/testimony" className="hover:text-blue-400">
                   {t('footer.testimonials')}
                 </a>
               </li>
               <li>
-                <a href="/projets" className="hover:text-blue-400">
+                <a href="/projet" className="hover:text-blue-400">
                   {t('footer.projects')}
                 </a>
               </li>

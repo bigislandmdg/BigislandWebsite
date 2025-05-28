@@ -1,56 +1,52 @@
-// pages/blog/index.tsx
 'use client';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'react-i18next';
 import { FaArrowRight } from 'react-icons/fa';
 
 const blogPosts = [
   {
-    slug: 'post-1',
     titleKey: 'blog.post1.title',
     descriptionKey: 'blog.post1.description',
-    image: '/images/blog1.jpg',
+    image: '/images/blog/blog1.jpg',
+    link: '/blog/post/post-1',
   },
   {
-    slug: 'post-2',
     titleKey: 'blog.post2.title',
     descriptionKey: 'blog.post2.description',
-    image: '/images/blog2.jpg',
+    image: '/images/blog/blog2.jpg',
+    link: '/blog/post/post-2',
   },
   {
-    slug: 'post-3',
     titleKey: 'blog.post3.title',
     descriptionKey: 'blog.post3.description',
-    image: '/images/blog3.jpg',
+    image: '/images/blog/blog3.jpg',
+    link: '/blog/post/post-3',
   },
 ];
 
-export default function BlogIndex() {
+export default function BlogScreen() {
   const { t } = useTranslation('common');
 
   return (
-    <section className="px-4 py-16 bg-white">
+    <main className="px-4 py-20 bg-white min-h-screen">
       <div className="max-w-6xl mx-auto text-center">
-        <motion.h2
-          className="text-3xl lg:text-4xl font-bold mb-4 text-gray-800"
+        <motion.h1
+          className="text-4xl font-bold text-gray-800 mb-4"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           {t('blog.title')}
-        </motion.h2>
-
+        </motion.h1>
         <p className="text-lg text-gray-600 mb-12">{t('blog.subtitle')}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {blogPosts.map((post, index) => (
             <motion.div
-              key={post.slug}
+              key={index}
               className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +68,7 @@ export default function BlogIndex() {
                   {t(post.descriptionKey)}
                 </p>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={post.link}
                   className="text-blue-600 hover:underline text-sm font-medium inline-flex items-center gap-1"
                 >
                   {t('blog.readMore')} <FaArrowRight className="ml-1" />
@@ -82,15 +78,6 @@ export default function BlogIndex() {
           ))}
         </div>
       </div>
-    </section>
+    </main>
   );
-}
-
-// Traduction SSR
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-  };
 }

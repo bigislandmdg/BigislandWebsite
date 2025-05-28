@@ -1,12 +1,11 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-export default function LocationScreen() {
+export default function ProjetScreen() {
   const { t, i18n } = useTranslation('common');
 
   const cardVariants = {
@@ -18,80 +17,84 @@ export default function LocationScreen() {
     }),
   };
 
-  // Mise à jour dynamique des textes traduits à chaque changement de langue
-  type Car = { src: string; title: string; desc: string };
-  const [cars, setCars] = useState<Car[]>([]);
+  type Project = {
+    title: string;
+    description: string;
+    link: string;
+  };
+
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    setCars([
+    setProjects([
       {
-        src: '/images/cars/suv.jpg',
-        title: t('locationPage.cars.suv.title'),
-        desc: t('locationPage.cars.suv.description')
+        title: t('projetPage.projects.project1.title'),
+        description: t('projetPage.projects.project1.description'),
+        link: 'https://github.com/votre-utilisateur/projet1'
       },
       {
-        src: '/images/cars/berline.jpg',
-        title: t('locationPage.cars.sedan.title'),
-        desc: t('locationPage.cars.sedan.description')
+        title: t('projetPage.projects.project2.title'),
+        description: t('projetPage.projects.project2.description'),
+        link: 'https://github.com/votre-utilisateur/projet2'
       },
-      {
-        src: '/images/cars/van.jpg',
-        title: t('locationPage.cars.van.title'),
-        desc: t('locationPage.cars.van.description')
-      }
+      
+        {
+            title: t('projetPage.projects.project3.title'),
+            description: t('projetPage.projects.project3.description'),
+            link: 'https://github.com/votre-utilisateur/projet3'
+        }
     ]);
   }, [i18n.language, t]);
 
   return (
     <>
       <Head>
-        <title>{t('locationPage.pageTitle')}</title>
+        <title>{t('projetPage.pageTitle')}</title>
         <meta
           name="description"
-          content={t('locationPage.metaDescription')}
+          content={t('projetPage.metaDescription')}
         />
       </Head>
 
-      <section id="location" className="pt-32 pb-16 px-6 max-w-6xl mx-auto text-center">
+      <section id="projects" className="pt-32 pb-16 px-6 max-w-6xl mx-auto">
         <motion.h1
           className="text-4xl font-bold text-blue-600 mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {t('locationPage.title')}
+          {t('projetPage.title')}
         </motion.h1>
 
         <motion.p
-          className="text-gray-700 text-lg mb-8 max-w-3xl text-center mx-auto"
+          className="text-gray-700 text-lg mb-8 max-w-3xl"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          {t('locationPage.description')}
+          {t('projetPage.description')}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars.map((car, i) => (
+          {projects.map((project, i) => (
             <motion.div
               key={i}
-              className="border rounded-lg shadow hover:shadow-md transition p-4"
+              className="border rounded-lg shadow hover:shadow-md transition p-4 bg-white"
               custom={i}
               initial="hidden"
               animate="visible"
               variants={cardVariants}
             >
-              <Image
-                src={car.src}
-                alt={car.title}
-                width={400}
-                height={200}
-                className="w-full h-48 object-cover covered rounded"
-                loading="lazy"
-                quality={90}
-              />
-              <h2 className="text-xl font-semibold text-blue-600 mt-4">{car.title}</h2>
-              <p className="text-gray-600 mt-2">{car.desc}</p>
+              <h2 className="text-xl font-semibold text-blue-600">{project.title}</h2>
+              <p className="text-gray-600 mt-2">{project.description}</p>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline mt-4 inline-block"
+              >
+                {t('projetPage.viewProject')}
+              </a>
             </motion.div>
           ))}
         </div>
@@ -106,7 +109,7 @@ export default function LocationScreen() {
             href="/contact"
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
           >
-            {t('locationPage.cta')}
+            {t('projetPage.cta')}
           </a>
         </motion.div>
       </section>

@@ -28,7 +28,7 @@ const services = [
     icon: <FaBoxOpen size={40} />,
     titleKey: 'services.supply.title',
     descKey: 'services.supply.description',
-    link: '/services/fourniture',
+    link: '/services/fournisseur',
   },
 ];
 

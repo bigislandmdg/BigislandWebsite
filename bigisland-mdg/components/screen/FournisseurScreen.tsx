@@ -96,8 +96,10 @@ export default function FournisseurScreen() {
                 src={service.src}
                 alt={service.title}
                 width={400}
-                height={250}
-                className="rounded"
+                height={200}
+                className="w-full h-48 object-cover rounded"
+                loading="lazy"
+                quality={90}
               />
               <h2 className="text-xl font-semibold text-blue-600 mt-4">{service.title}</h2>
               <p className="text-gray-600 mt-2">{service.desc}</p>

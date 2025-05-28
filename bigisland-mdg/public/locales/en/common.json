@@ -127,23 +127,27 @@
     "role": "Supply Manager"
   }
 },
-"blog": {
-  "title": "Stay at the Heart of Our News",
-  "subtitle": "Explore our latest articles, expert advice, and must-read updates.",
-  "readMore": "Read more",
-  "post1": {
-    "title": "How to Optimize Your Logistics?",
-    "description": "Discover our best practices for improving your logistics operations."
+ "blog": {
+    "title": "Stay at the Heart of Our News",
+    "subtitle": "Explore our latest articles, expert advice, and must-read updates.",
+    "readMore": "Read more",
+    "backToList": "Back to the list of articles",
+    "post1": {
+      "title": "How to Optimize Your Logistics?",
+      "description": "Discover our best practices to improve your logistics operations.",
+      "content": "Here is the full content of article 1 with explanatory paragraphs."
+    },
+    "post2": {
+      "title": "The Impact of Technology on Customer Service",
+      "description": "Analysis of digital tools transforming customer relationships.",
+      "content": "Here is the full content of article 2 with explanatory paragraphs."
+    },
+    "post3": {
+      "title": "Our Commitments to a Sustainable Future",
+      "description": "How our team acts concretely for a more responsible world.",
+      "content": "Here is the full content of article 3 with explanatory paragraphs."
+    }
   },
-  "post2": {
-    "title": "The Impact of Technology on Customer Service",
-    "description": "An analysis of digital tools transforming customer relationships."
-  },
-  "post3": {
-    "title": "Our Commitment to a Sustainable Future",
-    "description": "How our team takes concrete action for a more responsible world."
-  }
-},
  "contact": {
     "title": "Your business deserves the best : let's team up now!",
     "subtitle": "Contact us for a personalized quote or to schedule a meeting with our team.",
@@ -320,7 +324,84 @@
         "description": "Strengthen your relationships with suppliers to establish long-term partnerships."
       }
     }
+  },
+   "testimonyPage": {
+    "pageTitle": "Customer Testimonials",
+    "metaDescription": "Read what our satisfied customers have to say.",
+    "title": "What Our Customers Say About Us",
+    "description": "We’re proud to share the experiences of our valued clients.",
+    "cta": "Contact Us",
+    "clients": {
+      "client1": {
+        "name": "Marie Dupont",
+        "message": "Impeccable service, I highly recommend!"
+      },
+      "client2": {
+        "name": "Jean Martin",
+        "message": "A smooth and professional experience."
+      },
+      "client3": {
+        "name": "Sophie Durand",
+        "message": "Very satisfied with the rental, great staff."
+      }
+    }
+  },
+  "projetPage": {
+  "pageTitle": "Our Projects",
+  "metaDescription": "Discover the projects we’ve completed around our services: car rental, call center, IT solutions, and product supplies.",
+  "title": "Completed Projects",
+  "description": "Here are some projects we have successfully carried out in our key service areas.",
+  "cta": "Contact us for more information",
+  "viewProject": "View Project",
+  "projects": {
+    "project1": {
+      "title": "Car Rental Platform",
+      "description": "Development of a full-featured web application to book, manage, and track vehicle rentals in real time."
+    },
+    "project2": {
+      "title": "Call Center Management Solution",
+      "description": "Implementation of a cloud telephony system with CRM integration to improve customer relationship efficiency."
+    },
+    "project3": {
+      "title": "Stock and Order Management Platform",
+      "description": "Design of a lightweight ERP solution to manage office supplies and various products in public institutions."
+    }
   }
+},
+"cguPage": {
+  "pageTitle": "Terms and Conditions of Use",
+  "metaDescription": "Read the terms and conditions of use of our website.",
+  "title": "Terms and Conditions",
+  "intro": "Please read these terms and conditions carefully before using this website.",
+  "sections": {
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "content": "By accessing this site, you agree to the present terms and conditions without reservation."
+    },
+    "section2": {
+      "title": "2. Use of the Site",
+      "content": "Users agree to use the website legally and responsibly."
+    },
+    "section3": {
+      "title": "3. Intellectual Property",
+      "content": "All content on this site is protected by copyright laws."
+    }
+  }
+},
+ "form": {
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "company": "Company",
+    "message": "Message",
+    "send": "Send",
+    "fullNameRequired": "Full name is required",
+    "emailRequired": "Email address is required",
+    "invalidEmail": "Invalid email address",
+    "companyRequired": "Company name is required",
+    "messageRequired": "Message is required"
+  }
+
+
 
 
 
