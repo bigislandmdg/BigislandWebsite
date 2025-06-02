@@ -42,12 +42,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-blue-400">{t('footer.expertise')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/services/solutions-it" className="hover:text-blue-400">
+                <a href="/services/it" className="hover:text-blue-400">
                   {t('footer.itSolutions')}
                 </a>
               </li>
               <li>
-                <a href="/services/location-voitures" className="hover:text-blue-400">
+                <a href="/services/location" className="hover:text-blue-400">
                   {t('footer.location')}
                 </a>
               </li>

@@ -103,7 +103,7 @@ export default function LocationScreen() {
           transition={{ delay: 1, duration: 0.5 }}
         >
           <a
-            href="/contact"
+            href="/devis"
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
           >
             {t('locationPage.cta')}
