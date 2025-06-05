@@ -1,12 +1,15 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import AppointmentModal from '../layout/AppointmentModal';
 
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { t } = useTranslation('common');
 
@@ -25,11 +28,18 @@ export default function AboutSection() {
           <p className="text-lg text-gray-600 mb-6">
             {t('about.description')}
           </p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+          <button 
+             onClick={() => setIsModalOpen(true)}
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
             {t('about.button')}
           </button>
         </motion.div>
       </div>
+      
+       <AppointmentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }

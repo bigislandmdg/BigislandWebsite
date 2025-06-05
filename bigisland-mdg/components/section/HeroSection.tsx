@@ -6,8 +6,14 @@ import Lottie from 'lottie-react';
 import heroAnimation from '@/public/animations/heroanimation.json';
 import { PlayCircleIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'next-i18next';
+import ContactModal from '../layout/ModalContact';
+
+import { useState } from 'react';
+import VideoModal from '../layout/VideoModal';
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -31,10 +37,14 @@ export default function Hero() {
           <p className="text-lg text-gray-600 mb-6">{t('hero.description')}</p>
 
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
-            <button className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+            <button
+               onClick={() => setIsModalOpen(true)}
+               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-700">
               {t('hero.button1')}
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-100">
+            <button 
+               onClick={() => setIsVideoModalOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-100">
               <PlayCircleIcon className="h-5 w-5" />
               {t('hero.button2')}
             </button>
@@ -51,6 +61,18 @@ export default function Hero() {
           <Lottie animationData={heroAnimation} loop={true} />
         </motion.div>
       </div>
+
+       <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+       <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoUrl="https://www.youtube.com/embed/votre-video-id" // Remplacez par votre URL de vidéo
+      />
+      
+
     </section>
   );
 }

@@ -40,34 +40,46 @@ export default function Navbar() {
         : 'text-gray-700 hover:text-blue-600'
     }`;
 
+  const expertisesLinks = [
+    { href: '/services/location', label: 'navbar.location' },
+    { href: '/services/it', label: 'navbar.itSolutions' },
+    { href: '/services/call-center', label: 'navbar.callCenter' },
+    { href: '/services/fournisseur', label: 'navbar.supplier' }
+  ];
+
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50">
-      <div className="max-w-6xl mx-auto px-1 py-5 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-blue-600">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold text-blue-600" onClick={handleLinkClick}>
           BigIslandMDG
         </Link>
 
         <button
-          className="lg:hidden text-2xl text-gray-800"
+          className="lg:hidden text-2xl text-gray-800 focus:outline-none"
           onClick={() => setOpen(!open)}
-          aria-label={t('navbar.openMenu', 'Ouvrir le menu')}
+          aria-label={t('navbar.openMenu')}
+          aria-expanded={open}
         >
-          ☰
+          {open ? '✕' : '☰'}
         </button>
 
         {/* Desktop navigation */}
-        <nav className="hidden lg:flex flex-1 justify-center space-x-6">
-          <a href="/" className={navLinkClass('home')}>{t('navbar.home')}</a>
-          <a href="/about" className={navLinkClass('about')}>{t('navbar.about')}</a>
+        <nav className="hidden lg:flex flex-1 justify-center space-x-8">
+          <Link href="/" className={navLinkClass('home')} onClick={handleLinkClick}>
+            {t('navbar.home')}
+          </Link>
+          
+          <Link href="/about" className={navLinkClass('about')} onClick={handleLinkClick}>
+            {t('navbar.about')}
+          </Link>
 
-          {/* Flyout Expertises */}
+          {/* Expertises Dropdown */}
           <Popover className="relative">
             {({ open }) => (
               <>
                 <Popover.Button
-                  className={`text-gray-700 hover:text-blue-600 inline-flex items-center ${
-                    open ? 'text-blue-600' : ''
-                  }`}
+                  className={`${navLinkClass('')} inline-flex items-center focus:outline-none`}
+                  aria-expanded={open}
                 >
                   {t('navbar.expertises')}
                   <ChevronDownIcon
@@ -77,19 +89,25 @@ export default function Navbar() {
                   />
                 </Popover.Button>
                 <Transition
-                  enter="transition duration-200 ease-out"
+                  enter="transition duration-150 ease-out"
                   enterFrom="opacity-0 translate-y-1"
                   enterTo="opacity-100 translate-y-0"
-                  leave="transition duration-150 ease-in"
+                  leave="transition duration-100 ease-in"
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <Popover.Panel className="absolute z-10 mt-3 w-56 bg-white border border-gray-200 rounded-lg shadow-lg">
-                    <div className="py-2">
-                      <Link href="/services/location" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">{t('navbar.location')}</Link>
-                      <Link href="/services/it" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">{t('navbar.itSolutions')}</Link>
-                      <Link href="/services/call-center" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">{t('navbar.callCenter')}</Link>
-                      <Link href="/services/fournisseur" className="block px-4 py-2 text-gray-700 hover:bg-blue-50">{t('navbar.supplier')}</Link>
+                  <Popover.Panel className="absolute z-10 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg">
+                    <div className="py-1">
+                      {expertisesLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 transition-colors"
+                          onClick={handleLinkClick}
+                        >
+                          {t(link.label)}
+                        </Link>
+                      ))}
                     </div>
                   </Popover.Panel>
                 </Transition>
@@ -97,55 +115,81 @@ export default function Navbar() {
             )}
           </Popover>
 
-          <a href="/blog" className={navLinkClass('blog')}>{t('navbar.blog')}</a>
-          <a href="/contact" className={navLinkClass('contact')}>{t('navbar.contact')}</a>
+          <Link href="/blog" className={navLinkClass('blog')} onClick={handleLinkClick}>
+            {t('navbar.blog')}
+          </Link>
+          
+          <Link href="/contact" className={navLinkClass('contact')} onClick={handleLinkClick}>
+            {t('navbar.contact')}
+          </Link>
         </nav>
 
         <div className="hidden lg:block">
-          <a
+          <Link
             href="/devis"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+            onClick={handleLinkClick}
           >
             {t('navbar.requestQuote')}
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Mobile navigation */}
       <Transition
         show={open}
-        enter="transition duration-300 ease-out"
-        enterFrom="transform scale-y-0 opacity-0"
-        enterTo="transform scale-y-100 opacity-100"
-        leave="transition duration-200 ease-in"
-        leaveFrom="transform scale-y-100 opacity-100"
-        leaveTo="transform scale-y-0 opacity-0"
+        enter="transition duration-200 ease-out"
+        enterFrom="opacity-0 scale-95"
+        enterTo="opacity-100 scale-100"
+        leave="transition duration-150 ease-in"
+        leaveFrom="opacity-100 scale-100"
+        leaveTo="opacity-0 scale-95"
       >
-        <div className="lg:hidden origin-top bg-white shadow-md px-4 py-4 space-y-2">
-          <a href="/" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.home')}</a>
-          <a href="/about" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.about')}</a>
+        <div className="lg:hidden origin-top bg-white shadow-lg">
+          <div className="px-4 py-3 space-y-3">
+            <Link href="/" className="block py-2 text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>
+              {t('navbar.home')}
+            </Link>
+          
+          <Link href="/about" className="block py-2 text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>
+            {t('navbar.about')}
+          </Link>
 
           <details className="group">
-            <summary className="text-gray-700 font-semibold cursor-pointer">
-              {t('navbar.expertises')}
+            <summary className="flex items-center justify-between py-2 text-gray-700 cursor-pointer list-none">
+              <span>{t('navbar.expertises')}</span>
+              <ChevronDownIcon className="h-5 w-5 group-open:rotate-180 transition-transform" />
             </summary>
-            <div className="ml-4 mt-1 space-y-1">
-              <Link href="/services/location" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.location')}</Link>
-              <Link href="/services/it" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.itSolutions')}</Link>
-              <Link href="/services/call-center" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.callCenter')}</Link>
-              <Link href="/services/fournisseur" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.supplier')}</Link>
+            <div className="ml-4 mt-1 space-y-2">
+              {expertisesLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2 text-gray-600 hover:text-blue-600"
+                  onClick={handleLinkClick}
+                >
+                  {t(link.label)}
+                </Link>
+              ))}
             </div>
           </details>
 
-          <a href="/blog" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.blog')}</a>
-          <a href="/contact" className="block text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>{t('navbar.contact')}</a>
-          <a
+          <Link href="/blog" className="block py-2 text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>
+            {t('navbar.blog')}
+          </Link>
+          
+          <Link href="/contact" className="block py-2 text-gray-700 hover:text-blue-600" onClick={handleLinkClick}>
+            {t('navbar.contact')}
+          </Link>
+
+          <Link
             href="/devis"
-            className="block bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700 transition"
+            className="block text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors mt-2"
             onClick={handleLinkClick}
           >
             {t('navbar.requestQuote')}
-          </a>
+          </Link>
+        </div>
         </div>
       </Transition>
     </header>

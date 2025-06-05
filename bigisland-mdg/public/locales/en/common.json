@@ -1,10 +1,14 @@
 {
+   "videoModal": {
+    "title": "Discover our company"
+  },
   "hero": {
     "title": "Grow your business with Bigisland MDG.",
     "description": "BigIsland MDG is your ideal partner for custom website and application development. Our team of experts is ready to turn your ideas into innovative digital solutions. Give your business a digital showcase worthy of your ambitions.",
     "button1": "Let's Talk",
     "button2": "Get to Know Us"
   },
+  
   "navbar": {
     "home": "Home",
     "about": "About",
@@ -42,6 +46,27 @@
     "title": "What kind of assistance do you need?",
     "description": "We offer our expertise in four areas: car rental, call center services, IT solutions, and product supply. Our team supports you with tailored solutions, responsive service, and guaranteed quality.",
     "button": "Schedule an appointment"
+  },
+
+  "appointment": {
+    "title": "Schedule an Appointment",
+    "services": {
+      "carRental": "Car Rental",
+      "callCenter": "Call Center",
+      "itSolutions": "IT Solutions",
+      "productSupply": "Product Supply"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Service Needed",
+      "selectService": "Select a service",
+      "date": "Preferred Date",
+      "message": "Additional Information",
+      "cancel": "Cancel",
+      "submit": "Schedule Appointment"
+    }
   },
    "services": {
     "title": "Our Services",
@@ -399,7 +424,34 @@
     "invalidEmail": "Invalid email address",
     "companyRequired": "Company name is required",
     "messageRequired": "Message is required"
+  },
+  
+  "modal": {
+    "form": {
+       "title": "Submit Your Project Requirements",
+      "description": "Please fill out the form below to help us understand your project needs. We will get back to you as soon as possible.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "subject": "Subject",
+      "projectType": "Project Type",
+      "projectTypes": {
+        "web": "Website",
+        "mobile": "Mobile Application",
+        "design": "Graphic Design",
+        "marketing": "Digital Marketing",
+        "other": "Other"
+      },
+     
+      "briefFile": "Brief file (PDF, DOC, max 50MB)",
+      "fileSelected": "Selected file",
+      "selectOption": "Select an option",
+      "cancel": "Cancel",
+      "submit": "Submit",
+      "captchaError": "Please validate the CAPTCHA"
+    }
   }
+
 
 
 

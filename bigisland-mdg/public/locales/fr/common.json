@@ -1,10 +1,14 @@
 {
+   "videoModal": {
+    "title": "Découvrez notre entreprise"
+  },
   "hero": {
     "title": "Développez votre entreprise avec Bigisland MDG.",
     "description": "BigIsland MDG est votre partenaire idéal pour la création de sites web et d'applications sur mesure. Notre équipe d'experts est prête à transformer vos idées en solutions numériques innovantes. Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions.",
     "button1": "Discutons",
     "button2": "Mieux nous connaître"
   },
+
   "navbar": {
     "home": "Accueil",
     "about": "À propos",
@@ -41,6 +45,27 @@
     "title": "De quelle assistance avez-vous besoin ?",
     "description": "Nous mettons notre expertise à votre service dans quatre domaines : location de voitures, centre d'appel, solutions IT et fourniture de produits.Notre équipe vous accompagne avec des solutions adaptées, un service réactif et une qualité garantie.",
     "button": "Planifier un rendez-vous"
+  },
+  "appointment": {
+    "title": "Planifier un rendez-vous",
+    "services": {
+      "carRental": "Location de voitures",
+      "callCenter": "Centre d'appel",
+      "itSolutions": "Solutions IT",
+      "productSupply": "Fourniture de produits"
+    },
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "phone": "Numéro de téléphone",
+      "service": "Service demandé",
+      "selectService": "Sélectionnez un service",
+      "date": "Date souhaitée",
+      "message": "Informations supplémentaires",
+      "cancel": "Annuler",
+      "submit": "Planifier le rendez-vous"
+    }
+
   },
   "services": {
   "title": "Nos Expertises",
@@ -397,7 +422,35 @@
     "invalidEmail": "L'adresse email est invalide",
     "companyRequired": "Le nom de l'entreprise est requis",
     "messageRequired": "Le message est requis"
+  },
+  
+  "modal": {
+    "form": {
+      "title": "Parlez-nous de votre projet",
+      "description": "Nous sommes ravis de collaborer avec vous. Veuillez remplir le formulaire ci-dessous pour nous donner plus de détails sur votre projet.",
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "subject": "Sujet",
+      "placeholderName": "Votre nom complet",
+      "send": "Envoyer",
+      "projectType": "Type de projet",
+      "projectTypes": {
+        "web": "Site Web",
+        "mobile": "Application Mobile",
+        "design": "Design Graphique",
+        "marketing": "Marketing Digital",
+        "other": "Autre"
+      },
+      "briefFile": "Fichier de brief (PDF, DOC, max 50Mo)",
+      "fileSelected": "Fichier sélectionné",
+      "selectOption": "Sélectionnez une option",
+      "cancel": "Annuler",
+      "submit": "Soumettre",
+      "captchaError": "Veuillez valider le CAPTCHA"
+    }
   }
+
 
 
 
