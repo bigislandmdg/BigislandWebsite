@@ -16,7 +16,7 @@ const services = [
     icon: <FaHeadset size={40} />,
     titleKey: 'services.callcenter.title',
     descKey: 'services.callcenter.description',
-    link: '/services/callcenter',
+    link: '/services/call-center',
   },
   {
     icon: <FaLaptopCode size={40} />,
