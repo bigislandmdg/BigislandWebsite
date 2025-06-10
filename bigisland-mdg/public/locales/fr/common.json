@@ -409,19 +409,42 @@
       "title": "3. Propriété intellectuelle",
       "content": "Tous les contenus présents sur ce site sont protégés par des droits d’auteur."
     }
-  }
+  },
+   "needHelp": "Besoin d'Aide?",
+    "contactUs": "Contact-nous sur contact@bigislandmdg.com"
 },
  "form": {
     "fullName": "Nom complet",
     "email": "Adresse email",
     "company": "Entreprise",
     "message": "Message",
-    "send": "Envoyer",
+    "subject": "Sujet",
     "fullNameRequired": "Le nom complet est requis",
     "emailRequired": "L'adresse email est requise",
     "invalidEmail": "L'adresse email est invalide",
     "companyRequired": "Le nom de l'entreprise est requis",
-    "messageRequired": "Le message est requis"
+    "messageRequired": "Le message est requis",
+   
+    "placeholderName": "Votre nom",
+    "placeholderEmail": "votre@email.com",
+    "placeholderMessage": "Votre message...",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "scheduleMeeting": "Planifier une réunion",
+    "backToForm": "Retour au formulaire",
+    "ourOffice": "Notre bureau",
+    "successTitle": "Message envoyé !",
+    "successMessage": "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+     "tabs": {
+      "form": "Formulaire",
+      "meeting": "Planifier un appel"
+    },
+    "requestType": "Type de demande",
+    "requestTypes": {
+      "general": "Demande générale",
+      "support": "Support technique",
+      "partnership": "Partenariat"
+    }
   },
   
   "modal": {

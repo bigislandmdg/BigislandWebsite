@@ -411,7 +411,9 @@
       "title": "3. Intellectual Property",
       "content": "All content on this site is protected by copyright laws."
     }
-  }
+  },
+   "needHelp": "Need help?",
+    "contactUs": "Contact us at contact@bigislandmdg.com"
 },
  "form": {
     "fullName": "Full Name",
