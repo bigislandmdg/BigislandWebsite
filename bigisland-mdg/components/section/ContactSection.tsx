@@ -113,14 +113,14 @@ export default function ContactSection() {
           <div className="w-full h-80 sm:h-96 rounded-t-2xl overflow-hidden">
             <iframe
               title="Localisation"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.45238331398!2d47.478419643650146!3d-18.879190495558926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f0f6d05e66dbe3%3A0x30c9e6dbde3386!2sAntananarivo!5e0!3m2!1sfr!2smg!4v1698166242725!5m2!1sfr!2smg"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin&#39;ny%20Aina!5e0!3m2!1sfr!2smg!4v1712345678900"
               width="100%"
               height="100%"
               allowFullScreen
               loading="lazy"
               className="border-0"
               referrerPolicy="no-referrer-when-downgrade"
-            />
+           />
           </div>
 
           <div className="p-6 space-y-4">
@@ -129,7 +129,7 @@ export default function ContactSection() {
             <div className="space-y-3 text-gray-700">
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-blue-600 mt-1 flex-shrink-0" />
-                <span>Route vers Ambohimanambola, Ambohipo Sud, Antananarivo, Madagascar</span>
+                <span>Logt 135 Cite Rue Andriamanelo, Mandroseza, Antananarivo 101, Madagascar</span>
               </div>
               
               <div className="flex items-center gap-3">

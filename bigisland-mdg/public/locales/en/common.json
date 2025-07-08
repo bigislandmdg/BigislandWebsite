@@ -19,13 +19,28 @@
     "supplier": "Supplier of Various Products",
     "blog": "Blog",
     "contact": "Contact",
+     "search": "Search",
+  "closeSearch": "Close search",
+  "searchTitle": "What are you looking for?",
+  "searchPlaceholder": "Enter your search...",
+  "searchButton": "Search",
+  "searchResults": "Search results",
+  "noResults": "No results found for",
     "requestQuote": "Request a Quote"
   },
+  "search": {
+  "categories": {
+    "services": "Services",
+    "blog": "Blog", 
+    "team": "Team",
+    "clients": "Clients"
+  }
+},
   "footer": {
     "contact": "Contact",
-    "email": "contact@bigislandmdg.com",
+    "email": "contact@bigisland.mg",
     "phone": "+261 34 00 000 00",
-    "address": "Antananarivo, Madagascar",
+    "address": "Logt 135 Cite Rue Andriamanelo, Mandroseza, Antananarivo 101, Madagascar",
     "expertise": "Expertise",
     "itSolutions": "IT Solutions",
     "location": "Car Rentals",
@@ -160,12 +175,12 @@
     "post1": {
       "title": "How to Optimize Your Logistics?",
       "description": "Discover our best practices to improve your logistics operations.",
-      "content": "Here is the full content of article 1 with explanatory paragraphs."
+      "content": "In a competitive economic environment, logistics optimization becomes a strategic lever. Our analysis reveals 3 key areas for improvement:\n\n1. **Warehouse Automation**: Modern WMS systems reduce errors by 30% and speed up order processing.\n\n2. **Route Optimization**: Intelligent routing algorithms can decrease miles driven by 15-20%.\n\n3. **Inter-Company Collaboration**: Sharing logistics resources among partners cuts fixed costs while improving load efficiency.\n\nThese solutions, combined with ongoing team training, transform logistics from a cost center into a competitive advantage."
     },
     "post2": {
       "title": "The Impact of Technology on Customer Service",
       "description": "Analysis of digital tools transforming customer relationships.",
-      "content": "Here is the full content of article 2 with explanatory paragraphs."
+      "content": "The digital revolution has redefined consumer expectations. \n\n Here’s how new technologies are reinventing customer service:\n\n- **Smart Chatbots**: Capable of resolving 80% of common queries in under 2 minutes while continuously learning.\n\n- **Augmented Reality**: Allows support agents to overlay technical information during video calls, reducing resolution time.\n\n- **Predictive Analytics**: AI systems anticipate customer needs before they even make a request, with up to 92% accuracy.\n\nThese innovations create a seamless and personalized customer experience while allowing teams to focus on complex cases requiring human expertise."
     },
     "post3": {
       "title": "Our Commitments to a Sustainable Future",
