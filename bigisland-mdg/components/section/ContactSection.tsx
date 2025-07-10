@@ -11,26 +11,56 @@ export default function ContactSection() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [meetingLink, setMeetingLink] = useState('');
+  const [formStatus, setFormStatus] = useState({ success: false, message: '' });
 
   const handleScheduleMeeting = () => {
-    // Créer un lien Google Meet
     const meetLink = 'https://meet.google.com/new';
     setMeetingLink(meetLink);
-    
-    // Ouvrir le lien dans un nouvel onglet
+
     window.open(meetLink, '_blank');
     
-    // Fermer la modale après un délai
     setTimeout(() => {
       setIsModalOpen(false);
-      setMeetingLink(''); // Réinitialiser le lien
+      setMeetingLink('');
     }, 1000);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    const { name, email, message } = Object.fromEntries(formData.entries());
+    
+    try {
+      const subject = encodeURIComponent(`Nouveau message de ${name}`);
+      const body = encodeURIComponent(
+        `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+      );
+      
+      window.location.href = `mailto:contact@bigisland.mg?subject=${subject}&body=${body}`;
+      
+      setFormStatus({
+        success: true,
+        message: t('contact.successMessage')
+      });
+      
+      e.currentTarget.reset();
+      
+      setTimeout(() => {
+        setFormStatus({ success: false, message: '' });
+      }, 5000);
+    } catch (error) {
+      setFormStatus({
+        success: false,
+        message: t('contact.errorMessage')
+      });
+    }
   };
 
   return (
     <section id="contact" className="px-4 py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
-        {/* Formulaire de contact */}
+        {/* Formulaire de contact amélioré */}
         <motion.div
           className="bg-white p-6 sm:p-11 rounded-xl shadow-lg border border-gray-100"
           initial={{ opacity: 0, y: 30 }}
@@ -45,7 +75,7 @@ export default function ContactSection() {
             {t('contact.subtitle')}
           </p>
           
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-1">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 {t('contact.name')}
@@ -53,8 +83,10 @@ export default function ContactSection() {
               <input
                 type="text"
                 id="name"
+                name="name"
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderName')}
+                required
               />
             </div>
             
@@ -65,8 +97,10 @@ export default function ContactSection() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderEmail')}
+                required
               />
             </div>
             
@@ -76,17 +110,26 @@ export default function ContactSection() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={4}
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderMessage')}
+                required
               />
             </div>
+            
+            {formStatus.message && (
+              <div className={`p-3 rounded-lg ${formStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                {formStatus.message}
+              </div>
+            )}
             
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 type="submit"
-                className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-95"
+                className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center gap-2"
               >
+                <FaEnvelope />
                 {t('contact.send')}
               </button>
               
@@ -104,7 +147,7 @@ export default function ContactSection() {
 
         {/* Carte Google Maps + Coordonnées */}
         <motion.div
-          className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white "
+          className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -120,34 +163,34 @@ export default function ContactSection() {
               loading="lazy"
               className="border-0"
               referrerPolicy="no-referrer-when-downgrade"
-           />
+            />
           </div>
 
           <div className="p-6 space-y-4">
-            <h3 className="text-xl font-bold text-gray-800">Nos coordonnées</h3>
+            <h3 className="text-xl font-bold text-gray-800">{t('footer.ourContact')}</h3>
             
             <div className="space-y-3 text-gray-700">
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-blue-600 mt-1 flex-shrink-0" />
-                <span>Logt 135 Cite Rue Andriamanelo, Mandroseza, Antananarivo 101, Madagascar</span>
+                <span>{t('footer.address')}</span>
               </div>
               
               <div className="flex items-center gap-3">
                 <FaPhone className="text-blue-600 flex-shrink-0" />
-                <span>+261 34 12 345 67</span>
+                <span>{t('footer.phone')}</span>
               </div>
               
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-blue-600 flex-shrink-0" />
-                <span>contact@bigisland.mg</span>
+                <span>{t('footer.email')}</span>
               </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Modale de réunion améliorée */}
-        <AnimatePresence>
+      {/* Modale de réunion */}
+      <AnimatePresence>
         {isModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -176,23 +219,48 @@ export default function ContactSection() {
                   <div className="bg-blue-100 p-2 rounded-lg">
                     <FaCalendarAlt className="text-blue-600 text-xl" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800">Planifier une réunion</h3>
+                  <h3 className="text-2xl font-bold text-gray-800">{t('contact.scheduleMeeting')}</h3>
                 </div>
                 
                 <form className="space-y-4">
-                  {/* ... (les champs du formulaire restent inchangés) ... */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      {t('contact.date')}
+                    </label>
+                    <input
+                      type="date"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      {t('contact.time')}
+                    </label>
+                    <input
+                      type="time"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      value={selectedTime}
+                      onChange={(e) => setSelectedTime(e.target.value)}
+                      required
+                    />
+                  </div>
                   
                   <button
                     type="button"
                     onClick={handleScheduleMeeting}
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-[0.98] mt-4"
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
                   >
-                    Confirmer la réunion
+                    <FaCalendarAlt />
+                    {t('contact.confirmMeeting')}
                   </button>
 
                   {meetingLink && (
                     <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm">
-                      <p>Votre réunion Google Meet a été créée :</p>
+                      <p>{t('contact.meetingCreated')}</p>
                       <a 
                         href={meetingLink} 
                         target="_blank" 
