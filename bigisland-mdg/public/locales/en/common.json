@@ -55,6 +55,9 @@
     "newsletter": "Subscribe to our newsletter",
     "emailPlaceholder": "Your email address",
     "subscribe": "Subscribe",
+    "cookiePolicy": "Cookie Policy",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
     "rightsReserved": "All rights reserved."
   },
   
@@ -172,6 +175,11 @@
     "title": "Stay at the Heart of Our News",
     "subtitle": "Explore our latest articles, expert advice, and must-read updates.",
     "readMore": "Read more",
+     "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{{count}} days ago",
+    "readTime": "{{count}} min read",
+    "share": "Share",
     "backToList": "Back to the list of articles",
     "post1": {
       "title": "How to Optimize Your Logistics?",
@@ -186,7 +194,7 @@
     "post3": {
       "title": "Our Commitments to a Sustainable Future",
       "description": "How our team acts concretely for a more responsible world.",
-      "content": "Here is the full content of article 3 with explanatory paragraphs."
+      "content": "Our CSR approach is built around 4 fundamental pillars:\n\n**1. Carbon neutrality**: Since 2025, we've been offsetting 110% of our emissions through certified reforestation projects.\n\n**2. Circular economy**: 95% of our packaging is now recyclable and we've implemented a product take-back program for end-of-life items.\n\n**3. Ethical partnerships**: All our suppliers comply with our demanding social charter, verified through independent audits.\n\n**4. Sustainable innovation**: 15% of our revenue is reinvested in research for ecological solutions.\n\nThese concrete, measurable and transparent actions reflect our belief that a successful company must also be a responsible actor in its ecosystem."
     }
   },
  "contact": {
@@ -431,6 +439,117 @@
    "needHelp": "Need help?",
     "contactUs": "Contact us at contact@bigislandmdg.com"
 },
+"cookiePage": {
+    "pageTitle": "Cookie Policy - BigIslandMDG",
+    "metaDescription": "Learn how we use cookies on our website and how you can manage them.",
+    "title": "Cookie Policy",
+    "intro": "This policy explains how we use cookies and similar technologies on our website.",
+    "needHelp": "Questions about our cookie policy?",
+    "contactUs": "Contact our Data Protection Officer at dpo@example.com",
+    "sections": {
+      "whatAreCookies": {
+        "title": "What are cookies?",
+        "content": "Cookies are small text files stored on your device when you visit a website. They allow the site to remember your actions and preferences."
+      },
+      "typesOfCookies": {
+        "title": "Types of cookies we use",
+        "content": "We use different types of cookies:\n- Essential cookies\n- Performance cookies\n- Functionality cookies\n- Targeting cookies"
+      },
+      "howWeUseCookies": {
+        "title": "How we use cookies",
+        "content": "We use cookies to:\n- Ensure proper website functioning\n- Analyze site usage\n- Personalize your experience"
+      },
+      "managingCookies": {
+        "title": "Managing cookies",
+        "content": "You can control and delete cookies through your browser settings. Disabling cookies may affect some website features."
+      },
+      "changesToPolicy": {
+        "title": "Changes to this policy",
+        "content": "We may update this policy occasionally. We encourage you to review it regularly."
+      }
+    }
+  },
+ "legalNotice": {
+  "pageTitle": "Legal Notice - BigIslandMDG",
+  "metaDescription": "Legal information regarding the publisher, hosting provider and terms of use for BigIslandMDG website.",
+  "title": "Legal Notice",
+  "intro": "In accordance with legal requirements, here is the information regarding the publisher and hosting provider of this website.",
+  "needHelp": "Questions about our legal notice?",
+  "contactUs": "Contact our legal department at legal@example.com",
+  "sections": {
+    "editor": {
+      "title": "Website Publisher",
+      "content": "BigIslandMDG\n\nSimplified joint-stock company with capital of €50,000\n\nTrade Register: Paris 123 456 789\n\nRegistered office: 123 Example Street, 75000 Paris\n\nPublication Director: John Doe"
+    },
+    "hosting": {
+      "title": "Hosting Provider",
+      "content": "The BigIslandMDG website is hosted by:\n\nOVH SAS\n\n2 rue Kellermann - 59100 Roubaix - France\n\nPhone: +33 9 72 10 10 07"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "content": "You can contact us:\n\n- By email: contact@bigislandmdg.com\n\n- By phone: +33 1 23 45 67 89\n\n- By mail: 123 Example Street, 75000 Paris"
+    },
+    "publication": {
+      "title": "Publication Director",
+      "content": "The publication director is Mr. John Doe, in his capacity as President of BigIslandMDG."
+    },
+    "dataProtection": {
+      "title": "Data Protection",
+      "content": "In accordance with the General Data Protection Regulation (GDPR), you have the right to access, rectify and delete your personal data."
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "content": "All elements of the website (texts, images, logos, etc.) are the exclusive property of BigIslandMDG or its partners. Any reproduction without authorization is prohibited."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "content": "BigIslandMDG cannot guarantee the accuracy and completeness of information published on its website. The user acknowledges using this information at their own risk."
+    }
+  }
+},
+"privacyPolicy": {
+  "pageTitle": "Politique de confidentialité - BigIslandMDG",
+  "metaDescription": "Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD et autres réglementations.",
+  "title": "Politique de confidentialité",
+  "intro": "Cette politique explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez nos services.",
+  "needHelp": "Des questions sur notre politique de confidentialité ?",
+  "contactUs": "Contactez notre Délégué à la Protection des Données à dpo@exemple.com",
+  "sections": {
+    "introduction": {
+      "title": "Introduction",
+      "content": "Nous nous engageons à protéger votre vie privée et vos données personnelles. Cette politique s'applique à toutes les informations collectées via nos services."
+    },
+    "dataCollected": {
+      "title": "Données collectées",
+      "content": "Nous pouvons collecter :\n- Informations d'identification personnelle\n- Coordonnées\n- Données d'utilisation\n- Données techniques (adresse IP, type de navigateur)\n- Cookies et données de traçage"
+    },
+    "dataUsage": {
+      "title": "Utilisation des données",
+      "content": "Vos données nous permettent de :\n- Fournir et maintenir nos services\n- Améliorer l'expérience utilisateur\n- Communiquer avec vous\n- Assurer la sécurité\n- Respecter nos obligations légales"
+    },
+    "dataSharing": {
+      "title": "Partage des données",
+      "content": "Nous pouvons partager des données avec :\n- Nos prestataires de services\n- Les autorités légales lorsque requis\n- Partenaires commerciaux (avec votre consentement)\n- Sociétés affiliées"
+    },
+    "userRights": {
+      "title": "Vos droits",
+      "content": "Conformément au RGPD, vous avez le droit :\n- D'accès à vos données\n- De rectification\n- D'effacement\n- De limitation du traitement\n- À la portabilité des données\n- D'opposition au traitement"
+    },
+    "dataSecurity": {
+      "title": "Sécurité des données",
+      "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données, incluant chiffrement, contrôles d'accès et audits de sécurité réguliers."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Nous utilisons des cookies et technologies similaires. Vous pouvez gérer vos préférences dans les paramètres de votre navigateur ou via notre outil de gestion des cookies."
+    },
+    "policyChanges": {
+      "title": "Modifications de la politique",
+      "content": "Nous pouvons mettre à jour cette politique périodiquement. Nous vous informerons des changements importants via notre site ou par communication directe."
+    }
+  }
+},
+
  "form": {
     "fullName": "Full Name",
     "email": "Email Address",
@@ -469,22 +588,6 @@
       "captchaError": "Please validate the CAPTCHA"
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

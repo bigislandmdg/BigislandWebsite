@@ -55,6 +55,9 @@
     "newsletter": "Inscrivez-vous à notre newsletter",
     "emailPlaceholder": "Votre adresse email",
     "subscribe": "S'abonner",
+    "cookiePolicy": "Politique de cookies",
+    "legalNotice": "Mentions légales",
+    "privacyPolicy": "Politique de confidentialité",
     "rightsReserved": "Tous droits réservés."
   },
   "about": {
@@ -171,6 +174,11 @@
     "title": "Soyez au cœur de nos actus",
     "subtitle": "Explorez nos derniers articles, conseils d’experts et actualités à ne pas manquer.",
     "readMore": "Lire la suite",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo": "Il y a {{count}} jours",
+    "readTime": "{{count}} min de lecture",
+    "share": "Partager",
     "backToList": "Retour à la liste des articles",
     "post1": {
       "title": "Comment optimiser votre logistique ?",
@@ -185,7 +193,7 @@
     "post3": {
       "title": "Nos engagements pour un avenir durable",
       "description": "Comment notre équipe agit concrètement pour un monde plus responsable.",
-      "content": "Notre démarche RSE s'articule autour de 4 piliers fondamentaux :\n\n**1. Neutralité carbone** : Depuis 2023, nous compensons 110% de nos émissions via des projets de reforestation certifiés.\n\n**2. Économie circulaire** : 95% de nos emballages sont désormais recyclables et nous avons instauré un programme de reprise des produits en fin de vie.\n\n**3. Partenariats éthiques** : Tous nos fournisseurs adhèrent à notre charte sociale exigeante, vérifiée par des audits indépendants.\n\n**4. Innovation durable** : 15% de notre chiffre d'affaires est réinvesti dans la recherche de solutions écologiques.\n\nCes actions concrètes, mesurables et transparentes, reflètent notre conviction qu'une entreprise performante doit aussi être un acteur responsable de son écosystème."
+      "content": "Notre démarche RSE s'articule autour de 4 piliers fondamentaux :\n\n**1. Neutralité carbone** : Depuis 2025, nous compensons 110% de nos émissions via des projets de reforestation certifiés.\n\n**2. Économie circulaire** : 95% de nos emballages sont désormais recyclables et nous avons instauré un programme de reprise des produits en fin de vie.\n\n**3. Partenariats éthiques** : Tous nos fournisseurs adhèrent à notre charte sociale exigeante, vérifiée par des audits indépendants.\n\n**4. Innovation durable** : 15% de notre chiffre d'affaires est réinvesti dans la recherche de solutions écologiques.\n\nCes actions concrètes, mesurables et transparentes, reflètent notre conviction qu'une entreprise performante doit aussi être un acteur responsable de son écosystème."
     }
   },
  "contact": {
@@ -429,6 +437,118 @@
    "needHelp": "Besoin d'Aide?",
     "contactUs": "Contact-nous sur contact@bigislandmdg.com"
 },
+"cookiePage": {
+    "pageTitle": "Politique de cookies - BigIslandMDG",
+    "metaDescription": "Découvrez comment nous utilisons les cookies sur notre site web et comment vous pouvez les gérer.",
+    "title": "Politique de cookies",
+    "intro": "Cette politique explique comment nous utilisons les cookies et technologies similaires sur notre site.",
+    "needHelp": "Questions sur notre politique de cookies ?",
+    "contactUs": "Contactez notre délégué à la protection des données à dpo@exemple.com",
+    "sections": {
+      "whatAreCookies": {
+        "title": "Que sont les cookies ?",
+        "content": "Les cookies sont de petits fichiers texte stockés sur votre appareil lorsque vous visitez un site web. Ils permettent au site de se souvenir de vos actions et préférences."
+      },
+      "typesOfCookies": {
+        "title": "Types de cookies utilisés",
+        "content": "Nous utilisons différents types de cookies :\n- Cookies essentiels\n- Cookies de performance\n- Cookies de fonctionnalité\n- Cookies de ciblage"
+      },
+      "howWeUseCookies": {
+        "title": "Comment nous utilisons les cookies",
+        "content": "Nous utilisons les cookies pour :\n- Assurer le bon fonctionnement du site\n- Analyser l'usage du site\n- Personnaliser votre expérience"
+      },
+      "managingCookies": {
+        "title": "Gestion des cookies",
+        "content": "Vous pouvez contrôler et supprimer les cookies via les paramètres de votre navigateur. Désactiver les cookies peut affecter certaines fonctionnalités du site."
+      },
+      "changesToPolicy": {
+        "title": "Modifications de la politique",
+        "content": "Nous pouvons mettre à jour cette politique occasionnellement. Nous vous encourageons à la consulter régulièrement."
+      }
+    }
+  },
+  "legalNotice": {
+  "pageTitle": "Mentions légales - BigIslandMDG",
+  "metaDescription": "Informations légales concernant l'éditeur, l'hébergeur et les conditions d'utilisation du site BigIslandMDG.",
+  "title": "Mentions légales",
+  "intro": "Conformément aux dispositions légales, voici les informations concernant l'éditeur et l'hébergeur de ce site web.",
+  "needHelp": "Questions concernant nos mentions légales ?",
+  "contactUs": "Contactez notre service juridique à legal@exemple.com",
+  "sections": {
+    "editor": {
+      "title": "Éditeur du site",
+      "content": "BigIslandMDG\n\nSociété par actions simplifiée au capital de 50 000 €\n\nRCS : Paris 123 456 789\n\nSiège social : 123 Rue de l'Exemple, 75000 Paris\n\nDirecteur de la publication : John Doe"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "content": "Le site BigIslandMDG est hébergé par :\n\nOVH SAS\n\n2 rue Kellermann - 59100 Roubaix - France\n\nTéléphone : +33 9 72 10 10 07"
+    },
+    "contact": {
+      "title": "Coordonnées",
+      "content": "Vous pouvez nous contacter :\n\n- Par email : contact@bigislandmdg.com\n\n- Par téléphone : +33 1 23 45 67 89\n\n- Par courrier : 123 Rue de l'Exemple, 75000 Paris"
+    },
+    "publication": {
+      "title": "Directeur de publication",
+      "content": "Le directeur de publication est Monsieur John Doe, en sa qualité de Président de BigIslandMDG."
+    },
+    "dataProtection": {
+      "title": "Protection des données",
+      "content": "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles."
+    },
+    "intellectualProperty": {
+      "title": "Propriété intellectuelle",
+      "content": "L'ensemble des éléments du site (textes, images, logos, etc.) sont la propriété exclusive de BigIslandMDG ou de ses partenaires. Toute reproduction sans autorisation est interdite."
+    },
+    "liability": {
+      "title": "Limitation de responsabilité",
+      "content": "BigIslandMDG ne peut garantir l'exactitude et l'exhaustivité des informations diffusées sur son site. L'utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive."
+    }
+  }
+},
+
+"privacyPolicy": {
+  "pageTitle": "Privacy Policy - BigIslandMDG",
+  "metaDescription": "Learn how we collect, use, and protect your personal data in accordance with GDPR and other privacy regulations.",
+  "title": "Privacy Policy",
+  "intro": "This policy explains how we collect, use, and protect your personal information when you use our services.",
+  "needHelp": "Questions about our privacy policy?",
+  "contactUs": "Contact our Data Protection Officer at dpo@example.com",
+  "sections": {
+    "introduction": {
+      "title": "Introduction",
+      "content": "We are committed to protecting your privacy and personal data. This policy applies to all information collected through our services."
+    },
+    "dataCollected": {
+      "title": "Data We Collect",
+      "content": "We may collect:\n- Personal identification information\n- Contact details\n- Usage data\n- Technical data (IP address, browser type)\n- Cookies and tracking data"
+    },
+    "dataUsage": {
+      "title": "How We Use Your Data",
+      "content": "Your data helps us:\n- Provide and maintain our services\n- Improve user experience\n- Communicate with you\n- Ensure security\n- Comply with legal obligations"
+    },
+    "dataSharing": {
+      "title": "Data Sharing",
+      "content": "We may share data with:\n- Service providers\n- Legal authorities when required\n- Business partners (with your consent)\n- Affiliated companies"
+    },
+    "userRights": {
+      "title": "Your Rights",
+      "content": "Under GDPR, you have the right to:\n- Access your data\n- Request correction\n- Request deletion\n- Restrict processing\n- Data portability\n- Object to processing"
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "content": "We implement appropriate technical and organizational measures to protect your data, including encryption, access controls, and regular security assessments."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "We use cookies and similar technologies. You can manage your preferences in your browser settings or through our cookie consent tool."
+    },
+    "policyChanges": {
+      "title": "Policy Changes",
+      "content": "We may update this policy periodically. We will notify you of significant changes through our website or direct communication."
+    }
+  }
+},
+
  "form": {
     "fullName": "Nom complet",
     "email": "Adresse email",
@@ -489,24 +609,5 @@
       "captchaError": "Veuillez valider le CAPTCHA"
     }
   }
-
-
-
-
-  
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -34,7 +34,7 @@ export default function Home({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="mt-21">
+      <main className="mt-20">
         <Hero />
          <AboutSection /> 
          <ServicesSection />

@@ -8,7 +8,7 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaGoogle,
-  FaInstagram,
+
 } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -19,10 +19,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-12 mt-10">
       <div className="container mx-auto px-4 md:px-10 lg:px-20">
-        {/* Nouvelle section Logo + Réseaux sociaux */}
-       
 
-        {/* Contenu existant inchangé */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* CONTACT */}
           <div>
@@ -106,53 +103,84 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-blue-400">{t('footer.newsletter')}</h3>
             <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-  <div className="relative flex-1">
-    <input
-      type="email"
-      placeholder={t('footer.emailPlaceholder')}
-      className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 transition-all"
-      required
-    />
-  </div>
-  <button
-    type="submit"
-    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium text-sm whitespace-nowrap transition-colors shadow-md hover:shadow-lg active:scale-[0.98]"
-  >
-    {t('footer.subscribe')}
-  </button>
-</form>
+              <div className="relative flex-1">
+                <input
+                  type="email"
+                  placeholder={t('footer.emailPlaceholder')}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 transition-all"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium text-sm whitespace-nowrap transition-colors shadow-md hover:shadow-lg active:scale-[0.98]"
+              >
+                {t('footer.subscribe')}
+              </button>
+            </form>
                
-          
-          <div className="mb-5 mt-4 flex flex-row items-center space-x-2" >
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">
-              <FaFacebookF className="w-6 h-6 space-x-5" />
-            </a>
-            
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition-colors">
-              <FaLinkedinIn className="w-6 h-6" />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors">
-              <FaInstagram className="w-6 h-6" />
-            </a>
-          </div>
+            <div className="mb-5 mt-4 flex flex-row items-center space-x-4">
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-blue-500 transition-colors"
+                aria-label="Facebook"
+              >
+                <FaFacebookF className="w-6 h-6" />
+              </a>
+              
+              <a 
+                href="https://linkedin.com/in/big-island-mdg" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-blue-300 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn className="w-6 h-6" />
+              </a>
 
-          <div className="mb-5 mt-4 flex flex-row items-center space-x-2">
-            <Image 
-              src="/logo.png" // Remplacez par le chemin de votre logo
-              alt="BigIslandMDG Logo"
-              width={150}
-              height={50}
-              className="object-contain"
-            />
+              <a 
+                href="mailto:contact@bigislandmdg.com" 
+                className="hover:text-red-500 transition-colors"
+                aria-label="Envoyer un email"
+              >
+                <FaGoogle className="w-6 h-6" />
+              </a>
+            </div>
+
+            <div className="mb-5 mt-4">
+              <Image 
+                src="/logo.png"
+                alt="BigIslandMDG Logo"
+                width={150}
+                height={50}
+                className="object-contain"
+                priority={false}
+              />
+            </div>
           </div>
         </div>
-          </div>
-
-          
 
         {/* Bas de page */}
         <div className="text-center mt-10 text-sm text-gray-400 border-t pt-4 border-gray-600">
-          © {new Date().getFullYear()} BigIslandMDG. {t('footer.rightsReserved')}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="/cookie" className="hover:text-blue-400 transition-colors">
+                {t('footer.cookiePolicy')}
+              </a>
+              <a href="/legal" className="hover:text-blue-400 transition-colors">
+                {t('footer.legalNotice')}
+              </a>
+              <a href="/privacy" className="hover:text-blue-400 transition-colors">
+                {t('footer.privacyPolicy')}
+              </a>
+            </div>
+
+            <div>
+              © {new Date().getFullYear()} BigIslandMDG. {t('footer.rightsReserved')}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

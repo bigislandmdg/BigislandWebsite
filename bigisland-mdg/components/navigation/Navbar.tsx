@@ -125,7 +125,7 @@ export default function Navbar() {
     `relative pb-1 transition-colors ${
       activeSection === id
         ? 'text-blue-600 after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-blue-600'
-        : 'text-gray-700 hover:text-blue-600'
+        : 'text-gray-700 hover:text-blue-400'
     }`;
 
   const expertisesLinks = [
