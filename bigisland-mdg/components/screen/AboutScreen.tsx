@@ -83,7 +83,7 @@ export default function AboutScreen() {
     : [];
 
   return (
-    <section className="px-4 py-20 bg-gray-100">
+    <section className="px-4 py-20 bg-white">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

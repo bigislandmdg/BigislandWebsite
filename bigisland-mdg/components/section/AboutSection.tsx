@@ -14,7 +14,7 @@ export default function AboutSection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="about" className="px-2 py-20 lg:px-10 bg-gray-50">
+    <section id="about" className="px-2 py-20 lg:px-10 bg-white">
       <div className="container mx-auto flex flex-col items-center justify-center text-center max-w-3xl">
         <motion.div
           ref={ref}

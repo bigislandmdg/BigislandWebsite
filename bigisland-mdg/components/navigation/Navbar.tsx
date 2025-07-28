@@ -136,7 +136,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-50">
+    <header className="bg-white backdrop-blur-md fixed top-0 w-full z-50 border-b border-white">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-blue-600" onClick={handleLinkClick}>
           BigIslandMDG
@@ -371,13 +371,13 @@ export default function Navbar() {
                           
                           {searchResults.length > 0 ? (
                             <div className="space-y-4 max-h-96 overflow-y-auto">
-  {searchResults.map((result, index) => (
-    <div key={index} className="p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
-      <div className="text-xs text-blue-600 mb-1">
-        {result.category}
-      </div>
-      {result.href ? (
-        <Link
+                           {searchResults.map((result, index) => (
+                           <div key={index} className="p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div className="text-xs text-blue-600 mb-1">
+                             {result.category}
+                           </div>
+                          {result.href ? (
+                           <Link
           href={result.href}
           className="block"
           onClick={() => setSearchOpen(false)}

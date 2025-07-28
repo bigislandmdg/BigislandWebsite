@@ -36,9 +36,9 @@ export default function ServicesSection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="services" className="px-4 py-16 bg-white">
+    <section id="services" className="px-4 py-10 bg-white">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-gray-800">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-10 text-gray-800">
           {t('services.title')}
         </h2>
 

@@ -36,7 +36,7 @@ export default function RootLayout({
       >
         <ClientLayout>
            <FloatingLanguageToggle />
-           <main className="pb-0 lg:pb-0 bg-gray-50 min-h-screen">{children}</main>
+           <main className="pb-0 lg:pb-0 bg-white min-h-screen">{children}</main>
          
         </ClientLayout>
       </body>
