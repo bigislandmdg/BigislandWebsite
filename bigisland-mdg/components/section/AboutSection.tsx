@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import AppointmentModal from '../layout/AppointmentModal';
@@ -28,19 +28,31 @@ export default function AboutSection() {
           <p className="text-lg text-gray-600 mb-6">
             {t('about.description')}
           </p>
-          <button 
-             onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+          
+          {/* Bouton animé */}
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
             {t('about.button')}
-          </button>
+          </motion.button>
         </motion.div>
       </div>
       
-       <AppointmentModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
+      {/* Modal avec animations d'entrée/sortie */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <AppointmentModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
-
