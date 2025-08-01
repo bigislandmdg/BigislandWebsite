@@ -393,7 +393,7 @@
       }
     }
   },
-  "projetPage": {
+ "projetPage": {
   "pageTitle": "Nos Projets",
   "metaDescription": "Découvrez les projets réalisés autour de nos services : location de voiture, call center, solutions IT et fournitures de produits.",
   "title": "Projets Réalisés",
@@ -407,11 +407,27 @@
     },
     "project2": {
       "title": "Solution de gestion de Call Center",
-      "description": "Mise en place d’un système de téléphonie cloud avec intégration CRM pour améliorer l'efficacité de la relation client."
+      "description": "Mise en place d'un système de téléphonie cloud avec intégration CRM pour améliorer l'efficacité de la relation client."
     },
     "project3": {
       "title": "Plateforme de gestion de stock et commandes",
       "description": "Conception d'une solution ERP légère pour gérer les fournitures de bureau et produits divers dans les établissements publics."
+    },
+    "project4": {
+      "title": "Application mobile de suivi de flotte",
+      "description": "Création d'une application mobile pour le suivi en temps réel des véhicules de location avec géolocalisation et alertes."
+    },
+    "project5": {
+      "title": "Système d'analyse des appels clients",
+      "description": "Développement d'une solution d'analyse vocale pour évaluer la qualité des interactions avec les clients."
+    },
+    "project6": {
+      "title": "Marketplace B2B de fournitures",
+      "description": "Plateforme e-commerce spécialisée pour les achats de fournitures professionnelles avec gestion des commandes récurrentes."
+    },
+    "project7": {
+      "title": "Outil de gestion des contrats de location",
+      "description": "Solution digitale pour générer, signer et archiver électroniquement les contrats de location de véhicules."
     }
   }
 },

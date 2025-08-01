@@ -395,25 +395,41 @@
       }
     }
   },
-  "projetPage": {
+  "projectPage": {
   "pageTitle": "Our Projects",
-  "metaDescription": "Discover the projects we’ve completed around our services: car rental, call center, IT solutions, and product supplies.",
+  "metaDescription": "Discover projects completed around our services: car rental, call center, IT solutions and product supplies.",
   "title": "Completed Projects",
-  "description": "Here are some projects we have successfully carried out in our key service areas.",
-  "cta": "Contact us for more information",
-  "viewProject": "View Project",
+  "description": "Here are some projects we have successfully completed in our main service areas.",
+  "cta": "Contact us to learn more",
+  "viewProject": "View project",
   "projects": {
     "project1": {
       "title": "Car Rental Platform",
-      "description": "Development of a full-featured web application to book, manage, and track vehicle rentals in real time."
+      "description": "Development of a comprehensive web application to book, manage and track vehicle rentals in real time."
     },
     "project2": {
       "title": "Call Center Management Solution",
       "description": "Implementation of a cloud telephony system with CRM integration to improve customer relationship efficiency."
     },
     "project3": {
-      "title": "Stock and Order Management Platform",
+      "title": "Inventory and Order Management Platform",
       "description": "Design of a lightweight ERP solution to manage office supplies and various products in public institutions."
+    },
+    "project4": {
+      "title": "Fleet Tracking Mobile Application",
+      "description": "Creation of a mobile app for real-time rental vehicle tracking with geolocation and alerts."
+    },
+    "project5": {
+      "title": "Customer Call Analysis System",
+      "description": "Development of a voice analysis solution to evaluate the quality of customer interactions."
+    },
+    "project6": {
+      "title": "B2B Supplies Marketplace",
+      "description": "Specialized e-commerce platform for professional supplies purchases with recurring orders management."
+    },
+    "project7": {
+      "title": "Rental Contract Management Tool",
+      "description": "Digital solution to generate, sign and electronically archive vehicle rental contracts."
     }
   }
 },
