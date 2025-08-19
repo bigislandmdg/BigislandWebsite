@@ -1,84 +1,94 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
-import { FaBullseye, FaHandshake, FaRegChartBar, FaRegLightbulb, FaRocket, FaUsers, FaUsersCog } from 'react-icons/fa';
+import {
+  FaHandshake,
+  FaRegChartBar,
+  FaRegLightbulb,
+  FaRocket,
+  FaUsers,
+  FaUsersCog,
+} from 'react-icons/fa';
 import { IconType } from 'react-icons';
-import { FaHand } from 'react-icons/fa6';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
+// ✅ Effet tilt sur la souris
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const [style, setStyle] = useState({});
 
-// 🔹 Nouveau composant Card avec icône React
-const Card = ({
-  title,
-  description,
-  Icon,
-}: {
-  title: string;
-  description: string;
-  Icon: IconType;
-}) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+
+    const rotateX = ((y / offsetHeight) - 0.5) * 12; // 12° max
+    const rotateY = ((x / offsetWidth) - 0.5) * -12;
+
+    setStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`,
+    });
+  };
+
+  const resetStyle = () => {
+    setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+  };
+
+  return (
+    <motion.div
+      className={`bg-white shadow-xl rounded-2xl p-6 transition-transform duration-300 ease-in-out ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetStyle}
+      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ✅ Carte animée générique (pour Card et ProcessStep)
+const AnimatedCard = ({ title, description, Icon }: { title: string; description: string; Icon: IconType }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <motion.div
-      ref={ref}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="bg-white shadow-xl rounded-2xl p-6 text-center hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out"
-    >
-      <div className="flex justify-center mb-4">
-        <Icon className="text-5xl text-blue-600" />
-      </div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-3">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </motion.div>
+    <TiltCard className="flex flex-col items-center text-center">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="flex flex-col items-center"
+      >
+        {/* Icône centrée avec cercle bleu et animation */}
+        <motion.div
+          whileHover={{ scale: 1.3, rotate: 10 }}
+          animate={{ y: [0, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
+        >
+          <Icon className="text-4xl text-blue-600" />
+        </motion.div>
+
+        <h3 className="text-xl font-semibold text-gray-800 mb-3">{title}</h3>
+        <p className="text-gray-600">{description}</p>
+      </motion.div>
+    </TiltCard>
   );
 };
 
-// 🔹 Composant ProcessStep avec icône React
-const ProcessStep = ({ step }: { step: { title: string; description: string; Icon: IconType } }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const { Icon } = step;
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
-    >
-      <Icon className="text-5xl text-blue-600 mb-4" />
-      <h4 className="text-lg font-semibold mb-2">{step.title}</h4>
-      <p className="text-gray-600">{step.description}</p>
-    </motion.div>
-  );
-};
-
-// 🔹 Page principale
+// ✅ Page principale AboutScreen
 export default function AboutScreen() {
   const { t } = useTranslation('common');
 
   const rawSteps = t('aboutPage.process.steps', { returnObjects: true });
-
-  const icons = [FaRegLightbulb, FaRegChartBar, FaUsersCog];
+  const processIcons = [FaRegLightbulb, FaRegChartBar, FaUsersCog];
 
   const processSteps = Array.isArray(rawSteps)
     ? rawSteps.map((step, index) => ({
         ...step,
-        Icon: icons[index],
+        Icon: processIcons[index],
       }))
     : [];
 
@@ -102,26 +112,26 @@ export default function AboutScreen() {
           {t('aboutPage.subtitle')}
         </motion.p>
 
-        {/* 🔹 Trois cards avec images */}
+        {/* 🔹 Cards principales */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20">
-          <Card
+          <AnimatedCard
             title={t('aboutPage.whoWeAre.title')}
             description={t('aboutPage.whoWeAre.description')}
-             Icon={FaUsers}
+            Icon={FaUsers}
           />
-          <Card
+          <AnimatedCard
             title={t('aboutPage.mission.title')}
             description={t('aboutPage.mission.description')}
             Icon={FaRocket}
           />
-          <Card
+          <AnimatedCard
             title={t('aboutPage.offer.title')}
             description={t('aboutPage.offer.description')}
             Icon={FaHandshake}
           />
         </div>
 
-        {/* 🔹 Processus dynamique avec icônes */}
+        {/* 🔹 Processus */}
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -134,7 +144,12 @@ export default function AboutScreen() {
 
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {processSteps.map((step, index) => (
-            <ProcessStep key={index} step={step} />
+            <AnimatedCard
+              key={index}
+              title={step.title}
+              description={step.description}
+              Icon={step.Icon}
+            />
           ))}
         </div>
       </div>

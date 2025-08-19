@@ -1,76 +1,147 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
+import { useRef, useState } from 'react';
 import { FaCar, FaHeadset, FaLaptopCode, FaBoxOpen } from 'react-icons/fa';
 
-const services = [
-  {
-    icon: <FaCar size={40} />,
-    titleKey: 'services.rental.title',
-    descKey: 'services.rental.description',
-    link: '/services/location',
-  },
-  {
-    icon: <FaHeadset size={40} />,
-    titleKey: 'services.callcenter.title',
-    descKey: 'services.callcenter.description',
-    link: '/services/call-center',
-  },
-  {
-    icon: <FaLaptopCode size={40} />,
-    titleKey: 'services.it.title',
-    descKey: 'services.it.description',
-    link: '/services/it',
-  },
-  {
-    icon: <FaBoxOpen size={40} />,
-    titleKey: 'services.supply.title',
-    descKey: 'services.supply.description',
-    link: '/services/fournisseur',
-  },
-];
+// ✅ TiltCard générique
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const [style, setStyle] = useState({});
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+
+    const rotateX = ((y / offsetHeight) - 0.5) * 12;
+    const rotateY = ((x / offsetWidth) - 0.5) * -12;
+
+    setStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`,
+    });
+  };
+
+  const resetStyle = () => {
+    setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+  };
+
+  return (
+    <motion.div
+      className={`bg-gray-50 border border-gray-200 rounded-xl shadow-md p-6 transition-transform duration-300 ease-in-out ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetStyle}
+      whileHover={{ boxShadow: '0px 10px 30px rgba(0,0,0,0.15)' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ✅ Carte Service avec animation et tilt
+const ServiceCard = ({
+  icon,
+  title,
+  description,
+  link,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  link: string;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  return (
+    <TiltCard className="flex flex-col items-center text-center">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="flex flex-col items-center"
+      >
+        {/* Icône animée dans un cercle */}
+        <motion.div
+          whileHover={{ scale: 1.2, rotate: 10 }}
+          animate={{ y: [0, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
+        >
+          <div className="text-blue-600 text-4xl">{icon}</div>
+        </motion.div>
+
+        <h3 className="text-lg font-semibold mb-2 text-gray-800 group-hover:text-blue-700 transition-colors duration-300">
+          {title}
+        </h3>
+
+        <p className="text-sm text-gray-600 mb-4">{description}</p>
+
+        <Link
+          href={link}
+          className="inline-block bg-blue-600 text-white text-sm px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+        >
+          En savoir plus
+        </Link>
+      </motion.div>
+    </TiltCard>
+  );
+};
 
 export default function ServicesSection() {
   const { t } = useTranslation('common');
 
+  const services = [
+    {
+      icon: <FaCar />,
+      title: t('services.rental.title'),
+      description: t('services.rental.description'),
+      link: '/services/location',
+    },
+    {
+      icon: <FaHeadset />,
+      title: t('services.callcenter.title'),
+      description: t('services.callcenter.description'),
+      link: '/services/call-center',
+    },
+    {
+      icon: <FaLaptopCode />,
+      title: t('services.it.title'),
+      description: t('services.it.description'),
+      link: '/services/it',
+    },
+    {
+      icon: <FaBoxOpen />,
+      title: t('services.supply.title'),
+      description: t('services.supply.description'),
+      link: '/services/fournisseur',
+    },
+  ];
+
   return (
-    <section id="services" className="px-4 py-10 bg-white">
+    <section id="services" className="px-4 py-20 bg-white">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-10 text-gray-800">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-3xl lg:text-4xl font-bold mb-10 text-gray-800"
+        >
           {t('services.title')}
-        </h2>
+        </motion.h2>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <motion.div
+            <ServiceCard
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group w-full max-w-sm md:w-[calc(50%-1.5rem)] lg:w-[calc(25%-1.5rem)] bg-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-xl transition duration-300 cursor-pointer px-6 py-6"
-            >
-              <motion.div className="flex justify-center text-blue-600 mb-4 transition-transform duration-500 ease-in-out group-hover:rotate-12">
-                {service.icon}
-              </motion.div>
-
-              <h3 className="text-lg font-semibold mb-2 text-gray-800 group-hover:text-blue-700 transition-colors duration-300">
-                {t(service.titleKey)}
-              </h3>
-
-              <p className="text-sm text-gray-600 mb-4">{t(service.descKey)}</p>
-
-              <Link
-                href={service.link}
-                className="inline-block bg-blue-600 text-white text-sm px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300"
-                aria-label={`${t(service.titleKey)} - ${t('services.button')}`}
-              >
-                {t('services.button')}
-              </Link>
-            </motion.div>
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              link={service.link}
+            />
           ))}
         </div>
       </div>

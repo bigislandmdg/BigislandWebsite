@@ -24,7 +24,7 @@ export default function Footer() {
           {/* CONTACT */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-blue-400">{t('footer.contact')}</h3>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-md">
               <div className="flex items-center space-x-2">
                 <FaEnvelope className="text-blue-400" />
                 <span>{t('footer.email')}</span>
@@ -33,7 +33,7 @@ export default function Footer() {
                 <FaPhoneAlt className="text-blue-400" />
                 <span>{t('footer.phone')}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-4">
                 <FaMapMarkerAlt className="text-blue-400" />
                 <span>{t('footer.address')}</span>
               </div>

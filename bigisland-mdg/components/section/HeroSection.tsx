@@ -108,7 +108,7 @@ export default function Hero() {
           </h5>
           
           {/* Description avec effet machine à écrire */}
-          <div className="text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed">
+          <div className="text-lg lg:text-xl text-gray-600 mb-7 leading-relaxed">
             <TypewriterText 
               text={t('hero.description')} 
               delay={0.03}
