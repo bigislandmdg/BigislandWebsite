@@ -87,7 +87,7 @@ export default function Hero() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="hero" className="relative -mt-6 scroll-mt-20 px-4 lg:px-10">
+    <section id="hero" className="relative -mt-5 scroll-mt-40 px-4 lg:px-10">
       <div className="max-w-6xl container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Texte et boutons */}
         <motion.div
@@ -125,7 +125,7 @@ export default function Hero() {
           >
             <motion.button
               onClick={() => setIsModalOpen(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors text-lg shadow-lg hover:shadow-xl"
+              className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-lg font-medium transition-colors text-lg shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >

@@ -22,18 +22,19 @@ export default function ClientSection() {
 
   // Animation infinie du ticker
   useEffect(() => {
-    if (isInView) {
-      controls.start({
-        x: ['0%', '-100%'],
-        transition: {
-          duration: 30,
-          ease: 'linear',
-          repeat: Infinity,
-          repeatType: 'loop'
-        }
-      });
-    }
-  }, [controls, isInView]);
+  if (isInView) {
+    controls.start({
+      x: ['0%', '-100%'],
+      transition: {
+        duration: 30,
+        ease: 'linear',
+        repeat: Infinity,
+        repeatType: 'loop',
+      },
+    });
+  }
+}, [controls, isInView]);
+
 
   // Navigation clavier
   useEffect(() => {
@@ -70,71 +71,43 @@ export default function ClientSection() {
           {t('clients.description')}
         </motion.p>
 
-        <div className="relative overflow-hidden py-4">
-          {/* Masque gradient pour un effet progressif */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+       {/* Wrapper du ticker */}
+<div className="relative overflow-hidden py-4">
+  {/* Masque gradient */}
+  <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10" />
+  <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10" />
 
-          <motion.div
-            className="flex space-x-10"
-            animate={controls}
-            drag="x"
-            dragConstraints={{ right: 0, left: -2000 }}
-            dragElastic={0.1}
-            whileTap={{ cursor: 'grabbing' }}
-            initial={{ x: 0 }}
-          >
-            {[...clientData, ...clientData].map((client, index) => (
-              <motion.div
-                key={`${client.key}-${index}`}
-                className="w-40 h-24 text-center flex flex-col items-center justify-center px-2 shrink-0"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-              >
-                <Image
-                  src={client.src}
-                  alt={t(`clients.list.${client.key}.name`)}
-                  width={100}
-                  height={50}
-                  className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                />
-                <motion.p 
-                  className="text-xs mt-2 text-gray-600"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1, y: -5 }}
-                >
-                  {t(`clients.list.${client.key}.description`)}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Indicateurs de navigation */}
-        <motion.div 
-          className="flex justify-center gap-4 mt-8"
+  {/* ✅ Une seule animation appliquée au container */}
+  <motion.div
+    className="flex space-x-10"
+    animate={controls}
+    initial={{ x: 0 }}
+  >
+    {[...clientData, ...clientData].map((client, index) => (
+      <div
+        key={`${client.key}-${index}`}
+        className="w-40 h-24 text-center flex flex-col items-center justify-center px-2 shrink-0"
+      >
+        <Image
+          src={client.src}
+          alt={t(`clients.list.${client.key}.name`)}
+          width={100}
+          height={50}
+          className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+        />
+        <motion.p 
+          className="text-xs mt-2 text-gray-600"
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.4 }}
+          whileHover={{ opacity: 1, y: -5 }}
         >
-          <button 
-            onClick={() => controls.start({ x: '+=20%', transition: { duration: 0.5 } })}
-            className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-            aria-label="Scroll right"
-          >
-            ←
-          </button>
-          <button 
-            onClick={() => controls.start({ x: '-=20%', transition: { duration: 0.5 } })}
-            className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition"
-            aria-label="Scroll left"
-          >
-            →
-          </button>
-        </motion.div>
+          {t(`clients.list.${client.key}.description`)}
+        </motion.p>
+      </div>
+    ))}
+  </motion.div>
+</div>
+
+
       </div>
     </section>
   );

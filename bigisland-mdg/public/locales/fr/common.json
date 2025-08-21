@@ -88,6 +88,7 @@
   },
   "services": {
   "title": "Nos Expertises",
+  "description": "Découvrez nos domaines d'expertise qui allient innovation, performance et fiabilité.",
   "button": "En savoir plus",
   "rental": {
     "title": "Location de voitures",
@@ -393,7 +394,7 @@
       }
     }
   },
- "projetPage": {
+ "projectPage": {
   "pageTitle": "Nos Projets",
   "metaDescription": "Découvrez les projets réalisés autour de nos services : location de voiture, call center, solutions IT et fournitures de produits.",
   "title": "Projets Réalisés",

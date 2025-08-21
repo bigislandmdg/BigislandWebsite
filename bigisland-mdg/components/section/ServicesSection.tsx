@@ -4,7 +4,8 @@ import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { useRef, useState } from 'react';
-import { FaCar, FaHeadset, FaLaptopCode, FaBoxOpen } from 'react-icons/fa';
+import { FaCar, FaHeadset, FaLaptopCode, FaBoxOpen, FaArrowRight } from 'react-icons/fa';
+import { t } from 'i18next';
 
 // ✅ TiltCard générique
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -69,7 +70,7 @@ const ServiceCard = ({
           whileHover={{ scale: 1.2, rotate: 10 }}
           animate={{ y: [0, -5, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
+          className="flex justify-center items-center w-20 h-20 mb-4 rounded bg-blue-100 shadow-inner"
         >
           <div className="text-blue-600 text-4xl">{icon}</div>
         </motion.div>
@@ -80,12 +81,21 @@ const ServiceCard = ({
 
         <p className="text-sm text-gray-600 mb-4">{description}</p>
 
-        <Link
-          href={link}
-          className="inline-block bg-blue-600 text-white text-sm px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300"
-        >
-          En savoir plus
-        </Link>
+        {/* ✅ Nouveau bouton icône flèche */}
+         {/* ✅ Nouveau bouton icône flèche */} 
+<Link
+  href={link}
+  className="flex items-center justify-center w-40 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300"
+>
+  <motion.div
+    whileHover={{ x: 3 }} // effet translation flèche
+    transition={{ duration: 0.3 }}
+    className="flex items-center gap-2" // <-- Alignement texte + icône
+  >
+    <span>{t('services.button')}</span>
+    <FaArrowRight className="text-lg" />
+  </motion.div>
+</Link>
       </motion.div>
     </TiltCard>
   );
@@ -132,6 +142,16 @@ export default function ServicesSection() {
         >
           {t('services.title')}
         </motion.h2>
+
+         {/* ✅ Nouvelle description globale */}
+    <motion.p
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="text-gray-600 text-base lg:text-lg max-w-3xl mx-auto mb-10"
+    >
+      {t('services.description')}
+    </motion.p>
 
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (

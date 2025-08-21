@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
+import logo from '@/public/logos/bigIslandOffisial.png';
 
 export default function Footer() {
   const { t } = useTranslation('common');
@@ -149,16 +150,16 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="mb-5 mt-4">
-              <Image 
-                src="/logo.png"
-                alt="BigIslandMDG Logo"
-                width={150}
-                height={50}
-                className="object-contain"
-                priority={false}
-              />
-            </div>
+              <div className="mb-0 mt-[-20px] flex flex-row items-center justify-center">
+   <Image 
+    src={logo}
+    alt="BigIslandMDG Logo"
+    width={200}
+    height={100}
+    className="object-contain"
+  />
+</div>
+
           </div>
         </div>
 
