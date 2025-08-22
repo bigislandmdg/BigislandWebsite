@@ -52,13 +52,17 @@
     "testimonials": "Témoignages",
     "projects": "Projets",
     "cgu": "CGU",
+     "companyDescription": "Votre partenaire de confiance pour des solutions digitales innovantes et sur mesure.",
     "newsletter": "Inscrivez-vous à notre newsletter",
     "emailPlaceholder": "Votre adresse email",
     "subscribe": "S'abonner",
     "cookiePolicy": "Politique de cookies",
     "legalNotice": "Mentions légales",
     "privacyPolicy": "Politique de confidentialité",
-    "rightsReserved": "Tous droits réservés."
+    "rightsReserved": "Tous droits réservés.",
+    "designedWith": "Conçu avec",
+    "byBigIsland": "par BigIsland",
+    "followUs": "Suivez-nous sur"
   },
   "about": {
     "title": "De quelle assistance avez-vous besoin ?",

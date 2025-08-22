@@ -24,7 +24,7 @@ export default function FloatingLanguageToggle() {
   }, [lang]);
 
   return (
-    <div className="fixed mt-5 bottom-9 left-14 z-50">
+    <div className="fixed mt-5 bottom-18 left-14 z-50">
       <div className="max-w-5xl relative w-32 h-8 bg-gray-200 rounded shadow-md overflow-hidden">
         <div
           className={`absolute top-0 h-8 w-1/2 bg-blue-500 rounded transition-all duration-300 ${

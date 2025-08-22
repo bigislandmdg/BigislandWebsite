@@ -52,13 +52,17 @@
     "testimonials": "Testimonials",
     "projects": "Projects",
     "cgu": "Terms of Use",
+    "companyDescription": "Your trusted partner for innovative and tailored digital solutions.",
     "newsletter": "Subscribe to our newsletter",
     "emailPlaceholder": "Your email address",
     "subscribe": "Subscribe",
     "cookiePolicy": "Cookie Policy",
     "legalNotice": "Legal Notice",
     "privacyPolicy": "Privacy Policy",
-    "rightsReserved": "All rights reserved."
+    "rightsReserved": "All rights reserved.",
+    "designedWith": "Designed with",
+    "byBigIsland": "by BigIsland",
+    "followUs": "Follow us on"
   },
   
   "about": {
