@@ -3,31 +3,41 @@
     "title": "Découvrez notre entreprise"
   },
   "hero": {
-    "title": "Développez votre entreprise avec Bigisland MDG.",
-    "description": "BigIsland MDG est votre partenaire idéal pour la création de sites web et d'applications sur mesure. Notre équipe d'experts est prête à transformer vos idées en solutions numériques innovantes. Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions.",
+    "title": "Donnez à votre entreprise une vitrine digitale qui reflète vos ambitions.",
+    "description": "BigIsland est le  partenaire idéal pour créer des sites web et des applications sur mesure. Augmenter la performance de votre entreprise en utilisant nos solutions numériques révolutionnaire, Notre équipe d'experts est prête à transformer vos idées en solutions numériques novatrices.",
     "button1": "Discutons",
     "button2": "Mieux nous connaître"
   },
 
   "navbar": {
-    "home": "Accueil",
-    "about": "À propos",
-    "expertises": "Expertises",
-    "location": "Location de voiture",
-    "itSolutions": "Solutions IT",
-    "callCenter": "Call center & externalisation",
-    "supplier": "Fournisseur de produits divers",
-    "blog": "Blog",
-    "contact": "Contact",
-    "requestQuote": "Demande un devis",
-     "search": "Rechercher",
-     "closeSearch": "Fermer la recherche",
-     "searchTitle": "Que cherchez-vous ?",
-     "searchPlaceholder": "Saisissez votre recherche...",
-     "searchButton": "Rechercher",
-     "searchResults": "Résultats de recherche",
-     "noResults": "Aucun résultat trouvé pour"
-  },
+  "home": "Accueil",
+  "about": "À propos",
+  "expertises": "Expertises",
+
+  "location": "Location de voiture",
+  "locationDesc": "Service de location de véhicules adaptés à vos besoins.",
+
+  "itSolutions": "Solutions IT",
+  "itSolutionsDesc": "Développement, intégration et maintenance de solutions numériques.",
+
+  "callCenter": "Call center & externalisation",
+  "callCenterDesc": "Support client professionnel et externalisation sur mesure.",
+
+  "supplier": "Fournisseur de produits divers",
+  "supplierDesc": "Large choix de produits et fournitures pour particuliers et entreprises.",
+
+  "blog": "Blog",
+  "contact": "Contact",
+  "requestQuote": "Demande un devis",
+
+  "search": "Rechercher",
+  "closeSearch": "Fermer la recherche",
+  "searchTitle": "Que cherchez-vous ?",
+  "searchPlaceholder": "Saisissez votre recherche...",
+  "searchButton": "Rechercher",
+  "searchResults": "Résultats de recherche",
+  "noResults": "Aucun résultat trouvé pour"
+},
   "search": {
   "categories": {
     "services": "Services",
@@ -65,9 +75,9 @@
     "followUs": "Suivez-nous sur"
   },
   "about": {
-    "title": "De quelle assistance avez-vous besoin ?",
-    "description": "Nous mettons notre expertise à votre service dans quatre domaines : location de voitures, centre d'appel, solutions IT et fourniture de produits.Notre équipe vous accompagne avec des solutions adaptées, un service réactif et une qualité garantie.",
-    "button": "Planifier un rendez-vous"
+    "title": "Solutions sur mesure pour transformer votre entreprise",
+    "description": "Développez votre avantage concurrentiel grâce à nos quatre expertises complémentaires : location de véhicules professionnels, centres de contact client performants, solutions IT innovantes et approvisionnement stratégique. Bénéficiez d'un partenariat sur-mesure, d'un accompagnement expert et de résultats tangibles.",
+    "button": "Démarrer un projet"
   },
   "appointment": {
     "title": "Planifier un rendez-vous",

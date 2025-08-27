@@ -2,32 +2,42 @@
    "videoModal": {
     "title": "Discover our company"
   },
-  "hero": {
-    "title": "Grow your business with Bigisland MDG.",
-    "description": "BigIsland MDG is your ideal partner for custom website and application development. Our team of experts is ready to turn your ideas into innovative digital solutions. Give your business a digital showcase worthy of your ambitions.",
+   "hero": {
+    "title": "Give your business a digital showcase that reflects your ambitions.",
+    "description": "BigIsland is the ideal partner for creating custom websites and applications. Boost your company's performance using our revolutionary digital solutions. Our team of experts is ready to transform your ideas into innovative digital solutions.",
     "button1": "Let's Talk",
-    "button2": "Get to Know Us"
+    "button2": "Get to Know Us Better"
   },
   
   "navbar": {
-    "home": "Home",
-    "about": "About",
-    "expertises": "Expertise",
-    "location": "Car Rental",
-    "itSolutions": "IT Solutions",
-    "callCenter": "Call Center & Outsourcing",
-    "supplier": "Supplier of Various Products",
-    "blog": "Blog",
-    "contact": "Contact",
-     "search": "Search",
+  "home": "Home",
+  "about": "About",
+  "expertises": "Expertises",
+
+  "location": "Car rental",
+  "locationDesc": "Car rental service tailored to your needs.",
+
+  "itSolutions": "IT solutions",
+  "itSolutionsDesc": "Development, integration, and maintenance of digital solutions.",
+
+  "callCenter": "Call center & outsourcing",
+  "callCenterDesc": "Professional customer support and customized outsourcing services.",
+
+  "supplier": "Supplier of various products",
+  "supplierDesc": "Wide range of products and supplies for individuals and businesses.",
+
+  "blog": "Blog",
+  "contact": "Contact",
+  "requestQuote": "Request a quote",
+
+  "search": "Search",
   "closeSearch": "Close search",
   "searchTitle": "What are you looking for?",
   "searchPlaceholder": "Enter your search...",
   "searchButton": "Search",
   "searchResults": "Search results",
-  "noResults": "No results found for",
-    "requestQuote": "Request a Quote"
-  },
+  "noResults": "No results found for"
+},
   "search": {
   "categories": {
     "services": "Services",
@@ -64,11 +74,10 @@
     "byBigIsland": "by BigIsland",
     "followUs": "Follow us on"
   },
-  
   "about": {
-    "title": "What kind of assistance do you need?",
-    "description": "We offer our expertise in four areas: car rental, call center services, IT solutions, and product supply. Our team supports you with tailored solutions, responsive service, and guaranteed quality.",
-    "button": "Schedule an appointment"
+    "title": "Custom Solutions to Transform Your Business",
+    "description": "Develop your competitive advantage through our four complementary expertise areas: professional vehicle rental, high-performance customer contact centers, innovative IT solutions, and strategic procurement. Benefit from tailored partnerships, expert guidance, and tangible results.",
+    "button": "Start a Project"
   },
 
   "appointment": {

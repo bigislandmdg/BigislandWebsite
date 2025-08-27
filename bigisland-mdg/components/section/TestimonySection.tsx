@@ -5,41 +5,37 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 
-// 🔹 Utilitaire: découpe en graphèmes (fallback compatible emoji)
+// 🔹 Découpage graphemes (sécurité emojis)
 function toGraphemes(input: string): string[] {
   try {
-    // @ts-ignore: Intl.Segmenter may not exist in all TS libs
+    // @ts-ignore
     const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
     // @ts-ignore
     return Array.from(seg.segment(input), (s) => s.segment);
   } catch {
-    // Fallback raisonnable
     return Array.from(input);
   }
 }
 
-// 🔹 Composant typewriter avec curseur clignotant (safe contre undefined)
+// 🔹 Machine à écrire + curseur clignotant
 function TypewriterText({
   text,
   speed = 50,
   hideCursorOnDone = false,
 }: {
-  text?: string;           // <- text peut être undefined selon i18n
+  text?: string;
   speed?: number;
   hideCursorOnDone?: boolean;
 }) {
-  // Assure une chaîne propre (évite "undefined" / null)
   const safeText = typeof text === 'string' ? text : '';
   const chars = useMemo(() => toGraphemes(safeText), [safeText]);
 
   const [index, setIndex] = useState(0);
 
-  // Reset quand le texte change (ex: changement de langue)
   useEffect(() => {
     setIndex(0);
   }, [safeText, speed]);
 
-  // Avance caractère par caractère
   useEffect(() => {
     if (index >= chars.length) return;
     const id = setTimeout(() => setIndex((i) => i + 1), speed);
@@ -50,15 +46,14 @@ function TypewriterText({
   const done = index >= chars.length;
 
   return (
-    <motion.p
-      className="text-lg italic text-gray-700 mb-6 min-h-[60px] flex justify-center"
+    <motion.blockquote
+      className="mt-10 text-xl font-medium leading-8 text-gray-900 sm:text-2xl sm:leading-9"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
       “{displayed}
-      {/* Curseur clignotant */}
       <motion.span
         className="ml-1 text-gray-900"
         style={{ visibility: hideCursorOnDone && done ? 'hidden' : 'visible' }}
@@ -68,7 +63,7 @@ function TypewriterText({
         |
       </motion.span>
       ”
-    </motion.p>
+    </motion.blockquote>
   );
 }
 
@@ -76,10 +71,11 @@ export default function TestimonySection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="testimony" className="px-4 py-20 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="testimony" className="bg-gray-100 py-20 sm:py-12">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
+        {/* 🔹 Titre */}
         <motion.h2
-          className="text-3xl lg:text-4xl font-bold mb-6 text-gray-800"
+          className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -88,45 +84,39 @@ export default function TestimonySection() {
           {t('testimony.title')}
         </motion.h2>
 
-        <motion.div
-          className="mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {/* 💡 Texte avec machine à écrire + curseur (safe) */}
-          <TypewriterText text={t('testimony.message')} speed={40} hideCursorOnDone={false} />
+        {/* 🔹 Message typewriter */}
+        <TypewriterText text={t('testimony.message')} speed={40} />
 
-          <div className="flex items-center justify-center gap-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <Image
-                src="/images/ceo.jpg"
-                alt="CEO of BigIsland"
-                width={90}
-                height={190}
-                className="rounded-full object-cover"
-              />
-            </motion.div>
+        {/* 🔹 Auteur */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/images/ceo.jpg"
+              alt="CEO of BigIsland"
+              width={64}
+              height={64}
+              className="rounded-full object-cover"
+            />
+          </motion.div>
 
-            <motion.div
-              className="text-left"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <p className="font-semibold text-gray-900">{t('testimony.name')}</p>
-              <p className="text-sm text-gray-600">{t('testimony.position')}</p>
-            </motion.div>
-          </div>
-        </motion.div>
+          <motion.div
+            className="text-left"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-semibold text-gray-900">{t('testimony.name')}</p>
+            <p className="text-sm text-gray-600">{t('testimony.position')}</p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+

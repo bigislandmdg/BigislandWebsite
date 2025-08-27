@@ -4,9 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
-import { FaLinkedin } from 'react-icons/fa'; // Icône LinkedIn
+import { FaLinkedin } from 'react-icons/fa';
 
-// 🔹 Données des membres avec lien LinkedIn
 const teamMembers = [
   {
     nameKey: 'team.ceo.name',
@@ -46,7 +45,7 @@ const teamMembers = [
   },
 ];
 
-// 🔹 Composant Tilt Card
+// 🔹 Tilt Card pour effet léger
 function TiltCard({ children }: { children: React.ReactNode }) {
   const [style, setStyle] = useState({});
 
@@ -55,11 +54,11 @@ function TiltCard({ children }: { children: React.ReactNode }) {
     const x = e.nativeEvent.offsetX;
     const y = e.nativeEvent.offsetY;
 
-    const rotateX = ((y / offsetHeight) - 0.5) * 20;
-    const rotateY = ((x / offsetWidth) - 0.5) * -20;
+    const rotateX = ((y / offsetHeight) - 0.5) * 15;
+    const rotateY = ((x / offsetWidth) - 0.5) * -15;
 
     setStyle({
-      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`,
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`,
     });
   };
 
@@ -69,11 +68,11 @@ function TiltCard({ children }: { children: React.ReactNode }) {
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-md p-6 transition-transform duration-300"
+      className="bg-white rounded-xl shadow-sm p-4 transition-transform duration-300"
       style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetStyle}
-      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
+      whileHover={{ boxShadow: '0px 8px 20px rgba(0,0,0,0.1)' }}
     >
       {children}
     </motion.div>
@@ -84,10 +83,10 @@ export default function TeamSection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="team" className="px-4 py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto text-center">
+    <section id="team" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <motion.h2
-          className="text-3xl lg:text-4xl font-bold mb-10 text-gray-800"
+          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -96,43 +95,51 @@ export default function TeamSection() {
           {t('team.title')}
         </motion.h2>
 
-        <p className="text-lg text-gray-600 mb-12">{t('team.subtitle')}</p>
+        <motion.p
+          className="text-lg text-gray-600 max-w-2xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          {t('team.subtitle')}
+        </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {teamMembers.map((member, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+          {teamMembers.map((member, idx) => (
             <motion.div
-              key={index}
+              key={idx}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
+              transition={{ delay: idx * 0.15, duration: 0.6 }}
               viewport={{ once: true }}
             >
               <TiltCard>
-                <div className="flex flex-col items-center">
-                  {/* Image */}
+                <div className="flex flex-col items-center space-y-3">
+                  {/* Petite image ronde */}
                   <Image
                     src={member.image}
                     alt={t(member.nameKey)}
-                    width={150}
-                    height={120}
-                    className="rounded-full object-cover mb-4"
+                    width={96}
+                    height={96}
+                    className="rounded-full object-cover"
                   />
 
-                  {/* Icône LinkedIn */}
+                  {/* Nom & rôle */}
+                  <div className="text-center">
+                    <h3 className="text-md font-semibold text-gray-900">{t(member.nameKey)}</h3>
+                    <p className="text-sm text-gray-500">{t(member.roleKey)}</p>
+                  </div>
+
+                  {/* LinkedIn */}
                   <a
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 mb-2 transition-colors"
+                    className="text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    <FaLinkedin size={28} />
+                    <FaLinkedin size={22} />
                   </a>
-
-                  {/* Nom & rôle */}
-                  <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                    {t(member.nameKey)}
-                  </h3>
-                  <p className="text-sm text-gray-600">{t(member.roleKey)}</p>
                 </div>
               </TiltCard>
             </motion.div>
@@ -142,3 +149,4 @@ export default function TeamSection() {
     </section>
   );
 }
+

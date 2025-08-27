@@ -22,7 +22,7 @@ export default function ScrollToTopButton() {
   return isVisible ? (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-18 right-6 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+      className="fixed bottom-18 right-6 z-50 p-3 rounded bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
     >
       <ChevronUpIcon className="h-4 w-4" />
      

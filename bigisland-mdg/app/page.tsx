@@ -36,9 +36,10 @@ export default function Home({ params }: PageProps) {
       <Navbar />
       <main className="mt-21 bg-white min-h-screen">
         <Hero />
+         <ClientSection/>
          <AboutSection /> 
          <ServicesSection />
-         <ClientSection/>
+        
          <TestimonySection />
          <TeamSection />
          <BlogSection />

@@ -10,49 +10,67 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const { t } = useTranslation('common');
 
   return (
-    <section id="about" className="px-2 py-20 lg:px-10 bg-white">
-      <div className="container mx-auto flex flex-col items-center justify-center text-center max-w-3xl">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-5 text-gray-800">
-            {t('about.title')}
-          </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            {t('about.description')}
-          </p>
-          
-          {/* Bouton animé */}
-          <motion.button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
+    <section
+      id="about"
+      className="bg-white py-20 sm:py-10"
+    >
+      <div
+        ref={ref}
+        className="mx-auto max-w-7xl px-6 lg:px-8"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          {/* Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
-            {t('about.button')}
-          </motion.button>
-        </motion.div>
+            {t('about.title')}
+          </motion.h2>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+            className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600"
+          >
+            {t('about.description')}
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="mt-10 flex items-center justify-center gap-x-6"
+          >
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t('about.button')}
+            </motion.button>
+          </motion.div>
+        </div>
       </div>
-      
-      {/* Modal avec animations d'entrée/sortie */}
+
+      {/* Modal avec animation */}
       <AnimatePresence>
         {isModalOpen && (
-          <AppointmentModal 
-            isOpen={isModalOpen} 
-            onClose={() => setIsModalOpen(false)} 
+          <AppointmentModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
           />
         )}
       </AnimatePresence>
     </section>
   );
 }
+
