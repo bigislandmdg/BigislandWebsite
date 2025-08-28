@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import Image from 'next/image';
+import { FiChevronDown, FiChevronUp, FiFileText } from 'react-icons/fi';
 
 export default function CguScreen() {
   const { t } = useTranslation('common');
@@ -13,17 +14,17 @@ export default function CguScreen() {
   const sections = [
     {
       title: t('cguPage.sections.section1.title'),
-      content: t('cguPage.sections.section1.content')
+      content: t('cguPage.sections.section1.content'),
     },
     {
       title: t('cguPage.sections.section2.title'),
-      content: t('cguPage.sections.section2.content')
+      content: t('cguPage.sections.section2.content'),
     },
     {
       title: t('cguPage.sections.section3.title'),
-      content: t('cguPage.sections.section3.content')
+      content: t('cguPage.sections.section3.content'),
     },
-    // Ajoutez d'autres sections si nécessaire
+    // 👉 Add more sections if needed
   ];
 
   const toggleSection = (index: number) => {
@@ -40,21 +41,35 @@ export default function CguScreen() {
         />
       </Head>
 
-      <section id="cgu" className="pt-28 pb-16 px-4 max-w-5xl mx-auto">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-            {t('cguPage.title')}
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            {t('cguPage.intro')}
-          </p>
-        </motion.div>
+      {/* ---- Banner Header ---- */}
+      <section className="relative h-64 md:h-80 w-full">
+        <Image
+          src="/images/banners/cgu-banner.jpg" // 👉 mets ton image de CGU ici
+          alt="CGU Banner"
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0 z-0"
+        />
+        <div className="absolute inset-0 bg-blue-900 bg-opacity-50 flex flex-col justify-center items-center text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center"
+          >
+            <FiFileText className="text-white text-5xl mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              {t('cguPage.title')}
+            </h1>
+            <p className="text-blue-100 text-lg max-w-2xl">
+              {t('cguPage.intro')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* ---- Sections ---- */}
+      <section id="cgu" className="pt-16 pb-16 px-4 max-w-5xl mx-auto">
         <div className="space-y-4">
           {sections.map((section, index) => (
             <motion.div
@@ -89,7 +104,9 @@ export default function CguScreen() {
                     className="px-6 pb-6 text-gray-700"
                   >
                     <div className="border-t border-gray-200 pt-4">
-                      <p className="leading-relaxed">{section.content}</p>
+                      <p className="leading-relaxed whitespace-pre-line">
+                        {section.content}
+                      </p>
                     </div>
                   </motion.div>
                 )}
@@ -98,6 +115,7 @@ export default function CguScreen() {
           ))}
         </div>
 
+        {/* ---- Contact Help ---- */}
         <motion.div
           className="mt-12 bg-blue-50 rounded-lg p-6 text-center"
           initial={{ opacity: 0 }}
@@ -105,10 +123,10 @@ export default function CguScreen() {
           transition={{ delay: 1 }}
         >
           <h3 className="text-xl font-medium text-blue-700 mb-2">
-            {t('cguPage.needHelp') || 'Besoin d\'aide ?'}
+            {t('cguPage.needHelp') || "Need help?"}
           </h3>
           <p className="text-blue-600">
-            {t('cguPage.contactUs') || 'Contactez-nous à contact@exemple.com'}
+            {t('cguPage.contactUs') || 'Contact us at contact@example.com'}
           </p>
         </motion.div>
       </section>

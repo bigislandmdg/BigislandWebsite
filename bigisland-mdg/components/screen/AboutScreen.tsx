@@ -1,17 +1,19 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import {
   FaHandshake,
-  FaRegChartBar,
-  FaRegLightbulb,
   FaRocket,
   FaUsers,
+  FaRegChartBar,
+  FaRegLightbulb,
   FaUsersCog,
 } from 'react-icons/fa';
 import { IconType } from 'react-icons';
+import { useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 
 // ✅ Effet tilt sur la souris
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -22,7 +24,7 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
     const x = e.nativeEvent.offsetX;
     const y = e.nativeEvent.offsetY;
 
-    const rotateX = ((y / offsetHeight) - 0.5) * 12; // 12° max
+    const rotateX = ((y / offsetHeight) - 0.5) * 12;
     const rotateY = ((x / offsetWidth) - 0.5) * -12;
 
     setStyle({
@@ -47,7 +49,7 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
   );
 }
 
-// ✅ Carte animée générique (pour Card et ProcessStep)
+// ✅ Carte animée
 const AnimatedCard = ({ title, description, Icon }: { title: string; description: string; Icon: IconType }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -61,7 +63,6 @@ const AnimatedCard = ({ title, description, Icon }: { title: string; description
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="flex flex-col items-center"
       >
-        {/* Icône centrée avec cercle bleu et animation */}
         <motion.div
           whileHover={{ scale: 1.3, rotate: 10 }}
           animate={{ y: [0, -5, 0] }}
@@ -93,26 +94,42 @@ export default function AboutScreen() {
     : [];
 
   return (
-    <section className="px-4 py-20 bg-white">
-      <div className="max-w-6xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl font-bold mb-6 text-gray-800"
-        >
-          {t('aboutPage.title')}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-gray-600 mb-12"
-        >
-          {t('aboutPage.subtitle')}
-        </motion.p>
+    <section>
+      {/* 🔹 Hero Section avec bannière */}
+      <div className="relative bg-gray-900">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/banners/about-banner.jpg"
+            alt="About Banner"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
+          <div className="absolute inset-0 bg-gray-900/60" /> {/* Overlay sombre */}
+        </div>
 
-        {/* 🔹 Cards principales */}
+        <div className="relative max-w-7xl mx-auto px-6 py-32 text-center text-white">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-bold tracking-tight"
+          >
+            {t('aboutPage.title')}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 max-w-3xl mx-auto text-lg text-gray-200"
+          >
+            {t('aboutPage.subtitle')}
+          </motion.p>
+        </div>
+      </div>
+
+      {/* 🔹 Cards principales */}
+      <div className="px-6 py-20 max-w-7xl mx-auto">
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20">
           <AnimatedCard
             title={t('aboutPage.whoWeAre.title')}
@@ -131,28 +148,40 @@ export default function AboutScreen() {
           />
         </div>
 
-        {/* 🔹 Processus */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-2xl font-bold text-gray-800 mb-10"
-        >
-          {t('aboutPage.process.title')}
-        </motion.h3>
+         {/* 🔹 Processus (Bento Grid style) */}
+<motion.h3
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.7 }}
+  className="text-2xl font-bold text-gray-800 mb-10 text-center"
+>
+  {t('aboutPage.process.title')}
+</motion.h3>
 
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((step, index) => (
-            <AnimatedCard
-              key={index}
-              title={step.title}
-              description={step.description}
-              Icon={step.Icon}
-            />
-          ))}
-        </div>
+<div className="grid gap-6 lg:grid-cols-6">
+  {processSteps.map((step, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      className={`relative bg-white shadow-md rounded-2xl p-8 flex flex-col justify-between hover:shadow-xl transition 
+        ${index === 0 ? 'lg:col-span-3' : ''} 
+        ${index === 1 ? 'lg:col-span-3 lg:row-span-2' : ''} 
+        ${index === 2 ? 'lg:col-span-3' : ''}`}
+    >
+      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-blue-100 mb-6">
+        <step.Icon className="text-3xl text-blue-600" />
+      </div>
+      <h4 className="text-xl font-semibold text-gray-800 mb-3">{step.title}</h4>
+      <p className="text-gray-600 leading-relaxed">{step.description}</p>
+    </motion.div>
+  ))}
+</div>
       </div>
     </section>
   );
 }
+

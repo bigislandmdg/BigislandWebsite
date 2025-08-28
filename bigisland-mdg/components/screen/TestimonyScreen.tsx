@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import { User, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function TestimonyScreen() {
   const { t, i18n } = useTranslation('common');
@@ -13,87 +14,31 @@ export default function TestimonyScreen() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  type Testimony = {
-    name: string;
-    message: string;
-    avatar: string;
-  };
-
+  type Testimony = { name: string; message: string; avatar: string };
   const [testimonies, setTestimonies] = useState<Testimony[]>([]);
 
   useEffect(() => {
-    const loadTestimonies = () => {
-      try {
-        setTestimonies([
-          {
-            name: t('testimonyPage.clients.client1.name'),
-            message: t('testimonyPage.clients.client1.message'),
-            avatar: '/images/clients/client1.jpg',
-          },
-          {
-            name: t('testimonyPage.clients.client2.name'),
-            message: t('testimonyPage.clients.client2.message'),
-            avatar: '/images/clients/client2.jpg',
-          },
-          {
-            name: t('testimonyPage.clients.client3.name'),
-            message: t('testimonyPage.clients.client3.message'),
-            avatar: '/images/clients/client3.jpg',
-          }
-        ]);
-        setIsLoading(false);
-        // Déclencher l'animation après le chargement
-        controls.start("visible");
-      } catch (error) {
-        console.error("Error loading testimonies:", error);
-        setIsLoading(false);
-      }
-    };
-
-    loadTestimonies();
+    setTestimonies([
+      { name: t('testimonyPage.clients.client1.name'), message: t('testimonyPage.clients.client1.message'), avatar: '/images/clients/client1.jpg' },
+      { name: t('testimonyPage.clients.client2.name'), message: t('testimonyPage.clients.client2.message'), avatar: '/images/clients/client2.jpg' },
+      { name: t('testimonyPage.clients.client3.name'), message: t('testimonyPage.clients.client3.message'), avatar: '/images/clients/client3.jpg' },
+    ]);
+    setIsLoading(false);
+    controls.start("visible");
   }, [i18n.language, t, controls]);
 
-  // Auto-rotation effect
   useEffect(() => {
     if (testimonies.length === 0) return;
-    
-    const interval = setInterval(() => {
-      goNext();
-    }, 5000);
+    const interval = setInterval(() => goNext(), 5000);
     return () => clearInterval(interval);
   }, [activeIndex, testimonies.length]);
 
-  const goNext = () => {
-    if (testimonies.length === 0) return;
-    
-    controls.start("exit").then(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonies.length);
-      controls.start("visible");
-    });
-  };
-
-  const goPrev = () => {
-    if (testimonies.length === 0) return;
-    
-    controls.start("exit").then(() => {
-      setActiveIndex((prev) => (prev - 1 + testimonies.length) % testimonies.length);
-      controls.start("visible");
-    });
-  };
-
-  // Animation variants - Simplifiées pour une meilleure visibilité
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  };
+  const goNext = () => setActiveIndex((prev) => (prev + 1) % testimonies.length);
+  const goPrev = () => setActiveIndex((prev) => (prev - 1 + testimonies.length) % testimonies.length);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
     exit: { opacity: 0, y: -20 }
   };
 
@@ -104,33 +49,37 @@ export default function TestimonyScreen() {
         <meta name="description" content={t('testimonyPage.metaDescription')} />
       </Head>
 
-      <motion.section 
-        id="testimonies"
-        className="pt-32 pb-16 px-6 max-w-6xl mx-auto"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        <motion.h1
-          className="text-4xl font-bold text-blue-600 mb-6 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {t('testimonyPage.title')}
-        </motion.h1>
+      {/* ---- Banner Header ---- */}
+      <section className="relative h-64 md:h-80 w-full">
+        <Image
+          src="/images/banners/testimony-banner.jpg"
+          alt="Testimony Banner"
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0 z-0"
+        />
+        <div className="absolute inset-0 bg-blue-900 bg-opacity-50 flex flex-col justify-center items-center text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center"
+          >
+            <User className="text-white text-5xl mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              {t('testimonyPage.title')}
+            </h1>
+            <p className="text-blue-100 text-lg max-w-2xl">
+              {t('testimonyPage.description')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        <motion.p
-          className="text-gray-700 text-lg mb-12 max-w-3xl mx-auto text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          {t('testimonyPage.description')}
-        </motion.p>
-
+      {/* ---- Testimony Carousel ---- */}
+      <section className="pt-16 pb-16 px-4 max-w-6xl mx-auto">
         <div className="relative">
-          <div ref={containerRef} className="overflow-hidden relative h-[400px] flex items-center justify-center">
+          <div ref={containerRef} className="overflow-hidden relative flex justify-center">
             {isLoading ? (
               <div className="text-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
@@ -144,34 +93,26 @@ export default function TestimonyScreen() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  className="w-full max-w-xl"
+                  className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8 flex flex-col md:flex-row items-center md:items-start gap-6"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                   variants={cardVariants}
                 >
-                  <div className="border border-gray-200 rounded-lg shadow-lg p-8 bg-white">
-                    <div className="flex items-center space-x-6">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-blue-100 rounded-full blur-md opacity-50"></div>
-                        <Image
-                          src={testimonies[activeIndex].avatar}
-                          alt={testimonies[activeIndex].name}
-                          width={80}
-                          height={80}
-                          className="rounded-full object-cover relative z-10 border-2 border-white"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.onerror = null;
-                            target.src = '/images/default-avatar.jpg';
-                          }}
-                        />
-                      </div>
-                      <h2 className="text-xl font-semibold text-blue-600">
-                        {testimonies[activeIndex].name}
-                      </h2>
-                    </div>
-                    <p className="text-gray-600 mt-6 italic text-lg leading-relaxed">
+                  <div className="flex-shrink-0 relative w-24 h-24 md:w-32 md:h-32">
+                    <Image
+                      src={testimonies[activeIndex].avatar}
+                      alt={testimonies[activeIndex].name}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full border-2 border-white shadow"
+                    />
+                  </div>
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-xl font-semibold text-blue-600">
+                      {testimonies[activeIndex].name}
+                    </h3>
+                    <p className="mt-2 text-gray-600 italic leading-relaxed text-lg">
                       "{testimonies[activeIndex].message}"
                     </p>
                   </div>
@@ -185,46 +126,42 @@ export default function TestimonyScreen() {
               <button
                 onClick={goPrev}
                 className="p-3 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors shadow-sm hover:shadow-md"
-                aria-label="Previous testimony"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="h-6 w-6" />
               </button>
-              
               <div className="flex items-center gap-3">
                 {testimonies.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
                     className={`w-4 h-4 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
-                    aria-label={`Go to testimony ${index + 1}`}
                   />
                 ))}
               </div>
-
               <button
                 onClick={goNext}
                 className="p-3 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors shadow-sm hover:shadow-md"
-                aria-label="Next testimony"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="h-6 w-6" />
               </button>
             </div>
           )}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* ---- CTA Simple Justified ---- */}
+        <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
+          <h2 className="text-2xl md:text-3xl font-bold">
+            {t('testimonyPage.ctaTitle') || 'Vous voulez en savoir plus ?'}
+          </h2>
           <a
             href="/contact"
-            className="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl text-lg font-medium"
+            className="inline-block bg-white text-blue-600 font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
           >
             {t('testimonyPage.cta')}
           </a>
-        </div>
-      </motion.section>
+        </section>
+      </section>
     </>
   );
 }
+

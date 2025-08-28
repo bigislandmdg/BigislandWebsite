@@ -51,7 +51,7 @@
     "email": "contact@bigisland.mg",
     "ourContact": "Nos coordonnées",
     "phone": "+261 34 00 000 00",
-    "address": "Lot 111 Cité Villa DELICE (Près de Pharmacie Hasin'ny Aina), Mandroseza, Antananarivo 101, Madagascar",
+    "address": "Lot 111 Cité Villa DELICE Mandroseza, Antananarivo 101, Madagascar",
     "expertise": "Expertise",
     "itSolutions": "Solutions IT",
     "location": "Location de voitures",
@@ -74,11 +74,29 @@
     "byBigIsland": "par BigIsland",
     "followUs": "Suivez-nous sur"
   },
+  
   "about": {
     "title": "Solutions sur mesure pour transformer votre entreprise",
     "description": "Développez votre avantage concurrentiel grâce à nos quatre expertises complémentaires : location de véhicules professionnels, centres de contact client performants, solutions IT innovantes et approvisionnement stratégique. Bénéficiez d'un partenariat sur-mesure, d'un accompagnement expert et de résultats tangibles.",
-    "button": "Démarrer un projet"
-  },
+    "button": "Démarrer un projet",
+    "expertises": [
+      {
+        "title": "Location de véhicules professionnels",
+        "description": "Optimisez votre flotte avec nos solutions flexibles et adaptées à vos besoins."
+      },
+      {
+        "title": "Centres de contact client performants",
+        "description": "Améliorez l'expérience client grâce à des équipes spécialisées et des outils innovants."
+      },
+      {
+        "title": "Solutions IT innovantes",
+        "description": "Développez des applications et systèmes performants pour transformer vos opérations."
+      }
+      
+    ]
+  }
+,
+
   "appointment": {
     "title": "Planifier un rendez-vous",
     "services": {
@@ -268,32 +286,36 @@
     }
   },
   "locationPage": {
-    "pageTitle": "Location de voitures | BigIslandMDG",
-    "metaDescription": "Service de location de voitures à Madagascar",
-    "title": "Service de location de voitures",
-    "description": "Nous proposons un service de location de voitures fiable et flexible à Madagascar, adapté aux besoins des particuliers comme des professionnels.",
-    "cars": {
-      "suv": {
-        "title": "SUV Confort",
-        "description": "Parfait pour les voyages hors des sentiers battus."
-      },
-      "sedan": {
-        "title": "Berline élégante",
-        "description": "Idéale pour les déplacements en ville."
-      },
-      "van": {
-        "title": "Van 8 places",
-        "description": "Idéal pour les groupes et les familles nombreuses."
-      }
+  "pageTitle": "Location de voitures | BigIslandMDG",
+  "metaDescription": "Louez une voiture en toute confiance à Madagascar avec BigIslandMDG. Large choix de véhicules adaptés à vos besoins : SUV, berlines et vans.",
+  "title": "Votre partenaire de location de voitures à Madagascar",
+  "description": "Profitez d’un service de location de voitures fiable, flexible et abordable, que ce soit pour vos voyages personnels, vos déplacements professionnels ou vos aventures en groupe.",
+  "cars": {
+    "suv": {
+      "title": "SUV Confort",
+      "description": "Robuste et spacieux, idéal pour explorer Madagascar hors des sentiers battus."
     },
-    "cta": "Demander un devis"
+    "sedan": {
+      "title": "Berline Élégante",
+      "description": "Un maximum de confort et de style pour vos trajets urbains et vos rendez-vous d’affaires."
+    },
+    "van": {
+      "title": "Van 8 places",
+      "description": "Pratique et convivial, parfait pour voyager en famille ou entre amis en toute sérénité."
+    }
   },
+  "cta": "Demander un devis personnalisé",
+  "ctaTitle": "Prêt à louer votre véhicule idéal ?",
+  "ctaSubtitle": "Choisissez parmi nos voitures et obtenez un devis instantané en ligne."
+},
   "itPage": {
   "pageTitle": "Solutions Informatiques",
   "metaDescription": "Découvrez nos services IT : développement logiciel, applications web et mobiles, design, DevOps, sécurité et plus encore.",
   "title": "Nos Services IT",
   "description": "Nous proposons des solutions informatiques complètes pour accompagner la transformation numérique de votre organisation.",
-  "cta": "Contactez-nous pour un devis personnalisé",
+  "ctaTitle": "Prêt à transformer votre stratégie digitale ?",
+  "ctaSubtitle": "Découvrez nos solutions IT et obtenez une consultation personnalisée.",
+  "cta": "Obtenir une consultation gratuite",
   "services": {
     "software": {
       "title": "Développement Logiciel",

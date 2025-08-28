@@ -51,7 +51,7 @@
     "email": "contact@bigisland.mg",
     "ourContact": "Our contact details",
     "phone": "+261 34 00 000 00",
-    "address": "Lot 111 Cité Villa DELICE (Près de Pharmacie Hasin'ny Aina), Mandroseza, Antananarivo 101, Madagascar",
+    "address": "Lot 111 Cité Villa DELICE Mandroseza, Antananarivo 101, Madagascar",
     "expertise": "Expertise",
     "itSolutions": "IT Solutions",
     "location": "Car Rentals",
@@ -74,12 +74,27 @@
     "byBigIsland": "by BigIsland",
     "followUs": "Follow us on"
   },
+  
   "about": {
-    "title": "Custom Solutions to Transform Your Business",
-    "description": "Develop your competitive advantage through our four complementary expertise areas: professional vehicle rental, high-performance customer contact centers, innovative IT solutions, and strategic procurement. Benefit from tailored partnerships, expert guidance, and tangible results.",
-    "button": "Start a Project"
-  },
-
+    "title": "Tailored Solutions to Transform Your Business",
+    "description": "Develop your competitive advantage through our four complementary areas of expertise: professional vehicle leasing, high-performance customer contact centers, innovative IT solutions, and strategic sourcing. Benefit from a tailored partnership, expert guidance, and tangible results.",
+    "button": "Start a Project",
+    "expertises": [
+      {
+        "title": "Professional Vehicle Leasing",
+        "description": "Optimize your fleet with flexible solutions adapted to your needs."
+      },
+      {
+        "title": "High-Performance Customer Contact Centers",
+        "description": "Enhance customer experience with specialized teams and innovative tools."
+      },
+      {
+        "title": "Innovative IT Solutions",
+        "description": "Develop high-performance applications and systems to transform your operations."
+      }
+    ]
+  }
+,
   "appointment": {
     "title": "Schedule an Appointment",
     "services": {
@@ -268,33 +283,38 @@
     }
   },
    
-  "locationPage": {
-    "pageTitle": "Car Rental | BigIslandMDG",
-    "metaDescription": "Car rental service in Madagascar",
-    "title": "Car Rental Service",
-    "description": "We offer a reliable and flexible car rental service in Madagascar, tailored to the needs of both individuals and professionals.",
-    "cars": {
-      "suv": {
-        "title": "Comfort SUV",
-        "description": "Perfect for off-road adventures."
-      },
-      "sedan": {
-        "title": "Elegant Sedan",
-        "description": "Ideal for city commuting."
-      },
-      "van": {
-        "title": "8-Seater Van",
-        "description": "Great for groups and large families."
-      }
+"locationPage": {
+  "pageTitle": "Car Rental | BigIslandMDG",
+  "metaDescription": "Rent a car with confidence in Madagascar with BigIslandMDG. Wide range of vehicles to suit your needs: SUVs, sedans, and vans.",
+  "title": "Your trusted car rental partner in Madagascar",
+  "description": "Enjoy a reliable, flexible, and affordable car rental service — whether for personal trips, business travel, or group adventures.",
+  "cars": {
+    "suv": {
+      "title": "Comfort SUV",
+      "description": "Rugged and spacious, perfect for exploring Madagascar off the beaten path."
     },
-    "cta": "Request a quote"
+    "sedan": {
+      "title": "Elegant Sedan",
+      "description": "Maximum comfort and style for city rides and business meetings."
+    },
+    "van": {
+      "title": "8-Seater Van",
+      "description": "Practical and friendly, ideal for traveling with family or friends in complete peace of mind."
+    }
   },
-   "itPage": {
+  "cta": "Request a personalized quote",
+  "ctaTitle": "Ready to rent your ideal vehicle?",
+  "ctaSubtitle": "Choose from our cars and get an instant online quote."
+  },
+
+  "itPage": {
   "pageTitle": "IT Solutions",
   "metaDescription": "Explore our range of IT services including software development, web and mobile apps, and more.",
   "title": "Our IT Services",
   "description": "We offer comprehensive IT solutions to help you grow and secure your digital infrastructure.",
-  "cta": "Contact us for a custom quote",
+  "ctaTitle": "Ready to transform your digital strategy?",
+  "ctaSubtitle": "Explore our IT solutions and get a personalized consultation.",
+  "cta": "Get a Free Consultation",
   "services": {
     "software": {
       "title": "Software Development",

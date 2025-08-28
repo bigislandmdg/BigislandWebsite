@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
 
 export default function PrivacyPolicyScreen() {
   const { t } = useTranslation('common');
@@ -59,26 +59,34 @@ export default function PrivacyPolicyScreen() {
         />
       </Head>
 
-      <section id="privacy-policy" className="pt-28 pb-16 px-4 max-w-5xl mx-auto">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
+      {/* ===== Header with Banner ===== */}
+      <div className="relative h-90 bg-blue-500">
+        <img
+          src="/images/privacy-banner.jpg"
+          alt="Privacy Policy Banner"
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+          <ShieldCheck className="w-12 h-12 mb-4" />
+          <h1 className="text-4xl md:text-5xl font-bold">
             {t('privacyPolicy.title')}
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="mt-2 text-lg max-w-2xl">
             {t('privacyPolicy.intro')}
           </p>
-        </motion.div>
+        </div>
+      </div>
 
+      {/* ===== Content Sections ===== */}
+      <section
+        id="privacy-policy"
+        className="pt-16 pb-20 px-4 max-w-5xl mx-auto"
+      >
         <div className="space-y-4">
           {sections.map((section, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
@@ -88,13 +96,13 @@ export default function PrivacyPolicyScreen() {
                 className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => toggleSection(index)}
               >
-                <h2 className="text-xl md:text-2xl font-semibold text-blue-600">
+                <h2 className="text-xl md:text-2xl font-semibold text-blue-700">
                   {section.title}
                 </h2>
                 {expandedSection === index ? (
-                  <FiChevronUp className="text-blue-500 text-xl" />
+                  <ChevronUp className="text-blue-500 w-6 h-6" />
                 ) : (
-                  <FiChevronDown className="text-blue-500 text-xl" />
+                  <ChevronDown className="text-blue-500 w-6 h-6" />
                 )}
               </button>
 
@@ -108,7 +116,9 @@ export default function PrivacyPolicyScreen() {
                     className="px-6 pb-6 text-gray-700"
                   >
                     <div className="border-t border-gray-200 pt-4">
-                      <p className="leading-relaxed whitespace-pre-line">{section.content}</p>
+                      <p className="leading-relaxed whitespace-pre-line">
+                        {section.content}
+                      </p>
                     </div>
                   </motion.div>
                 )}
@@ -117,20 +127,24 @@ export default function PrivacyPolicyScreen() {
           ))}
         </div>
 
+        {/* ===== Help Section ===== */}
         <motion.div
-          className="mt-12 bg-blue-50 rounded-lg p-6 text-center"
+          className="mt-12 bg-blue-50 rounded-2xl p-8 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <h3 className="text-xl font-medium text-blue-700 mb-2">
-            {t('privacyPolicy.needHelp') || 'Questions about our privacy policy?'}
+          <h3 className="text-xl font-semibold text-blue-700 mb-2">
+            {t('privacyPolicy.needHelp') ||
+              'Questions about our privacy policy?'}
           </h3>
           <p className="text-blue-600">
-            {t('privacyPolicy.contactUs') || 'Contact our Data Protection Officer at dpo@example.com'}
+            {t('privacyPolicy.contactUs') ||
+              'Contact our Data Protection Officer at dpo@example.com'}
           </p>
         </motion.div>
       </section>
     </>
   );
 }
+
