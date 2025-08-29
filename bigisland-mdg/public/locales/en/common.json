@@ -3,11 +3,11 @@
     "title": "Discover our company"
   },
    "hero": {
-    "title": "Give your business a digital showcase that reflects your ambitions.",
-    "description": "BigIsland is the ideal partner for creating custom websites and applications. Boost your company's performance using our revolutionary digital solutions. Our team of experts is ready to transform your ideas into innovative digital solutions.",
-    "button1": "Let's Talk",
-    "button2": "Get to Know Us Better"
-  },
+  "title": "Give your business a digital showcase that matches your ambitions",
+  "description": "BigIsland designs custom websites and apps to boost performance and bring your ideas to life.",
+  "button1": "Let's Talk",
+  "button2": "Get to Know Us"
+},
   
   "navbar": {
   "home": "Home",
@@ -76,24 +76,28 @@
   },
   
   "about": {
-    "title": "Tailored Solutions to Transform Your Business",
-    "description": "Develop your competitive advantage through our four complementary areas of expertise: professional vehicle leasing, high-performance customer contact centers, innovative IT solutions, and strategic sourcing. Benefit from a tailored partnership, expert guidance, and tangible results.",
-    "button": "Start a Project",
-    "expertises": [
-      {
-        "title": "Professional Vehicle Leasing",
-        "description": "Optimize your fleet with flexible solutions adapted to your needs."
-      },
-      {
-        "title": "High-Performance Customer Contact Centers",
-        "description": "Enhance customer experience with specialized teams and innovative tools."
-      },
-      {
-        "title": "Innovative IT Solutions",
-        "description": "Develop high-performance applications and systems to transform your operations."
-      }
-    ]
-  }
+  "title": "Simple and effective solutions for your business",
+  "description": "We help you boost performance with our expertise in mobility, customer service, IT, and strategic sourcing.",
+  "button": "Start a project",
+  "expertises": [
+    {
+      "title": "Vehicle Leasing",
+      "description": "Easily manage your fleet and reduce costs."
+    },
+    {
+      "title": "Contact Centers",
+      "description": "Deliver a better experience to your customers."
+    },
+    {
+      "title": "IT Solutions",
+      "description": "Simplify your operations with smart tools."
+    },
+    {
+      "title": "Sourcing",
+      "description": "Secure your supplies and optimize spending."
+    }
+  ]
+}
 ,
   "appointment": {
     "title": "Schedule an Appointment",
@@ -115,30 +119,30 @@
       "submit": "Schedule Appointment"
     }
   },
-   "services": {
-    "title": "Our Services",
-    "description": "Discover our areas of expertise that combine innovation, performance, and reliability.",
-    "button": "Learn more",
-    "rental": {
-      "title": "Car Rental",
-      "description": "Big Island MDG Car Rental: vehicle rental in Madagascar, 24/7 service, competitive rates, and available drivers."
-    },
-    "callcenter": {
-      "title": "Call Center",
-      "description": "Professional customer service, multilingual support, available anytime."
-    },
-    "it": {
-      "title": "IT Solutions",
-      "description": "Software development, websites, IT support and custom maintenance."
-    },
-    "supply": {
-      "title": "Product Supply",
-      "description": "Distribution of quality materials and supplies for companies and organizations."
-    }
+  "services": {
+  "title": "Expertise for Your Growth",
+  "description": "Tailored services to boost your growth and strengthen competitiveness.",
+  "button": "Learn More",
+  "rental": {
+    "title": "Car Rental",
+    "description": "Modern and flexible fleet for your business trips."
   },
-  "clients": {
-  "title": "Our Clients, Exceptional Partners",
-  "description": "They trust us for the quality of our services, our commitment, and our ability to deliver solutions tailored to their needs.",
+  "callcenter": {
+    "title": "Call Center",
+    "description": "24/7 multilingual support, fast and reliable."
+  },
+  "it": {
+    "title": "IT Solutions",
+    "description": "High-performance websites and apps to grow your business."
+  },
+  "supply": {
+    "title": "Supplies",
+    "description": "Reliable products for your professional needs."
+  }
+},
+"clients": {
+  "title": "Exceptional Clients and Partners",
+  "description": "Companies that trust us for our expertise and commitment.",
   "list": {
     "client1": {
       "name": "Alpha Company",
@@ -146,38 +150,38 @@
     },
     "client2": {
       "name": "Beta Group",
-      "description": "Leading telecommunications company"
+      "description": "Major player in telecommunications"
     },
     "client3": {
       "name": "Delta Technologies",
-      "description": "Provider of IT solutions"
+      "description": "Tailored IT solutions"
     },
     "client4": {
       "name": "Epsilon Services",
-      "description": "Fleet management company"
+      "description": "Efficient fleet management"
     },
     "client5": {
       "name": "Zeta Industries",
-      "description": "Manufacturing partner since 2018"
+      "description": "Trusted manufacturing partner"
     },
     "client6": {
       "name": "Omega Consulting",
-      "description": "Strategic consulting firm"
+      "description": "Strategic consulting and innovation"
     }
   }
 },
 "testimony": {
-  "title": "Word from the CEO",
-  "message": "At BigIsland, we believe in the power of technology to transform businesses. Our mission is to provide innovative solutions that deliver real value to our clients.",
+  "title": "From the CEO",
+  "message": "We help businesses thrive with smart digital solutions.",
   "name": "Andry Rakoto",
   "position": "CEO of BigIsland"
 },
 "team": {
-  "title": "Meet Our Experts",
-  "subtitle": "Get in touch with our experts to benefit from their expertise and personalized advice.",
+  "title": "Leading Experts",
+  "subtitle": "The experts driving our success",
   "ceo": {
     "name": "Jean Rakoto",
-    "role": "CEO - Founder"
+    "role": "CEO & Founder"
   },
   "director": {
     "name": "Marie Andriamatoa",
@@ -185,19 +189,7 @@
   },
   "it": {
     "name": "Hery R.",
-    "role": "IT Manager"
-  },
-  "logistics": {
-    "name": "Fetra Ranaivo",
-    "role": "Head of Logistics"
-  },
-  "callcenter": {
-    "name": "Claudine R.",
-    "role": "Call Center Manager"
-  },
-  "supply": {
-    "name": "Bema Tiana",
-    "role": "Supply Manager"
+    "role": "CTO"
   }
 },
  "blog": {
@@ -343,71 +335,77 @@
   }
 },
  "callCenterPage": {
-    "pageTitle": "Call Center Solutions",
-    "metaDescription": "Discover our call center services tailored to your needs.",
-    "title": "Our Call Center Services",
-    "description": "We offer a complete range of services to enhance customer experience and operational efficiency.",
-    "cta": "Contact us now",
-    "services": {
-      "customerSupport": {
-        "title": "Customer Support",
-        "description": "Professional assistance for your customers 24/7."
-      },
-      "techSupport": {
-        "title": "Technical Support",
-        "description": "Dedicated help for your products and services."
-      },
-      "sales": {
-        "title": "Sales Support",
-        "description": "Helping you convert leads into loyal customers."
-      },
-      "survey": {
-        "title": "Surveys & Polls",
-        "description": "Collect client insights to improve your offerings."
-      },
-      "virtualAssistant": {
-        "title": "Virtual Assistant",
-        "description": "Automated services to boost your productivity."
-      },
-      "inboundOutbound": {
-        "title": "Inbound & Outbound Calls",
-        "description": "Managing incoming and outgoing communications efficiently."
-      }
+  "pageTitle": "Call Center Solutions",
+  "metaDescription": "Discover our tailored call center services to meet your needs.",
+  "title": "Our Call Center Services",
+  "description": "We provide a full range of services to enhance customer experience and improve operational efficiency.",
+  "cta": "Contact us",
+  "ctaTitle": "Grow your business with our call center solutions",
+  "ctaSubtitle": "More sales. More customers. More results.",
+  "services": {
+    "customerSupport": {
+      "title": "Customer Support",
+      "description": "Professional assistance for your customers 24/7."
+    },
+    "techSupport": {
+      "title": "Technical Support",
+      "description": "Dedicated technical assistance for your products and services."
+    },
+    "sales": {
+      "title": "Sales Support",
+      "description": "Helping you convert prospects into customers."
+    },
+    "survey": {
+      "title": "Surveys & Polls",
+      "description": "Collect customer insights to improve your offerings."
+    },
+    "virtualAssistant": {
+      "title": "Virtual Assistant",
+      "description": "Automated services to boost productivity."
+    },
+    "inboundOutbound": {
+      "title": "Inbound & Outbound Calls",
+      "description": "Efficient management of incoming and outgoing communications."
     }
-  },
-  "fournisseurPage": {
-    "pageTitle": "Supplier Management",
-    "metaDescription": "Discover our solutions for efficient supplier management.",
-    "title": "Supplier Management Solutions",
-    "description": "We support you throughout the supplier management process, from selection to performance evaluation.",
-    "cta": "Contact us to learn more",
-    "services": {
-      "selection": {
-        "title": "Supplier Selection",
-        "description": "Identify the best suppliers based on your specific needs and quality standards."
-      },
-      "evaluation": {
-        "title": "Supplier Evaluation",
-        "description": "Assess supplier performance with key indicators to ensure reliability."
-      },
-      "negotiation": {
-        "title": "Negotiation",
-        "description": "Negotiate the best pricing and contractual terms to optimize your procurement."
-      },
-      "contract": {
-        "title": "Contract Management",
-        "description": "Create and track supplier contracts in a centralized and secure way."
-      },
-      "performance": {
-        "title": "Performance Monitoring",
-        "description": "Continuously measure and improve supplier performance through adapted KPIs."
-      },
-      "relationship": {
-        "title": "Supplier Relationships",
-        "description": "Strengthen your relationships with suppliers to establish long-term partnerships."
-      }
+  }
+},
+"fournisseurPage": {
+  "pageTitle": "Supplier Management",
+  "metaDescription": "Discover our solutions for effective supplier management.",
+  "title": "Supplier Management Solutions",
+  "description": "We support you at every stage of supplier management, from selection to performance evaluation.",
+
+  "cta": "Contact us",
+  "ctaTitle": "Optimize your supplier management",
+  "ctaSubtitle": "Reduce costs, secure partnerships, and improve performance with our tailored solutions.",
+
+  "services": {
+    "selection": {
+      "title": "Supplier Selection",
+      "description": "Identify the best suppliers based on your specific needs and quality criteria."
+    },
+    "evaluation": {
+      "title": "Supplier Evaluation",
+      "description": "Assess supplier performance with key indicators to ensure reliability."
+    },
+    "negotiation": {
+      "title": "Negotiation",
+      "description": "Negotiate the best pricing and contractual terms to optimize your procurement."
+    },
+    "contract": {
+      "title": "Contract Management",
+      "description": "Create and monitor supplier contracts in a centralized and secure way."
+    },
+    "performance": {
+      "title": "Performance Monitoring",
+      "description": "Continuously measure and improve supplier performance through tailored KPIs."
+    },
+    "relationship": {
+      "title": "Supplier Relationships",
+      "description": "Strengthen relationships with your suppliers to build long-term partnerships."
     }
-  },
+  }
+},
    "testimonyPage": {
     "pageTitle": "Customer Testimonials",
     "metaDescription": "Read what our satisfied customers have to say.",

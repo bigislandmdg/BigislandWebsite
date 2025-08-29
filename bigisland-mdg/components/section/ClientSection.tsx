@@ -20,7 +20,7 @@ export default function ClientSection() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="clients" className="bg-blue-50 py-16 sm:py-20" ref={ref}>
+    <section id="clients" className="bg-blue-50 py-10 sm:py-12" ref={ref}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Titre + description */}

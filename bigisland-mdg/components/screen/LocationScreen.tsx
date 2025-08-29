@@ -119,7 +119,7 @@ export default function LocationScreen() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">
             {t('locationPage.title')}
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl">

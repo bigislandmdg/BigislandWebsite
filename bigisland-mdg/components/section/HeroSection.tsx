@@ -80,7 +80,7 @@ export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
   const { t } = useTranslation('common');
 
   const backgroundVideos = [
@@ -114,7 +114,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative -mt-10 scroll-mt-10 px-4 lg:px-10 py-3 lg:py-20 overflow-hidden min-h-screen flex items-center">
+    <section id="hero" className="relative -mt-7 scroll-mt-10 px-4 lg:px-7 py-3 lg:py-20 overflow-hidden min-h-screen flex items-center">
       {/* Vidéos d'arrière-plan */}
       {backgroundVideos.map((video, index) => (
         <motion.div
@@ -146,7 +146,7 @@ export default function Hero() {
             <source src={video} type="video/mp4" />
             Votre navigateur ne supporte pas la lecture de vidéos.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/70 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-200/80 to-blue-100/70 mix-blend-multiply"></div>
         </motion.div>
       ))}
 

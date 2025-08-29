@@ -3,11 +3,12 @@
     "title": "Découvrez notre entreprise"
   },
   "hero": {
-    "title": "Donnez à votre entreprise une vitrine digitale qui reflète vos ambitions.",
-    "description": "BigIsland est le  partenaire idéal pour créer des sites web et des applications sur mesure. Augmenter la performance de votre entreprise en utilisant nos solutions numériques révolutionnaire, Notre équipe d'experts est prête à transformer vos idées en solutions numériques novatrices.",
-    "button1": "Discutons",
-    "button2": "Mieux nous connaître"
-  },
+  "title": "Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions",
+  "description": "BigIsland conçoit des sites web et applications sur mesure pour booster vos performances et concrétiser vos idées.",
+  "button1": "Discutons",
+  "button2": "Mieux nous connaître"
+}
+,
 
   "navbar": {
   "home": "Accueil",
@@ -76,26 +77,28 @@
   },
   
   "about": {
-    "title": "Solutions sur mesure pour transformer votre entreprise",
-    "description": "Développez votre avantage concurrentiel grâce à nos quatre expertises complémentaires : location de véhicules professionnels, centres de contact client performants, solutions IT innovantes et approvisionnement stratégique. Bénéficiez d'un partenariat sur-mesure, d'un accompagnement expert et de résultats tangibles.",
-    "button": "Démarrer un projet",
-    "expertises": [
-      {
-        "title": "Location de véhicules professionnels",
-        "description": "Optimisez votre flotte avec nos solutions flexibles et adaptées à vos besoins."
-      },
-      {
-        "title": "Centres de contact client performants",
-        "description": "Améliorez l'expérience client grâce à des équipes spécialisées et des outils innovants."
-      },
-      {
-        "title": "Solutions IT innovantes",
-        "description": "Développez des applications et systèmes performants pour transformer vos opérations."
-      }
-      
-    ]
-  }
-,
+  "title": "Des solutions simples et efficaces pour votre entreprise",
+  "description": "Nous vous aidons à gagner en performance grâce à nos expertises en mobilité, relation client, IT et achats stratégiques.",
+  "button": "Lancer un projet",
+  "expertises": [
+    {
+      "title": "Location de véhicules",
+      "description": "Gérez facilement votre flotte et réduisez vos coûts."
+    },
+    {
+      "title": "Centres de contact",
+      "description": "Offrez une meilleure expérience à vos clients."
+    },
+    {
+      "title": "Solutions IT",
+      "description": "Simplifiez vos opérations avec des outils innovants."
+    },
+    {
+      "title": "Approvisionnement",
+      "description": "Sécurisez vos achats et optimisez vos dépenses."
+    }
+  ]
+},
 
   "appointment": {
     "title": "Planifier un rendez-vous",
@@ -119,88 +122,77 @@
 
   },
   "services": {
-  "title": "Nos Expertises",
-  "description": "Découvrez nos domaines d'expertise qui allient innovation, performance et fiabilité.",
+  "title": "Expertises pour votre croissance",
+  "description": "Des services adaptés pour accélérer votre développement et renforcer votre compétitivité.",
   "button": "En savoir plus",
   "rental": {
     "title": "Location de voitures",
-    "description": "Location de véhicules fiables à Madagascar, disponible 24/7 avec des tarifs compétitifs."
+    "description": "Une flotte moderne et flexible pour vos déplacements pros."
   },
   "callcenter": {
     "title": "Centre d'appel",
-    "description": "Assistance client professionnelle multilingue, disponible à toute heure."
+    "description": "Support client multilingue 24/7, rapide et efficace."
   },
   "it": {
     "title": "Solutions IT",
-    "description": "Développement logiciel, création de sites web, maintenance et support personnalisés."
+    "description": "Sites et applis performants pour booster votre business."
   },
   "supply": {
-    "title": "Fourniture de produits",
-    "description": "Distribution de matériels et fournitures de qualité pour entreprises et organisations."
+    "title": "Fournitures",
+    "description": "Produits fiables pour vos besoins professionnels."
   }
 },
- "clients": {
-    "title": "Nos Clients,Des partenaires d'exception",
-    "description": "Ils nous font confiance pour la qualité de nos services, notre engagement et notre capacité à offrir des solutions adaptées à leurs besoins.",
-    "list": {
-      "client1": {
-        "name": "Société Alpha",
-        "description": "Leader dans la logistique et le transport"
-      },
-      "client2": {
-        "name": "Groupe Beta",
-        "description": "Entreprise de télécommunications de premier plan"
-      },
-      "client3": {
-        "name": "Delta Technologies",
-        "description": "Fournisseur de solutions informatiques"
-      },
-      "client4": {
-        "name": "Epsilon Services",
-        "description": "Société de gestion de flotte automobile"
-      },
-      "client5": {
-        "name": "Zeta Industries",
-        "description": "Industrie manufacturière partenaire depuis 2018"
-      },
-      "client6": {
-        "name": "Oméga Conseil",
-        "description": "Cabinet de conseil stratégique"
-      }
+"clients": {
+  "title": "Des Clients et partenaires d’exception",
+  "description": "Des entreprises qui nous font confiance pour notre expertise et notre engagement.",
+  "list": {
+    "client1": {
+      "name": "Société Alpha",
+      "description": "Leader en logistique et transport"
+    },
+    "client2": {
+      "name": "Groupe Beta",
+      "description": "Acteur majeur des télécommunications"
+    },
+    "client3": {
+      "name": "Delta Technologies",
+      "description": "Solutions informatiques sur mesure"
+    },
+    "client4": {
+      "name": "Epsilon Services",
+      "description": "Gestion de flotte automobile efficace"
+    },
+    "client5": {
+      "name": "Zeta Industries",
+      "description": "Industrie manufacturière de confiance"
+    },
+    "client6": {
+      "name": "Oméga Conseil",
+      "description": "Conseil stratégique et innovation"
     }
-  },
-  "testimony": {
-  "title": "Le mot du CEO",
-  "message": "Chez BigIsland, nous croyons en la puissance de la technologie pour transformer les entreprises. Notre mission est d’offrir des solutions innovantes qui créent de la valeur réelle pour nos clients.",
+  }
+}
+,
+"testimony": {
+  "title": "Message du PDG",
+  "message": "Nous aidons les entreprises à prospérer grâce à des solutions digitales intelligentes.",
   "name": "Andry Rakoto",
   "position": "PDG de BigIsland"
 },
 "team": {
-  "title": "Rencontrez nos experts",
-  "subtitle": "Entrez en contact avec nos experts pour bénéficier de leur expertise et de conseils personnalisés.",
+  "title": "Les experts à la tête",
+  "subtitle": "Les experts qui façonnent notre succès",
   "ceo": {
     "name": "Jean Rakoto",
-    "role": "PDG - Fondateur"
+    "role": "CEO & Founder"
   },
   "director": {
     "name": "Marie Andriamatoa",
-    "role": "Responsable RH"
+    "role": "HR Director"
   },
   "it": {
     "name": "Hery R.",
-    "role": "Responsable IT"
-  },
-  "logistics": {
-    "name": "Fetra Ranaivo",
-    "role": "Chef de la logistique"
-  },
-  "callcenter": {
-    "name": "Claudine R.",
-    "role": "Manager Centre d’Appels"
-  },
-  "supply": {
-    "name": "Bema Tiana",
-    "role": "Responsable Approvisionnement"
+    "role": "CTO"
   }
 },
  "blog": {
@@ -344,71 +336,77 @@
   }
 },
  "callCenterPage": {
-    "pageTitle": "Solutions de Centre d’Appels",
-    "metaDescription": "Découvrez nos services de centre d'appels adaptés à vos besoins.",
-    "title": "Nos Services de Centre d’Appels",
-    "description": "Nous offrons une gamme complète de services pour améliorer l’expérience client et l’efficacité opérationnelle.",
-    "cta": "Contactez-nous dès maintenant",
-    "services": {
-      "customerSupport": {
-        "title": "Support Client",
-        "description": "Assistance professionnelle pour vos clients 24/7."
-      },
-      "techSupport": {
-        "title": "Support Technique",
-        "description": "Aide technique dédiée pour vos produits et services."
-      },
-      "sales": {
-        "title": "Support aux Ventes",
-        "description": "Accompagnement dans la conversion de prospects en clients."
-      },
-      "survey": {
-        "title": "Enquêtes & Sondages",
-        "description": "Collecte de données clients pour améliorer vos offres."
-      },
-      "virtualAssistant": {
-        "title": "Assistant Virtuel",
-        "description": "Services automatisés pour améliorer la productivité."
-      },
-      "inboundOutbound": {
-        "title": "Appels Entrants & Sortants",
-        "description": "Gestion des communications entrantes et sortantes."
-      }
+  "pageTitle": "Solutions de Centre d’Appels",
+  "metaDescription": "Découvrez nos services de centre d'appels adaptés à vos besoins.",
+  "title": "Nos Services de Centre d’Appels",
+  "description": "Nous offrons une gamme complète de services pour améliorer l’expérience client et l’efficacité opérationnelle.",
+   "cta": "Contactez-nous",
+   "ctaTitle": "Développez votre activité avec nos centres d’appels",
+   "ctaSubtitle": "Plus de ventes. Plus de clients. Plus de résultats.",
+  "services": {
+    "customerSupport": {
+      "title": "Support Client",
+      "description": "Assistance professionnelle pour vos clients 24/7."
+    },
+    "techSupport": {
+      "title": "Support Technique",
+      "description": "Aide technique dédiée pour vos produits et services."
+    },
+    "sales": {
+      "title": "Support aux Ventes",
+      "description": "Accompagnement dans la conversion de prospects en clients."
+    },
+    "survey": {
+      "title": "Enquêtes & Sondages",
+      "description": "Collecte de données clients pour améliorer vos offres."
+    },
+    "virtualAssistant": {
+      "title": "Assistant Virtuel",
+      "description": "Services automatisés pour améliorer la productivité."
+    },
+    "inboundOutbound": {
+      "title": "Appels Entrants & Sortants",
+      "description": "Gestion des communications entrantes et sortantes."
     }
-  },
-   "fournisseurPage": {
-    "pageTitle": "Gestion des Fournisseurs",
-    "metaDescription": "Découvrez nos solutions pour la gestion efficace des fournisseurs.",
-    "title": "Solutions de Gestion des Fournisseurs",
-    "description": "Nous vous accompagnons dans toutes les étapes de la gestion de vos fournisseurs, de la sélection à l’évaluation de la performance.",
-    "cta": "Contactez-nous pour en savoir plus",
-    "services": {
-      "selection": {
-        "title": "Sélection des Fournisseurs",
-        "description": "Identifiez les meilleurs fournisseurs en fonction de vos besoins spécifiques et de vos critères de qualité."
-      },
-      "evaluation": {
-        "title": "Évaluation des Fournisseurs",
-        "description": "Évaluez les performances des fournisseurs avec des indicateurs clés pour garantir la fiabilité."
-      },
-      "negotiation": {
-        "title": "Négociation",
-        "description": "Négociez les meilleures conditions tarifaires et contractuelles pour optimiser vos achats."
-      },
-      "contract": {
-        "title": "Gestion des Contrats",
-        "description": "Créez et suivez les contrats fournisseurs de manière centralisée et sécurisée."
-      },
-      "performance": {
-        "title": "Suivi de la Performance",
-        "description": "Mesurez et améliorez continuellement la performance des fournisseurs à travers des KPIs adaptés."
-      },
-      "relationship": {
-        "title": "Relations Fournisseurs",
-        "description": "Renforcez les relations avec vos fournisseurs pour établir des partenariats durables."
-      }
+  }
+},
+  "fournisseurPage": {
+  "pageTitle": "Gestion des Fournisseurs",
+  "metaDescription": "Découvrez nos solutions pour la gestion efficace des fournisseurs.",
+  "title": "Solutions de Gestion des Fournisseurs",
+  "description": "Nous vous accompagnons dans toutes les étapes de la gestion de vos fournisseurs, de la sélection à l’évaluation de la performance.",
+
+  "cta": "Contactez-nous",
+  "ctaTitle": "Optimisez la gestion de vos fournisseurs",
+  "ctaSubtitle": "Réduisez vos coûts, sécurisez vos partenariats et améliorez vos performances grâce à nos solutions.",
+
+  "services": {
+    "selection": {
+      "title": "Sélection des Fournisseurs",
+      "description": "Identifiez les meilleurs fournisseurs en fonction de vos besoins spécifiques et de vos critères de qualité."
+    },
+    "evaluation": {
+      "title": "Évaluation des Fournisseurs",
+      "description": "Évaluez les performances des fournisseurs avec des indicateurs clés pour garantir la fiabilité."
+    },
+    "negotiation": {
+      "title": "Négociation",
+      "description": "Négociez les meilleures conditions tarifaires et contractuelles pour optimiser vos achats."
+    },
+    "contract": {
+      "title": "Gestion des Contrats",
+      "description": "Créez et suivez les contrats fournisseurs de manière centralisée et sécurisée."
+    },
+    "performance": {
+      "title": "Suivi de la Performance",
+      "description": "Mesurez et améliorez continuellement la performance des fournisseurs à travers des KPIs adaptés."
+    },
+    "relationship": {
+      "title": "Relations Fournisseurs",
+      "description": "Renforcez les relations avec vos fournisseurs pour établir des partenariats durables."
     }
-  },
+  }
+},
     "testimonyPage": {
     "pageTitle": "Témoignages Clients",
     "metaDescription": "Découvrez les témoignages de nos clients satisfaits.",

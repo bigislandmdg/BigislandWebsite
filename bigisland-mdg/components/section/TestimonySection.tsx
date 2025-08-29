@@ -71,24 +71,24 @@ export default function TestimonySection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="testimony" className="bg-gray-100 py-20 sm:py-12">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8 text-center">
+    <section id="testimony" className="bg-blue-50 py-8 sm:py-10">
+      <div className="mx-auto max-w-3xl px-3 lg:px-8 text-center">
         {/* 🔹 Titre */}
-        <motion.h2
-          className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+        <motion.h3
+          className="text-2xl font-bold tracking-tight text-gray-900 sm:text-2xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           {t('testimony.title')}
-        </motion.h2>
+        </motion.h3>
 
         {/* 🔹 Message typewriter */}
         <TypewriterText text={t('testimony.message')} speed={40} />
 
         {/* 🔹 Auteur */}
-        <div className="mt-10 flex items-center justify-center gap-4">
+        <div className="mt-4 flex items-center justify-center gap-2">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -98,8 +98,8 @@ export default function TestimonySection() {
             <Image
               src="/images/ceo.jpg"
               alt="CEO of BigIsland"
-              width={64}
-              height={64}
+              width={80}
+              height={80}
               className="rounded-full object-cover"
             />
           </motion.div>

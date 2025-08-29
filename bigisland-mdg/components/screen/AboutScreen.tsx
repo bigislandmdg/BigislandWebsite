@@ -96,7 +96,7 @@ export default function AboutScreen() {
   return (
     <section>
       {/* 🔹 Hero Section avec bannière */}
-      <div className="relative bg-gray-900">
+      <div className="relative bg-gray-700">
         <div className="absolute inset-0">
           <Image
             src="/images/banners/about-banner.jpg"
