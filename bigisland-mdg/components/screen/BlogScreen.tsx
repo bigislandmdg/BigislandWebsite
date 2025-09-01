@@ -72,7 +72,7 @@ export default function BlogScreen() {
       {/* 🔹 Hero Section avec bannière et texte centré */}
       <div className="relative bg-gray-900 h-[60vh] flex items-center justify-center">
         <Image
-          src="/images/blog/banner-main.jpg"
+          src="/images/banners/contact-hero.jpg"
           alt="Blog Banner"
           fill
           className="object-cover opacity-70"

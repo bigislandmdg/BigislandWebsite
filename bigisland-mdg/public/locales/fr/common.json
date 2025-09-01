@@ -233,35 +233,36 @@
     "send": "Envoyer",
     "scheduleMeeting": "Planifier une réunion"
   },
-   "aboutPage": {
+  "aboutPage": {
   "title": "À propos de nous",
-  "subtitle": "Bienvenue chez BigIslandMDG, votre expert en solutions digitales.",
+  "subtitle": "BigIslandMDG, partenaire de confiance pour votre transformation digitale.",
   "whoWeAre": {
     "title": "Qui sommes-nous ?",
-    "description": "Nous sommes une équipe passionnée dédiée à la création de solutions innovantes pour nos clients."
+    "description": "Une équipe passionnée qui accompagne les entreprises dans leur croissance grâce à des solutions digitales innovantes et efficaces."
   },
   "mission": {
     "title": "Notre mission",
-    "description": "Fournir des services de haute qualité tout en mettant l'accent sur la transparence, l'engagement et la durabilité."
+    "description": "Offrir des services de qualité supérieure, basés sur la transparence, l’engagement et la création de valeur durable pour nos clients."
   },
   "offer": {
-    "title": "Ce que nous proposons",
-    "description": "Des solutions sur mesure, une approche collaborative et un accompagnement tout au long de votre projet."
+    "title": "Notre offre",
+    "description": "Des solutions sur mesure, une approche collaborative et un accompagnement stratégique pour réussir vos projets digitaux."
   },
   "process": {
-    "title": "Notre Processus",
+    "title": "Notre approche",
+    "description": "Un processus clair et agile qui vous place au centre de chaque étape.",
     "steps": [
       {
         "title": "Écoute",
-        "description": "Comprendre vos besoins spécifiques et vos objectifs."
+        "description": "Nous analysons vos besoins et vos objectifs pour bien comprendre vos enjeux."
       },
       {
         "title": "Conception",
-        "description": "Créer une solution sur mesure adaptée à votre projet."
+        "description": "Nous élaborons une solution digitale personnalisée, alignée sur vos ambitions."
       },
       {
         "title": "Déploiement",
-        "description": "Mise en ligne et accompagnement continu."
+        "description": "Nous assurons la mise en œuvre, le suivi et un accompagnement continu."
       }
     ]
   }
@@ -407,62 +408,64 @@
     }
   }
 },
-    "testimonyPage": {
-    "pageTitle": "Témoignages Clients",
-    "metaDescription": "Découvrez les témoignages de nos clients satisfaits.",
-    "title": "Ce que nos clients disent de nous",
-    "description": "Nous sommes fiers de partager les expériences de nos clients.",
-    "cta": "Nous contacter",
-    "clients": {
-      "client1": {
-        "name": "Marie Dupont",
-        "message": "Service impeccable, je recommande vivement !"
-      },
-      "client2": {
-        "name": "Jean Martin",
-        "message": "Une expérience fluide et professionnelle."
-      },
-      "client3": {
-        "name": "Sophie Durand",
-        "message": "Très satisfait de la location, personnel au top."
-      }
+ "testimonyPage": {
+  "pageTitle": "Témoignages Clients",
+  "metaDescription": "Découvrez ce que nos clients pensent de nos services : location de véhicules, solutions IT, call center et approvisionnement.",
+  "title": "Ils nous font confiance",
+  "description": "Nos clients partagent leur expérience et la valeur ajoutée que nous leur apportons au quotidien.",
+  "ctaTitle": "Prêt à écrire votre succès avec nous ?",
+  "cta": "Contactez-nous",
+  "clients": {
+    "client1": {
+      "name": "Marie Dupont",
+      "message": "Un service irréprochable et une équipe toujours à l’écoute. Je recommande vivement !"
+    },
+    "client2": {
+      "name": "Jean Martin",
+      "message": "Des solutions efficaces qui ont transformé notre manière de travailler."
+    },
+    "client3": {
+      "name": "Sophie Durand",
+      "message": "Une collaboration fluide et des résultats à la hauteur de nos attentes."
     }
-  },
- "projectPage": {
-  "pageTitle": "Nos Projets",
-  "metaDescription": "Découvrez les projets réalisés autour de nos services : location de voiture, call center, solutions IT et fournitures de produits.",
-  "title": "Projets Réalisés",
-  "description": "Voici quelques projets que nous avons menés à bien dans nos principaux domaines de services.",
-  "cta": "Contactez-nous pour en savoir plus",
-  "viewProject": "Voir le projet",
+  }
+},
+"projectPage": {
+  "pageTitle": "Nos Réalisations",
+  "metaDescription": "Découvrez nos projets réussis dans la location de véhicules, les solutions IT, les call centers et la fourniture de produits.",
+  "title": "Des projets qui font la différence",
+  "description": "Nous accompagnons nos clients avec des solutions concrètes et innovantes, adaptées à leurs besoins.",
+  "ctaTitle": "Vous avez un projet en tête ?",
+  "cta": "Discutons-en",
+  "viewProject": "Découvrir",
   "projects": {
     "project1": {
-      "title": "Plateforme de location de voitures",
-      "description": "Développement d'une application web complète pour réserver, gérer et suivre la location de véhicules en temps réel."
+      "title": "Plateforme de location de véhicules",
+      "description": "Application web intuitive pour réserver, gérer et suivre la location de voitures en temps réel."
     },
     "project2": {
-      "title": "Solution de gestion de Call Center",
-      "description": "Mise en place d'un système de téléphonie cloud avec intégration CRM pour améliorer l'efficacité de la relation client."
+      "title": "Gestion de Call Center",
+      "description": "Mise en place d’un système de téléphonie cloud intégré au CRM pour optimiser la relation client."
     },
     "project3": {
-      "title": "Plateforme de gestion de stock et commandes",
-      "description": "Conception d'une solution ERP légère pour gérer les fournitures de bureau et produits divers dans les établissements publics."
+      "title": "ERP de gestion des stocks",
+      "description": "Solution sur mesure pour gérer efficacement les fournitures et les commandes des établissements publics."
     },
     "project4": {
       "title": "Application mobile de suivi de flotte",
-      "description": "Création d'une application mobile pour le suivi en temps réel des véhicules de location avec géolocalisation et alertes."
+      "description": "Suivi en temps réel avec géolocalisation et alertes pour optimiser la gestion des véhicules."
     },
     "project5": {
-      "title": "Système d'analyse des appels clients",
-      "description": "Développement d'une solution d'analyse vocale pour évaluer la qualité des interactions avec les clients."
+      "title": "Analyse des appels clients",
+      "description": "Outil d’analyse vocale pour mesurer la qualité et améliorer l’expérience client."
     },
     "project6": {
-      "title": "Marketplace B2B de fournitures",
-      "description": "Plateforme e-commerce spécialisée pour les achats de fournitures professionnelles avec gestion des commandes récurrentes."
+      "title": "Marketplace B2B",
+      "description": "Plateforme e-commerce dédiée aux fournitures professionnelles avec commandes récurrentes simplifiées."
     },
     "project7": {
-      "title": "Outil de gestion des contrats de location",
-      "description": "Solution digitale pour générer, signer et archiver électroniquement les contrats de location de véhicules."
+      "title": "Gestion des contrats de location",
+      "description": "Solution digitale pour générer, signer et archiver les contrats en toute sécurité."
     }
   }
 },

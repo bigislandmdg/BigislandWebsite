@@ -1,19 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import {
-  FaHandshake,
-  FaRocket,
-  FaUsers,
-  FaRegChartBar,
-  FaRegLightbulb,
-  FaUsersCog,
-} from 'react-icons/fa';
-import { IconType } from 'react-icons';
+import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
 
 // ✅ Effet tilt sur la souris
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -49,8 +40,16 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
   );
 }
 
-// ✅ Carte animée
-const AnimatedCard = ({ title, description, Icon }: { title: string; description: string; Icon: IconType }) => {
+// ✅ Carte animée principale
+const AnimatedCard = ({
+  title,
+  description,
+  Icon,
+}: {
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -69,7 +68,7 @@ const AnimatedCard = ({ title, description, Icon }: { title: string; description
           transition={{ repeat: Infinity, duration: 2 }}
           className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
         >
-          <Icon className="text-4xl text-blue-600" />
+          <Icon className="w-10 h-10 text-blue-600" />
         </motion.div>
 
         <h3 className="text-xl font-semibold text-gray-800 mb-3">{title}</h3>
@@ -79,23 +78,23 @@ const AnimatedCard = ({ title, description, Icon }: { title: string; description
   );
 };
 
-// ✅ Page principale AboutScreen
+// ✅ Page AboutScreen complète
 export default function AboutScreen() {
   const { t } = useTranslation('common');
 
   const rawSteps = t('aboutPage.process.steps', { returnObjects: true });
-  const processIcons = [FaRegLightbulb, FaRegChartBar, FaUsersCog];
+  const processIcons = [Lightbulb, BarChart3, Settings];
 
   const processSteps = Array.isArray(rawSteps)
     ? rawSteps.map((step, index) => ({
         ...step,
-        Icon: processIcons[index],
+        Icon: processIcons[index % processIcons.length],
       }))
     : [];
 
   return (
     <section>
-      {/* 🔹 Hero Section avec bannière */}
+      {/* ===== Hero Section ===== */}
       <div className="relative bg-gray-700">
         <div className="absolute inset-0">
           <Image
@@ -105,7 +104,7 @@ export default function AboutScreen() {
             className="object-cover opacity-40"
             priority
           />
-          <div className="absolute inset-0 bg-gray-900/60" /> {/* Overlay sombre */}
+          <div className="absolute inset-0 bg-gray-900/60" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 py-32 text-center text-white">
@@ -128,58 +127,78 @@ export default function AboutScreen() {
         </div>
       </div>
 
-      {/* 🔹 Cards principales */}
+      {/* ===== Cards principales ===== */}
       <div className="px-6 py-20 max-w-7xl mx-auto">
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20">
           <AnimatedCard
             title={t('aboutPage.whoWeAre.title')}
             description={t('aboutPage.whoWeAre.description')}
-            Icon={FaUsers}
+            Icon={Users}
           />
           <AnimatedCard
             title={t('aboutPage.mission.title')}
             description={t('aboutPage.mission.description')}
-            Icon={FaRocket}
+            Icon={Rocket}
           />
           <AnimatedCard
             title={t('aboutPage.offer.title')}
             description={t('aboutPage.offer.description')}
-            Icon={FaHandshake}
+            Icon={Handshake}
           />
         </div>
 
-         {/* 🔹 Processus (Bento Grid style) */}
-<motion.h3
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.7 }}
-  className="text-2xl font-bold text-gray-800 mb-10 text-center"
->
-  {t('aboutPage.process.title')}
-</motion.h3>
+       {/* ===== Process Section (2x2 offset grid) ===== */}
+<section id="process" className="bg-white-50 py-16 sm:py-20">
+  <div className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
 
-<div className="grid gap-6 lg:grid-cols-6">
-  {processSteps.map((step, index) => (
+    {/* Colonne gauche : grille des étapes */}
     <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className={`relative bg-white shadow-md rounded-2xl p-8 flex flex-col justify-between hover:shadow-xl transition 
-        ${index === 0 ? 'lg:col-span-3' : ''} 
-        ${index === 1 ? 'lg:col-span-3 lg:row-span-2' : ''} 
-        ${index === 2 ? 'lg:col-span-3' : ''}`}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-6"
     >
-      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-blue-100 mb-6">
-        <step.Icon className="text-3xl text-blue-600" />
-      </div>
-      <h4 className="text-xl font-semibold text-gray-800 mb-3">{step.title}</h4>
-      <p className="text-gray-600 leading-relaxed">{step.description}</p>
+      {processSteps.map((step, idx) => (
+        <motion.div
+          key={idx}
+          whileHover={{ scale: 1.03 }}
+          className={`rounded-3xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col h-full
+            ${idx % 2 !== 0 ? 'sm:mt-8' : ''}`}
+        >
+          <div className="mb-4 flex items-center gap-x-3">
+            <step.Icon className="h-8 w-8 text-blue-600" />
+            <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
+          </div>
+          <p className="text-gray-700 text-base leading-6 flex-1">{step.description}</p>
+        </motion.div>
+      ))}
     </motion.div>
-  ))}
-</div>
+
+    {/* Colonne droite : titre + description globale */}
+    <div className="max-w-xl">
+      <motion.h2
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+      >
+        {t('aboutPage.process.title')}
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+        className="mt-6 text-lg leading-8 text-gray-600"
+      >
+        {t('aboutPage.process.description')}
+      </motion.p>
+    </div>
+  </div>
+</section>
       </div>
     </section>
   );

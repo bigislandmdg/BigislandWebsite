@@ -2,8 +2,10 @@
 
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import { FolderGit2 } from 'lucide-react';
 
 export default function ProjetScreen() {
   const { t, i18n } = useTranslation('common');
@@ -79,36 +81,44 @@ export default function ProjetScreen() {
         <meta name="description" content={t('projectPage.metaDescription')} />
       </Head>
 
-      <motion.section 
-        id="projects" 
-        className="pt-32 pb-16 px-6 max-w-6xl mx-auto text-center"
+      {/* ---- Banner Header ---- */}
+      <section className="relative h-64 md:h-80 w-full bg-blue-600">
+        <Image
+                    src="/images/banners/contact-hero.jpg"
+                    alt="Contact Hero"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center"
+          >
+            <FolderGit2 className="text-white text-5xl mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              {t('projectPage.title')}
+            </h1>
+            <p className="text-blue-100 text-lg max-w-2xl">
+              {t('projectPage.description')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ---- Project Scroller ---- */}
+      <motion.section
+        id="projects"
+        className="pt-16 pb-16 px-6 max-w-6xl mx-auto text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        {/* ---- Titre + Description ---- */}
-        <motion.h1
-          className="text-4xl font-bold text-blue-600 mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 10 }}
-        >
-          {t('projectPage.title')}
-        </motion.h1>
-
-        <motion.p
-          className="text-gray-700 text-lg mb-10 max-w-3xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          {t('projectPage.description')}
-        </motion.p>
-
-        {/* ---- Ticker horizontal ---- */}
-        <div 
-          ref={containerRef} 
-          className="overflow-hidden relative w-full h-[400px] cursor-pointer"
+        <div
+          ref={containerRef}
+          className="overflow-hidden relative w-full h-[420px] cursor-pointer"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -128,9 +138,10 @@ export default function ProjetScreen() {
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ 
+                whileHover={{
                   y: -5,
-                  boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
+                  boxShadow:
+                    "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
                   transition: { duration: 0.2 }
                 }}
               >
@@ -153,23 +164,20 @@ export default function ProjetScreen() {
           </motion.div>
         </div>
 
-        {/* ---- CTA ---- */}
-        <motion.div
-          className="mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        {/* ---- CTA Simple Justified ---- */}
+        <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
+          <h2 className="text-2xl md:text-3xl font-bold">
+            {t('projectPage.ctaTitle') || 'Vous voulez en savoir plus ?'}
+          </h2>
           <a
             href="/contact"
-            className="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl text-lg font-medium"
+            className="inline-block bg-white text-blue-600 font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
           >
             {t('projectPage.cta')}
           </a>
-        </motion.div>
+        </section>
       </motion.section>
     </>
   );
 }
+

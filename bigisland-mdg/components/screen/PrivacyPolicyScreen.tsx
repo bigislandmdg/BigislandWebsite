@@ -11,38 +11,14 @@ export default function PrivacyPolicyScreen() {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const sections = [
-    {
-      title: t('privacyPolicy.sections.introduction.title'),
-      content: t('privacyPolicy.sections.introduction.content')
-    },
-    {
-      title: t('privacyPolicy.sections.dataCollected.title'),
-      content: t('privacyPolicy.sections.dataCollected.content')
-    },
-    {
-      title: t('privacyPolicy.sections.dataUsage.title'),
-      content: t('privacyPolicy.sections.dataUsage.content')
-    },
-    {
-      title: t('privacyPolicy.sections.dataSharing.title'),
-      content: t('privacyPolicy.sections.dataSharing.content')
-    },
-    {
-      title: t('privacyPolicy.sections.userRights.title'),
-      content: t('privacyPolicy.sections.userRights.content')
-    },
-    {
-      title: t('privacyPolicy.sections.dataSecurity.title'),
-      content: t('privacyPolicy.sections.dataSecurity.content')
-    },
-    {
-      title: t('privacyPolicy.sections.cookies.title'),
-      content: t('privacyPolicy.sections.cookies.content')
-    },
-    {
-      title: t('privacyPolicy.sections.policyChanges.title'),
-      content: t('privacyPolicy.sections.policyChanges.content')
-    }
+    { title: t('privacyPolicy.sections.introduction.title'), content: t('privacyPolicy.sections.introduction.content') },
+    { title: t('privacyPolicy.sections.dataCollected.title'), content: t('privacyPolicy.sections.dataCollected.content') },
+    { title: t('privacyPolicy.sections.dataUsage.title'), content: t('privacyPolicy.sections.dataUsage.content') },
+    { title: t('privacyPolicy.sections.dataSharing.title'), content: t('privacyPolicy.sections.dataSharing.content') },
+    { title: t('privacyPolicy.sections.userRights.title'), content: t('privacyPolicy.sections.userRights.content') },
+    { title: t('privacyPolicy.sections.dataSecurity.title'), content: t('privacyPolicy.sections.dataSecurity.content') },
+    { title: t('privacyPolicy.sections.cookies.title'), content: t('privacyPolicy.sections.cookies.content') },
+    { title: t('privacyPolicy.sections.policyChanges.title'), content: t('privacyPolicy.sections.policyChanges.content') }
   ];
 
   const toggleSection = (index: number) => {
@@ -53,56 +29,50 @@ export default function PrivacyPolicyScreen() {
     <>
       <Head>
         <title>{t('privacyPolicy.pageTitle')}</title>
-        <meta
-          name="description"
-          content={t('privacyPolicy.metaDescription')}
-        />
+        <meta name="description" content={t('privacyPolicy.metaDescription')} />
       </Head>
 
-      {/* ===== Header with Banner ===== */}
-      <div className="relative h-90 bg-blue-500">
+      {/* ===== Header Banner ===== */}
+      <section className="relative h-64 md:h-96 w-full bg-blue-600">
         <img
-          src="/images/privacy-banner.jpg"
+          src="/images/banners/contact-hero.jpg"
           alt="Privacy Policy Banner"
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-          <ShieldCheck className="w-12 h-12 mb-4" />
-          <h1 className="text-4xl md:text-5xl font-bold">
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
+          <ShieldCheck className="w-16 h-16 text-white mb-4 drop-shadow-lg" />
+          <h1 className="text-4xl md:text-5xl font-bold text-white">
             {t('privacyPolicy.title')}
           </h1>
-          <p className="mt-2 text-lg max-w-2xl">
+          <p className="mt-4 text-lg text-gray-200 max-w-2xl">
             {t('privacyPolicy.intro')}
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* ===== Content Sections ===== */}
-      <section
-        id="privacy-policy"
-        className="pt-16 pb-20 px-4 max-w-5xl mx-auto"
-      >
-        <div className="space-y-4">
+      {/* ===== Sections ===== */}
+      <section className="pt-16 pb-20 px-4 max-w-5xl mx-auto">
+        <div className="space-y-6">
           {sections.map((section, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200"
+              className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
-              whileHover={{ scale: 1.01 }}
+              whileHover={{ scale: 1.02 }}
             >
               <button
-                className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
+                className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => toggleSection(index)}
               >
-                <h2 className="text-xl md:text-2xl font-semibold text-blue-700">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">
                   {section.title}
                 </h2>
                 {expandedSection === index ? (
-                  <ChevronUp className="text-blue-500 w-6 h-6" />
+                  <ChevronUp className="text-blue-600 w-6 h-6" />
                 ) : (
-                  <ChevronDown className="text-blue-500 w-6 h-6" />
+                  <ChevronDown className="text-blue-600 w-6 h-6" />
                 )}
               </button>
 
@@ -116,7 +86,7 @@ export default function PrivacyPolicyScreen() {
                     className="px-6 pb-6 text-gray-700"
                   >
                     <div className="border-t border-gray-200 pt-4">
-                      <p className="leading-relaxed whitespace-pre-line">
+                      <p className="leading-relaxed whitespace-pre-line text-base md:text-lg">
                         {section.content}
                       </p>
                     </div>
@@ -127,24 +97,27 @@ export default function PrivacyPolicyScreen() {
           ))}
         </div>
 
-        {/* ===== Help Section ===== */}
+        {/* ===== CTA Help Section ===== */}
         <motion.div
-          className="mt-12 bg-blue-50 rounded-2xl p-8 text-center"
+          className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 text-center text-white shadow-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <h3 className="text-xl font-semibold text-blue-700 mb-2">
-            {t('privacyPolicy.needHelp') ||
-              'Questions about our privacy policy?'}
+          <h3 className="text-2xl md:text-3xl font-bold mb-3">
+            {t('privacyPolicy.needHelp') || 'Des questions concernant notre politique de confidentialité ?'}
           </h3>
-          <p className="text-blue-600">
-            {t('privacyPolicy.contactUs') ||
-              'Contact our Data Protection Officer at dpo@example.com'}
+          <p className="mb-4 text-lg">
+            {t('privacyPolicy.contactUs') || 'Contactez notre DPO à dpo@example.com'}
           </p>
+          <a
+            href="mailto:dpo@example.com"
+            className="inline-block px-6 py-3 bg-white text-blue-700 font-medium rounded-xl shadow hover:bg-gray-100 transition"
+          >
+            {t('privacyPolicy.contactButton', 'Nous écrire')}
+          </a>
         </motion.div>
       </section>
     </>
   );
 }
-

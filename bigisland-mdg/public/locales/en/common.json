@@ -232,33 +232,34 @@
   },
 "aboutPage": {
   "title": "About Us",
-  "subtitle": "Welcome to BigIslandMDG, your expert in digital solutions.",
+  "subtitle": "BigIslandMDG, your trusted partner for digital transformation.",
   "whoWeAre": {
     "title": "Who We Are",
-    "description": "We are a passionate team dedicated to creating innovative solutions for our clients."
+    "description": "A passionate team dedicated to helping businesses grow through innovative and effective digital solutions."
   },
   "mission": {
     "title": "Our Mission",
-    "description": "To provide high-quality services with a focus on transparency, commitment, and sustainability."
+    "description": "Deliver high-quality services built on transparency, commitment, and long-term value creation for our clients."
   },
   "offer": {
     "title": "What We Offer",
-    "description": "Tailor-made solutions, a collaborative approach, and support throughout your project."
+    "description": "Tailor-made solutions, a collaborative approach, and strategic support to ensure the success of your digital projects."
   },
-   "process": {
-    "title": "Our Process",
+  "process": {
+    "title": "Our Approach",
+    "description": "A clear and agile process that keeps you at the center of every step.",
     "steps": [
       {
-        "title": "Listening",
-        "description": "Understanding your specific needs and goals."
+        "title": "Listen",
+        "description": "We analyze your needs and goals to fully understand your challenges."
       },
       {
         "title": "Design",
-        "description": "Creating a tailor-made solution adapted to your project."
+        "description": "We create a customized digital solution aligned with your vision."
       },
       {
-        "title": "Deployment",
-        "description": "Launching your solution and providing ongoing support."
+        "title": "Deploy",
+        "description": "We ensure implementation, monitoring, and continuous support."
       }
     ]
   }
@@ -406,62 +407,64 @@
     }
   }
 },
-   "testimonyPage": {
-    "pageTitle": "Customer Testimonials",
-    "metaDescription": "Read what our satisfied customers have to say.",
-    "title": "What Our Customers Say About Us",
-    "description": "We’re proud to share the experiences of our valued clients.",
-    "cta": "Contact Us",
-    "clients": {
-      "client1": {
-        "name": "Marie Dupont",
-        "message": "Impeccable service, I highly recommend!"
-      },
-      "client2": {
-        "name": "Jean Martin",
-        "message": "A smooth and professional experience."
-      },
-      "client3": {
-        "name": "Sophie Durand",
-        "message": "Very satisfied with the rental, great staff."
-      }
+  "testimonyPage": {
+  "pageTitle": "Client Testimonials",
+  "metaDescription": "Discover what our clients say about our services: vehicle rentals, IT solutions, call centers, and procurement.",
+  "title": "Trusted by Our Clients",
+  "description": "Our clients share their experience and the added value we bring to their business every day.",
+  "ctaTitle": "Ready to write your success story with us?",
+  "cta": "Get in touch",
+  "clients": {
+    "client1": {
+      "name": "Marie Dupont",
+      "message": "Outstanding service and a team that truly listens. Highly recommended!"
+    },
+    "client2": {
+      "name": "Jean Martin",
+      "message": "Efficient solutions that transformed the way we work."
+    },
+    "client3": {
+      "name": "Sophie Durand",
+      "message": "A smooth collaboration with results that exceeded our expectations."
     }
-  },
-  "projectPage": {
+  }
+},
+ "projectPage": {
   "pageTitle": "Our Projects",
-  "metaDescription": "Discover projects completed around our services: car rental, call center, IT solutions and product supplies.",
-  "title": "Completed Projects",
-  "description": "Here are some projects we have successfully completed in our main service areas.",
-  "cta": "Contact us to learn more",
-  "viewProject": "View project",
+  "metaDescription": "Discover our successful projects in vehicle rentals, IT solutions, call centers, and product supply.",
+  "title": "Projects That Make a Difference",
+  "description": "We support our clients with innovative, tailor-made solutions designed to deliver real impact.",
+  "ctaTitle": "Have a project in mind?",
+  "cta": "Let’s talk",
+  "viewProject": "View Project",
   "projects": {
     "project1": {
-      "title": "Car Rental Platform",
-      "description": "Development of a comprehensive web application to book, manage and track vehicle rentals in real time."
+      "title": "Vehicle Rental Platform",
+      "description": "A user-friendly web application to book, manage, and track car rentals in real time."
     },
     "project2": {
       "title": "Call Center Management Solution",
-      "description": "Implementation of a cloud telephony system with CRM integration to improve customer relationship efficiency."
+      "description": "Implementation of a cloud-based telephony system with CRM integration to boost customer relations."
     },
     "project3": {
-      "title": "Inventory and Order Management Platform",
-      "description": "Design of a lightweight ERP solution to manage office supplies and various products in public institutions."
+      "title": "Inventory & Order Management ERP",
+      "description": "A lightweight ERP solution to efficiently manage office supplies and orders for public institutions."
     },
     "project4": {
-      "title": "Fleet Tracking Mobile Application",
-      "description": "Creation of a mobile app for real-time rental vehicle tracking with geolocation and alerts."
+      "title": "Fleet Tracking Mobile App",
+      "description": "A mobile app for real-time vehicle tracking with geolocation and smart alerts."
     },
     "project5": {
-      "title": "Customer Call Analysis System",
-      "description": "Development of a voice analysis solution to evaluate the quality of customer interactions."
+      "title": "Customer Call Analytics",
+      "description": "A voice analysis tool to measure call quality and enhance customer experience."
     },
     "project6": {
-      "title": "B2B Supplies Marketplace",
-      "description": "Specialized e-commerce platform for professional supplies purchases with recurring orders management."
+      "title": "B2B Marketplace",
+      "description": "An e-commerce platform for professional supplies with simplified recurring orders."
     },
     "project7": {
       "title": "Rental Contract Management Tool",
-      "description": "Digital solution to generate, sign and electronically archive vehicle rental contracts."
+      "description": "A digital solution to generate, sign, and securely archive rental contracts."
     }
   }
 },

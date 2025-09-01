@@ -42,15 +42,15 @@ export default function CguScreen() {
       </Head>
 
       {/* ---- Banner Header ---- */}
-      <section className="relative h-64 md:h-80 w-full">
+       <section className="relative h-64 md:h-80 w-full bg-blue-600">
         <Image
-          src="/images/banners/cgu-banner.jpg" // 👉 mets ton image de CGU ici
-          alt="CGU Banner"
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0 z-0"
-        />
-        <div className="absolute inset-0 bg-blue-900 bg-opacity-50 flex flex-col justify-center items-center text-center px-4">
+            src="/images/banners/contact-hero.jpg"
+            alt="Contact Hero"
+            fill
+            className="object-cover"
+            priority
+            />
+         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
