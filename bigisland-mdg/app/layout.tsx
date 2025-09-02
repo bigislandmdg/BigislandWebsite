@@ -38,11 +38,9 @@ export default function RootLayout({
         <ClientLayout>
            <FloatingLanguageToggle />
            <main className="pb-0 lg:pb-0 bg-white min-h-screen">{children}</main>
-         
+           <CookieConsent />
         </ClientLayout>
-
-         {/* Bannière cookies animée */}
-         <CookieConsent />
+        
       </body>
     </html>
   );

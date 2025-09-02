@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { X, Cookie } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 export default function CookieConsent() {
   const { t } = useTranslation("common");
