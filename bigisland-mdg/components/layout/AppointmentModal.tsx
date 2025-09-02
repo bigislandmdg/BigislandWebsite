@@ -1,7 +1,17 @@
 'use client';
 
 import * as Dialog from '@radix-ui/react-dialog';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { 
+  X, 
+  Calendar, 
+  Phone, 
+  Mail, 
+  User, 
+  ClipboardList, 
+  MessageSquare, 
+  XCircle, 
+  CalendarCheck 
+} from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 
 type AppointmentModalProps = {
@@ -23,7 +33,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
         {/* Overlay */}
-        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm data-[state=open]:animate-fadeIn" />
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm data-[state=open]:animate-fadeIn" />
 
         {/* Panel */}
         <Dialog.Content
@@ -32,13 +42,17 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                      data-[state=open]:animate-slideUp data-[state=closed]:animate-slideDown"
         >
           {/* Header */}
-          <div className="px-6 pt-6 pb-4 border-b border-gray-200 flex justify-between items-start">
-            <Dialog.Title className="text-xl font-bold text-gray-800">
+          <div className="px-6 pt-6 pb-4 border-b border-gray-200 flex justify-between items-center">
+            <Dialog.Title className="text-xl font-bold text-gray-900 flex items-center gap-2">
+              <ClipboardList className="h-5 w-5 text-blue-600" />
               {t('appointment.title')}
             </Dialog.Title>
             <Dialog.Close asChild>
-              <button className="text-gray-500 hover:text-gray-700">
-                <XMarkIcon className="h-6 w-6" />
+              <button
+                className="p-1 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition"
+                aria-label={t('appointment.form.close')}
+              >
+                <X className="h-5 w-5" />
               </button>
             </Dialog.Close>
           </div>
@@ -48,54 +62,58 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
             <form className="space-y-4">
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <User className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.name')} *
                 </label>
                 <input
                   type="text"
                   id="name"
                   required
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <Mail className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.email')} *
                 </label>
                 <input
                   type="email"
                   id="email"
                   required
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="phone" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <Phone className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.phone')}
                 </label>
                 <input
                   type="tel"
                   id="phone"
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
               {/* Services */}
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="service" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <ClipboardList className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.service')} *
                 </label>
                 <select
                   id="service"
                   required
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value="">{t('appointment.form.selectService')}</option>
@@ -109,27 +127,29 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
 
               {/* Date */}
               <div>
-                <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="date" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <Calendar className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.date')} *
                 </label>
                 <input
                   type="date"
                   id="date"
                   required
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                  <MessageSquare className="h-4 w-4 text-gray-500" />
                   {t('appointment.form.message')}
                 </label>
                 <textarea
                   id="message"
                   rows={3}
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 
+                  className="mt-1 block w-full rounded-lg border border-gray-300 py-2 px-3 
                              shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 ></textarea>
               </div>
@@ -141,15 +161,17 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
             <Dialog.Close asChild>
               <button
                 type="button"
-                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
               >
+                <XCircle className="h-4 w-4" />
                 {t('appointment.form.cancel')}
               </button>
             </Dialog.Close>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm"
             >
+              <CalendarCheck className="h-4 w-4" />
               {t('appointment.form.submit')}
             </button>
           </div>

@@ -3,7 +3,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCalendarAlt, FaClock, FaTimes } from 'react-icons/fa';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  CalendarDays,
+  Clock,
+  X,
+  Send,
+} from 'lucide-react';
 
 export default function ContactSection() {
   const { t } = useTranslation('common');
@@ -16,9 +24,8 @@ export default function ContactSection() {
   const handleScheduleMeeting = () => {
     const meetLink = 'https://meet.google.com/new';
     setMeetingLink(meetLink);
-
     window.open(meetLink, '_blank');
-    
+
     setTimeout(() => {
       setIsModalOpen(false);
       setMeetingLink('');
@@ -27,161 +34,176 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const formData = new FormData(e.currentTarget);
     const { name, email, message } = Object.fromEntries(formData.entries());
-    
+
     try {
       const subject = encodeURIComponent(`Nouveau message de ${name}`);
       const body = encodeURIComponent(
         `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
       );
-      
+
       window.location.href = `mailto:contact@bigisland.mg?subject=${subject}&body=${body}`;
-      
+
       setFormStatus({
         success: true,
-        message: t('contact.successMessage')
+        message: t('contact.successMessage'),
       });
-      
+
       e.currentTarget.reset();
-      
+
       setTimeout(() => {
         setFormStatus({ success: false, message: '' });
       }, 5000);
     } catch (error) {
       setFormStatus({
         success: false,
-        message: t('contact.errorMessage')
+        message: t('contact.errorMessage'),
       });
     }
   };
 
   return (
-    <section id="contact" className="px-4 py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
-        {/* Formulaire de contact amélioré */}
+    <section id="contact" className="bg-gray-50 py-20 sm:py-28 px-4">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+        {/* Form */}
         <motion.div
-          className="bg-white p-6 sm:p-11 rounded-xl shadow-lg border border-gray-100"
+          className="bg-white p-8 sm:p-12 rounded-2xl shadow-lg border border-gray-100"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             {t('contact.title')}
           </h2>
-          <p className="text-gray-600 mb-6">
-            {t('contact.subtitle')}
-          </p>
-          
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <p className="text-gray-600 mb-8">{t('contact.subtitle')}</p>
+
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 {t('contact.name')}
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderName')}
                 required
+                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
               />
             </div>
-            
-            <div className="space-y-1">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 {t('contact.email')}
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderEmail')}
                 required
+                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
               />
             </div>
-            
-            <div className="space-y-1">
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 {t('contact.message')}
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                 placeholder={t('contact.placeholderMessage')}
                 required
+                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
               />
             </div>
-            
+
             {formStatus.message && (
-              <div className={`p-3 rounded-lg ${formStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+              <div
+                className={`p-3 rounded-lg text-sm ${
+                  formStatus.success
+                    ? 'bg-green-50 text-green-700'
+                    : 'bg-red-50 text-red-700'
+                }`}
+              >
                 {formStatus.message}
               </div>
             )}
-            
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+
+            <div className="flex flex-col sm:flex-row gap-4">
               <button
                 type="submit"
-                className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center gap-2"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition active:scale-95"
               >
-                <FaEnvelope />
+                <Send className="w-4 h-4" />
                 {t('contact.send')}
               </button>
-              
               <button
                 type="button"
-                className="flex-1 flex items-center justify-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-all shadow-md hover:shadow-lg active:scale-95"
                 onClick={() => setIsModalOpen(true)}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-blue-600 bg-white px-6 py-3 text-blue-600 shadow-md hover:bg-blue-50 hover:shadow-lg transition active:scale-95"
               >
-                <FaCalendarAlt />
-                {t('contact.scheduleMeeting') || 'Planifier une réunion'}
+                <CalendarDays className="w-4 h-4" />
+                {t('contact.scheduleMeeting')}
               </button>
             </div>
           </form>
         </motion.div>
 
-        {/* Carte Google Maps + Coordonnées */}
+        {/* Contact Info */}
         <motion.div
-          className="w-full h-full rounded-2xl overflow-hidden shadow-lg bg-white"
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
         >
-          <div className="w-full h-80 sm:h-96 rounded-t-2xl overflow-hidden">
+          <div className="h-80 sm:h-96">
             <iframe
-              title="Localisation"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin&#39;ny%20Aina!5e0!3m2!1sfr!2smg!4v1712345678900"
-              width="100%"
-              height="100%"
-              allowFullScreen
-              loading="lazy"
-              className="border-0"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+  title="Localisation"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin%27ny%20Aina!5e0!3m2!1sfr!2smg!4v1693945000000!5m2!1sfr!2smg"
+  width="100%"
+  height="100%"
+  allowFullScreen
+  loading="lazy"
+  className="border-0"
+  referrerPolicy="no-referrer-when-downgrade"
+/>
+
           </div>
 
-          <div className="p-6 space-y-4">
-            <h3 className="text-xl font-bold text-gray-800">{t('footer.ourContact')}</h3>
-            
-            <div className="space-y-3 text-gray-700">
+          <div className="p-8 space-y-5">
+            <h3 className="text-xl font-semibold text-gray-900">
+              {t('footer.ourContact')}
+            </h3>
+
+            <div className="space-y-4 text-gray-700">
               <div className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-blue-600 mt-1 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-blue-600 mt-1" />
                 <span>{t('footer.address')}</span>
               </div>
-              
+
               <div className="flex items-center gap-3">
-                <FaPhone className="text-blue-600 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-blue-600" />
                 <span>{t('footer.phone')}</span>
               </div>
-              
+
               <div className="flex items-center gap-3">
-                <FaEnvelope className="text-blue-600 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-blue-600" />
                 <span>{t('footer.email')}</span>
               </div>
             </div>
@@ -189,7 +211,7 @@ export default function ContactSection() {
         </motion.div>
       </div>
 
-      {/* Modale de réunion */}
+      {/* Meeting Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -200,70 +222,71 @@ export default function ContactSection() {
             onClick={() => setIsModalOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-xl shadow-2xl w-full max-w-lg absolute max-h-[100vh] overflow-y-auto"
-              style={{ maxHeight: '90vh' }}
+              exit={{ scale: 0.95, y: 20 }}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-lg relative"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition p-1 rounded-full hover:bg-gray-100"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100"
                 onClick={() => setIsModalOpen(false)}
               >
-                <FaTimes className="text-xl" />
+                <X className="w-5 h-5" />
               </button>
-              
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-6">
                   <div className="bg-blue-100 p-2 rounded-lg">
-                    <FaCalendarAlt className="text-blue-600 text-xl" />
+                    <CalendarDays className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800">{t('contact.scheduleMeeting')}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {t('contact.scheduleMeeting')}
+                  </h3>
                 </div>
-                
-                <form className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+
+                <form className="space-y-5">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('contact.date')}
                     </label>
                     <input
                       type="date"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
                       value={selectedDate}
                       onChange={(e) => setSelectedDate(e.target.value)}
                       required
                     />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('contact.time')}
                     </label>
                     <input
                       type="time"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
                       value={selectedTime}
                       onChange={(e) => setSelectedTime(e.target.value)}
                       required
                     />
                   </div>
-                  
+
                   <button
                     type="button"
                     onClick={handleScheduleMeeting}
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition active:scale-95"
                   >
-                    <FaCalendarAlt />
+                    <CalendarDays className="w-4 h-4" />
                     {t('contact.confirmMeeting')}
                   </button>
 
                   {meetingLink && (
                     <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm">
                       <p>{t('contact.meetingCreated')}</p>
-                      <a 
-                        href={meetingLink} 
-                        target="_blank" 
+                      <a
+                        href={meetingLink}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 underline break-all"
                       >
@@ -280,3 +303,4 @@ export default function ContactSection() {
     </section>
   );
 }
+

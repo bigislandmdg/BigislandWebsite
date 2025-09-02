@@ -192,44 +192,50 @@
     "role": "CTO"
   }
 },
- "blog": {
-    "title": "Stay at the Heart of Our News",
-    "subtitle": "Explore our latest articles, expert advice, and must-read updates.",
-    "readMore": "Read more",
-     "today": "Today",
-    "yesterday": "Yesterday",
-    "daysAgo": "{{count}} days ago",
-    "readTime": "{{count}} min read",
-    "share": "Share",
-    "backToList": "Back to the list of articles",
-    "post1": {
-      "title": "How to Optimize Your Logistics?",
-      "description": "Discover our best practices to improve your logistics operations.",
-      "content": "In a competitive economic environment, logistics optimization becomes a strategic lever. Our analysis reveals 3 key areas for improvement:\n\n1. **Warehouse Automation**: Modern WMS systems reduce errors by 30% and speed up order processing.\n\n2. **Route Optimization**: Intelligent routing algorithms can decrease miles driven by 15-20%.\n\n3. **Inter-Company Collaboration**: Sharing logistics resources among partners cuts fixed costs while improving load efficiency.\n\nThese solutions, combined with ongoing team training, transform logistics from a cost center into a competitive advantage."
-    },
-    "post2": {
-      "title": "The Impact of Technology on Customer Service",
-      "description": "Analysis of digital tools transforming customer relationships.",
-      "content": "The digital revolution has redefined consumer expectations. \n\n Here’s how new technologies are reinventing customer service:\n\n- **Smart Chatbots**: Capable of resolving 80% of common queries in under 2 minutes while continuously learning.\n\n- **Augmented Reality**: Allows support agents to overlay technical information during video calls, reducing resolution time.\n\n- **Predictive Analytics**: AI systems anticipate customer needs before they even make a request, with up to 92% accuracy.\n\nThese innovations create a seamless and personalized customer experience while allowing teams to focus on complex cases requiring human expertise."
-    },
-    "post3": {
-      "title": "Our Commitments to a Sustainable Future",
-      "description": "How our team acts concretely for a more responsible world.",
-      "content": "Our CSR approach is built around 4 fundamental pillars:\n\n**1. Carbon neutrality**: Since 2025, we've been offsetting 110% of our emissions through certified reforestation projects.\n\n**2. Circular economy**: 95% of our packaging is now recyclable and we've implemented a product take-back program for end-of-life items.\n\n**3. Ethical partnerships**: All our suppliers comply with our demanding social charter, verified through independent audits.\n\n**4. Sustainable innovation**: 15% of our revenue is reinvested in research for ecological solutions.\n\nThese concrete, measurable and transparent actions reflect our belief that a successful company must also be a responsible actor in its ecosystem."
-    }
+"blog": {
+  "title": "Stay at the Heart of Innovation",
+  "subtitle": "Explore our strategic insights, expert advice, and must-read trends to drive your growth.",
+  "readMore": "Read More",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "daysAgo": "{{count}} days ago",
+  "readTime": "{{count}} min read",
+  "share": "Share",
+  "backToList": "Back to Articles",
+  "post1": {
+    "title": "Optimizing Logistics: A Key to Competitiveness",
+    "description": "Proven methods to turn your supply chain into a strategic advantage.",
+    "content": "In today’s highly competitive market, logistics should no longer be seen as a cost center but as a driver of performance. Here are 3 essential levers:\n\n1. **Smart Warehouse Automation**: Next-gen WMS solutions reduce errors by 30% and speed up order processing.\n\n2. **Optimized Routing**: Integrating advanced planning algorithms reduces mileage by 15–20% while improving delivery times.\n\n3. **Resource Sharing**: Logistics collaboration between partners generates substantial cost savings and improves load efficiency.\n\n👉 By combining these strategies with ongoing team training, your supply chain becomes a growth engine and a sustainable competitive advantage."
   },
+  "post2": {
+    "title": "Technology & Customer Service: Towards an Augmented Experience",
+    "description": "Learn how digital solutions are revolutionizing customer experience and boosting satisfaction.",
+    "content": "Consumer expectations have dramatically shifted in the digital era. To stay competitive, your customer service must become a true experience hub. Key trends include:\n\n- **Intelligent Chatbots**: Handle up to 80% of requests in under 2 minutes, improving responsiveness while reducing operational costs.\n\n- **Augmented Reality**: Advisors access real-time technical information during video calls, cutting resolution times by half.\n\n- **Predictive Analytics**: AI anticipates customer needs with 92% accuracy, enhancing personalization and loyalty.\n\n👉 By adopting these innovations, you deliver a seamless, personalized experience while freeing your teams to focus on high-value interactions."
+  },
+  "post3": {
+    "title": "Sustainability: Our Commitments for a Responsible Future",
+    "description": "Discover our concrete initiatives to combine performance and corporate responsibility.",
+    "content": "We believe that a successful business must also be a positive force for its ecosystem. Our commitments revolve around 4 key pillars:\n\n**1. Carbon Neutrality**: Since 2025, we offset 110% of our emissions through certified reforestation projects.\n\n**2. Circular Economy**: 95% of our packaging is recyclable, and we have implemented a product take-back program.\n\n**3. Ethical Partnerships**: All suppliers adhere to a strict social charter, verified by independent audits.\n\n**4. Sustainable Innovation**: 15% of our annual revenue is reinvested in developing eco-friendly solutions.\n\n👉 These measurable and transparent initiatives reflect our belief: profitability and sustainability can go hand in hand and are essential for the future."
+  }
+},
  "contact": {
-    "title": "Your business deserves the best : let's team up now!",
-    "subtitle": "Contact us for a personalized quote or to schedule a meeting with our team.",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "placeholderName": "Your name",
-    "placeholderEmail": "Your email address",
-    "placeholderMessage": "Your message",
-    "send": "Send",
-    "scheduleMeeting": "Plan a meeting"
-  },
+  "title": "Got a project in mind or a question?",
+  "subtitle": "We’re here to listen and discuss with you.",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "placeholderName": "Your name",
+  "placeholderEmail": "Your email address",
+  "placeholderMessage": "Your message",
+  "send": "Send",
+  "scheduleMeeting": "Schedule a meeting",
+  "date": "Date",
+  "time": "Time",
+  "confirmMeeting": "Confirm meeting",
+  "successMessage": "Your message has been sent successfully 🎉",
+  "errorMessage": "An error occurred, please try again.",
+  "meetingCreated": "Your meeting has been created. Click the link below to join:"
+},
 "aboutPage": {
   "title": "About Us",
   "subtitle": "BigIslandMDG, your trusted partner for digital transformation.",
@@ -265,17 +271,29 @@
   }
 },
 "contactPage": {
-    "title": "Contact Us",
-    "subtitle": "Fill out the form below and we will respond promptly.",
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message",
-      "send": "Send"
-    }
+  "title": "Get in Touch",
+  "subtitle": "Have a project or a question? Fill out the form below and our team will get back to you promptly with personalized guidance.",
+  "form": {
+    "name": "Full Name",
+    "email": "Email Address",
+    "subject": "Message Subject",
+    "message": "Your Message",
+    "send": "Send",
+    "placeholderName": "Enter your full name",
+    "placeholderEmail": "Enter your email address",
+    "placeholderSubject": "Enter the subject of your message",
+    "placeholderMessage": "Write your message here...",
+    "successMessage": "Thank you! Your message has been successfully sent. We will get back to you shortly.",
+    "errorMessage": "Oops! Something went wrong. Please try again."
   },
-   
+  "scheduleMeeting": {
+    "title": "Schedule a Meeting",
+    "date": "Date",
+    "time": "Time",
+    "confirmMeeting": "Confirm Meeting",
+    "meetingCreated": "Your meeting has been successfully scheduled. Click the link below to join:"
+  }
+},   
 "locationPage": {
   "pageTitle": "Car Rental | BigIslandMDG",
   "metaDescription": "Rent a car with confidence in Madagascar with BigIslandMDG. Wide range of vehicles to suit your needs: SUVs, sedans, and vans.",
@@ -438,35 +456,35 @@
   "cta": "Let’s talk",
   "viewProject": "View Project",
   "projects": {
-    "project1": {
-      "title": "Vehicle Rental Platform",
-      "description": "A user-friendly web application to book, manage, and track car rentals in real time."
-    },
-    "project2": {
-      "title": "Call Center Management Solution",
-      "description": "Implementation of a cloud-based telephony system with CRM integration to boost customer relations."
-    },
-    "project3": {
-      "title": "Inventory & Order Management ERP",
-      "description": "A lightweight ERP solution to efficiently manage office supplies and orders for public institutions."
-    },
-    "project4": {
-      "title": "Fleet Tracking Mobile App",
-      "description": "A mobile app for real-time vehicle tracking with geolocation and smart alerts."
-    },
-    "project5": {
-      "title": "Customer Call Analytics",
-      "description": "A voice analysis tool to measure call quality and enhance customer experience."
-    },
-    "project6": {
-      "title": "B2B Marketplace",
-      "description": "An e-commerce platform for professional supplies with simplified recurring orders."
-    },
-    "project7": {
-      "title": "Rental Contract Management Tool",
-      "description": "A digital solution to generate, sign, and securely archive rental contracts."
-    }
+  "project1": {
+    "title": "Smart Vehicle Rental Platform",
+    "description": "Book, manage, and track your car rentals in real-time with our intuitive and secure web application, tailored to all your needs."
+  },
+  "project2": {
+    "title": "Comprehensive Call Center Management Solution",
+    "description": "Optimize your customer relationships with a cloud-based telephony system integrated with your CRM, offering real-time reporting and multi-channel support."
+  },
+  "project3": {
+    "title": "Custom ERP for Inventory Management",
+    "description": "Streamline supply and order management with our high-performance ERP, automating inventory and optimizing your logistics workflows."
+  },
+  "project4": {
+    "title": "Real-Time Fleet Tracking Mobile App",
+    "description": "Monitor your vehicles with GPS tracking, receive alerts, and optimize fleet performance from anywhere."
+  },
+  "project5": {
+    "title": "Customer Call Analysis Tool",
+    "description": "Measure your customer service quality and improve client experience with intelligent voice analytics and detailed reports."
+  },
+  "project6": {
+    "title": "Innovative B2B Marketplace",
+    "description": "Access a dedicated e-commerce platform for professional supplies, simplifying recurring orders and centralizing your purchases."
+  },
+  "project7": {
+    "title": "Digital Rental Contract Management",
+    "description": "Create, sign, and securely archive contracts with our digital solution, reducing paperwork and streamlining your processes."
   }
+}
 },
 "cguPage": {
   "pageTitle": "Terms and Conditions of Use",
@@ -638,6 +656,12 @@
       "submit": "Submit",
       "captchaError": "Please validate the CAPTCHA"
     }
+  },
+  "cookie": {
+    "message": "We use cookies to improve your experience. By continuing, you accept our",
+    "policy": "privacy policy",
+    "accept": "Accept",
+    "close": "Close"
   }
 
 

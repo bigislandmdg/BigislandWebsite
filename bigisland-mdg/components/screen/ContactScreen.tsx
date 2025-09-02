@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
@@ -15,6 +15,26 @@ export default function ContactScreen() {
   const { t } = useTranslation('common');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const [formStatus, setFormStatus] = useState({ success: false, message: '' });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const { name, email, subject, message } = Object.fromEntries(formData.entries());
+
+    try {
+      const mailtoLink = `mailto:contact@exemple.com?subject=${encodeURIComponent(subject as string)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      window.location.href = mailtoLink;
+
+      setFormStatus({ success: true, message: t('contactPage.form.successMessage') });
+      e.currentTarget.reset();
+
+      setTimeout(() => setFormStatus({ success: false, message: '' }), 5000);
+    } catch {
+      setFormStatus({ success: false, message: t('contactPage.form.errorMessage') });
+    }
+  };
 
   return (
     <main className="bg-white min-h-screen">
@@ -32,7 +52,7 @@ export default function ContactScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
+            className="text-3xl md:text-5xl font-bold text-white mb-2"
           >
             {t('contactPage.title')}
           </motion.h1>
@@ -51,13 +71,9 @@ export default function ContactScreen() {
       <section className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-12 shadow-2xl rounded-2xl overflow-hidden">
           {/* Left Panel - Infos */}
-          <div className="bg-blue-600 px-6 py-12 sm:px-12 lg:px-16 flex flex-col justify-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white">
-              {t('contactPage.title')}
-            </h2>
-            <p className="mt-4 text-base leading-7 text-blue-100">
-              {t('contactPage.subtitle')}
-            </p>
+          <div className="bg-blue-500 px-6 py-12 sm:px-12 lg:px-16 flex flex-col justify-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white">{t('contactPage.title')}</h2>
+            <p className="mt-4 text-base leading-7 text-blue-100">{t('contactPage.subtitle')}</p>
 
             <dl className="mt-10 space-y-6 text-base leading-7 text-blue-100">
               <div className="flex gap-x-3 items-center">
@@ -87,49 +103,61 @@ export default function ContactScreen() {
             animate={isInView ? 'visible' : 'hidden'}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-2 bg-white px-6 py-12 sm:px-12 lg:px-16"
+            onSubmit={handleSubmit}
           >
             <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-semibold text-gray-900">
-                  {t('contactPage.form.name')}
-                </label>
+                <label className="block text-sm font-semibold text-gray-900">{t('contactPage.form.name')}</label>
                 <input
                   type="text"
-                  placeholder="John Doe"
+                  name="name"
+                  placeholder={t('contactPage.form.placeholderName')}
                   className="mt-2 block w-full rounded-md border-gray-300 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
+                  required
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900">
-                  {t('contactPage.form.email')}
-                </label>
+                <label className="block text-sm font-semibold text-gray-900">{t('contactPage.form.email')}</label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
+                  name="email"
+                  placeholder={t('contactPage.form.placeholderEmail')}
                   className="mt-2 block w-full rounded-md border-gray-300 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
+                  required
                 />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-semibold text-gray-900">
-                  {t('contactPage.form.subject')}
-                </label>
+                <label className="block text-sm font-semibold text-gray-900">{t('contactPage.form.subject')}</label>
                 <input
                   type="text"
-                  placeholder="Objet du message"
+                  name="subject"
+                  placeholder={t('contactPage.form.placeholderSubject')}
                   className="mt-2 block w-full rounded-md border-gray-300 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
+                  required
                 />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-semibold text-gray-900">
-                  {t('contactPage.form.message')}
-                </label>
+                <label className="block text-sm font-semibold text-gray-900">{t('contactPage.form.message')}</label>
                 <textarea
+                  name="message"
                   rows={5}
-                  placeholder="Votre message..."
+                  placeholder={t('contactPage.form.placeholderMessage')}
                   className="mt-2 block w-full rounded-md border-gray-300 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
+                  required
                 ></textarea>
               </div>
             </div>
+
+            {formStatus.message && (
+              <div
+                className={`mt-4 p-3 rounded-lg ${
+                  formStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                }`}
+              >
+                {formStatus.message}
+              </div>
+            )}
+
             <div className="mt-8 flex justify-end">
               <motion.button
                 whileHover={{ scale: 1.05 }}

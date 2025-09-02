@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <footer className="bg-blue-50 text-gray-600 border-t border-gray-200">
       {/* Contenu principal */}
-      <div className="mx-auto max-w-6xl px-5 md:px-2 py-10">
+      <div className="mx-auto max-w-6xl px-5 md:px-2 py-7">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Col 1 - Logo + Description */}
           <div>
@@ -27,7 +27,7 @@ export default function Footer() {
               src={logo}
               alt="BigIslandMDG Logo"
               width={180}
-              height={80}
+              height={60}
               className="mb-0 object-contain"
             />
             <p className="text-sm leading-6 text-gray-600">

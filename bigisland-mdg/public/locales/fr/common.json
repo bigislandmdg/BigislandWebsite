@@ -195,44 +195,50 @@
     "role": "CTO"
   }
 },
- "blog": {
-    "title": "Soyez au cœur de nos actus",
-    "subtitle": "Explorez nos derniers articles, conseils d’experts et actualités à ne pas manquer.",
-    "readMore": "Lire la suite",
-    "today": "Aujourd'hui",
-    "yesterday": "Hier",
-    "daysAgo": "Il y a {{count}} jours",
-    "readTime": "{{count}} min de lecture",
-    "share": "Partager",
-    "backToList": "Retour à la liste des articles",
-    "post1": {
-      "title": "Comment optimiser votre logistique ?",
-      "description": "Découvrez nos meilleures pratiques pour améliorer vos opérations logistiques.",
-      "content": "Dans un environnement économique compétitif, l'optimisation logistique devient un levier stratégique. Notre analyse révèle 3 axes d'amélioration :\n\n1. **Automatisation des entrepôts** : Les systèmes WMS modernes réduisent les erreurs de 30% et accélèrent le traitement des commandes.\n\n2. **Optimisation des tournées** : L'utilisation d'algorithmes de routage intelligent peut diminuer les kilomètres parcourus de 15 à 20%.\n\n3. **Collaboration inter-entreprises** : Le partage des ressources logistiques entre partenaires réduit les coûts fixes tout en améliorant le taux de remplissage.\n\nCes solutions, combinées à une formation continue des équipes, transforment la logistique d'un centre de coûts en avantage concurrentiel."
-    },
-    "post2": {
-      "title": "L'impact de la technologie sur le service client",
-      "description": "Analyse des outils digitaux qui transforment la relation client.",
-      "content":"La révolution digitale a redéfini les attentes des consommateurs. Voici comment les nouvelles technologies réinventent le service client :\n\n- **Chatbots intelligents** : Capables de résoudre 80% des requêtes courantes en moins de 2 minutes, tout en apprenant continuellement.\n\n- **Réalité augmentée** : Permet aux conseillers d'afficher des informations techniques en surimpression lors d'appels vidéo, réduisant ainsi le temps de résolution.\n\n- **Analyse prédictive** : Les systèmes IA anticipent les besoins clients avant même qu'ils ne formulent une demande, avec une précision atteignant 92%.\n\nCes innovations créent une expérience client fluide et personnalisée, tout en permettant aux équipes de se concentrer sur les cas complexes nécessitant une expertise humaine."
-    },
-    "post3": {
-      "title": "Nos engagements pour un avenir durable",
-      "description": "Comment notre équipe agit concrètement pour un monde plus responsable.",
-      "content": "Notre démarche RSE s'articule autour de 4 piliers fondamentaux :\n\n**1. Neutralité carbone** : Depuis 2025, nous compensons 110% de nos émissions via des projets de reforestation certifiés.\n\n**2. Économie circulaire** : 95% de nos emballages sont désormais recyclables et nous avons instauré un programme de reprise des produits en fin de vie.\n\n**3. Partenariats éthiques** : Tous nos fournisseurs adhèrent à notre charte sociale exigeante, vérifiée par des audits indépendants.\n\n**4. Innovation durable** : 15% de notre chiffre d'affaires est réinvesti dans la recherche de solutions écologiques.\n\nCes actions concrètes, mesurables et transparentes, reflètent notre conviction qu'une entreprise performante doit aussi être un acteur responsable de son écosystème."
-    }
+"blog": {
+  "title": "Restez au cœur de l’innovation",
+  "subtitle": "Découvrez nos insights stratégiques, conseils d’experts et tendances incontournables pour booster votre croissance.",
+  "readMore": "Lire la suite",
+  "today": "Aujourd'hui",
+  "yesterday": "Hier",
+  "daysAgo": "Il y a {{count}} jours",
+  "readTime": "{{count}} min de lecture",
+  "share": "Partager",
+  "backToList": "Retour aux articles",
+  "post1": {
+    "title": "Optimiser votre logistique : un levier de compétitivité",
+    "description": "Nos méthodes éprouvées pour transformer votre supply chain en atout stratégique.",
+    "content": "Dans un marché de plus en plus exigeant, la logistique ne doit plus être perçue comme un simple centre de coûts mais comme un véritable facteur de performance. Voici 3 leviers incontournables :\n\n1. **Automatisation intelligente des entrepôts** : Les solutions WMS de nouvelle génération réduisent les erreurs de 30% et accélèrent le traitement des commandes.\n\n2. **Routage optimisé** : L’intégration d’algorithmes de planification réduit les kilomètres parcourus de 15 à 20%, tout en améliorant les délais de livraison.\n\n3. **Partage de ressources** : La mutualisation logistique entre partenaires génère des économies substantielles et augmente le taux de remplissage.\n\n👉 En combinant ces stratégies à une montée en compétences des équipes, votre supply chain devient un moteur de croissance et un avantage concurrentiel durable."
   },
- "contact": {
-    "title": "Un projet en tête, une question ?",
-    "subtitle": "Nous sommes à votre écoute pour en discuter.",
-    "name": "Nom",
-    "email": "Email",
-    "message": "Message",
-    "placeholderName": "Votre nom",
-    "placeholderEmail": "Votre adresse email",
-    "placeholderMessage": "Votre message",
-    "send": "Envoyer",
-    "scheduleMeeting": "Planifier une réunion"
+  "post2": {
+    "title": "Technologie & service client : vers une expérience augmentée",
+    "description": "Découvrez comment les solutions digitales révolutionnent l’expérience client et boostent la satisfaction.",
+    "content": "Les attentes des consommateurs ont radicalement changé à l’ère du digital. Pour rester compétitif, votre service client doit se transformer en un véritable hub d’expérience. Voici les tendances clés :\n\n- **Chatbots intelligents** : Capables de traiter 80% des demandes en moins de 2 minutes, ils améliorent la réactivité tout en réduisant les coûts opérationnels.\n\n- **Réalité augmentée** : Les conseillers accèdent à des informations techniques en temps réel pendant un appel vidéo, divisant par deux le temps de résolution.\n\n- **Analyse prédictive** : Grâce à l’IA, les entreprises anticipent les besoins clients avec une précision de 92%, renforçant la personnalisation et la fidélisation.\n\n👉 En intégrant ces innovations, vous offrez à vos clients une expérience unique, tout en libérant vos équipes pour se concentrer sur les interactions à forte valeur ajoutée."
   },
+  "post3": {
+    "title": "Durabilité : nos engagements pour un futur responsable",
+    "description": "Découvrez nos initiatives concrètes pour allier performance et responsabilité sociétale.",
+    "content": "Nous croyons qu’une entreprise performante doit aussi être un acteur positif pour son écosystème. Nos engagements s’articulent autour de 4 piliers majeurs :\n\n**1. Neutralité carbone** : Depuis 2025, nous compensons 110% de nos émissions grâce à des projets de reforestation certifiés.\n\n**2. Économie circulaire** : 95% de nos emballages sont recyclables et un programme de reprise des produits en fin de vie a été instauré.\n\n**3. Partenariats éthiques** : Tous nos fournisseurs adhèrent à une charte sociale stricte, validée par des audits indépendants.\n\n**4. Innovation durable** : 15% de notre chiffre d’affaires est réinvesti chaque année dans la recherche de solutions écologiques.\n\n👉 Ces initiatives concrètes, mesurables et transparentes traduisent notre conviction : conjuguer rentabilité et durabilité est non seulement possible, mais essentiel pour l’avenir."
+  }
+},
+  "contact": {
+  "title": "Un projet en tête, une question ?",
+  "subtitle": "Nous sommes à votre écoute pour en discuter.",
+  "name": "Nom",
+  "email": "Email",
+  "message": "Message",
+  "placeholderName": "Votre nom",
+  "placeholderEmail": "Votre adresse email",
+  "placeholderMessage": "Votre message",
+  "send": "Envoyer",
+  "scheduleMeeting": "Planifier une réunion",
+  "date": "Date",
+  "time": "Heure",
+  "confirmMeeting": "Confirmer la réunion",
+  "successMessage": "Votre message a été envoyé avec succès 🎉",
+  "errorMessage": "Une erreur est survenue, veuillez réessayer.",
+  "meetingCreated": "Votre réunion a été créée. Cliquez sur le lien ci-dessous pour rejoindre :"
+},
   "aboutPage": {
   "title": "À propos de nous",
   "subtitle": "BigIslandMDG, partenaire de confiance pour votre transformation digitale.",
@@ -267,17 +273,30 @@
     ]
   }
 },
- "contactPage": {
-    "title": "Contactez-nous",
-    "subtitle": "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.",
-    "form": {
-      "name": "Nom",
-      "email": "Email",
-      "subject": "Objet",
-      "message": "Message",
-      "send": "Envoyer"
-    }
+"contactPage": {
+  "title": "Entrons en contact",
+  "subtitle": "Vous avez un projet ou une question ? Remplissez le formulaire ci-dessous et notre équipe vous répondra rapidement avec des conseils personnalisés.",
+  "form": {
+    "name": "Nom complet",
+    "email": "Adresse email",
+    "subject": "Sujet du message",
+    "message": "Votre message",
+    "send": "Envoyer",
+    "placeholderName": "Entrez votre nom complet",
+    "placeholderEmail": "Entrez votre adresse email",
+    "placeholderSubject": "Indiquez le sujet de votre message",
+    "placeholderMessage": "Écrivez votre message ici...",
+    "successMessage": "Merci ! Votre message a été envoyé avec succès. Nous vous contacterons sous peu.",
+    "errorMessage": "Oups ! Une erreur est survenue. Veuillez réessayer."
   },
+  "scheduleMeeting": {
+    "title": "Planifier une réunion",
+    "date": "Date",
+    "time": "Heure",
+    "confirmMeeting": "Confirmer la réunion",
+    "meetingCreated": "Votre réunion a été planifiée avec succès. Cliquez sur le lien ci-dessous pour y accéder :"
+  }
+},
   "locationPage": {
   "pageTitle": "Location de voitures | BigIslandMDG",
   "metaDescription": "Louez une voiture en toute confiance à Madagascar avec BigIslandMDG. Large choix de véhicules adaptés à vos besoins : SUV, berlines et vans.",
@@ -439,35 +458,35 @@
   "cta": "Discutons-en",
   "viewProject": "Découvrir",
   "projects": {
-    "project1": {
-      "title": "Plateforme de location de véhicules",
-      "description": "Application web intuitive pour réserver, gérer et suivre la location de voitures en temps réel."
-    },
-    "project2": {
-      "title": "Gestion de Call Center",
-      "description": "Mise en place d’un système de téléphonie cloud intégré au CRM pour optimiser la relation client."
-    },
-    "project3": {
-      "title": "ERP de gestion des stocks",
-      "description": "Solution sur mesure pour gérer efficacement les fournitures et les commandes des établissements publics."
-    },
-    "project4": {
-      "title": "Application mobile de suivi de flotte",
-      "description": "Suivi en temps réel avec géolocalisation et alertes pour optimiser la gestion des véhicules."
-    },
-    "project5": {
-      "title": "Analyse des appels clients",
-      "description": "Outil d’analyse vocale pour mesurer la qualité et améliorer l’expérience client."
-    },
-    "project6": {
-      "title": "Marketplace B2B",
-      "description": "Plateforme e-commerce dédiée aux fournitures professionnelles avec commandes récurrentes simplifiées."
-    },
-    "project7": {
-      "title": "Gestion des contrats de location",
-      "description": "Solution digitale pour générer, signer et archiver les contrats en toute sécurité."
-    }
+  "project1": {
+    "title": "Plateforme intelligente de location de véhicules",
+    "description": "Réservez, gérez et suivez vos locations de voitures en temps réel grâce à notre application web intuitive, sécurisée et adaptée à tous vos besoins."
+  },
+  "project2": {
+    "title": "Solution complète de gestion de Call Center",
+    "description": "Optimisez votre relation client avec un système de téléphonie cloud intégré à votre CRM, offrant reporting en temps réel et support multicanal."
+  },
+  "project3": {
+    "title": "ERP sur mesure pour la gestion des stocks",
+    "description": "Simplifiez la gestion des fournitures et commandes avec notre ERP performant, automatisant les inventaires et optimisant vos flux logistiques."
+  },
+  "project4": {
+    "title": "Application mobile de suivi de flotte en temps réel",
+    "description": "Suivez vos véhicules grâce à la géolocalisation, recevez des alertes et optimisez la performance de votre flotte où que vous soyez."
+  },
+  "project5": {
+    "title": "Outil d’analyse des appels clients",
+    "description": "Mesurez la qualité de votre service client et améliorez l’expérience client avec des analyses vocales intelligentes et des rapports détaillés."
+  },
+  "project6": {
+    "title": "Marketplace B2B innovante",
+    "description": "Accédez à une plateforme e-commerce dédiée aux fournitures professionnelles, simplifiant les commandes récurrentes et centralisant vos achats."
+  },
+  "project7": {
+    "title": "Gestion digitale des contrats de location",
+    "description": "Générez, signez et archivez vos contrats en toute sécurité grâce à notre solution digitale, réduisant le papier et optimisant vos processus."
   }
+}
 },
 "cguPage": {
   "pageTitle": "Conditions Générales d'Utilisation",
@@ -662,6 +681,12 @@
       "submit": "Soumettre",
       "captchaError": "Veuillez valider le CAPTCHA"
     }
+  },
+    "cookie": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre",
+    "policy": "politique de confidentialité",
+    "accept": "Accepter",
+    "close": "Fermer"
   }
 
 }

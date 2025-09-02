@@ -39,7 +39,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="bg-white py-16 sm:py-20">
+    <section id="services" className="bg-white py-14 sm:py-14">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
 
         {/* Colonne gauche : grille des services */}

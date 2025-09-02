@@ -4,6 +4,7 @@ import { languages } from '@/i18n/settings';
 import ClientLayout from '@/components/layout/ClientLayout';
 import FloatingLanguageToggle from '@/components/utils/FloatingLanguageToogle';
 import './globals.css';
+import CookieConsent from '@/components/utils/CookieConsent';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
@@ -39,6 +40,9 @@ export default function RootLayout({
            <main className="pb-0 lg:pb-0 bg-white min-h-screen">{children}</main>
          
         </ClientLayout>
+
+         {/* Bannière cookies animée */}
+         <CookieConsent />
       </body>
     </html>
   );
