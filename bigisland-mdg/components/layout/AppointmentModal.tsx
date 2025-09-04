@@ -37,7 +37,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
 
         {/* Panel */}
         <Dialog.Content
-          className="fixed left-1/2 top-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 
+          className="fixed left-1/2 top-1/7 w-full max-w-lg -translate-x-1/2 -translate-y-1 
                      rounded-2xl bg-white shadow-2xl focus:outline-none 
                      data-[state=open]:animate-slideUp data-[state=closed]:animate-slideDown"
         >

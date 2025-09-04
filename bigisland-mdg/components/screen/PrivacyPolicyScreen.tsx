@@ -32,38 +32,65 @@ export default function PrivacyPolicyScreen() {
         <meta name="description" content={t('privacyPolicy.metaDescription')} />
       </Head>
 
-      {/* ===== Header Banner ===== */}
-      <section className="relative h-64 md:h-96 w-full bg-blue-600">
-        <img
-          src="/images/banners/contact-hero.jpg"
-          alt="Privacy Policy Banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
-          <ShieldCheck className="w-16 h-16 text-white mb-4 drop-shadow-lg" />
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
-            {t('privacyPolicy.title')}
-          </h1>
-          <p className="mt-4 text-lg text-gray-200 max-w-2xl">
-            {t('privacyPolicy.intro')}
-          </p>
+      {/* ===== Hero Section ===== */}
+      <section className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Texte */}
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900"
+            >
+              {t('privacyPolicy.pageTitle')}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 max-w-2xl text-lg text-gray-700"
+            >
+              {t('privacyPolicy.intro')}
+            </motion.p>
+          </div>
+
+          {/* Icône animée */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="flex justify-center items-center"
+          >
+            <div className="w-50 h-50 md:w-56 md:h-56 flex items-center justify-center">
+              <ShieldCheck className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ===== Sections ===== */}
+      {/* ===== Sections Accordéon ===== */}
       <section className="pt-16 pb-20 px-4 max-w-5xl mx-auto">
         <div className="space-y-6">
           {sections.map((section, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden"
+              className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.01 }}
             >
               <button
-                className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
                 onClick={() => toggleSection(index)}
               >
                 <h2 className="text-lg md:text-xl font-semibold text-gray-900">
@@ -107,7 +134,7 @@ export default function PrivacyPolicyScreen() {
           <h3 className="text-2xl md:text-3xl font-bold mb-3">
             {t('privacyPolicy.needHelp') || 'Des questions concernant notre politique de confidentialité ?'}
           </h3>
-          <p className="mb-4 text-lg">
+          <p className="mb-4 text-base md:text-lg">
             {t('privacyPolicy.contactUs') || 'Contactez notre DPO à dpo@example.com'}
           </p>
           <a

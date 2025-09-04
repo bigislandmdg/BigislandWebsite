@@ -13,7 +13,7 @@
   "home": "Home",
   "about": "About",
   "expertises": "Expertises",
-
+  "language": "Language",
   "location": "Car rental",
   "locationDesc": "Car rental service tailored to your needs.",
 
@@ -662,7 +662,38 @@
     "policy": "privacy policy",
     "accept": "Accept",
     "close": "Close"
-  }
-
+  },
+ "quotePage": {
+  "metaDescription": "Get a personalized quote for your web and digital projects.",
+  "title": "Request a Quote",
+  "subtitle": "Get a quick and personalized quote for your digital project.",
+  "formTitle": "Request a Quote",
+  "contactTitle": "Contact Information",
+  "contactSubtitle": "Reach out to us for a quote tailored to your needs.",
+  "faqTitle": "Frequently Asked Questions",
+  "successMessage": "Your request has been successfully sent!",
+  "form": {
+    "companyPlaceholder": "Company Name",
+    "messagePlaceholder": "Describe your project in detail..."
+  },
+  "info": {
+    "quoteExample": "Example of a personalized quote for your project."
+  },
+  "faq": {
+    "process": {
+      "title": "How does the process work?",
+      "content": "Our process is simple: consultation, needs analysis, detailed proposal, and implementation."
+    },
+    "delivery": {
+      "title": "Delivery Time",
+      "content": "Timeframes vary depending on project complexity, usually between 2 to 6 weeks."
+    },
+    "payment": {
+      "title": "Payment Terms",
+      "content": "We offer flexible terms: 30% upfront, 40% upon delivery, 30% at project completion."
+    }
+  },
+  "heroAlt": "Request a quote"
+ }
 
 }

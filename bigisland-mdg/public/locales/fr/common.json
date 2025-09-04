@@ -30,7 +30,7 @@
   "blog": "Blog",
   "contact": "Contact",
   "requestQuote": "Demande un devis",
-
+  "language": "Langues",
   "search": "Rechercher",
   "closeSearch": "Fermer la recherche",
   "searchTitle": "Que cherchez-vous ?",
@@ -687,6 +687,41 @@
     "policy": "politique de confidentialité",
     "accept": "Accepter",
     "close": "Fermer"
-  }
+  },
+  
+"quotePage": {
+  "metaDescription": "Obtenez un devis personnalisé pour vos projets web et digitaux.",
+  "title": "Demande de Devis",
+  "subtitle": "Obtenez un devis rapide et personnalisé pour votre projet digital.",
+  "formTitle": "Demande de Devis",
+  "contactTitle": "Nos coordonnées",
+  "contactSubtitle": "Contactez-nous pour un devis adapté à vos besoins.",
+  "faqTitle": "Questions fréquentes",
+  "successMessage": "Votre demande a bien été envoyée !",
+  "form": {
+    "companyPlaceholder": "Nom de l'entreprise",
+    "messagePlaceholder": "Décrivez votre projet en détail..."
+  },
+  "info": {
+    "quoteExample": "Exemple de devis personnalisé pour votre projet."
+  },
+  "faq": {
+    "process": {
+      "title": "Comment se déroule le processus ?",
+      "content": "Notre processus est simple : consultation, analyse des besoins, proposition détaillée et mise en œuvre."
+    },
+    "delivery": {
+      "title": "Délais de livraison",
+      "content": "Les délais varient selon la complexité du projet, généralement entre 2 à 6 semaines."
+    },
+    "payment": {
+      "title": "Modalités de paiement",
+      "content": "Nous proposons des modalités flexibles : 30% à la commande, 40% à la livraison, 30% à la fin du projet."
+    }
+  },
+  "heroAlt": "Demande de devis"
+}
+
+
 
 }

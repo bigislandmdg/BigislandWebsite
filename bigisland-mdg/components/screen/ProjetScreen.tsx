@@ -1,156 +1,121 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Head from 'next/head';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { FolderGit2 } from 'lucide-react';
+
+// TiltCard générique
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const [style, setStyle] = useState({});
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    const rotateX = ((y / offsetHeight) - 0.5) * 12;
+    const rotateY = ((x / offsetWidth) - 0.5) * -12;
+    setStyle({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)` });
+  };
+
+  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+
+  return (
+    <motion.div
+      className={`bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetStyle}
+      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+type Project = { title: string; description: string; link: string };
 
 export default function ProjetScreen() {
   const { t, i18n } = useTranslation('common');
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-
-  type Project = {
-    title: string;
-    description: string;
-    link: string;
-  };
-
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [projects, setProjects] = useState<Project[]>([]);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     setProjects([
-      {
-        title: t('projectPage.projects.project1.title'),
-        description: t('projectPage.projects.project1.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project2.title'),
-        description: t('projectPage.projects.project2.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project3.title'),
-        description: t('projectPage.projects.project3.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project4.title'),
-        description: t('projectPage.projects.project4.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project5.title'),
-        description: t('projectPage.projects.project5.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project6.title'),
-        description: t('projectPage.projects.project6.description'),
-        link: 'https://github.com/bigislandmdg'
-      },
-      {
-        title: t('projectPage.projects.project7.title'),
-        description: t('projectPage.projects.project7.description'),
-        link: 'https://github.com/bigislandmdg'
-      }
+      { title: t('projectPage.projects.project1.title'), description: t('projectPage.projects.project1.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project2.title'), description: t('projectPage.projects.project2.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project3.title'), description: t('projectPage.projects.project3.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project4.title'), description: t('projectPage.projects.project4.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project5.title'), description: t('projectPage.projects.project5.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project6.title'), description: t('projectPage.projects.project6.description'), link: 'https://github.com/bigislandmdg' },
+      { title: t('projectPage.projects.project7.title'), description: t('projectPage.projects.project7.description'), link: 'https://github.com/bigislandmdg' }
     ]);
   }, [i18n.language, t]);
 
   const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        delay: 0.2
-      }
-    }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <>
-      <Head>
-        <title>{t('projectPage.pageTitle')}</title>
-        <meta name="description" content={t('projectPage.metaDescription')} />
-      </Head>
-
-      {/* ---- Banner Header ---- */}
-      <section className="relative h-64 md:h-80 w-full bg-blue-600">
-        <Image
-                    src="/images/banners/contact-hero.jpg"
-                    alt="Contact Hero"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
+    <section>
+      {/* ===== Hero Section ===== */}
+      <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Texte à gauche */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
           >
-            <FolderGit2 className="text-white text-5xl mb-4" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              {t('projectPage.title')}
-            </h1>
-            <p className="text-blue-100 text-lg max-w-2xl">
-              {t('projectPage.description')}
-            </p>
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900">{t('projectPage.title')}</h1>
+            <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('projectPage.description')}</p>
+          </motion.div>
+
+          {/* Icône à droite */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="flex justify-center items-center"
+          >
+            <FolderGit2 className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
           </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* ---- Project Scroller ---- */}
-      <motion.section
-        id="projects"
-        className="pt-16 pb-16 px-6 max-w-6xl mx-auto text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+      {/* ===== Project Scroller ===== */}
+      <motion.div
+        ref={ref}
+        className="mx-auto max-w-7xl px-6 lg:px-8 py-20 overflow-hidden relative"
       >
-        <div
-          ref={containerRef}
-          className="overflow-hidden relative w-full h-[420px] cursor-pointer"
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: paused ? 0 : ["0%", "-100%"] }}
+          transition={{ repeat: paused ? 0 : Infinity, duration: 25, ease: "linear" }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <motion.div
-            className="flex gap-6 absolute top-1/2 left-0 -translate-y-1/2"
-            animate={{ x: paused ? 0 : ["0%", "-100%"] }}
-            transition={{
-              repeat: paused ? 0 : Infinity,
-              duration: 25,
-              ease: "linear"
-            }}
-          >
-            {[...projects, ...projects].map((project, index) => (
+          {[...projects, ...projects].map((project, index) => (
+            <TiltCard key={index} className="min-w-[320px] max-w-sm p-6 flex-shrink-0">
               <motion.div
-                key={index}
-                className="min-w-[320px] max-w-sm border border-gray-200 rounded-lg shadow-lg bg-white p-6 flex-shrink-0"
-                variants={cardVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{
-                  y: -5,
-                  boxShadow:
-                    "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
-                  transition: { duration: 0.2 }
-                }}
+                variants={cardVariants}
+                className="flex flex-col h-full"
               >
-                <h2 className="text-2xl font-semibold text-blue-600 mb-4">
-                  {project.title}
-                </h2>
-                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-                  {project.description}
-                </p>
+                <h2 className="text-2xl font-semibold text-blue-600 mb-4">{project.title}</h2>
+                <p className="text-gray-600 mb-6 text-lg leading-relaxed">{project.description}</p>
                 <a
                   href={project.link}
                   target="_blank"
@@ -160,14 +125,14 @@ export default function ProjetScreen() {
                   {t('projectPage.viewProject')}
                 </a>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
+            </TiltCard>
+          ))}
+        </motion.div>
 
         {/* ---- CTA Simple Justified ---- */}
         <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl md:text-3xl font-bold">
-            {t('projectPage.ctaTitle') || 'Vous voulez en savoir plus ?'}
+            {t('projectPage.ctaTitle') || 'Want to know more?'}
           </h2>
           <a
             href="/contact"
@@ -176,8 +141,8 @@ export default function ProjetScreen() {
             {t('projectPage.cta')}
           </a>
         </section>
-      </motion.section>
-    </>
+      </motion.div>
+    </section>
   );
 }
 

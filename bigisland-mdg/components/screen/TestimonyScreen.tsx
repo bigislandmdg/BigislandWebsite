@@ -1,20 +1,46 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Head from 'next/head';
-import Image from 'next/image';
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { User, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function TestimonyScreen() {
-  const { t, i18n } = useTranslation('common');
-  const [activeIndex, setActiveIndex] = useState(0);
-  const controls = useAnimation();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
+// TiltCard générique
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const [style, setStyle] = useState({});
 
-  type Testimony = { name: string; message: string; avatar: string };
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    const rotateX = ((y / offsetHeight) - 0.5) * 12;
+    const rotateY = ((x / offsetWidth) - 0.5) * -12;
+    setStyle({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)` });
+  };
+
+  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+
+  return (
+    <motion.div
+      className={`bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetStyle}
+      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+type Testimony = { name: string; message: string; avatar: string };
+
+export default function TestimonyScreen() {
+  const { t } = useTranslation('common');
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const [activeIndex, setActiveIndex] = useState(0);
   const [testimonies, setTestimonies] = useState<Testimony[]>([]);
 
   useEffect(() => {
@@ -23,15 +49,7 @@ export default function TestimonyScreen() {
       { name: t('testimonyPage.clients.client2.name'), message: t('testimonyPage.clients.client2.message'), avatar: '/images/clients/client2.jpg' },
       { name: t('testimonyPage.clients.client3.name'), message: t('testimonyPage.clients.client3.message'), avatar: '/images/clients/client3.jpg' },
     ]);
-    setIsLoading(false);
-    controls.start("visible");
-  }, [i18n.language, t, controls]);
-
-  useEffect(() => {
-    if (testimonies.length === 0) return;
-    const interval = setInterval(() => goNext(), 5000);
-    return () => clearInterval(interval);
-  }, [activeIndex, testimonies.length]);
+  }, [t]);
 
   const goNext = () => setActiveIndex((prev) => (prev + 1) % testimonies.length);
   const goPrev = () => setActiveIndex((prev) => (prev - 1 + testimonies.length) % testimonies.length);
@@ -39,89 +57,78 @@ export default function TestimonyScreen() {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    exit: { opacity: 0, y: -20 }
+    exit: { opacity: 0, y: -20 },
   };
 
   return (
-    <>
-      <Head>
-        <title>{t('testimonyPage.pageTitle')}</title>
-        <meta name="description" content={t('testimonyPage.metaDescription')} />
-      </Head>
-
-      {/* ---- Banner Header ---- */}
-      <section className="relative h-64 md:h-80 w-full">
-        <Image
-            src="/images/banners/contact-hero.jpg"
-            alt="Contact Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-        <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4">
+    <section>
+      {/* ===== Hero Section ===== */}
+      <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Texte à gauche */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
           >
-            <User className="text-white text-5xl mb-4" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-              {t('testimonyPage.title')}
-            </h1>
-            <p className="text-blue-100 text-lg max-w-2xl">
-              {t('testimonyPage.description')}
-            </p>
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900">{t('testimonyPage.title')}</h1>
+            <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('testimonyPage.description')}</p>
+          </motion.div>
+
+          {/* Icône à droite */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="flex justify-center items-center"
+          >
+            <User className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
           </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* ---- Testimony Carousel ---- */}
-      <section className="pt-16 pb-16 px-4 max-w-6xl mx-auto">
-        <div className="relative">
-          <div ref={containerRef} className="overflow-hidden relative flex justify-center">
-            {isLoading ? (
-              <div className="text-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-                <p className="mt-4 text-gray-600">{t('common.loading')}</p>
-              </div>
-            ) : testimonies.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-gray-600">{t('testimonyPage.noTestimonies')}</p>
-              </div>
-            ) : (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8 flex flex-col md:flex-row items-center md:items-start gap-6"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={cardVariants}
-                >
-                  <div className="flex-shrink-0 relative w-24 h-24 md:w-32 md:h-32">
-                    <Image
+      {/* ===== Testimony Carousel ===== */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20" ref={ref}>
+        <div className="relative flex flex-col items-center">
+          <AnimatePresence mode="wait">
+            {testimonies.length > 0 && (
+              <motion.div
+                key={activeIndex}
+                className="w-full max-w-4xl"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={cardVariants}
+              >
+                <TiltCard className="p-8 flex flex-col md:flex-row items-center gap-6">
+                  <div className="flex-shrink-0 relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden">
+                    <img
                       src={testimonies[activeIndex].avatar}
                       alt={testimonies[activeIndex].name}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full border-2 border-white shadow"
+                      className="w-full h-full object-cover rounded-full"
                     />
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-xl font-semibold text-blue-600">
-                      {testimonies[activeIndex].name}
-                    </h3>
+                    <h3 className="text-xl font-semibold text-blue-600">{testimonies[activeIndex].name}</h3>
                     <p className="mt-2 text-gray-600 italic leading-relaxed text-lg">
                       "{testimonies[activeIndex].message}"
                     </p>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                </TiltCard>
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
 
-          {!isLoading && testimonies.length > 0 && (
+          {/* Navigation */}
+          {testimonies.length > 1 && (
             <div className="flex justify-center gap-6 mt-10 items-center">
               <button
                 onClick={goPrev}
@@ -134,7 +141,9 @@ export default function TestimonyScreen() {
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                      activeIndex === index ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
                   />
                 ))}
               </div>
@@ -147,21 +156,8 @@ export default function TestimonyScreen() {
             </div>
           )}
         </div>
-
-        {/* ---- CTA Simple Justified ---- */}
-        <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
-          <h2 className="text-2xl md:text-3xl font-bold">
-            {t('testimonyPage.ctaTitle') || 'Vous voulez en savoir plus ?'}
-          </h2>
-          <a
-            href="/contact"
-            className="inline-block bg-white text-blue-600 font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
-          >
-            {t('testimonyPage.cta')}
-          </a>
-        </section>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

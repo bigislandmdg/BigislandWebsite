@@ -2,8 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
-import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings } from 'lucide-react';
+import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings, UserRoundSearch } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 // ✅ Effet tilt sur la souris
@@ -94,36 +93,48 @@ export default function AboutScreen() {
 
   return (
     <section>
-      {/* ===== Hero Section ===== */}
-      <div className="relative bg-gray-700">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/banners/about-banner.jpg"
-            alt="About Banner"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
-          <div className="absolute inset-0 bg-gray-900/60" />
-        </div>
+      {/* ===== Hero Section améliorée ===== */}
+      <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Texte à gauche */}
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900"
+            >
+              {t('aboutPage.title')}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 max-w-2xl text-lg text-gray-700"
+            >
+              {t('aboutPage.subtitle')}
+            </motion.p>
+          </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-32 text-center text-white">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight"
+          {/* Icône About à droite animée */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="flex justify-center items-center"
           >
-            {t('aboutPage.title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 max-w-3xl mx-auto text-lg text-gray-200"
-          >
-            {t('aboutPage.subtitle')}
-          </motion.p>
+            <div className="w-50 h-50 md:w-56 md:h-56 flex items-center justify-center">
+              <UserRoundSearch className="w-56 h-56 md:w-56 md:h-56 text-blue-600" />
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -147,58 +158,57 @@ export default function AboutScreen() {
           />
         </div>
 
-       {/* ===== Process Section (2x2 offset grid) ===== */}
-<section id="process" className="bg-white-50 py-16 sm:py-20">
-  <div className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
+        {/* ===== Process Section (2x2 offset grid) ===== */}
+        <section id="process" className="bg-white-50 py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
+            {/* Colonne gauche : grille des étapes */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            >
+              {processSteps.map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.03 }}
+                  className={`rounded-3xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col h-full
+                    ${idx % 2 !== 0 ? 'sm:mt-8' : ''}`}
+                >
+                  <div className="mb-4 flex items-center gap-x-3">
+                    <step.Icon className="h-8 w-8 text-blue-600" />
+                    <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
+                  </div>
+                  <p className="text-gray-700 text-base leading-6 flex-1">{step.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
 
-    {/* Colonne gauche : grille des étapes */}
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-    >
-      {processSteps.map((step, idx) => (
-        <motion.div
-          key={idx}
-          whileHover={{ scale: 1.03 }}
-          className={`rounded-3xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col h-full
-            ${idx % 2 !== 0 ? 'sm:mt-8' : ''}`}
-        >
-          <div className="mb-4 flex items-center gap-x-3">
-            <step.Icon className="h-8 w-8 text-blue-600" />
-            <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
+            {/* Colonne droite : titre + description globale */}
+            <div className="max-w-xl">
+              <motion.h2
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                {t('aboutPage.process.title')}
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                className="mt-6 text-lg leading-8 text-gray-600"
+              >
+                {t('aboutPage.process.description')}
+              </motion.p>
+            </div>
           </div>
-          <p className="text-gray-700 text-base leading-6 flex-1">{step.description}</p>
-        </motion.div>
-      ))}
-    </motion.div>
-
-    {/* Colonne droite : titre + description globale */}
-    <div className="max-w-xl">
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-      >
-        {t('aboutPage.process.title')}
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-        className="mt-6 text-lg leading-8 text-gray-600"
-      >
-        {t('aboutPage.process.description')}
-      </motion.p>
-    </div>
-  </div>
-</section>
+        </section>
       </div>
     </section>
   );

@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-800`}
       >
         <ClientLayout>
-           <FloatingLanguageToggle />
+           {/*<FloatingLanguageToggle />*/}
            <main className="pb-0 lg:pb-0 bg-white min-h-screen">{children}</main>
            <CookieConsent />
         </ClientLayout>

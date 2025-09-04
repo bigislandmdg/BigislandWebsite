@@ -1,220 +1,141 @@
 'use client';
 
+import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import Head from 'next/head';
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { motion, useInView } from 'framer-motion';
+import { Code } from 'lucide-react'; // icône pour le Hero
+
+type Service = { src: string; title: string; desc: string };
+
+// TiltCard générique (inchangé)
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const [style, setStyle] = useState({});
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    const rotateX = ((y / offsetHeight) - 0.5) * 12;
+    const rotateY = ((x / offsetWidth) - 0.5) * -12;
+    setStyle({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)` });
+  };
+  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+
+  return (
+    <motion.div
+      className={`bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetStyle}
+      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function ItScreen() {
   const { t, i18n } = useTranslation('common');
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.1 });
-  const [refTitle, titleInView] = useInView({ threshold: 0.5 });
-
-  // Split text animation
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        type: "spring",
-        stiffness: 300
-      }
-    })
-  };
-
-  // Tilt animation
-  const tiltVariants = {
-    hidden: { opacity: 0, rotateX: 15, rotateY: -15 },
-    visible: {
-      opacity: 1,
-      rotateX: 0,
-      rotateY: 0,
-      transition: { type: "spring", stiffness: 300, damping: 15 }
-    },
-    hover: {
-      scale: 1.03,
-      rotateX: 5,
-      rotateY: 5,
-      boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)",
-      transition: { duration: 0.3 }
-    }
-  };
-
-  const buttonVariants = {
-    tap: { scale: 0.95, transition: { duration: 0.1 } },
-    hover: { scale: 1.05, transition: { duration: 0.2 } }
-  };
-
-  type Service = { src: string; title: string; desc: string };
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
-    if (inView) controls.start("visible");
-  }, [controls, inView]);
-
-  useEffect(() => {
     setServices([
-      {
-        src: '/images/it/software-dev.jpg',
-        title: t('itPage.services.software.title'),
-        desc: t('itPage.services.software.description'),
-      },
-      {
-        src: '/images/it/web-dev.jpg',
-        title: t('itPage.services.web.title'),
-        desc: t('itPage.services.web.description'),
-      },
-      {
-        src: '/images/it/mobile-app.jpg',
-        title: t('itPage.services.mobile.title'),
-        desc: t('itPage.services.mobile.description'),
-      },
-      {
-        src: '/images/it/support.jpg',
-        title: t('itPage.services.support.title'),
-        desc: t('itPage.services.support.description'),
-      },
-      {
-        src: '/images/it/uiux.jpg',
-        title: t('itPage.services.uiux.title'),
-        desc: t('itPage.services.uiux.description'),
-      },
-      {
-        src: '/images/it/devops-security.jpg',
-        title: t('itPage.services.devops.title'),
-        desc: t('itPage.services.devops.description'),
-      },
+      { src: '/images/it/software-dev.jpg', title: t('itPage.services.software.title'), desc: t('itPage.services.software.description') },
+      { src: '/images/it/web-dev.jpg', title: t('itPage.services.web.title'), desc: t('itPage.services.web.description') },
+      { src: '/images/it/mobile-app.jpg', title: t('itPage.services.mobile.title'), desc: t('itPage.services.mobile.description') },
+      { src: '/images/it/support.jpg', title: t('itPage.services.support.title'), desc: t('itPage.services.support.description') },
+      { src: '/images/it/uiux.jpg', title: t('itPage.services.uiux.title'), desc: t('itPage.services.uiux.description') },
+      { src: '/images/it/devops-security.jpg', title: t('itPage.services.devops.title'), desc: t('itPage.services.devops.description') },
     ]);
   }, [i18n.language, t]);
 
-  // Split text component
-  const SplitText = ({ text, className }: { text: string; className: string }) => (
-    <div className={`overflow-hidden ${className}`}>
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          custom={i}
-          variants={letterVariants}
-          initial="hidden"
-          animate={titleInView ? "visible" : "hidden"}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </div>
-  );
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
-    <>
-      <Head>
-        <title>{t('itPage.pageTitle')}</title>
-        <meta name="description" content={t('itPage.metaDescription')} />
-      </Head>
+    <section>
+      {/* ===== Hero Section ===== */}
+        <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Texte à gauche */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900">{t('itPage.title')}</h1>
+            <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('itPage.description')}</p>
+          </motion.div>
 
-      {/* 🔹 Header Banner */}
-      <section className="relative h-[60vh] flex items-center justify-center">
-        <Image
-          src="/images/banners/it-banner.jpg"
-          alt="IT Services"
-          fill
-          className="object-cover brightness-75"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <motion.div
-          className="relative z-10 text-center text-white px-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('itPage.title')}
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl">
-            {t('itPage.description')}
-          </p>
-        </motion.div>
-      </section>
-
-      {/* 🔹 Section Services */}
-      <section ref={ref} id="it-services" className="pt-16 pb-16 px-6 max-w-6xl mx-auto text-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              className="border rounded-lg shadow hover:shadow-md p-4 bg-white"
-              custom={i}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              whileHover="hover"
-              variants={tiltVariants}
-              style={{ perspective: 1000 }}
-            >
-              <motion.div
-                className="w-full h-48 relative overflow-hidden rounded"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={service.src}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  quality={90}
-                />
-              </motion.div>
-              <h2 className="text-xl font-semibold text-blue-600 mt-4">{service.title}</h2>
-              <p className="text-gray-600 mt-2">{service.desc}</p>
-            </motion.div>
-          ))}
+          {/* Icône IT à droite */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="flex justify-center items-center text-blue-600"
+          >
+            <Code size={180} />
+          </motion.div>
         </div>
+      </div>
 
-        {/* 🔹 Call-to-action amélioré */}
+      {/* ===== Section Services (TiltCards inchangées) ===== */}
+      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {services.map((service, i) => (
+            <TiltCard key={i} className="p-4">
+              <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col h-full"
+              >
+                <div className="w-full h-48 relative overflow-hidden rounded">
+                  <Image src={service.src} alt={service.title} fill className="object-cover" />
+                </div>
+                <h2 className="text-xl font-semibold text-blue-600 mt-4">{service.title}</h2>
+                <p className="text-gray-600 mt-2">{service.desc}</p>
+              </motion.div>
+            </TiltCard>
+          ))}
+        </motion.div>
+
+        {/* ---- CTA Gradient ---- */}
         <motion.section
-          className="relative mt-16 rounded-xl bg-gradient-to-r from-white to-gray-100 px-6 py-10 shadow-lg max-w-5xl mx-auto overflow-hidden"
+          className="mt-16 bg-gradient-to-l from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="relative z-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Texte accrocheur */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                {t('itPage.ctaTitle', 'Ready to transform your digital strategy?')}
-              </h2>
-              <p className="mt-2 text-gray-600 max-w-md mx-auto md:mx-0">
-                {t('itPage.ctaSubtitle', 'Explore our IT solutions and get a personalized consultation.')}
-              </p>
-            </div>
-
-            {/* Bouton */}
-            <motion.a
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-blue-700 transition"
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              {t('itPage.cta', 'Get a Free Consultation')}
-            </motion.a>
-          </div>
-
-          {/* Décoration gradient */}
-          <div
-            aria-hidden="true"
-            className="absolute -top-20 -right-20 w-72 h-72 bg-gradient-to-br from-blue-100 via-blue-200 to-transparent rounded-full blur-3xl opacity-40"
-          />
+          <h2 className="text-2xl md:text-3xl font-bold">
+            {t('itPage.ctaTitle', 'Ready to transform your digital strategy?')}
+          </h2>
+          <a
+            href="/contact"
+            className="inline-block bg-white text-blue-600 font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            {t('itPage.cta', 'Get a Free Consultation')}
+          </a>
         </motion.section>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 
