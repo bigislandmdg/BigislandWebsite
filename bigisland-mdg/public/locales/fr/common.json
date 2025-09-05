@@ -17,7 +17,6 @@
 
   "location": "Location de voiture",
   "locationDesc": "Service de location de véhicules adaptés à vos besoins.",
-
   "itSolutions": "Solutions IT",
   "itSolutionsDesc": "Développement, intégration et maintenance de solutions numériques.",
 
@@ -47,6 +46,7 @@
     "clients": "Clients"
   }
 },
+ 
   "footer": {
     "contact": "Contact",
     "email": "contact@bigisland.mg",
@@ -63,13 +63,17 @@
     "testimonials": "Témoignages",
     "projects": "Projets",
     "cgu": "CGU",
-     "companyDescription": "Votre partenaire de confiance pour des solutions digitales innovantes et sur mesure.",
+    "companyDescription": "Votre partenaire de confiance pour des solutions digitales innovantes et sur mesure.",
     "newsletter": "Inscrivez-vous à notre newsletter",
+    "newsletterTitle": "Abonnez-vous à notre newsletter",
+    "newsletterDescription": "Recevez les dernières actualités et offres de BigIslandMDG.",
+    "newsletterPrivacy": "Nous respectons votre vie privée.",
     "emailPlaceholder": "Votre adresse email",
     "subscribe": "S'abonner",
     "cookiePolicy": "Politique de cookies",
     "legalNotice": "Mentions légales",
     "privacyPolicy": "Politique de confidentialité",
+    "legal": "Légal",
     "rightsReserved": "Tous droits réservés.",
     "designedWith": "Conçu avec",
     "byBigIsland": "par BigIsland",

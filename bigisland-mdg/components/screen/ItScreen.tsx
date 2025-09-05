@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-import { Code } from 'lucide-react'; // icône pour le Hero
+import { Code, Laptop } from 'lucide-react'; // icône pour le Hero
 
 type Service = { src: string; title: string; desc: string };
 
@@ -86,7 +86,7 @@ export default function ItScreen() {
             }}
             className="flex justify-center items-center text-blue-600"
           >
-            <Code size={180} />
+            <Laptop size={280} />
           </motion.div>
         </div>
       </div>
