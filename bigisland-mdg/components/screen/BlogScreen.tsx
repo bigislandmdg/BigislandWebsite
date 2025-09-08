@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { FaArrowRight, FaCalendarAlt, FaClock, FaPenFancy } from 'react-icons/fa';
+import { FaArrowRight, FaBookmark, FaBookOpen, FaCalendarAlt, FaClock, FaPenFancy } from 'react-icons/fa';
 import { useRef, useState } from 'react';
 
 // ✅ Effet tilt sur la souris
@@ -140,7 +140,7 @@ export default function BlogScreen() {
             className="flex justify-center items-center"
           >
             <div className="w-50 h-50 md:w-56 md:h-56 flex items-center justify-center">
-              <FaPenFancy className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
+              <FaBookOpen className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
             </div>
           </motion.div>
         </div>
