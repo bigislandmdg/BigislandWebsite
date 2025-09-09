@@ -29,7 +29,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-gray-50 border-t border-gray-300">
       {/* Section principale */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
@@ -155,7 +155,7 @@ export default function Footer() {
 
       {/* Newsletter */}
       <div className="bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 lg:py-4">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="lg:w-0 lg:flex-1">
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
