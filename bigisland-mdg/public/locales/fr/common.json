@@ -3,12 +3,11 @@
     "title": "Découvrez notre entreprise"
   },
   "hero": {
-  "title": "Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions",
-  "description": "BigIsland conçoit des sites web et applications sur mesure pour booster vos performances et concrétiser vos idées.",
-  "button1": "Discutons",
-  "button2": "Mieux nous connaître"
-}
-,
+    "title": "Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions",
+    "description": "BigIsland est votre partenaire pour des plateformes digitales sur mesure qui unifient votre écosystème (IT, relation client, logistique) et dopent votre performance opérationnelle.",
+    "button1": "Discutons",
+    "button2": "Mieux nous connaître"
+  },
 
   "navbar": {
   "home": "Accueil",

@@ -2,8 +2,9 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings, UserRoundSearch } from 'lucide-react';
+import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings } from 'lucide-react';
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 
 // ✅ Effet tilt sur la souris
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -116,23 +117,33 @@ export default function AboutScreen() {
             </motion.p>
           </div>
 
-          {/* Icône About à droite animée */}
+          {/* Image à droite (Hero avec angle Tailwind UI) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{
               opacity: 1,
-              scale: [1, 1.05, 1],
-              y: [0, -10, 0],
+              scale: [1, 1.03, 1],
+              y: [0, -8, 0],
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="flex justify-center items-center"
+            className="relative flex justify-center items-center"
           >
-            <div className="w-50 h-50 md:w-56 md:h-56 flex items-center justify-center">
-              <UserRoundSearch className="w-56 h-56 md:w-56 md:h-56 text-blue-600" />
+            <div className="relative w-130 h-50 md:h-[350px] lg:h-[400px]">
+              {/* Overlay dégradé + angle */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
+
+              {/* Image optimisée Next.js */}
+              <Image
+                src="/images/about-hero.jpg" // 👉 Mets ton image ici
+                alt="About illustration"
+                fill
+                priority
+                className="relative object-cover rounded-3xl shadow-lg"
+              />
             </div>
           </motion.div>
         </div>
@@ -213,4 +224,5 @@ export default function AboutScreen() {
     </section>
   );
 }
+
 

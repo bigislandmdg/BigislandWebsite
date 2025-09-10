@@ -2,12 +2,13 @@
    "videoModal": {
     "title": "Discover our company"
   },
-   "hero": {
-  "title": "Give your business a digital showcase that matches your ambitions",
-  "description": "BigIsland designs custom websites and apps to boost performance and bring your ideas to life.",
-  "button1": "Let's Talk",
-  "button2": "Get to Know Us"
-},
+  
+  "hero": {
+    "title": "Give your business a digital presence that matches your ambition",
+    "description": "BigIsland is your partner for custom digital platforms that unify your ecosystem (IT, customer relations, logistics) and boost your operational performance.",
+    "button1": "Let's Talk",
+    "button2": "Learn More About Us"
+  },
   
   "navbar": {
   "home": "Home",

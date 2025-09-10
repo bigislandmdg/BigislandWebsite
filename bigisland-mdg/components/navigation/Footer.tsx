@@ -7,6 +7,7 @@ import {
   Phone,
   MapPin,
   Heart,
+  Send // Icône pour le bouton subscribe
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -29,9 +30,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-300">
+    <footer className="bg-gray-100 border-t border-gray-300">
       {/* Section principale */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
 
           {/* Colonne 1 - Logo et description */}
@@ -43,7 +44,7 @@ export default function Footer() {
               height={50}
               className="h-auto w-auto object-contain"
             />
-            <p className="text-gray-500 text-base leading-6">
+            <p className="text-gray-700 text-base leading-6">
               {t('footer.companyDescription')}
             </p>
           </div>
@@ -64,7 +65,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base text-gray-500 hover:text-gray-900"
+                    className="text-base font-medium text-gray-700 hover:text-blue-900 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -90,7 +91,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base text-gray-500 hover:text-gray-900"
+                    className="text-base font-medium text-gray-700 hover:text-blue-600 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -114,12 +115,12 @@ export default function Footer() {
               ].map((item, idx) => (
                 <motion.li
                   key={idx}
-                  className="flex space-x-3 text-gray-500"
+                  className="flex space-x-3 text-gray-700 hover:text-blue-600 items-center"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
-                  <item.icon className="h-5 w-5 text-gray-400" />
+                  <item.icon className="h-5 w-5 text-gray-700" />
                   <span className="text-base">{item.text}</span>
                 </motion.li>
               ))}
@@ -140,7 +141,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base text-gray-500 hover:text-gray-900"
+                    className="text-base text-gray-700 hover:text-blue-600 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -154,7 +155,7 @@ export default function Footer() {
       </div>
 
       {/* Newsletter */}
-      <div className="bg-gray-50">
+      <div className="bg-gray-100">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 lg:py-4">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="lg:w-0 lg:flex-1">
@@ -186,9 +187,10 @@ export default function Footer() {
                 >
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="flex w-full items-center justify-center gap-2 rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
                   >
                     {t('footer.subscribe')}
+                    <Send className="h-4 w-4" />
                   </button>
                 </motion.div>
               </form>
@@ -201,7 +203,7 @@ export default function Footer() {
       </div>
 
       {/* Bas de page */}
-      <div className="border-t border-gray-200 py-8">
+      <div className="border-t bg-gray-200 border-gray-200 py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
@@ -229,7 +231,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-gray-500 transition-colors duration-200"
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="sr-only">{social.label}</span>

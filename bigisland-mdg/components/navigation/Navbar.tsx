@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
-import { Car, Globe, Laptop, Phone, Truck } from "lucide-react";
+import { Car, Languages, Laptop, Phone, Truck } from "lucide-react";
 import { useTranslation } from 'next-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -198,13 +198,13 @@ export default function Navbar() {
   ];
 
   return (
-     <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-gradient-to-l from-blue-50 to-blue-200 shadow border-b border-gray-300'
           : 'bg-gradient-to-l from-blue-50 to-blue-200 shadow-none border-none'
-        }`}
-      >
+      }`}
+    >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
@@ -273,8 +273,8 @@ export default function Navbar() {
                           className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white text-blue-600">
-                         <item.icon className="h-6 w-6" />
-                        </div>
+                            <item.icon className="h-6 w-6" />
+                          </div>
 
                           <div className="flex-auto">
                             <Link
@@ -306,6 +306,7 @@ export default function Navbar() {
           
           {/* Desktop Right Actions */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4">
+            {/* Bouton Search */}
             <button
               onClick={() => setSearchOpen(true)}
               className="p-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 flex items-center gap-1.5 rounded-md hover:bg-gray-100"
@@ -315,22 +316,14 @@ export default function Navbar() {
               <span className="text-xs text-gray-400">CTRL+K</span>
             </button>
 
-            <Link
-              href="/devis"
-              className="rounded-md bg-blue-600 px-4.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
-              onClick={handleLinkClick}
-            >
-              {t('navbar.requestQuote')}
-            </Link>
-          </div>
-           {/* Flyout langue (desktop) */}
+            {/* Sélecteur de langue */}
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1 px-2 py-0 text-gray-700 hover:text-blue-600"
+                className="flex items-center gap-1 px-2 py-1 text-gray-700 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
               >
-                <Globe className="w-4 h-4" />
-                <span className="uppercase">{lang}</span>
+                <Languages className="w-5 h-5" />
+                <span className="uppercase text-sm">{lang}</span>
               </button>
 
               <AnimatePresence>
@@ -362,10 +355,18 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Bouton Devis */}
+            <Link
+              href="/devis"
+              className="rounded-md bg-blue-600 px-4.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+              onClick={handleLinkClick}
+            >
+              {t('navbar.requestQuote')}
+            </Link>
+          </div>
         </div>
 
-         
-        
         {/* Mobile menu with motion */}
         <AnimatePresence>
           {mobileMenuOpen && (
@@ -427,16 +428,15 @@ export default function Navbar() {
                               className="mt-2 space-y-2 pl-6"
                             >
                               {expertisesLinks.map((item) => (
-                               <Link
+                                <Link
                                   key={item.label}
                                   href={item.href}
                                   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors flex items-center gap-x-2"
                                   onClick={handleLinkClick}
                                 >
-                              <item.icon className="h-5 w-5 text-blue-600" />
-                                    {t(item.label)}
-                              </Link>
-
+                                  <item.icon className="h-5 w-5 text-blue-600" />
+                                  {t(item.label)}
+                                </Link>
                               ))}
                             </motion.div>
                           )}
@@ -467,33 +467,33 @@ export default function Navbar() {
                       </Link>
                     </div>
 
-                     {/* Switcher langue (mobile) */}
-            <div className="mt-6 border-t border-gray-200 pt-4">
-              <p className="text-sm font-medium text-gray-500 mb-2">{t('navbar.language')}</p>
-              <div className="flex gap-2">
-                {['en', 'fr'].map((lng) => (
-                  <button
-                    key={lng}
-                    onClick={() => {
-                      changeLanguage(lng as 'en' | 'fr');
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      lang === lng
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <img
-                      src={`/icons/${lng === 'en' ? 'us' : 'fr'}.svg`}
-                      alt={lng === 'en' ? 'English' : 'Français'}
-                      className="w-2 h-2"
-                    />
-                    {lng.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-            </div>
+                    {/* Switcher langue (mobile) */}
+                    <div className="mt-6 border-t border-gray-200 pt-4">
+                      <p className="text-sm font-medium text-gray-500 mb-2">{t('navbar.language')}</p>
+                      <div className="flex gap-2">
+                        {['en', 'fr'].map((lng) => (
+                          <button
+                            key={lng}
+                            onClick={() => {
+                              changeLanguage(lng as 'en' | 'fr');
+                              setMobileMenuOpen(false);
+                            }}
+                            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                              lang === lng
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
+                          >
+                            <img
+                              src={`/icons/${lng === 'en' ? 'us' : 'fr'}.svg`}
+                              alt={lng === 'en' ? 'English' : 'Français'}
+                              className="w-2 h-2"
+                            />
+                            {lng.toUpperCase()}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
