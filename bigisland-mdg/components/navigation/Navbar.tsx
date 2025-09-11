@@ -162,7 +162,7 @@ export default function Navbar() {
       if (path.includes('services')) {
         if (path.includes('location')) return '/services/location';
         if (path.includes('it')) return '/services/it';
-        if (path.includes('call-center')) return '/services/call-center';
+       // if (path.includes('call-center')) return '/services/call-center';
         if (path.includes('supplier')) return '/services/fournisseur';
         return '/services';
       }
@@ -193,7 +193,7 @@ export default function Navbar() {
   const expertisesLinks = [
     { href: "/services/location", label: "navbar.location", icon: Car, description: "navbar.locationDesc" },
     { href: "/services/it", label: "navbar.itSolutions", icon: Laptop, description: "navbar.itSolutionsDesc" },
-    { href: "/services/call-center", label: "navbar.callCenter", icon: Phone, description: "navbar.callCenterDesc" },
+    /*{ href: "/services/call-center", label: "navbar.callCenter", icon: Phone, description: "navbar.callCenterDesc" },*/
     { href: "/services/fournisseur", label: "navbar.supplier", icon: Truck, description: "navbar.supplierDesc" },
   ];
 

@@ -129,14 +129,12 @@
   "title": "Expertise for Your Growth",
   "description": "Tailored services to boost your growth and strengthen competitiveness.",
   "button": "Learn More",
+  "buttonCta": "Request a Consultation",
   "rental": {
     "title": "Car Rental",
     "description": "Modern and flexible fleet for your business trips."
   },
-  "callcenter": {
-    "title": "Call Center",
-    "description": "24/7 multilingual support, fast and reliable."
-  },
+
   "it": {
     "title": "IT Solutions",
     "description": "High-performance websites and apps to grow your business."

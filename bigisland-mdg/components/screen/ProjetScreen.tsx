@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+import Head from 'next/head';
 import { motion, useInView } from 'framer-motion';
 import { FolderGit2 } from 'lucide-react';
 
@@ -74,23 +76,32 @@ export default function ProjetScreen() {
             <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('projectPage.description')}</p>
           </motion.div>
 
-          {/* Icône à droite */}
+          {/* Image à droite */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{
-              opacity: 1,
-              scale: [1, 1.05, 1],
-              y: [0, -10, 0],
+            opacity: 1,
+            scale: [1, 1.03, 1],
+            y: [0, -8, 0],
             }}
-            transition={{
-              duration: 2,
+              transition={{
+              duration: 3,
               repeat: Infinity,
               ease: 'easeInOut',
-            }}
-            className="flex justify-center items-center"
-          >
-            <FolderGit2 className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
-          </motion.div>
+              }}
+              className="relative flex justify-center items-center"
+              >
+            <div className="relative w-full max-w-md h-72 md:h-[350px] lg:h-[400px]">
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
+              <Image
+                src="/images/heros/project-hero.jpg"
+                alt="It illustration"
+                fill
+                priority
+                className="relative object-cover rounded-3xl shadow-lg"
+                />
+              </div>
+            </motion.div>
         </div>
       </div>
 
@@ -130,7 +141,7 @@ export default function ProjetScreen() {
         </motion.div>
 
         {/* ---- CTA Simple Justified ---- */}
-        <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
+        <section className="mt-16 bg-gradient-to-r from-blue-500 to-blue-100 text-white rounded-xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl md:text-3xl font-bold">
             {t('projectPage.ctaTitle') || 'Want to know more?'}
           </h2>

@@ -3,7 +3,7 @@
     "title": "Découvrez notre entreprise"
   },
   "hero": {
-    "title": "Propulsez Votre entreprise vers la croissance.",
+    "title": "Propulsez votre entreprise vers la croissance.",
     "description": "Big Island MDG se positionne comme le catalyseur de votre réussite à Madagascar. Nous allons au-delà des services traditionnels en créant une synergie stratégique qui génère une valeur durable pour votre entreprise. Notre équipe d'experts est dédiée à l'excellence opérationnelle, transformant vos défis en de véritables opportunités de croissance.",
     "button1": "Discutons",
     "button2": "Mieux nous connaître"
@@ -128,14 +128,11 @@
   "title": "Expertises pour votre croissance",
   "description": "Des services adaptés pour accélérer votre développement et renforcer votre compétitivité.",
   "button": "En savoir plus",
+  "buttonCta": "Demander une consultation",
   "rental": {
     "title": "Location de voitures",
     "description": "Une flotte moderne et flexible pour vos déplacements pros."
-  },
-  "callcenter": {
-    "title": "Centre d'appel",
-    "description": "Support client multilingue 24/7, rapide et efficace."
-  },
+  },  
   "it": {
     "title": "Solutions IT",
     "description": "Sites et applis performants pour booster votre business."

@@ -85,7 +85,7 @@ export default function Footer() {
               {[
                 { label: t('footer.itSolutions'), href: '/services/it' },
                 { label: t('footer.location'), href: '/services/location' },
-                { label: t('footer.callCenter'), href: '/services/call-center' },
+               // { label: t('footer.callCenter'), href: '/services/call-center' },
                 { label: t('footer.supplier'), href: '/services/fournisseurs' },
               ].map((item, idx) => (
                 <motion.li key={idx}>
