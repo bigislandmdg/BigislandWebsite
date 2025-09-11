@@ -106,25 +106,35 @@ export default function CallCenterScreen() {
             <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('callCenterPage.description')}</p>
           </motion.div>
 
-          {/* Icône Call Center à droite */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              scale: [1, 1.05, 1],
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="flex justify-center items-center text-blue-600"
-          >
-            <Phone size={280} />
-          </motion.div>
-        </div>
-      </div>
+           {/* Image à droite */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{
+                        opacity: 1,
+                        scale: [1, 1.03, 1],
+                        y: [0, -8, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                      className="relative flex justify-center items-center"
+                    >
+                      <div className="relative w-full max-w-md h-72 md:h-[350px] lg:h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
+                        <Image
+                          src="/images/call-hero.jpg"
+                          alt="Blog illustration"
+                          fill
+                          priority
+                          className="relative object-cover rounded-3xl shadow-lg"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+
 
       {/* ===== Section Services ===== */}
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
