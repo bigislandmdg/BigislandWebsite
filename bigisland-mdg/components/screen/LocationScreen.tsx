@@ -68,25 +68,34 @@ export default function LocationScreen() {
             <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('locationPage.description')}</p>
           </motion.div>
 
-           {/* Icône voiture à droite */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              scale: [1, 1.05, 1],
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="flex justify-center items-center text-blue-600"
-          >
-            <CarIcon size={280} />
-          </motion.div>
+          {/* Image à droite */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{
+                  opacity: 1,
+                    scale: [1, 1.03, 1],
+                    y: [0, -8, 0],
+                    }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                      className="relative flex justify-center items-center"
+                      >
+                    <div className="relative w-full max-w-md h-72 md:h-[350px] lg:h-[400px]">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
+                      <Image
+                       src="/images/heros/location-hero.jpg"
+                       alt="It illustration"
+                      fill
+                      priority
+                    className="relative object-cover rounded-3xl shadow-lg"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
 
       {/* ===== Section Voitures ===== */}
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 py-20">

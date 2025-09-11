@@ -3,8 +3,8 @@
     "title": "Découvrez notre entreprise"
   },
   "hero": {
-    "title": "Offrez à votre entreprise une vitrine digitale à la hauteur de vos ambitions",
-    "description": "BigIsland est votre partenaire pour des plateformes digitales sur mesure qui unifient votre écosystème (IT, relation client, logistique) et dopent votre performance opérationnelle.",
+    "title": "Propulsez Votre entreprise vers la croissance.",
+    "description": "Big Island MDG se positionne comme le catalyseur de votre réussite à Madagascar. Nous allons au-delà des services traditionnels en créant une synergie stratégique qui génère une valeur durable pour votre entreprise. Notre équipe d'experts est dédiée à l'excellence opérationnelle, transformant vos défis en de véritables opportunités de croissance.",
     "button1": "Discutons",
     "button2": "Mieux nous connaître"
   },
@@ -244,7 +244,7 @@
 },
   "aboutPage": {
   "title": "À propos de nous",
-  "subtitle": "BigIslandMDG, partenaire de confiance pour votre transformation digitale.",
+  "subtitle": "Nous ne sommes pas de simples fournisseurs de services, nous sommes des créateurs de valeur.Chez Big Island MDG, nous agissons comme une extension stratégique de votre équipe, en vous fournissant l'expertise et les solutions intégrées qui stimulent votre efficacité, optimisent vos ressources et garantissent votre succès durable sur le marché Malagasy.",
   "whoWeAre": {
     "title": "Qui sommes-nous ?",
     "description": "Une équipe passionnée qui accompagne les entreprises dans leur croissance grâce à des solutions digitales innovantes et efficaces."
@@ -520,6 +520,7 @@
     "intro": "Cette politique explique comment nous utilisons les cookies et technologies similaires sur notre site.",
     "needHelp": "Questions sur notre politique de cookies ?",
     "contactUs": "Contactez notre délégué à la protection des données à dpo@exemple.com",
+    "contactButton": "Contactez-nous",
     "sections": {
       "whatAreCookies": {
         "title": "Que sont les cookies ?",
@@ -581,50 +582,48 @@
     }
   }
 },
-
 "privacyPolicy": {
-  "pageTitle": "Privacy Policy - BigIslandMDG",
-  "metaDescription": "Learn how we collect, use, and protect your personal data in accordance with GDPR and other privacy regulations.",
-  "title": "Privacy Policy",
-  "intro": "This policy explains how we collect, use, and protect your personal information when you use our services.",
-  "needHelp": "Questions about our privacy policy?",
-  "contactUs": "Contact our Data Protection Officer at dpo@example.com",
+  "pageTitle": "Politique de confidentialité - BigIslandMDG",
+  "metaDescription": "Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD et autres réglementations.",
+  "title": "Politique de confidentialité",
+  "intro": "Cette politique explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez nos services.",
+  "needHelp": "Des questions sur notre politique de confidentialité ?",
+  "contactUs": "Contactez notre Délégué à la Protection des Données à dpo@exemple.com",
   "sections": {
     "introduction": {
       "title": "Introduction",
-      "content": "We are committed to protecting your privacy and personal data. This policy applies to all information collected through our services."
+      "content": "Nous nous engageons à protéger votre vie privée et vos données personnelles. Cette politique s'applique à toutes les informations collectées via nos services."
     },
     "dataCollected": {
-      "title": "Data We Collect",
-      "content": "We may collect:\n- Personal identification information\n- Contact details\n- Usage data\n- Technical data (IP address, browser type)\n- Cookies and tracking data"
+      "title": "Données collectées",
+      "content": "Nous pouvons collecter :\n- Informations d'identification personnelle\n- Coordonnées\n- Données d'utilisation\n- Données techniques (adresse IP, type de navigateur)\n- Cookies et données de traçage"
     },
     "dataUsage": {
-      "title": "How We Use Your Data",
-      "content": "Your data helps us:\n- Provide and maintain our services\n- Improve user experience\n- Communicate with you\n- Ensure security\n- Comply with legal obligations"
+      "title": "Utilisation des données",
+      "content": "Vos données nous permettent de :\n- Fournir et maintenir nos services\n- Améliorer l'expérience utilisateur\n- Communiquer avec vous\n- Assurer la sécurité\n- Respecter nos obligations légales"
     },
     "dataSharing": {
-      "title": "Data Sharing",
-      "content": "We may share data with:\n- Service providers\n- Legal authorities when required\n- Business partners (with your consent)\n- Affiliated companies"
+      "title": "Partage des données",
+      "content": "Nous pouvons partager des données avec :\n- Nos prestataires de services\n- Les autorités légales lorsque requis\n- Partenaires commerciaux (avec votre consentement)\n- Sociétés affiliées"
     },
     "userRights": {
-      "title": "Your Rights",
-      "content": "Under GDPR, you have the right to:\n- Access your data\n- Request correction\n- Request deletion\n- Restrict processing\n- Data portability\n- Object to processing"
+      "title": "Vos droits",
+      "content": "Conformément au RGPD, vous avez le droit :\n- D'accès à vos données\n- De rectification\n- D'effacement\n- De limitation du traitement\n- À la portabilité des données\n- D'opposition au traitement"
     },
     "dataSecurity": {
-      "title": "Data Security",
-      "content": "We implement appropriate technical and organizational measures to protect your data, including encryption, access controls, and regular security assessments."
+      "title": "Sécurité des données",
+      "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données, incluant chiffrement, contrôles d'accès et audits de sécurité réguliers."
     },
     "cookies": {
       "title": "Cookies",
-      "content": "We use cookies and similar technologies. You can manage your preferences in your browser settings or through our cookie consent tool."
+      "content": "Nous utilisons des cookies et technologies similaires. Vous pouvez gérer vos préférences dans les paramètres de votre navigateur ou via notre outil de gestion des cookies."
     },
     "policyChanges": {
-      "title": "Policy Changes",
-      "content": "We may update this policy periodically. We will notify you of significant changes through our website or direct communication."
+      "title": "Modifications de la politique",
+      "content": "Nous pouvons mettre à jour cette politique périodiquement. Nous vous informerons des changements importants via notre site ou par communication directe."
     }
   }
 },
-
  "form": {
     "fullName": "Nom complet",
     "email": "Adresse email",

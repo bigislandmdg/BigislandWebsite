@@ -2,8 +2,10 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+import Head from 'next/head';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // TiltCard générique
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -75,23 +77,32 @@ export default function TestimonyScreen() {
             <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('testimonyPage.description')}</p>
           </motion.div>
 
-          {/* Icône à droite */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              scale: [1, 1.05, 1],
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="flex justify-center items-center"
-          >
-            <User className="w-40 h-40 md:w-56 md:h-56 text-blue-600" />
-          </motion.div>
+           {/* Image à droite */}
+                       <motion.div
+                           initial={{ opacity: 0, scale: 0.9 }}
+                           animate={{
+                           opacity: 1,
+                               scale: [1, 1.03, 1],
+                               y: [0, -8, 0],
+                           }}
+                           transition={{
+                           duration: 3,
+                           repeat: Infinity,
+                           ease: 'easeInOut',
+                           }}
+                           className="relative flex justify-center items-center"
+                           >
+                           <div className="relative w-full max-w-md h-72 md:h-[350px] lg:h-[400px]">
+                           <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
+                          <Image
+                            src="/images/heros/testimonials-hero.jpg"
+                          alt="It illustration"
+                          fill
+                        priority
+                      className="relative object-cover rounded-3xl shadow-lg"
+                    />
+                </div>
+              </motion.div>
         </div>
       </div>
 

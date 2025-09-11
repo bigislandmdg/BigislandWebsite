@@ -6,73 +6,7 @@ import { PlayCircle, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 import ContactModal from '../layout/ModalContact';
 import VideoModal from '../layout/VideoModal';
-
-interface TypewriterTextProps {
-  text: string;
-  className?: string;
-  delay?: number;
-  cursor?: boolean;
-  cursorStyle?: string;
-}
-
-const TypewriterText = ({ 
-  text, 
-  className = '', 
-  delay = 0.05, 
-  cursor = true, 
-  cursorStyle = 'ml-0.5 h-6 w-1 bg-current' 
-}: TypewriterTextProps) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showCursor, setShowCursor] = useState(true);
-
-  // 🔥 Reset quand le texte change (ex: changement de langue)
-  useEffect(() => {
-    setDisplayedText('');
-    setCurrentIndex(0);
-    setShowCursor(true);
-  }, [text]);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }, delay * 1000);
-
-      return () => clearTimeout(timeout);
-    } else {
-      const blinkInterval = setInterval(() => {
-        setShowCursor(prev => !prev);
-      }, 500);
-
-      const stopTimeout = setTimeout(() => {
-        clearInterval(blinkInterval);
-        setShowCursor(false);
-      }, 2000);
-
-      return () => {
-        clearInterval(blinkInterval);
-        clearTimeout(stopTimeout);
-      };
-    }
-  }, [currentIndex, text, delay]);
-
-  return (
-    <span className={`${className} inline-flex items-center`}>
-      <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-        {displayedText}
-      </motion.span>
-      {cursor && showCursor && (
-        <motion.span
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
-          className={cursorStyle}
-        />
-      )}
-    </span>
-  );
-};
+import TypewriterText from '../section/TypewriterText';
 
 export default function Hero() {
   const { t } = useTranslation('common');
@@ -84,16 +18,12 @@ export default function Hero() {
     '/videos/callcenter.mp4',
     '/videos/rentals.mp4',
     '/videos/itsolutions.mp4',
-    '/videos/products.mp4'
+    '/videos/products.mp4',
   ];
-
-  const [videoLoadedStates, setVideoLoadedStates] = useState<boolean[]>(
-    Array(backgroundVideos.length).fill(false)
-  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBgIndex(prevIndex => 
+      setCurrentBgIndex((prevIndex) =>
         prevIndex === backgroundVideos.length - 1 ? 0 : prevIndex + 1
       );
     }, 15000);
@@ -101,107 +31,93 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [backgroundVideos.length]);
 
-  const handleVideoLoad = (index: number) => {
-    setVideoLoadedStates(prev => {
-      const newStates = [...prev];
-      newStates[index] = true;
-      return newStates;
-    });
-  };
-
+  
   return (
-    <section className="relative pt-[5px] py-14 bg-gradient-to-l from-blue-50 to-blue-200 min-h-screen flex items-center">
-      <div className="container mx-auto px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+    <section className="relative isolate overflow-hidden min-h-screen flex items-center justify-center">
+      {/* Vidéo en background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          key={currentBgIndex}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
+        >
+          <source src={backgroundVideos[currentBgIndex]} type="video/mp4" />
+          Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+        {/* Overlay sombre/bleu pour lisibilité */}
+        <div className="absolute inset-0 bg-blue/50" />
+      </div>
 
-        {/* Texte à gauche */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
+      {/* Contenu texte aligné à gauche */}
+      <div className="relative z-12 mx-0 max-w-3xl px-2 lg:px-8 py-24 text-left text-white mr-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-5"
+          transition={{ duration: 0.7 }}
+          className="text-4xl font-bold tracking-tight sm:text-5xl"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            <TypewriterText 
-              text={t('hero.title')} 
-              delay={0.08} 
-              cursor={true} 
-              cursorStyle="ml-1 h-6 w-1.5 bg-gray-900" 
-            />
-          </h2>
+          <TypewriterText
+            text={t('hero.title')}
+            delay={0.08}
+            cursor
+            cursorStyle="ml-1 h-6 w-2 bg-white"
+          />
+        </motion.h1>
 
-          <p className="text-md text-gray-700 max-w-md leading-relaxed">
-            <TypewriterText 
-              text={t('hero.description')} 
-              delay={0.03} 
-              cursor={false} 
-            />
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <motion.button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 flex items-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              {t('hero.button1')}
-            </motion.button>
-
-            <motion.button
-              onClick={() => setIsVideoModalOpen(true)}
-              className="flex items-center px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <PlayCircle className="w-6 h-6 mr-2" />
-              {t('hero.button2')}
-            </motion.button>
-          </div>
-        </motion.div>
-
-        {/* Card vidéo à droite */}
-        <motion.div
-          className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200"
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.3 }}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="mt-6 text-lg leading-8 max-w-2xl"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-96 object-cover"
-            onLoadedData={() => handleVideoLoad(currentBgIndex)}
+          <TypewriterText text={t('hero.description')} delay={0.03} cursor={false} />
+        </motion.p>
+
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
+          <motion.button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md shadow-blue-500 hover:bg-blue-700 flex items-center transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <source src={backgroundVideos[currentBgIndex]} type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture de vidéos.
-          </video>
+            <MessageCircle className="w-5 h-5 mr-2" />
+            {t('hero.button1')}
+          </motion.button>
 
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-            {backgroundVideos.map((_, index) => (
-              <button
-                key={index}
-                className={`h-2 rounded-full transition-all duration-200 ${
-                  index === currentBgIndex ? 'bg-blue-100 w-8' : 'bg-blue-600/40 w-2'
-                }`}
-                onClick={() => setCurrentBgIndex(index)}
-                aria-label={`Afficher la vidéo ${index + 1}`}
-              />
-            ))}
-          </div>
-        </motion.div>
+          <motion.button
+            onClick={() => setIsVideoModalOpen(true)}
+            className="flex items-center px-6 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/20 shadow-md transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <PlayCircle className="w-8 h-8 mr-2" />
+            {t('hero.button2')}
+          </motion.button>
+        </div>
+      </div>
 
+      {/* Indicateurs vidéos */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {backgroundVideos.map((_, index) => (
+          <button
+            key={index}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === currentBgIndex ? 'bg-white w-8' : 'bg-white/50 w-2'
+            }`}
+            onClick={() => setCurrentBgIndex(index)}
+            aria-label={`Afficher la vidéo ${index + 1}`}
+          />
+        ))}
       </div>
 
       {/* Modales */}
       <AnimatePresence>
         {isModalOpen && (
-          <ContactModal 
-            isOpen={isModalOpen} 
-            onClose={() => setIsModalOpen(false)} 
-          />
+          <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         )}
       </AnimatePresence>
 

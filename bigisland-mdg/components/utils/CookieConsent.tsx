@@ -34,7 +34,7 @@ export default function CookieConsent() {
           <div className="bg-white border border-gray-300 rounded-2xl shadow-lg p-4 flex items-start justify-between gap-4">
             {/* Texte */}
             <div className="flex items-start gap-2">
-              <Cookie className="h-6 w-6 text-yellow-600 mt-1" />
+              <Cookie className="h-10 w-10 text-yellow-600 mt-1" />
               <p className="text-sm text-gray-700">
                 {t("cookie.message")}{" "}
                 <a
