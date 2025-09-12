@@ -15,7 +15,7 @@ export default function Hero() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   const backgroundVideos = [
-    '/videos/callcenter.mp4',
+  //  '/videos/callcenter.mp4',
     '/videos/rentals.mp4',
     '/videos/itsolutions.mp4',
     '/videos/products.mp4',
