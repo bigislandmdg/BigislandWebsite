@@ -54,7 +54,7 @@ const AnimatedCard = ({
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <TiltCard className="flex flex-col items-center text-center">
+    <TiltCard className="flex flex-col items-center text-center h-full">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40 }}
@@ -117,7 +117,7 @@ export default function AboutScreen() {
             </motion.p>
           </div>
 
-          {/* Image à droite (Hero avec angle Tailwind UI) */}
+          {/* Image à droite */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{
@@ -133,12 +133,9 @@ export default function AboutScreen() {
             className="relative flex justify-center items-center"
           >
             <div className="relative w-130 h-50 md:h-[350px] lg:h-[400px]">
-              {/* Overlay dégradé + angle */}
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
-
-              {/* Image optimisée Next.js */}
               <Image
-                src="/images/about-hero.jpg" // 👉 Mets ton image ici
+                src="/images/about-hero.jpg"
                 alt="About illustration"
                 fill
                 priority
@@ -149,9 +146,18 @@ export default function AboutScreen() {
         </div>
       </div>
 
-      {/* ===== Cards principales ===== */}
+      {/* ===== Section 1 : Who we are / Mission / Offer ===== */}
       <div className="px-6 py-20 max-w-7xl mx-auto">
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            {t('aboutPage.cardsSection.title')}
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            {t('aboutPage.cardsSection.subtitle')}
+          </p>
+        </div>
+
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatedCard
             title={t('aboutPage.whoWeAre.title')}
             description={t('aboutPage.whoWeAre.description')}
@@ -168,59 +174,59 @@ export default function AboutScreen() {
             Icon={Handshake}
           />
         </div>
+      </div>
 
-        {/* ===== Process Section (2x2 offset grid) ===== */}
-        <section id="process" className="bg-white-50 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
-            {/* Colonne gauche : grille des étapes */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-            >
-              {processSteps.map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ scale: 1.03 }}
-                  className={`rounded-3xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col h-full
-                    ${idx % 2 !== 0 ? 'sm:mt-8' : ''}`}
-                >
-                  <div className="mb-4 flex items-center gap-x-3">
-                    <step.Icon className="h-8 w-8 text-blue-600" />
-                    <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
-                  </div>
-                  <p className="text-gray-700 text-base leading-6 flex-1">{step.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+      {/* ===== Section 2 : Process (With Cards) ===== */}
+      <section id="process" className="bg-gray-50 py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            {t('aboutPage.process.title')}
+          </motion.h2>
 
-            {/* Colonne droite : titre + description globale */}
-            <div className="max-w-xl">
-              <motion.h2
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+            className="mt-4 max-w-2xl mx-auto text-lg leading-8 text-gray-600"
+          >
+            {t('aboutPage.process.description')}
+          </motion.p>
+
+          {/* Grille de cartes */}
+          <div className="mt-16 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {processSteps.map((step, idx) => (
+              <motion.div
+                key={idx}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
               >
-                {t('aboutPage.process.title')}
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-                className="mt-6 text-lg leading-8 text-gray-600"
-              >
-                {t('aboutPage.process.description')}
-              </motion.p>
-            </div>
+                <TiltCard className="flex flex-col items-center text-center h-full">
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 8 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
+                  >
+                    <step.Icon className="w-10 h-10 text-blue-600" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600">{step.description}</p>
+                </TiltCard>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </section>
   );
 }

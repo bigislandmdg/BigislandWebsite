@@ -243,6 +243,10 @@
 "aboutPage": {
   "title": "About Us",
   "subtitle": "We are not just service providers, we are value creators. At Big Island MDG, we act as a strategic extension of your team, delivering expertise and integrated solutions that boost your efficiency, optimize your resources, and ensure your long-term success in the Malagasy market.",
+  "cardsSection": {
+      "title": "What We Offer",
+      "subtitle": "We combine technical expertise and a human approach to support your digital transformation."
+    },
   "whoWeAre": {
     "title": "Who We Are",
     "description": "A passionate team dedicated to helping businesses grow through innovative and effective digital solutions."
