@@ -15,6 +15,7 @@ import TestimonySection from '@/components/section/TestimonySection';
 import TeamSection from '@/components/section/TeamSection';
 import BlogSection from '@/components/section/BlogSection';
 import ContactSection from '@/components/section/ContactSection';
+import FloatingChatToggle from '@/components/utils/FloatingChatToggle';
 
 interface PageProps {
   params: {
@@ -45,6 +46,7 @@ export default function Home({ params }: PageProps) {
          <ContactSection />
       </main>
       <ScrollToTopButton />
+      <FloatingChatToggle />
       <Footer />
     </>
   );

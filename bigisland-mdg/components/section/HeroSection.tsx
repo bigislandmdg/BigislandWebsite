@@ -1,22 +1,20 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { PlayCircle, MessageCircle } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react'; // <-- lucide-react
 import { useTranslation } from 'next-i18next';
-import ContactModal from '../layout/ModalContact';
-import VideoModal from '../layout/VideoModal';
+import { useRouter } from 'next/navigation';
 import TypewriterText from '../section/TypewriterText';
+import ContactModal from '../layout/ModalContact';
 
 export default function Hero() {
   const { t } = useTranslation('common');
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   const backgroundVideos = [
-  //  '/videos/callcenter.mp4',
-    '/videos/rentals.mp4',
     '/videos/itsolutions.mp4',
     '/videos/products.mp4',
   ];
@@ -27,11 +25,9 @@ export default function Hero() {
         prevIndex === backgroundVideos.length - 1 ? 0 : prevIndex + 1
       );
     }, 15000);
-
     return () => clearInterval(interval);
   }, [backgroundVideos.length]);
 
-  
   return (
     <section className="relative isolate overflow-hidden min-h-screen flex items-center justify-center">
       {/* Vidéo en background */}
@@ -48,11 +44,10 @@ export default function Hero() {
           <source src={backgroundVideos[currentBgIndex]} type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-        {/* Overlay sombre/bleu pour lisibilité */}
         <div className="absolute inset-0 bg-blue/50" />
       </div>
 
-      {/* Contenu texte aligné à gauche */}
+      {/* Contenu texte */}
       <div className="relative z-12 mx-0 max-w-3xl px-2 lg:px-8 py-24 text-left text-white mr-auto">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -77,27 +72,28 @@ export default function Hero() {
           <TypewriterText text={t('hero.description')} delay={0.03} cursor={false} />
         </motion.p>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
+        {/* === Bouton principal === */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="mt-6"
+        >
           <motion.button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md shadow-blue-500 hover:bg-blue-700 flex items-center transition"
+            onClick={() => router.push('/services/it')}
+            className="flex items-center px-6 py-3 rounded-xl font-semibold shadow-md transition bg-blue-600 text-white hover:bg-white hover:text-blue-600"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            {t('hero.button1')}
-          </motion.button>
-
-          <motion.button
-            onClick={() => setIsVideoModalOpen(true)}
-            className="flex items-center px-6 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/20 shadow-md transition"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <PlayCircle className="w-8 h-8 mr-2" />
             {t('hero.button2')}
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <ArrowRight className="w-6 h-6 ml-3" />
+            </motion.div>
           </motion.button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Indicateurs vidéos */}
@@ -114,20 +110,10 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Modales */}
+      {/* Modale contact */}
       <AnimatePresence>
         {isModalOpen && (
           <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {isVideoModalOpen && (
-          <VideoModal
-            isOpen={isVideoModalOpen}
-            onClose={() => setIsVideoModalOpen(false)}
-            videoUrl="https://www.youtube.com/embed/votre-video-id"
-          />
         )}
       </AnimatePresence>
     </section>

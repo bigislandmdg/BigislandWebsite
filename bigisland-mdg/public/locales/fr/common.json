@@ -6,7 +6,7 @@
     "title": "Propulsez votre entreprise vers la croissance.",
     "description": "Big Island MDG se positionne comme le catalyseur de votre réussite à Madagascar. Nous allons au-delà des services traditionnels en créant une synergie stratégique qui génère une valeur durable pour votre entreprise. Notre équipe d'experts est dédiée à l'excellence opérationnelle, transformant vos défis en de véritables opportunités de croissance.",
     "button1": "Discutons",
-    "button2": "Mieux nous connaître"
+    "button2": "Laissez-nous vous guider"
   },
 
   "navbar": {
@@ -27,7 +27,7 @@
 
   "blog": "Blog",
   "contact": "Contact",
-  "requestQuote": "Demande un devis",
+  "requestQuote": "Discutons",
   "language": "Langues",
   "search": "Rechercher",
   "closeSearch": "Fermer la recherche",
@@ -81,7 +81,7 @@
   
   "about": {
   "title": "Des solutions simples et efficaces pour votre entreprise",
-  "description": "Nous vous aidons à gagner en performance grâce à nos expertises en mobilité, relation client, IT et achats stratégiques.",
+  "description": "Nous vous aidons à gagner en performance grâce à nos expertises en mobilité, IT et achats stratégiques.",
   "button": "Lancer un projet",
   "expertises": [
     {
@@ -301,28 +301,35 @@
     "meetingCreated": "Votre réunion a été planifiée avec succès. Cliquez sur le lien ci-dessous pour y accéder :"
   }
 },
-  "locationPage": {
-  "pageTitle": "Location de voitures | BigIslandMDG",
-  "metaDescription": "Louez une voiture en toute confiance à Madagascar avec BigIslandMDG. Large choix de véhicules adaptés à vos besoins : SUV, berlines et vans.",
-  "title": "Votre partenaire de location de voitures à Madagascar",
-  "description": "Profitez d’un service de location de voitures fiable, flexible et abordable, que ce soit pour vos voyages personnels, vos déplacements professionnels ou vos aventures en groupe.",
-  "cars": {
-    "suv": {
-      "title": "SUV Confort",
-      "description": "Robuste et spacieux, idéal pour explorer Madagascar hors des sentiers battus."
+"locationPage": {
+  "pageTitle": "Location de voitures à Madagascar | Big Island MDG Car Rental",
+  "metaDescription": "Louez votre voiture à Madagascar avec Big Island MDG Car Rental. Large choix de 4x4, berlines, minibus. Tarifs compétitifs, assistance 24/7 et chauffeurs disponibles.",
+  
+  "title": "Location de Voiture à Madagascar",
+  "description": "Avec Big Island MDG Car Rental, explorez Madagascar en toute liberté. Une flotte variée, des tarifs flexibles et un service d’accompagnement personnalisé pour vos voyages, qu’ils soient touristiques ou professionnels.",
+  
+  "services": {
+    "fleet": {
+      "title": "Large choix de véhicules",
+      "description": "4x4, citadines, berlines et minibus. Une flotte variée adaptée à vos besoins, que vous voyagiez seul, en couple, en famille ou en groupe."
     },
-    "sedan": {
-      "title": "Berline Élégante",
-      "description": "Un maximum de confort et de style pour vos trajets urbains et vos rendez-vous d’affaires."
+    "pricing": {
+      "title": "Tarifs compétitifs & flexibles",
+      "description": "Des offres personnalisées selon la durée et le type de véhicule. Louez à la journée, à la semaine ou au mois, selon vos projets."
     },
-    "van": {
-      "title": "Van 8 places",
-      "description": "Pratique et convivial, parfait pour voyager en famille ou entre amis en toute sérénité."
+    "assistance": {
+      "title": "Assistance & Chauffeur",
+      "description": "Un service d’assistance 24/7 pour un voyage serein. Des chauffeurs expérimentés disponibles sur demande pour plus de confort."
+    },
+    "freedom": {
+      "title": "Liberté et confort",
+      "description": "Explorez Madagascar à votre rythme. Confort, sécurité et flexibilité garantis pour découvrir les paysages uniques de la Grande Île."
     }
   },
-  "cta": "Demander un devis personnalisé",
+
   "ctaTitle": "Prêt à louer votre véhicule idéal ?",
-  "ctaSubtitle": "Choisissez parmi nos voitures et obtenez un devis instantané en ligne."
+  "ctaSubtitle": "Choisissez parmi nos solutions de location et profitez d’un accompagnement sur mesure.",
+  "cta": "Demander un devis"
 },
   "itPage": {
   "pageTitle": "Solutions Informatiques",

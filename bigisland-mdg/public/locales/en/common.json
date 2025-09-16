@@ -7,7 +7,7 @@
     "title": "Drive Your Business to Growth.",
     "description": "Big Island MDG positions itself as the catalyst for your success in Madagascar. We go beyond traditional services by creating strategic synergies that generate sustainable value for your business. Our team of experts is dedicated to operational excellence, transforming your challenges into real growth opportunities.",
     "button1": "Let's Talk",
-    "button2": "Learn More About Us"
+    "button2": "Let Us Guide You"
   },
   
   "navbar": {
@@ -29,7 +29,7 @@
 
   "blog": "Blog",
   "contact": "Contact",
-  "requestQuote": "Request a quote",
+  "requestQuote": "Let's meet",
 
   "search": "Search",
   "closeSearch": "Close search",
@@ -83,7 +83,7 @@
   
   "about": {
   "title": "Simple and effective solutions for your business",
-  "description": "We help you boost performance with our expertise in mobility, customer service, IT, and strategic sourcing.",
+  "description": "We help you boost performance with our expertise in mobility, IT, and strategic sourcing.",
   "button": "Start a project",
   "expertises": [
     {
@@ -303,29 +303,35 @@
   }
 },   
 "locationPage": {
-  "pageTitle": "Car Rental | BigIslandMDG",
-  "metaDescription": "Rent a car with confidence in Madagascar with BigIslandMDG. Wide range of vehicles to suit your needs: SUVs, sedans, and vans.",
-  "title": "Your trusted car rental partner in Madagascar",
-  "description": "Enjoy a reliable, flexible, and affordable car rental service — whether for personal trips, business travel, or group adventures.",
-  "cars": {
-    "suv": {
-      "title": "Comfort SUV",
-      "description": "Rugged and spacious, perfect for exploring Madagascar off the beaten path."
+  "pageTitle": "Car Rental in Madagascar | Big Island MDG Car Rental",
+  "metaDescription": "Rent a car in Madagascar with Big Island MDG Car Rental. Wide choice of 4x4s, sedans, and minibuses. Competitive rates, 24/7 assistance, and professional drivers available.",
+  
+  "title": "Car Rental in Madagascar",
+  "description": "With Big Island MDG Car Rental, explore Madagascar freely. A diverse fleet, flexible rates, and personalized service for both leisure and business travel.",
+  
+  "services": {
+    "fleet": {
+      "title": "Wide Range of Vehicles",
+      "description": "4x4s, city cars, sedans, and minibuses. A fleet designed to meet your needs, whether traveling solo, as a couple, with family, or in a group."
     },
-    "sedan": {
-      "title": "Elegant Sedan",
-      "description": "Maximum comfort and style for city rides and business meetings."
+    "pricing": {
+      "title": "Competitive & Flexible Rates",
+      "description": "Personalized offers depending on vehicle type and rental period. Rent daily, weekly, or monthly according to your plans."
     },
-    "van": {
-      "title": "8-Seater Van",
-      "description": "Practical and friendly, ideal for traveling with family or friends in complete peace of mind."
+    "assistance": {
+      "title": "Assistance & Driver Service",
+      "description": "24/7 assistance for a worry-free trip. Experienced drivers available on request for extra comfort and convenience."
+    },
+    "freedom": {
+      "title": "Freedom and Comfort",
+      "description": "Discover Madagascar at your own pace. Comfort, safety, and flexibility guaranteed to explore the island’s unique landscapes."
     }
   },
-  "cta": "Request a personalized quote",
-  "ctaTitle": "Ready to rent your ideal vehicle?",
-  "ctaSubtitle": "Choose from our cars and get an instant online quote."
-  },
 
+  "ctaTitle": "Ready to rent your ideal vehicle?",
+  "ctaSubtitle": "Choose from our rental options and get tailored support.",
+  "cta": "Request a Quote"
+},
   "itPage": {
   "pageTitle": "IT Solutions",
   "metaDescription": "Explore our range of IT services including software development, web and mobile apps, and more.",

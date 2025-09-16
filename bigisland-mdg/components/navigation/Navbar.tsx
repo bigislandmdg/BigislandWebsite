@@ -17,6 +17,7 @@ export default function Navbar() {
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [heroVisible, setHeroVisible] = useState(true); // ✅ nouveau state
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -166,7 +167,7 @@ export default function Navbar() {
         if (path.includes('supplier')) return '/services/fournisseur';
         return '/services';
       }
-      if (path.includes('contact')) return '/contact';
+      //  if (path.includes('contact')) return '/contact';
       if (path.includes('about')) return '/about';
       return '';
     };
@@ -191,18 +192,19 @@ export default function Navbar() {
   }, [searchQuery]);
 
   const expertisesLinks = [
-    { href: "/services/location", label: "navbar.location", icon: Car, description: "navbar.locationDesc" },
+    /*{ href: "/services/location", label: "navbar.location", icon: Car, description: "navbar.locationDesc" },*/
     { href: "/services/it", label: "navbar.itSolutions", icon: Laptop, description: "navbar.itSolutionsDesc" },
     /*{ href: "/services/call-center", label: "navbar.callCenter", icon: Phone, description: "navbar.callCenterDesc" },*/
     { href: "/services/fournisseur", label: "navbar.supplier", icon: Truck, description: "navbar.supplierDesc" },
   ];
+  
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-gradient-to-l from-blue-50 to-blue-200 shadow border-b border-gray-300'
-          : 'bg-gradient-to-l from-blue-50 to-blue-200 shadow-none border-none'
+          ? 'bg-gradient-to-l from-gray-50 to-gray-50 shadow border-b border-gray-300'
+          : 'bg-gradient-to-l from-gray-50 to-gray-50 shadow-none border-none'
       }`}
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Global">
@@ -246,66 +248,70 @@ export default function Navbar() {
             </Link>
 
             {/* Expertises Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button 
-                type="button"
-                onClick={() => toggleDropdown('expertises')}
-                className={`flex items-center gap-x-1 text-sm font-semibold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-blue-600' : ''}`}
-                aria-expanded={openDropdown === 'expertises'}
-              >
-                {t('navbar.expertises')}
-                <ChevronDownIcon className={`h-4 w-4 transition-transform duration-200 ${openDropdown === 'expertises' ? 'rotate-180' : ''}`} aria-hidden="true" />
-              </button>
+<div
+  className="relative"
+  ref={dropdownRef}
+  onMouseEnter={() => setOpenDropdown('expertises')}
+  onMouseLeave={() => setOpenDropdown(null)}
+>
+  <button 
+    type="button"
+    className={`flex items-center gap-x-1 text-sm font-semibold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-blue-600' : ''}`}
+    aria-expanded={openDropdown === 'expertises'}
+  >
+    {t('navbar.expertises')}
+    <ChevronDownIcon
+      className={`h-4 w-4 transition-transform duration-200 ${openDropdown === 'expertises' ? 'rotate-180' : ''}`}
+      aria-hidden="true"
+    />
+  </button>
 
-              <AnimatePresence>
-                {openDropdown === 'expertises' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
-                  >
-                    <div className="p-4">
-                      {expertisesLinks.map((item) => (
-                        <div
-                          key={item.label}
-                          className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 transition-colors"
-                        >
-                          <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white text-blue-600">
-                            <item.icon className="h-6 w-6" />
-                          </div>
-
-                          <div className="flex-auto">
-                            <Link
-                              href={item.href}
-                              className="block font-semibold text-gray-900"
-                              onClick={handleLinkClick}
-                            >
-                              {t(item.label)}
-                              <span className="absolute inset-0" />
-                            </Link>
-                            <p className="mt-1 text-gray-600">{t(item.description)}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+  <AnimatePresence>
+    {openDropdown === 'expertises' && (
+      <motion.div
+        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
+      >
+        <div className="p-4">
+          {expertisesLinks.map((item) => (
+            <div
+              key={item.label}
+              className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 transition-colors"
+            >
+              <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white text-blue-600">
+                <item.icon className="h-6 w-6" />
+              </div>
+              <div className="flex-auto">
+                <Link
+                  href={item.href}
+                  className="block font-semibold text-gray-900"
+                  onClick={handleLinkClick}
+                >
+                  {t(item.label)}
+                  <span className="absolute inset-0" />
+                </Link>
+                <p className="mt-1 text-gray-600">{t(item.description)}</p>
+              </div>
             </div>
+          ))}
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+
 
             <Link href="/blog" className={`text-sm font-semibold leading-6 ${navLinkClass('blog')}`} onClick={handleLinkClick}>
               {t('navbar.blog')}
             </Link>
             
-            <Link href="/contact" className={`text-sm font-semibold leading-6 ${navLinkClass('contact')}`} onClick={handleLinkClick}>
-              {t('navbar.contact')}
-            </Link>
           </div>
           
           {/* Desktop Right Actions */}
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-2">
             {/* Bouton Search */}
             <button
               onClick={() => setSearchOpen(true)}
@@ -358,7 +364,7 @@ export default function Navbar() {
 
             {/* Bouton Devis */}
             <Link
-              href="/devis"
+              href="/contact"
               className="rounded-md bg-blue-600 px-4.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
               onClick={handleLinkClick}
             >
@@ -449,17 +455,11 @@ export default function Navbar() {
                       >
                         {t('navbar.blog')}
                       </Link>
-                      <Link
-                        href="/contact"
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors"
-                        onClick={handleLinkClick}
-                      >
-                        {t('navbar.contact')}
-                      </Link>
+                     
                     </div>
                     <div className="py-6">
                       <Link
-                        href="/devis"
+                        href="/contact"
                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-blue-50 text-blue-600 hover:bg-blue-100 text-center transition-colors"
                         onClick={handleLinkClick}
                       >

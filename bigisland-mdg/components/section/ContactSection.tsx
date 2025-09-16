@@ -3,15 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
-import {
-  MapPin,
-  Phone,
-  Mail,
-  CalendarDays,
-  Clock,
-  X,
-  Send,
-} from 'lucide-react';
+import { CalendarDays, X } from 'lucide-react';
 
 export default function ContactSection() {
   const { t } = useTranslation('common');
@@ -19,7 +11,6 @@ export default function ContactSection() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [meetingLink, setMeetingLink] = useState('');
-  const [formStatus, setFormStatus] = useState({ success: false, message: '' });
 
   const handleScheduleMeeting = () => {
     const meetLink = 'https://meet.google.com/new';
@@ -32,183 +23,58 @@ export default function ContactSection() {
     }, 1000);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const { name, email, message } = Object.fromEntries(formData.entries());
-
-    try {
-      const subject = encodeURIComponent(`Nouveau message de ${name}`);
-      const body = encodeURIComponent(
-        `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-      );
-
-      window.location.href = `mailto:contact@bigisland.mg?subject=${subject}&body=${body}`;
-
-      setFormStatus({
-        success: true,
-        message: t('contact.successMessage'),
-      });
-
-      e.currentTarget.reset();
-
-      setTimeout(() => {
-        setFormStatus({ success: false, message: '' });
-      }, 5000);
-    } catch (error) {
-      setFormStatus({
-        success: false,
-        message: t('contact.errorMessage'),
-      });
-    }
-  };
-
   return (
-    <section id="contact" className="bg-gray-50 py-20 sm:py-28 px-4">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
-        {/* Form */}
-        <motion.div
-          className="bg-white p-8 sm:p-12 rounded-2xl shadow-lg border border-gray-100"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {t('contact.title')}
-          </h2>
-          <p className="text-gray-600 mb-8">{t('contact.subtitle')}</p>
+    <section id="contact" className="relative bg-gray-50 py-2.5 sm:py-2.5">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
+          {/* Texte + CTA */}
+          <motion.div
+            className="lg:pr-8 lg:pt-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              {t('contact.title')}
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              {t('contact.subtitle')}
+            </p>
 
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                {t('contact.name')}
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder={t('contact.placeholderName')}
-                required
-                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                {t('contact.email')}
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder={t('contact.placeholderEmail')}
-                required
-                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                {t('contact.message')}
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                placeholder={t('contact.placeholderMessage')}
-                required
-                className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
-              />
-            </div>
-
-            {formStatus.message && (
-              <div
-                className={`p-3 rounded-lg text-sm ${
-                  formStatus.success
-                    ? 'bg-green-50 text-green-700'
-                    : 'bg-red-50 text-red-700'
-                }`}
-              >
-                {formStatus.message}
-              </div>
-            )}
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                type="submit"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition active:scale-95"
-              >
-                <Send className="w-4 h-4" />
-                {t('contact.send')}
-              </button>
+            <div className="mt-8">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-blue-600 bg-white px-6 py-3 text-blue-600 shadow-md hover:bg-blue-50 hover:shadow-lg transition active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-2.5 text-white text-base font-medium shadow-md hover:bg-blue-700 transition active:scale-95"
+
               >
-                <CalendarDays className="w-4 h-4" />
+                <CalendarDays className="w-5 h-5" />
                 {t('contact.scheduleMeeting')}
               </button>
             </div>
-          </form>
-        </motion.div>
+          </motion.div>
 
-        {/* Contact Info */}
-        <motion.div
-          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
-          <div className="h-80 sm:h-96">
+          {/* Carte Google Maps */}
+          <motion.div
+            className="relative overflow-hidden rounded-xl shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <iframe
-  title="Localisation"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin%27ny%20Aina!5e0!3m2!1sfr!2smg!4v1693945000000!5m2!1sfr!2smg"
-  width="100%"
-  height="100%"
-  allowFullScreen
-  loading="lazy"
-  className="border-0"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
-
-          </div>
-
-          <div className="p-8 space-y-5">
-            <h3 className="text-xl font-semibold text-gray-900">
-              {t('footer.ourContact')}
-            </h3>
-
-            <div className="space-y-4 text-gray-700">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-blue-600 mt-1" />
-                <span>{t('footer.address')}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-blue-600" />
-                <span>{t('footer.phone')}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-blue-600" />
-                <span>{t('footer.email')}</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+              title="Localisation"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin%27ny%20Aina!5e0!3m2!1sfr!2smg!4v1693945000000!5m2!1sfr!2smg"
+              width="100%"
+              height="100%"
+              allowFullScreen
+              loading="lazy"
+              className="h-[450px] w-full border-0"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* Meeting Modal */}
@@ -275,7 +141,7 @@ export default function ContactSection() {
                   <button
                     type="button"
                     onClick={handleScheduleMeeting}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition active:scale-95"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 transition active:scale-95"
                   >
                     <CalendarDays className="w-4 h-4" />
                     {t('contact.confirmMeeting')}

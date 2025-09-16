@@ -30,7 +30,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-100 border-t border-gray-300">
+    <footer className="bg-blue-100 border-t border-blue-50">
       {/* Section principale */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-4">
               {[
                 { label: t('footer.itSolutions'), href: '/services/it' },
-                { label: t('footer.location'), href: '/services/location' },
+                //{ label: t('footer.location'), href: '/services/location' },
                // { label: t('footer.callCenter'), href: '/services/call-center' },
                 { label: t('footer.supplier'), href: '/services/fournisseurs' },
               ].map((item, idx) => (
@@ -155,7 +155,7 @@ export default function Footer() {
       </div>
 
       {/* Newsletter */}
-      <div className="bg-gray-100">
+      <div className="bg-blue-100">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 lg:py-4">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="lg:w-0 lg:flex-1">
@@ -203,7 +203,7 @@ export default function Footer() {
       </div>
 
       {/* Bas de page */}
-      <div className="border-t bg-gray-200 border-gray-200 py-8">
+      <div className="border-t bg-blue-100 border-blue-100 py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">

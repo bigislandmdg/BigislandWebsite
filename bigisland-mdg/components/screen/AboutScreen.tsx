@@ -66,7 +66,7 @@ const AnimatedCard = ({
           whileHover={{ scale: 1.3, rotate: 10 }}
           animate={{ y: [0, -5, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
+          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-gray-100 shadow-inner"
         >
           <Icon className="w-10 h-10 text-blue-600" />
         </motion.div>
@@ -95,7 +95,7 @@ export default function AboutScreen() {
   return (
     <section>
       {/* ===== Hero Section améliorée ===== */}
-      <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
+      <div className="relative bg-gradient-to-l from-gray-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Texte à gauche */}
           <div>
