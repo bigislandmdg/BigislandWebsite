@@ -145,8 +145,8 @@ export default function ServicesSection() {
           ))}
         </motion.div>
 
-        {/* CTA principal */}
-        <motion.div
+        {/* CTA principal
+            <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -159,7 +159,9 @@ export default function ServicesSection() {
             <Rocket className="h-5 w-5" />
             {t('services.buttonCta')}
           </button>
-        </motion.div>
+        </motion.div>  
+        */}
+      
       </div>
 
       {/* Modal */}
