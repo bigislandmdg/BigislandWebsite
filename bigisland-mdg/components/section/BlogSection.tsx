@@ -1,9 +1,11 @@
 'use client';
 
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'next-i18next';
 
 const blogPosts = [
   {
@@ -26,49 +28,136 @@ const blogPosts = [
   },
 ];
 
+// ✅ TiltCard pour effet 3D
+function TiltCard({
+  children,
+  className = '',
+  onHoverStart,
+  onHoverEnd,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onHoverStart?: () => void;
+  onHoverEnd?: () => void;
+}) {
+  const [style, setStyle] = useState({});
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { offsetWidth, offsetHeight } = e.currentTarget;
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+
+    const rotateX = ((y / offsetHeight) - 0.5) * 10;
+    const rotateY = ((x / offsetWidth) - 0.5) * -10;
+
+    setStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`,
+    });
+  };
+
+  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+
+  return (
+    <motion.div
+      className={`relative rounded-2xl shadow-lg overflow-hidden cursor-pointer ${className}`}
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => {
+        resetStyle();
+        onHoverEnd?.();
+      }}
+      onMouseEnter={onHoverStart}
+      whileHover={{ boxShadow: '0px 15px 35px rgba(0,0,0,0.25)' }}
+      transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function BlogSection() {
   const { t } = useTranslation('common');
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   return (
     <section id="blog" className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           {t('blog.title')}
-        </h2>
-        <p className="text-lg text-gray-600 mb-16">{t('blog.subtitle')}</p>
+        </motion.h2>
+        <motion.p
+          className="text-lg text-gray-600 max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          {t('blog.subtitle')}
+        </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto justify-items-center">
           {blogPosts.map((post, idx) => (
-            <div
+            <TiltCard
               key={idx}
-              className="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              onHoverStart={() => setHoverIndex(idx)}
+              onHoverEnd={() => setHoverIndex(null)}
+              className="w-80 h-72"
             >
-              <div className="relative w-full h-56">
+              <div className="relative w-full h-full">
                 <Image
                   src={post.image}
                   alt={t(post.titleKey)}
                   fill
                   className="object-cover w-full h-full"
                 />
-              </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {t(post.titleKey)}
-                </h3>
-                <p className="text-gray-600 mb-4">{t(post.descriptionKey)}</p>
-                <Link
-                  href={post.link}
-                  className="inline-flex items-center gap-1 text-blue-600 font-medium hover:underline"
+                {/* Overlay Texte */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={hoverIndex === idx ? { opacity: 1 } : { opacity: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white"
                 >
-                  {t('blog.readMore')} <ArrowRight size={18} />
-                </Link>
+                  <h3 className="text-xl font-bold">{t(post.titleKey)}</h3>
+                  <p className="text-sm mb-3">{t(post.descriptionKey)}</p>
+
+                  {/* Bouton flottant “Lire la suite” */}
+                  <AnimatePresence>
+                    {hoverIndex === idx && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-2"
+                      >
+                        <Link
+                          href={post.link}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-xl text-white font-medium hover:bg-blue-700 transition-all"
+                        >
+                          {t('blog.readMore')}
+                          <motion.span
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ repeat: Infinity, duration: 0.8 }}
+                          >
+                            <ArrowRight size={18} />
+                          </motion.span>
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>
-      
     </section>
   );
 }

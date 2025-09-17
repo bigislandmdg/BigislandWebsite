@@ -60,7 +60,7 @@ export default function Footer() {
                 { label: t('footer.services'), href: '/services' },
                 { label: t('footer.testimonials'), href: '/testimony' },
                 { label: t('footer.projects'), href: '/projet' },
-                { label: t('footer.cgu'), href: '/cgu' },
+              
               ].map((item, idx) => (
                 <motion.li key={idx}>
                   <motion.a
@@ -137,6 +137,7 @@ export default function Footer() {
                 { label: t('footer.cookiePolicy'), href: '/cookie' },
                 { label: t('footer.privacyPolicy'), href: '/privacy' },
                 { label: t('footer.legalNotice'), href: '/legal' },
+                { label: t('footer.cgu'), href: '/cgu' },
               ].map((item, idx) => (
                 <motion.li key={idx}>
                   <motion.a

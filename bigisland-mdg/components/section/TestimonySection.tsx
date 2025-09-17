@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 
-// 🔹 Découpage graphemes (sécurité emojis)
+// Fonction pour découper les emojis correctement
 function toGraphemes(input: string): string[] {
   try {
     // @ts-ignore
@@ -17,7 +17,7 @@ function toGraphemes(input: string): string[] {
   }
 }
 
-// 🔹 Machine à écrire + curseur clignotant
+// Machine à écrire
 function TypewriterText({
   text,
   speed = 50,
@@ -46,24 +46,17 @@ function TypewriterText({
   const done = index >= chars.length;
 
   return (
-    <motion.blockquote
-      className="mt-10 text-xl font-medium leading-8 text-gray-900 sm:text-2xl sm:leading-9"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      “{displayed}
+    <span className="text-gray-900 text-lg sm:text-xl">
+      {displayed}
       <motion.span
-        className="ml-1 text-gray-900"
+        className="ml-1"
         style={{ visibility: hideCursorOnDone && done ? 'hidden' : 'visible' }}
         animate={{ opacity: [0, 1, 0] }}
         transition={{ repeat: Infinity, duration: 1 }}
       >
         |
       </motion.span>
-      ”
-    </motion.blockquote>
+    </span>
   );
 }
 
@@ -71,52 +64,67 @@ export default function TestimonySection() {
   const { t } = useTranslation('common');
 
   return (
-    <section id="testimony" className="bg-blue-50 py-8 sm:py-10">
-      <div className="mx-auto max-w-3xl px-3 lg:px-8 text-center">
-        {/* 🔹 Titre */}
-        <motion.h3
-          className="text-2xl font-bold tracking-tight text-gray-900 sm:text-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {t('testimony.title')}
-        </motion.h3>
+    <section className="bg-blue-50 py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+          
+          {/* Left Image */}
+          {/* Left Image */}
+<motion.div
+  className="relative lg:col-span-5"
+  initial={{ opacity: 0, x: -50, rotate: -5, scale: 0.9 }}
+  whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+  viewport={{ once: true }}
+  whileHover={{ scale: 1.05, rotate: 1, boxShadow: "0px 10px 30px rgba(0,0,0,0.2)" }}
+  whileTap={{ scale: 0.97 }}
+>
+  <Image
+    src="/images/ceo.jpg"
+    alt="CEO of BigIsland"
+    width={700}
+    height={1200}
+    className="rounded-2xl object-cover shadow-lg"
+  />
+</motion.div>
 
-        {/* 🔹 Message typewriter */}
-        <TypewriterText text={t('testimony.message')} speed={40} />
 
-        {/* 🔹 Auteur */}
-        <div className="mt-4 flex items-center justify-center gap-2">
+          {/* Right Text + CTA */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Image
-              src="/images/ceo.jpg"
-              alt="CEO of BigIsland"
-              width={80}
-              height={80}
-              className="rounded-full object-cover"
-            />
-          </motion.div>
-
-          <motion.div
-            className="text-left"
-            initial={{ opacity: 0, x: -20 }}
+            className="mt-10 lg:mt-0 lg:col-span-7"
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p className="font-semibold text-gray-900">{t('testimony.name')}</p>
-            <p className="text-sm text-gray-600">{t('testimony.position')}</p>
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              {t('testimony.title')}
+            </h2>
+            <div className="mt-6 text-gray-700 text-lg sm:text-xl">
+              <TypewriterText text={t('testimony.message')} speed={40} />
+            </div>
+
+            {/* 
+              <Image
+                src="/images/ceo.jpg"
+                alt={t('testimony.name')}
+                width={60}
+                height={60}
+                className="rounded-full object-cover"
+              />
+            Auteur */}
+            <div className="mt-6 flex items-center gap-4">
+              
+              <div>
+                <p className="text-gray-900 font-semibold">{t('testimony.name')}</p>
+                <p className="text-gray-600 text-sm">{t('testimony.position')}</p>
+              </div>
+            </div>
+
           </motion.div>
+
         </div>
       </div>
     </section>
   );
 }
-

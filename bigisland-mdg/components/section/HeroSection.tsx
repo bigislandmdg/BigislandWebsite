@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react'; // <-- lucide-react
+import { ArrowRight } from 'lucide-react'; // <-- lucide-react
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/navigation';
 import TypewriterText from '../section/TypewriterText';
@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden min-h-screen flex items-center justify-center">
       {/* Vidéo en background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 -z-0 ">
         <video
           key={currentBgIndex}
           autoPlay
@@ -39,7 +39,7 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover filter brightness-75"
         >
           <source src={backgroundVideos[currentBgIndex]} type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       {/* Contenu texte */}
-      <div className="relative z-12 mx-0 max-w-3xl px-2 lg:px-8 py-24 text-left text-white mr-auto">
+      <div className="relative z-50 mx-0 max-w-3xl px-4 lg:px-8 py-5 text-left text-white mr-auto">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

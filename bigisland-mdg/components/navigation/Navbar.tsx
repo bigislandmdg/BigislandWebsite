@@ -3,11 +3,12 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
-import { Car, Languages, Laptop, Phone, Truck } from "lucide-react";
+import { Languages, Laptop, Truck, Linkedin, Twitter, Facebook, Mail, Phone } from "lucide-react";
 import { useTranslation } from 'next-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import i18n from '@/i18n/init';
+import { FaLinkedin } from 'react-icons/fa';
 
 export default function Navbar() {
   const { t } = useTranslation('common');
@@ -201,24 +202,95 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled
           ? 'bg-gradient-to-l from-gray-50 to-gray-50 shadow border-b border-gray-300'
           : 'bg-gradient-to-l from-gray-50 to-gray-50 shadow-none border-none'
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Global">
+     {/* Top Bar */}
+<div className="bg-gray-50 border-b border-gray-200 text-sm">
+  <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 flex justify-end items-center h-10 gap-6">
+    
+    {/* Numéro de téléphone */}
+    {/* Numéro de téléphone / WhatsApp */}
+<a
+  href="https://wa.me/261330000000"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-1 text-gray-700 hover:text-blue-700 transition-colors"
+>
+  <Phone className="w-4 h-4" />
+  +261 33 00 000 00
+</a>
+
+    {/* Social Links */}
+     <Link href="https://facebook.com" target="_blank" className="text-gray-500 hover:text-blue-700">
+      <Facebook className="w-4 h-4" />
+    </Link>
+    <Link href="https://linkedin.com/in/big-island-mdg" target="_blank" className="text-gray-500 hover:text-blue-600">
+      <Linkedin className="w-4 h-4" />
+    </Link>
+    <Link href="mailto:contact@bigisland.com" className="text-gray-500 hover:text-blue-400">
+      <Mail className="w-4 h-4" />
+    </Link>
+   
+
+    {/* Sélecteur de langue */}
+    <div className="relative">
+      <button
+        onClick={() => setLangOpen(!langOpen)}
+        className="flex items-center gap-1 px-2 py-1 text-gray-700 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
+      >
+        <Languages className="w-5 h-5" />
+        <span className="uppercase text-sm">{lang}</span>
+      </button>
+
+      <AnimatePresence>
+        {langOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+          >
+            {['en', 'fr'].map((lng) => (
+              <button
+                key={lng}
+                onClick={() => changeLanguage(lng as 'en' | 'fr')}
+                className={`flex items-center gap-2 w-full px-4 py-2 text-sm ${
+                  lang === lng ? 'bg-blue-100 text-blue-600 font-semibold' : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                <img
+                  src={`/icons/${lng === 'en' ? 'us' : 'fr'}.svg`}
+                  alt={lng === 'en' ? 'English' : 'Français'}
+                  className="w-3 h-3"
+                />
+                {lng.toUpperCase()}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  </div>
+</div>
+
+
+      <nav className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-7" aria-label="Global">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center" onClick={handleLinkClick}>
-              <span className="text-2xl font-bold text-blue-600">BigIsland</span>
-              <span className="text-2xl font-bold text-gray-900">MDG</span>
+              <span className="text-3xl font-bold text-blue-600">BigIsland</span>
+              <span className="text-3xl font-bold text-gray-900">MDG</span>
             </Link>
           </div>
           
           {/* Mobile menu button */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
               className="p-2 text-gray-500 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
@@ -239,43 +311,40 @@ export default function Navbar() {
           
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-9 lg:items-center">
-            <Link href="/" className={`text-sm font-semibold leading-6 ${navLinkClass('home')}`} onClick={handleLinkClick}>
+            <Link href="/" className={`text-sm font-bold leading-6 ${navLinkClass('home')}`} onClick={handleLinkClick}>
               {t('navbar.home')}
             </Link>
             
-            <Link href="/about" className={`text-sm font-semibold leading-6 ${navLinkClass('about')}`} onClick={handleLinkClick}>
+            <Link href="/about" className={`text-sm font-bold leading-6 ${navLinkClass('about')}`} onClick={handleLinkClick}>
               {t('navbar.about')}
             </Link>
 
             {/* Expertises Dropdown */}
-<div
-  className="relative"
-  ref={dropdownRef}
-  onMouseEnter={() => setOpenDropdown('expertises')}
-  onMouseLeave={() => setOpenDropdown(null)}
->
-  <button 
-    type="button"
-    className={`flex items-center gap-x-1 text-sm font-semibold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-blue-600' : ''}`}
-    aria-expanded={openDropdown === 'expertises'}
-  >
-    {t('navbar.expertises')}
-    <ChevronDownIcon
-      className={`h-4 w-4 transition-transform duration-200 ${openDropdown === 'expertises' ? 'rotate-180' : ''}`}
-      aria-hidden="true"
-    />
-  </button>
+            <div
+                 className="relative"
+                 ref={dropdownRef}
+                 onMouseEnter={() => setOpenDropdown('expertises')}
+                 onMouseLeave={() => setOpenDropdown(null)}
+            >
+            <button 
+               type="button"
+               className={`flex items-center gap-x-1 text-sm font-bold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-blue-600' : ''}`}
+               aria-expanded={openDropdown === 'expertises'}
+            >
+             {t('navbar.expertises')}
+            
+            </button>
 
-  <AnimatePresence>
-    {openDropdown === 'expertises' && (
-      <motion.div
-        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
-      >
-        <div className="p-4">
+           <AnimatePresence>
+           {openDropdown === 'expertises' && (
+           <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
+          >
+          <div className="p-4">
           {expertisesLinks.map((item) => (
             <div
               key={item.label}
@@ -303,7 +372,9 @@ export default function Navbar() {
   </AnimatePresence>
 </div>
 
-
+            <Link href="/projet" className={`text-sm font-semibold leading-6 ${navLinkClass('blog')}`} onClick={handleLinkClick}>
+              {t('navbar.projects')}
+            </Link>
             <Link href="/blog" className={`text-sm font-semibold leading-6 ${navLinkClass('blog')}`} onClick={handleLinkClick}>
               {t('navbar.blog')}
             </Link>
@@ -311,56 +382,18 @@ export default function Navbar() {
           </div>
           
           {/* Desktop Right Actions */}
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-2">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-1.5">
             {/* Bouton Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 flex items-center gap-1.5 rounded-md hover:bg-gray-100"
+              className="p-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 flex items-end gap-1 rounded-md hover:bg-gray-100"
               aria-label={t('navbar.search')}
             >
               <MagnifyingGlassIcon className="h-5 w-5" />
               <span className="text-xs text-gray-400">CTRL+K</span>
             </button>
 
-            {/* Sélecteur de langue */}
-            <div className="relative">
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1 px-2 py-1 text-gray-700 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
-              >
-                <Languages className="w-5 h-5" />
-                <span className="uppercase text-sm">{lang}</span>
-              </button>
-
-              <AnimatePresence>
-                {langOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
-                  >
-                    {['en', 'fr'].map((lng) => (
-                      <button
-                        key={lng}
-                        onClick={() => changeLanguage(lng as 'en' | 'fr')}
-                        className={`flex items-center gap-2 w-full px-4 py-2 text-sm ${
-                          lang === lng ? 'bg-blue-100 text-blue-600 font-semibold' : 'text-gray-700 hover:bg-gray-100'
-                        }`}
-                      >
-                        <img
-                          src={`/icons/${lng === 'en' ? 'us' : 'fr'}.svg`}
-                          alt={lng === 'en' ? 'English' : 'Français'}
-                          className="w-3 h-3"
-                        />
-                        {lng.toUpperCase()}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            
 
             {/* Bouton Devis */}
             <Link

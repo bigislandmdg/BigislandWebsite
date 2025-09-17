@@ -47,6 +47,7 @@ export default function Home({ params }: PageProps) {
       </main>
       <ScrollToTopButton />
       <FloatingChatToggle />
+   
       <Footer />
     </>
   );

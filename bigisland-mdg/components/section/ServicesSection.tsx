@@ -20,7 +20,7 @@ function TiltCard({
   onHoverEnd?: () => void;
 }) {
   const [style, setStyle] = useState({});
-  
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { offsetWidth, offsetHeight } = e.currentTarget;
     const x = e.nativeEvent.offsetX;
@@ -38,7 +38,7 @@ function TiltCard({
 
   return (
     <motion.div
-      className={`bg-blue-50 shadow-sm rounded-2xl p-8 border border-gray-50 transition-all cursor-pointer ${className}`}
+      className={`relative bg-blue-50 shadow-sm rounded-2xl p-8 border border-gray-50 transition-all cursor-pointer ${className}`}
       style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
@@ -46,7 +46,8 @@ function TiltCard({
         onHoverEnd?.();
       }}
       onMouseEnter={onHoverStart}
-      whileHover={{ boxShadow: '0px 10px 30px rgba(0,0,0,0.15)', borderColor: '#3e577eff' }}
+      whileHover={{ boxShadow: '0px 12px 30px rgba(59,130,246,0.2)', borderColor: '#3b82f6' }}
+      transition={{ type: 'spring', stiffness: 200, damping: 18 }}
     >
       {children}
     </motion.div>
@@ -75,6 +76,16 @@ export default function ServicesSection() {
     },
   ];
 
+  const containerVariants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.15 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  };
+
   return (
     <section id="services" className="bg-white py-10 sm:py-16 lg:py-20">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -98,12 +109,12 @@ export default function ServicesSection() {
           </motion.p>
         </div>
 
-        {/* Grille des services avec TiltCard */}
+        {/* Grille des services */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'show' : 'hidden'}
+          className="mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
           {services.map((service, idx) => (
             <TiltCard
@@ -112,8 +123,8 @@ export default function ServicesSection() {
               onHoverEnd={() => setHoverIndex(null)}
             >
               <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0], y: [0, -3, 0] }}
-                transition={{ duration: 0.6 }}
+                variants={cardVariants}
+                whileHover={{ scale: 1.05 }}
                 className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 mb-6"
               >
                 {service.icon}
@@ -121,47 +132,29 @@ export default function ServicesSection() {
               <h3 className="text-lg font-semibold text-gray-900">{service.title}</h3>
               <p className="mt-3 text-base leading-6 text-gray-700 flex-1">{service.description}</p>
 
-              {/* Bouton Lancer Projet flottant */}
+              {/* Bouton Lancer Projet au hover */}
               <AnimatePresence>
-  {hoverIndex === idx && (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      className="absolute top-24 right-0 -translate-x-1/2"
-    >
-      <Link
-        href={service.link ?? '#'}
-        className="px-6 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition-all inline-flex items-center gap-2"
-      >
-        <Rocket className="h-5 w-5" />
-        {t('services.button')}
-      </Link>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+                {hoverIndex === idx && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                    className="absolute bottom-6 right-6"
+                  >
+                    <Link
+                      href={service.link ?? '#'}
+                      className="px-6 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition-all inline-flex items-center gap-2"
+                    >
+                      <Rocket className="h-5 w-5" />
+                      {t('services.button')}
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </TiltCard>
           ))}
         </motion.div>
-
-        {/* CTA principal
-            <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-12 flex justify-center"
-        >
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-md hover:from-blue-700 hover:to-blue-800 transition-transform transform hover:scale-105"
-          >
-            <Rocket className="h-5 w-5" />
-            {t('services.buttonCta')}
-          </button>
-        </motion.div>  
-        */}
-      
       </div>
 
       {/* Modal */}

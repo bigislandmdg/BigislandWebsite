@@ -9,6 +9,8 @@
     "button1": "Let's Talk",
     "button2": "Let Us Guide You"
   },
+
+   "contactButton": "Contact us",
   
   "navbar": {
   "home": "Home",
@@ -27,6 +29,7 @@
   "supplier": "Supplier of various products",
   "supplierDesc": "Wide range of products and supplies for individuals and businesses.",
 
+  "projects": "Achievements",
   "blog": "Blog",
   "contact": "Contact",
   "requestQuote": "Let's meet",
@@ -62,7 +65,7 @@
     "company": "Company",
     "services": "Services",
     "testimonials": "Testimonials",
-    "projects": "Projects",
+    "projects": "Achievements",
     "cgu": "Terms of Service",
     "companyDescription": "Your trusted partner for innovative and customized digital solutions.",
     "newsletter": "Subscribe to our newsletter",
@@ -199,6 +202,7 @@
 "blog": {
   "title": "Stay at the Heart of Innovation",
   "subtitle": "Explore our strategic insights, expert advice, and must-read trends to drive your growth.",
+  "cta": "Discover more articles",
   "readMore": "Read More",
   "today": "Today",
   "yesterday": "Yesterday",
@@ -240,15 +244,16 @@
   "errorMessage": "An error occurred, please try again.",
   "meetingCreated": "Your meeting has been created. Click the link below to join:"
 },
-"aboutPage": {
-  "title": "About Us",
-  "subtitle": "We are not just service providers, we are value creators. At Big Island MDG, we act as a strategic extension of your team, delivering expertise and integrated solutions that boost your efficiency, optimize your resources, and ensure your long-term success in the Malagasy market.",
+"aboutPage": { 
+"title": "Who we are",
+"subtitle": "Big Island MDG is your strategic partner for developing and optimizing your projects. We provide expertise, integrated solutions, and long-term support to turn challenges into opportunities for growth.",
+"cta": "Ready to propel your business?",
   "cardsSection": {
       "title": "What We Offer",
       "subtitle": "We combine technical expertise and a human approach to support your digital transformation."
     },
   "whoWeAre": {
-    "title": "Who We Are",
+    "title": "Our identity",
     "description": "A passionate team dedicated to helping businesses grow through innovative and effective digital solutions."
   },
   "mission": {

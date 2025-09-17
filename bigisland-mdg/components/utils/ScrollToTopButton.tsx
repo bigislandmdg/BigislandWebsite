@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowLongUpIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
+import { ChevronUp, ArrowUp } from 'lucide-react';
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,16 +17,26 @@ export default function ScrollToTopButton() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 2, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return isVisible ? (
-    <button
+    <motion.button
       onClick={scrollToTop}
-      className="fixed bottom-18 right-6 z-50 p-3 rounded bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.3 }}
+      className="fixed bottom-8 right-6 z-50 p-3 rounded bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
     >
-      <ChevronUpIcon className="h-4 w-4" />
-     
-    </button>
+      {/* Animation de bounce infini */}
+      <motion.div
+        animate={{ y: [0, -4, 0] }}
+        transition={{ duration: 1, repeat: Infinity }}
+      >
+        <ArrowUp className="h-5 w-5" />
+      </motion.div>
+    </motion.button>
   ) : null;
 }
+

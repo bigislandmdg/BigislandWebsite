@@ -2,230 +2,189 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { type LucideIcon, Users, Rocket, Handshake, Lightbulb, BarChart3, Settings } from 'lucide-react';
-import { useRef, useState } from 'react';
+import {
+  type LucideIcon,
+  Users,
+  Rocket,
+  Handshake,
+  Lightbulb,
+  BarChart3,
+  Settings,
+  ArrowRight,
+} from 'lucide-react';
+import { Tab } from '@headlessui/react';
+import { useRef } from 'react';
 import Image from 'next/image';
 
-// ✅ Effet tilt sur la souris
-function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const [style, setStyle] = useState({});
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { offsetWidth, offsetHeight } = e.currentTarget;
-    const x = e.nativeEvent.offsetX;
-    const y = e.nativeEvent.offsetY;
-
-    const rotateX = ((y / offsetHeight) - 0.5) * 12;
-    const rotateY = ((x / offsetWidth) - 0.5) * -12;
-
-    setStyle({
-      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`,
-    });
-  };
-
-  const resetStyle = () => {
-    setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
-  };
-
-  return (
-    <motion.div
-      className={`bg-white shadow-xl rounded-2xl p-6 transition-transform duration-300 ease-in-out ${className}`}
-      style={style}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={resetStyle}
-      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-// ✅ Carte animée principale
-const AnimatedCard = ({
+// ✅ Nouvelle carte avec image de fond + overlay
+function BackgroundCard({
   title,
   description,
+  image,
   Icon,
 }: {
   title: string;
   description: string;
+  image: string;
   Icon: LucideIcon;
-}) => {
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <TiltCard className="flex flex-col items-center text-center h-full">
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="flex flex-col items-center"
-      >
-        <motion.div
-          whileHover={{ scale: 1.3, rotate: 10 }}
-          animate={{ y: [0, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-gray-100 shadow-inner"
-        >
-          <Icon className="w-10 h-10 text-blue-600" />
-        </motion.div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative rounded-2xl overflow-hidden shadow-lg group"
+    >
+      {/* Image de fond */}
+      <div className="absolute inset-0">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-gray-900/20"></div>
+      </div>
 
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </motion.div>
-    </TiltCard>
+      {/* Contenu */}
+      <div className="relative p-6 flex flex-col justify-end h-64 text-white">
+        <div className="mb-4 flex justify-center items-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-md">
+          <Icon className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="mt-2 text-sm text-gray-200">{description}</p>
+      </div>
+    </motion.div>
   );
-};
+}
 
-// ✅ Page AboutScreen complète
+// ✅ Page AboutScreen
 export default function AboutScreen() {
   const { t } = useTranslation('common');
 
-  const rawSteps = t('aboutPage.process.steps', { returnObjects: true });
   const processIcons = [Lightbulb, BarChart3, Settings];
 
-  const processSteps = Array.isArray(rawSteps)
-    ? rawSteps.map((step, index) => ({
-        ...step,
-        Icon: processIcons[index % processIcons.length],
-      }))
-    : [];
+  const processSteps = t('aboutPage.process.steps', { returnObjects: true }) as
+    | { title: string; description: string }[]
+    | [];
 
   return (
     <section>
-      {/* ===== Hero Section améliorée ===== */}
-      <div className="relative bg-gradient-to-l from-gray-50 to-gray-50">
-        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Texte à gauche */}
-          <div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900"
-            >
-              {t('aboutPage.title')}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 max-w-2xl text-lg text-gray-700"
-            >
-              {t('aboutPage.subtitle')}
-            </motion.p>
-          </div>
+      {/* ===== Hero Section ===== */}
+      <div className="relative bg-gray-50">
+        <div
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: "url('/images/heros/about-hero.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+        </div>
 
-          {/* Image à droite */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{
-              opacity: 1,
-              scale: [1, 1.03, 1],
-              y: [0, -8, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="relative flex justify-center items-center"
+        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-32 min-h-[400px]">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-4"
           >
-            <div className="relative w-130 h-50 md:h-[350px] lg:h-[400px]">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
-              <Image
-                src="/images/about-hero.jpg"
-                alt="About illustration"
-                fill
-                priority
-                className="relative object-cover rounded-3xl shadow-lg"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ===== Section 1 : Who we are / Mission / Offer ===== */}
-      <div className="px-6 py-20 max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {t('aboutPage.cardsSection.title')}
-          </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            {t('aboutPage.cardsSection.subtitle')}
-          </p>
-        </div>
-
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatedCard
-            title={t('aboutPage.whoWeAre.title')}
-            description={t('aboutPage.whoWeAre.description')}
-            Icon={Users}
-          />
-          <AnimatedCard
-            title={t('aboutPage.mission.title')}
-            description={t('aboutPage.mission.description')}
-            Icon={Rocket}
-          />
-          <AnimatedCard
-            title={t('aboutPage.offer.title')}
-            description={t('aboutPage.offer.description')}
-            Icon={Handshake}
-          />
-        </div>
-      </div>
-
-      {/* ===== Section 2 : Process (With Cards) ===== */}
-      <section id="process" className="bg-gray-50 py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-          >
-            {t('aboutPage.process.title')}
-          </motion.h2>
-
+            {t('aboutPage.title')}
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-            className="mt-4 max-w-2xl mx-auto text-lg leading-8 text-gray-600"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed"
           >
-            {t('aboutPage.process.description')}
+            {t('aboutPage.subtitle')}
           </motion.p>
-
-          {/* Grille de cartes */}
-          <div className="mt-16 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
-              >
-                <TiltCard className="flex flex-col items-center text-center h-full">
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 8 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    className="flex justify-center items-center w-20 h-20 mb-4 rounded-full bg-blue-100 shadow-inner"
-                  >
-                    <step.Icon className="w-10 h-10 text-blue-600" />
-                  </motion.div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">{step.description}</p>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
+          <motion.a
+            href="#tabs"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+          >
+            {t('aboutPage.cta')}
+            <ArrowRight className="w-4 h-4" />
+          </motion.a>
         </div>
+      </div>
+
+      {/* ===== Onglets : Ce que nous proposons / Notre approche ===== */}
+      <section id="tabs" className="max-w-7xl mx-auto px-6 py-20">
+        <Tab.Group>
+          <Tab.List className="flex justify-center space-x-6 border-b border-gray-200">
+            <Tab
+              className={({ selected }) =>
+                `px-4 py-2 text-lg font-medium ${
+                  selected
+                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`
+              }
+            >
+              {t('aboutPage.cardsSection.title')}
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                `px-4 py-2 text-lg font-medium ${
+                  selected
+                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`
+              }
+            >
+              {t('aboutPage.process.title')}
+            </Tab>
+          </Tab.List>
+
+          <Tab.Panels className="mt-12">
+            {/* Panel 1 - Ce que nous proposons */}
+            <Tab.Panel>
+              <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <BackgroundCard
+                  title={t('aboutPage.whoWeAre.title')}
+                  description={t('aboutPage.whoWeAre.description')}
+                  image="/images/who-we-are.jpg"
+                  Icon={Users}
+                />
+                <BackgroundCard
+                  title={t('aboutPage.mission.title')}
+                  description={t('aboutPage.mission.description')}
+                  image="/images/mission.jpg"
+                  Icon={Rocket}
+                />
+                <BackgroundCard
+                  title={t('aboutPage.offer.title')}
+                  description={t('aboutPage.offer.description')}
+                  image="/images/offer.jpg"
+                  Icon={Handshake}
+                />
+              </div>
+            </Tab.Panel>
+
+            {/* Panel 2 - Notre approche */}
+            <Tab.Panel>
+              <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                {processSteps.map((step, idx) => (
+                  <BackgroundCard
+                    key={idx}
+                    title={step.title}
+                    description={step.description}
+                    image={`/images/process-${idx + 1}.jpg`}
+                    Icon={processIcons[idx % processIcons.length]}
+                  />
+                ))}
+              </div>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
       </section>
     </section>
   );

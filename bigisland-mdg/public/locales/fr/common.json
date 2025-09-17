@@ -9,6 +9,8 @@
     "button2": "Laissez-nous vous guider"
   },
 
+   "contactButton": "Contactez-nous",
+
   "navbar": {
   "home": "Accueil",
   "about": "À propos",
@@ -25,6 +27,7 @@
   "supplier": "Fournisseur de produits divers",
   "supplierDesc": "Large choix de produits et fournitures pour particuliers et entreprises.",
 
+  "projects": "Réalisations",
   "blog": "Blog",
   "contact": "Contact",
   "requestQuote": "Discutons",
@@ -60,7 +63,7 @@
     "company": "Entreprise",
     "services": "Services",
     "testimonials": "Témoignages",
-    "projects": "Projets",
+    "projects": "Réalisations",
     "cgu": "CGU",
     "companyDescription": "Votre partenaire de confiance pour des solutions digitales innovantes et sur mesure.",
     "newsletter": "Inscrivez-vous à notre newsletter",
@@ -198,6 +201,7 @@
 "blog": {
   "title": "Restez au cœur de l’innovation",
   "subtitle": "Découvrez nos insights stratégiques, conseils d’experts et tendances incontournables pour booster votre croissance.",
+  "cta": "Decouvrir plus d'articles",
   "readMore": "Lire la suite",
   "today": "Aujourd'hui",
   "yesterday": "Hier",
@@ -240,14 +244,16 @@
   "meetingCreated": "Votre réunion a été créée. Cliquez sur le lien ci-dessous pour rejoindre :"
 },
   "aboutPage": {
-  "title": "À propos de nous",
-  "subtitle": "Nous ne sommes pas de simples fournisseurs de services, nous sommes des créateurs de valeur.Chez Big Island MDG, nous agissons comme une extension stratégique de votre équipe, en vous fournissant l'expertise et les solutions intégrées qui stimulent votre efficacité, optimisent vos ressources et garantissent votre succès durable sur le marché Malagasy.",
+  "title": "Qui sommes-nous ?",
+"subtitle": "Big Island MDG est votre partenaire stratégique pour développer et optimiser vos projets. Nous apportons expertise, solutions intégrées et accompagnement durable afin de transformer vos défis en opportunités de croissance.",
+  "cta": "Prêt à propulser votre entreprise ?",
+
    "cardsSection": {
       "title": "Ce que nous proposons",
       "subtitle": "Nous combinons expertise technique et approche humaine pour accompagner votre transformation digitale."
     },
   "whoWeAre": {
-    "title": "Qui sommes-nous ?",
+    "title": "Notre identité",
     "description": "Une équipe passionnée qui accompagne les entreprises dans leur croissance grâce à des solutions digitales innovantes et efficaces."
   },
   "mission": {
