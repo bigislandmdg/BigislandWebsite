@@ -27,7 +27,7 @@ export default function ScrollToTopButton() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.3 }}
-      className="fixed bottom-8 right-6 z-50 p-3 rounded bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+      className="fixed bottom-8 right-8 z-50 p-3  bg-sky-700 text-white shadow-lg hover:bg-stone-700 transition"
     >
       {/* Animation de bounce infini */}
       <motion.div

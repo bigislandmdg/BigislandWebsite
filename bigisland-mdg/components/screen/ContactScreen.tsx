@@ -3,31 +3,30 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 
-// TiltCard générique
-function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+// TiltInput Component
+function TiltInput({ children }: { children: React.ReactNode }) {
   const [style, setStyle] = useState({});
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { offsetWidth, offsetHeight } = e.currentTarget;
     const x = e.nativeEvent.offsetX;
     const y = e.nativeEvent.offsetY;
-
-    const rotateX = ((y / offsetHeight) - 0.5) * 10;
-    const rotateY = ((x / offsetWidth) - 0.5) * -10;
-
-    setStyle({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)` });
+    const rotateX = ((y / offsetHeight) - 0.5) * 5;
+    const rotateY = ((x / offsetWidth) - 0.5) * -5;
+    setStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`,
+      boxShadow: `0 10px 20px rgba(59,130,246,0.2)`,
+    });
   };
-  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+  const resetStyle = () => setStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)', boxShadow: 'none' });
 
   return (
     <motion.div
-      className={`bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
+      className="rounded-md transition-all duration-300"
       style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetStyle}
-      whileHover={{ boxShadow: '0px 8px 30px rgba(0,0,0,0.15)' }}
     >
       {children}
     </motion.div>
@@ -36,21 +35,19 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
 
 export default function ContactScreen() {
   const { t } = useTranslation('common');
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const formRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(formRef, { once: true, amount: 0.2 });
   const [formStatus, setFormStatus] = useState({ success: false, message: '' });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const { name, email, subject, message } = Object.fromEntries(formData.entries());
-
     try {
       const mailtoLink = `mailto:contact@exemple.com?subject=${encodeURIComponent(
         subject as string
       )}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
       window.location.href = mailtoLink;
-
       setFormStatus({ success: true, message: t('contactPage.form.successMessage') });
       e.currentTarget.reset();
       setTimeout(() => setFormStatus({ success: false, message: '' }), 5000);
@@ -59,159 +56,140 @@ export default function ContactScreen() {
     }
   };
 
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <main className="bg-white min-h-screen">
       {/* ===== Hero Section ===== */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-blue-200">
-        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900"
-            >
-              {t('contactPage.title')}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 max-w-2xl text-lg text-gray-700"
-            >
-              {t('contactPage.subtitle')}
-            </motion.p>
-          </div>
+      <section className="relative bg-zinc-100">
+        <div
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: "url('/images/banners/contact-hero.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: [1, 1.05, 1], y: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex justify-center items-center"
+        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-32 min-h-[400px]">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-4"
           >
-            <div className="w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
-              <Mail className="w-32 h-32 md:w-40 md:h-40 text-blue-600" />
-            </div>
-          </motion.div>
+            {t('contactPage.title')}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed"
+          >
+            {t('contactPage.subtitle')}
+          </motion.p>
+          <motion.button
+            onClick={scrollToForm}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+          >
+            {t('contactPage.cta')}
+            <ArrowDown className="w-4 h-4" />
+          </motion.button>
         </div>
       </section>
 
-      {/* ===== Contact Form & Info ===== */}
-<section className="px-6 py-21 sm:py-21 lg:px-8">
-  <div
-    ref={ref}
-    className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-12"
+      {/* ===== Contact Section Split ===== */}
+      <section className="relative bg-white py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Pattern / Illustration */}
+           {/* Left Pattern / Illustration */}
+  <motion.div
+    initial={{ opacity: 0, x: -50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.8 }}
+    className="relative hidden lg:flex h-full rounded-2xl overflow-hidden"
   >
-    {/* Info Card */}
-    <TiltCard className="lg:col-span-1 p-8 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-      <h2 className="text-3xl font-bold mb-4">{t('contactPage.title')}</h2>
-      <p className="text-base text-blue-100 mb-6">{t('contactPage.subtitle')}</p>
-      <dl className="space-y-4 text-blue-50 text-sm">
-        <div className="flex items-center gap-2">
-          <Mail className="w-5 h-5" />
-          <dd>contact@exemple.com</dd>
-        </div>
-        <div className="flex items-center gap-2">
-          <Phone className="w-5 h-5" />
-          <dd>+261 34 12 345 67</dd>
-        </div>
-        <div className="flex items-center gap-2">
-          <MapPin className="w-5 h-5" />
-          <dd>
-            Lot 111 Cité Villa DELICE Mandroseza,
-            <br />
-            Antananarivo, Madagascar
-          </dd>
-        </div>
-      </dl>
-    </TiltCard>
+    {/* Gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800" />
+    {/* Image pattern */}
+    <img
+      src="/images/heros/contact-patterns.jpg"
+      alt="Pattern"
+      className="relative z-10 object-cover w-full h-full"
+    />
+  </motion.div>
 
-    {/* Form Card */}
-    <TiltCard className="lg:col-span-2 p-8 bg-gray-800 text-black border border-gray-200">
-      <motion.form
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        onSubmit={handleSubmit}
-        className="space-y-6"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-semibold text-dark">
-              {t('contactPage.form.name')}
-            </label>
+          {/* Right Form */}
+           {/* Right Form */}
+<motion.div
+  ref={formRef}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="bg-gray-50 border-2 border-blue-500 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-blue-200"
+>
+  <h2 className="text-3xl font-bold text-blue-500 mb-6">{t('contactPage.form.title')}</h2>
+  <p className="mb-8 text-gray-600">{t('contactPage.form.description')}</p>
+  <form onSubmit={handleSubmit} className="space-y-6">
+    {['name', 'email', 'subject', 'message'].map((field, idx) => (
+      <TiltInput key={field}>
+        <div className="group">
+          <label className="block text-sm font-semibold text-gray-700">
+            {t(`contactPage.form.${field}`)}
+          </label>
+          {field !== 'message' ? (
             <input
-              type="text"
-              name="name"
-              placeholder={t('contactPage.form.placeholderName')}
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm bg-white "
+              type={field === 'email' ? 'email' : 'text'}
+              name={field}
               required
+              placeholder={t(`contactPage.form.placeholder${field.charAt(0).toUpperCase() + field.slice(1)}`)}
+              className="mt-2 block w-full rounded-md border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white transition-all duration-300"
             />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-dark">
-              {t('contactPage.form.email')}
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder={t('contactPage.form.placeholderEmail')}
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm bg-white"
-              required
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <label className="block text-sm font-semibold text-dark">
-              {t('contactPage.form.subject')}
-            </label>
-            <input
-              type="text"
-              name="subject"
-              placeholder={t('contactPage.form.placeholderSubject')}
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm bg-white"
-              required
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <label className="block text-sm font-semibold text-dark">
-              {t('contactPage.form.message')}
-            </label>
+          ) : (
             <textarea
-              name="message"
+              name={field}
               rows={5}
-              placeholder={t('contactPage.form.placeholderMessage')}
-              className="mt-2 block w-full rounded-md border border-gray-300 dark:border-gray-700 py-2 px-4 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm bg-white"
               required
+              placeholder={t(`contactPage.form.placeholder${field.charAt(0).toUpperCase() + field.slice(1)}`)}
+              className="mt-2 block w-full rounded-md border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white transition-all duration-300"
             ></textarea>
-          </div>
+          )}
         </div>
+      </TiltInput>
+    ))}
 
-        {formStatus.message && (
-          <div
-            className={`p-3 rounded-lg ${
-              formStatus.success ? 'bg-green-50 text-green-700 dark:bg-green-900 dark:text-green-200' : 'bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-200'
-            }`}
-          >
-            {formStatus.message}
-          </div>
-        )}
+    {formStatus.message && (
+      <div
+        className={`p-3 rounded-lg ${
+          formStatus.success
+            ? 'bg-green-50 text-green-700'
+            : 'bg-red-50 text-red-700'
+        }`}
+      >
+        {formStatus.message}
+      </div>
+    )}
 
-        <div className="flex justify-end">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold transition duration-300 hover:bg-blue-700 shadow-md"
-          >
-            {t('contactPage.form.send')}
-          </motion.button>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      type="submit"
+      className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold transition duration-300 hover:bg-blue-700 shadow-md"
+    >
+      {t('contactPage.form.send')}
+      <ArrowRight className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1" />
+    </motion.button>
+  </form>
+</motion.div>
+
         </div>
-      </motion.form>
-    </TiltCard>
-  </div>
-</section>
-
+      </section>
     </main>
   );
 }
-

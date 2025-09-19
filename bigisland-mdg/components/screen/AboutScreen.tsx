@@ -1,8 +1,13 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   type LucideIcon,
   Users,
   Rocket,
@@ -10,67 +15,69 @@ import {
   Lightbulb,
   BarChart3,
   Settings,
-  ArrowRight,
 } from 'lucide-react';
-import { Tab } from '@headlessui/react';
-import { useRef } from 'react';
-import Image from 'next/image';
 
-// ✅ Nouvelle carte avec image de fond + overlay
-function BackgroundCard({
-  title,
-  description,
-  image,
-  Icon,
-}: {
-  title: string;
-  description: string;
-  image: string;
-  Icon: LucideIcon;
-}) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+type AboutCard = { title: string; description: string; image: string; Icon: LucideIcon };
 
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="relative rounded-2xl overflow-hidden shadow-lg group"
-    >
-      {/* Image de fond */}
-      <div className="absolute inset-0">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-gray-900/20"></div>
-      </div>
-
-      {/* Contenu */}
-      <div className="relative p-6 flex flex-col justify-end h-64 text-white">
-        <div className="mb-4 flex justify-center items-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-md">
-          <Icon className="w-8 h-8 text-white" />
-        </div>
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="mt-2 text-sm text-gray-200">{description}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-// ✅ Page AboutScreen
 export default function AboutScreen() {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const processIcons = [Lightbulb, BarChart3, Settings];
+  const [cards, setCards] = useState<AboutCard[]>([]);
+  const [page, setPage] = useState(0);
+  const cardsPerPage = 3;
 
-  const processSteps = t('aboutPage.process.steps', { returnObjects: true }) as
-    | { title: string; description: string }[]
-    | [];
+  useEffect(() => {
+    const processIcons = [Lightbulb, BarChart3, Settings];
+
+    const proposalCards = [
+      {
+        title: t('aboutPage.whoWeAre.title'),
+        description: t('aboutPage.whoWeAre.description'),
+        image: '/images/identity.jpg',
+        Icon: Users,
+      },
+      {
+        title: t('aboutPage.mission.title'),
+        description: t('aboutPage.mission.description'),
+        image: '/images/vision.jpg',
+        Icon: Rocket,
+      },
+      {
+        title: t('aboutPage.offer.title'),
+        description: t('aboutPage.offer.description'),
+        image: '/images/offer.jpg',
+        Icon: Handshake,
+      },
+    ];
+
+    // Process avec images personnalisées
+    const processImages = [
+      '/images/ecoute.jpg',       // étape 1
+      '/images/conception.jpg',   // étape 2
+      '/images/deploiement.jpg',  // étape 3
+    ];
+
+    const processSteps = (t('aboutPage.process.steps', { returnObjects: true }) as { title: string; description: string }[]).map(
+      (step, idx) => ({
+        title: step.title,
+        description: step.description,
+        image: processImages[idx] || '/images/default.jpg',
+        Icon: processIcons[idx % processIcons.length],
+      })
+    );
+
+    setCards([...proposalCards, ...processSteps]);
+  }, [i18n.language, t]);
+
+  const totalPages = Math.ceil(cards.length / cardsPerPage);
+  const visibleCards = cards.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
+
+  const scrollToContent = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <section>
@@ -87,12 +94,13 @@ export default function AboutScreen() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-32 min-h-[400px]">
+        {/* Wrapper central */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 flex flex-col justify-center items-start text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-4"
+            className="mt-1 text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg py-4"
           >
             {t('aboutPage.title')}
           </motion.h1>
@@ -100,15 +108,16 @@ export default function AboutScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed"
+            className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
           >
             {t('aboutPage.subtitle')}
           </motion.p>
           <motion.a
-            href="#tabs"
+            href="#about-cards"
+            onClick={scrollToContent}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+            className="mt-6 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-medium shadow-lg hover:bg-teal-700 transition"
           >
             {t('aboutPage.cta')}
             <ArrowRight className="w-4 h-4" />
@@ -116,78 +125,74 @@ export default function AboutScreen() {
         </div>
       </div>
 
-      {/* ===== Onglets : Ce que nous proposons / Notre approche ===== */}
-      <section id="tabs" className="max-w-7xl mx-auto px-6 py-20">
-        <Tab.Group>
-          <Tab.List className="flex justify-center space-x-6 border-b border-gray-200">
-            <Tab
-              className={({ selected }) =>
-                `px-4 py-2 text-lg font-medium ${
-                  selected
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-500 hover:text-gray-700'
-                }`
-              }
+      {/* ===== Cards Carousel ===== */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-28" ref={ref} id="about-cards">
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={page}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.6 }}
             >
-              {t('aboutPage.cardsSection.title')}
-            </Tab>
-            <Tab
-              className={({ selected }) =>
-                `px-4 py-2 text-lg font-medium ${
-                  selected
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-500 hover:text-gray-700'
-                }`
-              }
+              {visibleCards.map((card, idx) => (
+                <motion.div
+                  key={idx}
+                  className="relative w-full h-110 overflow-hidden shadow-lg cursor-pointer group"
+                  whileHover="hover"
+                >
+                  <Image src={card.image} alt={card.title} fill className="object-cover w-full h-full" />
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 bg-sky-800 backdrop-blur-md p-6 border-t-4 text-white flex flex-col gap-3"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0% 100%)',
+                    }}
+                    initial={{ y: 0 }}
+                    variants={{
+                      hover: { y: -20, transition: { duration: 0.5, ease: 'easeOut' } },
+                    }}
+                  >
+                    <h5 className="text-lg font-bold text-teal-400">{card.title}</h5>
+                    <p className="text-sm line-clamp-3">{card.description}</p>
+                    <motion.div
+                      className="inline-flex items-center justify-center w-10 h-10 text-white border border-white hover:bg-white hover:text-sky-700 transition-colors"
+                      variants={{
+                        hover: { y: -10, transition: { duration: 0.4, ease: 'easeOut' } },
+                      }}
+                    >
+                      <card.Icon className="w-5 h-5" />
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation boutons */}
+          <div className="flex justify-between items-center mt-8">
+            <button
+              disabled={page === 0}
+              onClick={() => setPage((p) => Math.max(p - 1, 0))}
+              className="p-3 bg-sky-900 text-white hover:bg-sky-700 disabled:opacity-40"
             >
-              {t('aboutPage.process.title')}
-            </Tab>
-          </Tab.List>
-
-          <Tab.Panels className="mt-12">
-            {/* Panel 1 - Ce que nous proposons */}
-            <Tab.Panel>
-              <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                <BackgroundCard
-                  title={t('aboutPage.whoWeAre.title')}
-                  description={t('aboutPage.whoWeAre.description')}
-                  image="/images/who-we-are.jpg"
-                  Icon={Users}
-                />
-                <BackgroundCard
-                  title={t('aboutPage.mission.title')}
-                  description={t('aboutPage.mission.description')}
-                  image="/images/mission.jpg"
-                  Icon={Rocket}
-                />
-                <BackgroundCard
-                  title={t('aboutPage.offer.title')}
-                  description={t('aboutPage.offer.description')}
-                  image="/images/offer.jpg"
-                  Icon={Handshake}
-                />
-              </div>
-            </Tab.Panel>
-
-            {/* Panel 2 - Notre approche */}
-            <Tab.Panel>
-              <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                {processSteps.map((step, idx) => (
-                  <BackgroundCard
-                    key={idx}
-                    title={step.title}
-                    description={step.description}
-                    image={`/images/process-${idx + 1}.jpg`}
-                    Icon={processIcons[idx % processIcons.length]}
-                  />
-                ))}
-              </div>
-            </Tab.Panel>
-          </Tab.Panels>
-        </Tab.Group>
-      </section>
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <span className="text-sm text-zinc-500">
+              {page + 1} / {totalPages}
+            </span>
+            <button
+              disabled={page === totalPages - 1}
+              onClick={() => setPage((p) => Math.min(p + 1, totalPages - 1))}
+              className="p-3 bg-sky-900 text-white hover:bg-sky-700 disabled:opacity-40"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
-
 

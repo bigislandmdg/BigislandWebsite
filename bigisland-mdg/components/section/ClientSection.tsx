@@ -21,13 +21,13 @@ export default function ClientSection() {
 
   return (
     <section id="clients" className="py-4 sm:py-3
-    bg-gradient-to-l from-blue-50 to-blue-200  flex items-center" ref={ref}>
+    bg-gradient-to-l from-sky-50 to-sky-100  flex items-center" ref={ref}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Titre + description */}
         <div className="mx-auto max-w-2xl text-center">
           <motion.h2
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            className="text-3xl font-bold tracking-tight text-teal-700 sm:text-4xl"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}

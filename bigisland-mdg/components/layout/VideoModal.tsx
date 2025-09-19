@@ -38,7 +38,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
               <div className="aspect-w-16 aspect-h-7">
                 <iframe
                   src={videoUrl}
-                  className="w-full h-[400px] rounded-md"
+                  className="w-full h-[400px]"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Head from 'next/head';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // TiltCard générique
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -39,7 +39,7 @@ type Testimony = { name: string; message: string; avatar: string };
 
 export default function TestimonyScreen() {
   const { t } = useTranslation('common');
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -62,48 +62,62 @@ export default function TestimonyScreen() {
     exit: { opacity: 0, y: -20 },
   };
 
+  const scrollToContent = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault(); // empêche le comportement par défaut
+  ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+
   return (
     <section>
       {/* ===== Hero Section ===== */}
-      <div className="relative bg-gradient-to-l from-blue-50 to-blue-200">
-        <div className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Texte à gauche */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900">{t('testimonyPage.title')}</h1>
-            <p className="mt-6 max-w-2xl text-lg text-gray-700">{t('testimonyPage.description')}</p>
-          </motion.div>
-
-           {/* Image à droite */}
-                       <motion.div
-                           initial={{ opacity: 0, scale: 0.9 }}
-                           animate={{
-                           opacity: 1,
-                               scale: [1, 1.03, 1],
-                               y: [0, -8, 0],
-                           }}
-                           transition={{
-                           duration: 3,
-                           repeat: Infinity,
-                           ease: 'easeInOut',
-                           }}
-                           className="relative flex justify-center items-center"
-                           >
-                           <div className="relative w-full max-w-md h-72 md:h-[350px] lg:h-[400px]">
-                           <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/40 to-transparent rounded-3xl transform rotate-2 shadow-xl"></div>
-                          <Image
-                            src="/images/heros/testimonials-hero.jpg"
-                          alt="It illustration"
-                          fill
-                        priority
-                      className="relative object-cover rounded-3xl shadow-lg"
-                    />
-                </div>
-              </motion.div>
+       <div className="relative bg-gray-50">
+        <div
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: "url('/images/heros/testimonials-hero.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
+
+        <div className="relative z-10 flex flex-col justify-center items-start text-left px-6 py-32 min-h-[500px] max-w-7xl mx-auto">
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8 max-w-2xl"
+  >
+    {t('testimonyPage.title')}
+  </motion.h1>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2, duration: 0.8 }}
+    className="mt-4 text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl"
+  >
+    {t('testimonyPage.description')}
+  </motion.p>
+    <motion.a
+  href="#"
+  onClick={scrollToContent}
+  className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  {t('testimonyPage.cta')}
+  <motion.span
+    className="inline-block"
+    animate={{ y: [0, -6, 0] }} // monte et descend
+    transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
+  >
+    <ArrowDown className="w-5 h-5" />
+  </motion.span>
+</motion.a>
+</div>
+
       </div>
 
       {/* ===== Testimony Carousel ===== */}
@@ -120,7 +134,7 @@ export default function TestimonyScreen() {
                 variants={cardVariants}
               >
                 <TiltCard className="p-8 flex flex-col md:flex-row items-center gap-6">
-                  <div className="flex-shrink-0 relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden">
+                  <div className="flex-shrink-0 relative w-24 h-24 md:w-32 md:h-32  overflow-hidden">
                     <img
                       src={testimonies[activeIndex].avatar}
                       alt={testimonies[activeIndex].name}

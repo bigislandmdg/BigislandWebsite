@@ -1,68 +1,118 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
-import { CalendarDays, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
+import { CalendarDays } from 'lucide-react';
+
+// Fonction pour découper les emojis correctement
+function toGraphemes(input: string): string[] {
+  try {
+    // @ts-ignore
+    const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+    // @ts-ignore
+    return Array.from(seg.segment(input), (s) => s.segment);
+  } catch {
+    return Array.from(input);
+  }
+}
+
+// Effet machine à écrire
+function TypewriterText({
+  text,
+  speed = 50,
+  hideCursorOnDone = false,
+}: {
+  text?: string;
+  speed?: number;
+  hideCursorOnDone?: boolean;
+}) {
+  const safeText = typeof text === 'string' ? text : '';
+  const chars = useMemo(() => toGraphemes(safeText), [safeText]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+  }, [safeText, speed]);
+
+  useEffect(() => {
+    if (index >= chars.length) return;
+    const id = setTimeout(() => setIndex((i) => i + 1), speed);
+    return () => clearTimeout(id);
+  }, [index, chars.length, speed]);
+
+  const displayed = chars.slice(0, index).join('');
+  const done = index >= chars.length;
+
+  return (
+    <span className="text-zinc-900 text-lg sm:text-xl leading-relaxed">
+      {displayed}
+      <motion.span
+        className="ml-1 text-teal-700"
+        style={{ visibility: hideCursorOnDone && done ? 'hidden' : 'visible' }}
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ repeat: Infinity, duration: 1 }}
+      >
+        |
+      </motion.span>
+    </span>
+  );
+}
 
 export default function ContactSection() {
   const { t } = useTranslation('common');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [meetingLink, setMeetingLink] = useState('');
-
-  const handleScheduleMeeting = () => {
-    const meetLink = 'https://meet.google.com/new';
-    setMeetingLink(meetLink);
-    window.open(meetLink, '_blank');
-
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setMeetingLink('');
-    }, 1000);
-  };
 
   return (
-    <section id="contact" className="relative bg-gray-50 py-2.5 sm:py-2.5">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
-          {/* Texte + CTA */}
-          <motion.div
-            className="lg:pr-8 lg:pt-4"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {t('contact.title')}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              {t('contact.subtitle')}
-            </p>
+    <section className="relative bg-sky-50">
+      <div className="lg:grid lg:grid-cols-12 lg:gap-0 lg:items-center">
 
-            <div className="mt-8">
-              <button
-                type="button"
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-2.5 text-white text-base font-medium shadow-md hover:bg-blue-700 transition active:scale-95"
+        {/* ==== Texte à gauche ==== */}
+        <motion.div
+          className="relative py-16 px-6 sm:px-12 lg:px-16 lg:col-span-6"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-extrabold tracking-tight text-teal-700 sm:text-4xl">
+            {t('contact.title')}
+          </h2>
 
-              >
-                <CalendarDays className="w-5 h-5" />
-                {t('contact.scheduleMeeting')}
-              </button>
-            </div>
-          </motion.div>
+          <div className="mt-6">
+            <TypewriterText text={t('contact.subtitle')} speed={40} />
+          </div>
 
-          {/* Carte Google Maps */}
-          <motion.div
-            className="relative overflow-hidden rounded-xl shadow-lg"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
+          {/* CTA */}
+          <div className="mt-8">
+  <motion.a
+    href="https://meet.google.com/new"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center gap-2 bg-sky-700 px-6 py-3 text-white text-base font-medium shadow-md"
+    initial={{ scale: 0.95, opacity: 0 }}
+    whileInView={{ scale: 1, opacity: 1 }}
+    whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(0,0,0,0.3)" }}
+    whileTap={{ scale: 0.97 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <CalendarDays className="w-5 h-5" />
+    {t('contact.scheduleMeeting')}
+  </motion.a>
+</div>
+
+        </motion.div>
+
+        {/* ==== Map à droite ==== */}
+        <motion.div
+          className="relative lg:col-span-6 h-80 sm:h-[28rem] lg:h-full"
+          initial={{ opacity: 0, x: 50, rotate: 5, scale: 0.9 }}
+          whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
+          <div className="absolute inset-0 lg:mr-[-10%] lg:skew-x-[5deg] overflow-hidden">
             <iframe
               title="Localisation"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.715308399614!2d47.5516228!3d-18.9367256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07db98002fbc3%3A0x8908c61af0aa07e8!2sPharmacie%20Hasin%27ny%20Aina!5e0!3m2!1sfr!2smg!4v1693945000000!5m2!1sfr!2smg"
@@ -70,102 +120,12 @@ export default function ContactSection() {
               height="100%"
               allowFullScreen
               loading="lazy"
-              className="h-[450px] w-full border-0"
+              className="h-full w-full border-0 lg:skew-x-[-5deg] transform-gpu"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Meeting Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-            onClick={() => setIsModalOpen(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.95, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              className="bg-white rounded-2xl shadow-2xl w-full max-w-lg relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100"
-                onClick={() => setIsModalOpen(false)}
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <CalendarDays className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {t('contact.scheduleMeeting')}
-                  </h3>
-                </div>
-
-                <form className="space-y-5">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t('contact.date')}
-                    </label>
-                    <input
-                      type="date"
-                      className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
-                      value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t('contact.time')}
-                    </label>
-                    <input
-                      type="time"
-                      className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm"
-                      value={selectedTime}
-                      onChange={(e) => setSelectedTime(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleScheduleMeeting}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-md hover:bg-blue-700 transition active:scale-95"
-                  >
-                    <CalendarDays className="w-4 h-4" />
-                    {t('contact.confirmMeeting')}
-                  </button>
-
-                  {meetingLink && (
-                    <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm">
-                      <p>{t('contact.meetingCreated')}</p>
-                      <a
-                        href={meetingLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline break-all"
-                      >
-                        {meetingLink}
-                      </a>
-                    </div>
-                  )}
-                </form>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

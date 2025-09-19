@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import logo from '@/public/logos/bigIslandOffisial.png';
 import { motion } from 'framer-motion';
+import LogoMinimal from '../utils/LogoMinimal';
 
 export default function Footer() {
   const { t } = useTranslation('common');
@@ -30,28 +31,22 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-blue-100 border-t border-blue-50">
+    <footer className="bg-sky-100 border-t border-blue-50">
       {/* Section principale */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
         <div className="xl:grid xl:grid-cols-5 xl:gap-8">
 
           {/* Colonne 1 - Logo et description */}
-          <div className="space-y-1 xl:col-span-1">
-            <Image
-              src={logo}
-              alt="BigIslandMDG Logo"
-              width={180}
-              height={50}
-              className="h-auto w-auto object-contain"
-            />
-            <p className="text-gray-700 text-base leading-6">
+          <div className="space-y-4 xl:col-span-1">
+             <LogoMinimal />
+            <p className="text-zinc-700 text-base leading-6">
               {t('footer.companyDescription')}
             </p>
           </div>
 
           {/* Colonne 2 - Entreprise */}
           <div className="mt-12 md:mt-0 xl:mt-0">
-            <h3 className="text-sm font-semibold text-blue-600 tracking-wider uppercase">
+            <h3 className="text-sm font-semibold text-teal-700 tracking-wider uppercase">
               {t('footer.company')}
             </h3>
             <ul className="mt-4 space-y-4">
@@ -65,7 +60,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base font-medium text-gray-700 hover:text-blue-900 flex items-center gap-2"
+                    className="text-base font-medium text-zinc-700 hover:text-sky-700 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -78,7 +73,7 @@ export default function Footer() {
 
           {/* Colonne 3 - Expertise */}
           <div className="mt-12 md:mt-0 xl:mt-0">
-            <h3 className="text-sm font-semibold text-blue-600 tracking-wider uppercase">
+            <h3 className="text-sm font-semibold text-teal-700 tracking-wider uppercase">
               {t('footer.expertise')}
             </h3>
             <ul className="mt-4 space-y-4">
@@ -91,7 +86,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base font-medium text-gray-700 hover:text-blue-600 flex items-center gap-2"
+                    className="text-base font-medium text-zinc-700 hover:text-sky-700 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -104,7 +99,7 @@ export default function Footer() {
 
           {/* Colonne 4 - Contact */}
           <div className="mt-12 md:mt-0 xl:mt-0">
-            <h3 className="text-sm font-semibold text-blue-600 tracking-wider uppercase">
+            <h3 className="text-sm font-semibold text-teal-700 tracking-wider uppercase">
               {t('footer.contact')}
             </h3>
             <ul className="mt-4 space-y-4">
@@ -115,7 +110,7 @@ export default function Footer() {
               ].map((item, idx) => (
                 <motion.li
                   key={idx}
-                  className="flex space-x-3 text-gray-700 hover:text-blue-600 items-center"
+                  className="flex space-x-3 text-zinc-700 hover:text-sky-800 items-center"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -129,7 +124,7 @@ export default function Footer() {
 
           {/* Colonne 5 - Légal */}
           <div className="mt-12 md:mt-0 xl:mt-0">
-            <h3 className="text-sm font-semibold text-blue-600 tracking-wider uppercase">
+            <h3 className="text-sm font-semibold text-teal-700 tracking-wider uppercase">
               {t('footer.legal')}
             </h3>
             <ul className="mt-4 space-y-4">
@@ -142,7 +137,7 @@ export default function Footer() {
                 <motion.li key={idx}>
                   <motion.a
                     href={item.href}
-                    className="text-base text-gray-700 hover:text-blue-600 flex items-center gap-2"
+                    className="text-base text-zinc-700 hover:text-sky-600 flex items-center gap-2"
                     whileHover={linkHover}
                     whileTap={linkTap}
                   >
@@ -156,11 +151,11 @@ export default function Footer() {
       </div>
 
       {/* Newsletter */}
-      <div className="bg-blue-100">
+      <div className="bg-sky-100 border-t border-blue-50">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 lg:py-4">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="lg:w-0 lg:flex-1">
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl">
                 {t('footer.newsletterTitle')}
               </h2>
               <p className="mt-3 max-w-3xl text-lg text-gray-500">
@@ -178,24 +173,24 @@ export default function Footer() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="w-full rounded-md border border-gray-300 bg-white px-5 py-3 text-base text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:max-w-xs"
+                  className="w-full border border-zinc-300 bg-white px-5 py-3 text-base text-zinc-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:max-w-xs"
                   placeholder={t('footer.emailPlaceholder')}
                 />
                 <motion.div
-                  className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0"
+                  className="mt-3 shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center gap-2 rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
+                    className="flex w-full items-center justify-center gap-2 border border-transparent bg-teal-700 px-5 py-3 text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
                   >
                     {t('footer.subscribe')}
                     <Send className="h-4 w-4" />
                   </button>
                 </motion.div>
               </form>
-              <p className="mt-3 text-sm text-gray-500">
+              <p className="mt-3 text-sm text-zinc-500">
                 {t('footer.newsletterPrivacy')}
               </p>
             </div>
@@ -204,16 +199,16 @@ export default function Footer() {
       </div>
 
       {/* Bas de page */}
-      <div className="border-t bg-blue-100 border-blue-100 py-8">
+      <div className="border-t bg-sky-100 border-sky-50 py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-              <p className="text-center text-base text-gray-500">
+              <p className="text-center text-base text-zinc-500">
                 © {new Date().getFullYear()} BigIslandMDG. {t('footer.rightsReserved')}
               </p>
-              <div className="flex items-center text-gray-500">
+              <div className="flex items-center text-zinc-500">
                 {t('footer.designedWith')}
-                <Heart className="mx-1 h-4 w-4 text-red-500" />
+                <Heart className="mx-1 h-4 w-4 text-rose-500" />
                 {t('footer.byBigIsland')}
               </div>
             </div>
@@ -231,7 +226,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-500 transition-colors duration-200"
+                  className="text-zinc-400 hover:text-zinc-500 transition-colors duration-200"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                 >

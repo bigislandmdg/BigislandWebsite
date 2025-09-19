@@ -286,7 +286,10 @@
 "contactPage": {
   "title": "Entrons en contact",
   "subtitle": "Vous avez un projet ou une question ? Remplissez le formulaire ci-dessous et notre équipe vous répondra rapidement avec des conseils personnalisés.",
+  "cta":"Contactez-nous",
   "form": {
+    "title": "Envoyez-nous un message",
+    "description": "Veuillez remplir le formulaire ci-dessous pour nous contacter. Nous avons hâte d'avoir de vos nouvelles !",
     "name": "Nom complet",
     "email": "Adresse email",
     "subject": "Sujet du message",
@@ -448,9 +451,10 @@
   "pageTitle": "Témoignages Clients",
   "metaDescription": "Découvrez ce que nos clients pensent de nos services : location de véhicules, solutions IT, call center et approvisionnement.",
   "title": "Ils nous font confiance",
+  "cta": "Découvrir leur expérience",
   "description": "Nos clients partagent leur expérience et la valeur ajoutée que nous leur apportons au quotidien.",
   "ctaTitle": "Prêt à écrire votre succès avec nous ?",
-  "cta": "Contactez-nous",
+
   "clients": {
     "client1": {
       "name": "Marie Dupont",
@@ -470,46 +474,49 @@
   "pageTitle": "Nos Réalisations",
   "metaDescription": "Découvrez nos projets réussis dans la location de véhicules, les solutions IT, les call centers et la fourniture de produits.",
   "title": "Des projets qui font la différence",
+   "cta": "Explorer nos projets",
   "description": "Nous accompagnons nos clients avec des solutions concrètes et innovantes, adaptées à leurs besoins.",
   "ctaTitle": "Vous avez un projet en tête ?",
-  "cta": "Discutons-en",
+
   "viewProject": "Découvrir",
   "projects": {
   "project1": {
     "title": "Plateforme intelligente de location de véhicules",
-    "description": "Réservez, gérez et suivez vos locations de voitures en temps réel grâce à notre application web intuitive, sécurisée et adaptée à tous vos besoins."
+    "description": "Réservez et gérez vos voitures en toute simplicité, en temps réel et en toute sécurité."
   },
   "project2": {
     "title": "Solution complète de gestion de Call Center",
-    "description": "Optimisez votre relation client avec un système de téléphonie cloud intégré à votre CRM, offrant reporting en temps réel et support multicanal."
+    "description": "Améliorez votre relation client avec un call center cloud relié à votre CRM."
   },
   "project3": {
     "title": "ERP sur mesure pour la gestion des stocks",
-    "description": "Simplifiez la gestion des fournitures et commandes avec notre ERP performant, automatisant les inventaires et optimisant vos flux logistiques."
+    "description": "Optimisez vos inventaires et flux logistiques grâce à un ERP automatisé."
   },
   "project4": {
     "title": "Application mobile de suivi de flotte en temps réel",
-    "description": "Suivez vos véhicules grâce à la géolocalisation, recevez des alertes et optimisez la performance de votre flotte où que vous soyez."
+    "description": "Suivez vos véhicules par géolocalisation et recevez des alertes instantanées."
   },
   "project5": {
     "title": "Outil d’analyse des appels clients",
-    "description": "Mesurez la qualité de votre service client et améliorez l’expérience client avec des analyses vocales intelligentes et des rapports détaillés."
+    "description": "Analysez vos appels et améliorez la qualité du service avec des rapports précis."
   },
   "project6": {
     "title": "Marketplace B2B innovante",
-    "description": "Accédez à une plateforme e-commerce dédiée aux fournitures professionnelles, simplifiant les commandes récurrentes et centralisant vos achats."
+    "description": "Simplifiez vos achats pro grâce à une plateforme e-commerce centralisée."
   },
   "project7": {
     "title": "Gestion digitale des contrats de location",
-    "description": "Générez, signez et archivez vos contrats en toute sécurité grâce à notre solution digitale, réduisant le papier et optimisant vos processus."
+    "description": "Créez, signez et archivez vos contrats en ligne de manière sécurisée."
   }
 }
+
 },
 "cguPage": {
   "pageTitle": "Conditions Générales d'Utilisation",
   "metaDescription": "Lisez les conditions générales d'utilisation de notre site.",
   "title": "Conditions Générales d'Utilisation",
   "intro": "Veuillez lire attentivement les présentes conditions générales avant d’utiliser ce site.",
+  "cta":"Acceptez et continuez",
   "sections": {
     "section1": {
       "title": "1. Acceptation des conditions",
@@ -532,12 +539,13 @@
     "metaDescription": "Découvrez comment nous utilisons les cookies sur notre site web et comment vous pouvez les gérer.",
     "title": "Politique de cookies",
     "intro": "Cette politique explique comment nous utilisons les cookies et technologies similaires sur notre site.",
+    "cta": "Gerer les cookies",
     "needHelp": "Questions sur notre politique de cookies ?",
     "contactUs": "Contactez notre délégué à la protection des données à dpo@exemple.com",
     "contactButton": "Contactez-nous",
     "sections": {
       "whatAreCookies": {
-        "title": "Que sont les cookies ?",
+        "title": "Qui sont les cookies ?",
         "content": "Les cookies sont de petits fichiers texte stockés sur votre appareil lorsque vous visitez un site web. Ils permettent au site de se souvenir de vos actions et préférences."
       },
       "typesOfCookies": {
@@ -553,7 +561,7 @@
         "content": "Vous pouvez contrôler et supprimer les cookies via les paramètres de votre navigateur. Désactiver les cookies peut affecter certaines fonctionnalités du site."
       },
       "changesToPolicy": {
-        "title": "Modifications de la politique",
+        "title": "Modifier La politique",
         "content": "Nous pouvons mettre à jour cette politique occasionnellement. Nous vous encourageons à la consulter régulièrement."
       }
     }
@@ -562,6 +570,7 @@
   "pageTitle": "Mentions légales - BigIslandMDG",
   "metaDescription": "Informations légales concernant l'éditeur, l'hébergeur et les conditions d'utilisation du site BigIslandMDG.",
   "title": "Mentions légales",
+  "cta": "Voir les sections",
   "intro": "Conformément aux dispositions légales, voici les informations concernant l'éditeur et l'hébergeur de ce site web.",
   "needHelp": "Questions concernant nos mentions légales ?",
   "contactUs": "Contactez notre service juridique à legal@exemple.com",
@@ -600,6 +609,7 @@
   "pageTitle": "Politique de confidentialité - BigIslandMDG",
   "metaDescription": "Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD et autres réglementations.",
   "title": "Politique de confidentialité",
+  "cta":"Lisez notre politique",
   "intro": "Cette politique explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez nos services.",
   "needHelp": "Des questions sur notre politique de confidentialité ?",
   "contactUs": "Contactez notre Délégué à la Protection des Données à dpo@exemple.com",

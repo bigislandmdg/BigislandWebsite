@@ -31,8 +31,8 @@ export default function FloatingChatToggle() {
             transition={{ duration: 0.4 }}
             onClick={() => setIsModalOpen(true)}
             className="fixed top-60 right-0 z-50 flex items-center gap-2 px-2 py-5 
-                        bg-blue-600 text-white shadow-lg 
-                       hover:bg-blue-700 transition"
+                        bg-teal-600 text-white shadow-lg 
+                       hover:bg-teal-700 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

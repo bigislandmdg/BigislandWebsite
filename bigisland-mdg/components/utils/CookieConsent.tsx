@@ -31,10 +31,10 @@ export default function CookieConsent() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="fixed bottom-4 left-0 max-w-lg w-full sm:w-[400px] px-4 z-50"
         >
-          <div className="bg-white border border-gray-300 rounded-2xl shadow-lg p-4 flex items-start justify-between gap-4">
+          <div className="bg-white border border-zinc-300 rounded-2xl shadow-lg p-4 flex items-start justify-between gap-4">
             {/* Texte */}
             <div className="flex items-start gap-2">
-              <Cookie className="h-10 w-10 text-yellow-600 mt-1" />
+              <Cookie className="h-10 w-10 text-amber-300 mt-1" />
               <p className="text-sm text-gray-700">
                 {t("cookie.message")}{" "}
                 <a

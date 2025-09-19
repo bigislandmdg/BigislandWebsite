@@ -48,18 +48,18 @@ export default function Hero() {
       </div>
 
       {/* Contenu texte */}
-      <div className="relative z-50 mx-0 max-w-3xl px-4 lg:px-8 py-5 text-left text-white mr-auto">
+      <div className="relative z-50 mx-0 max-w-3xl px-6 sm:px-5 lg:px-8 py-5 text-left text-white mr-auto">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-4xl font-bold tracking-tight sm:text-5xl"
+          className="mt-10 text-6xl font-bold tracking-tight sm:text-5xl"
         >
           <TypewriterText
             text={t('hero.title')}
             delay={0.08}
             cursor
-            cursorStyle="ml-1 h-6 w-2 bg-white"
+            cursorStyle="ml-1 h-6 w-2 bg-zinc-200 inline-block"
           />
         </motion.h1>
 
@@ -67,7 +67,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.7 }}
-          className="mt-6 text-lg leading-8 max-w-2xl"
+          className="mt-8 text-lg leading-8 max-w-2xl"
         >
           <TypewriterText text={t('hero.description')} delay={0.03} cursor={false} />
         </motion.p>
@@ -77,11 +77,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="mt-6"
+          className="mt-10 flex flex-col sm:flex-row sm:gap-4 gap-6"
         >
           <motion.button
             onClick={() => router.push('/services/it')}
-            className="flex items-center px-6 py-3 rounded-xl font-semibold shadow-md transition bg-blue-600 text-white hover:bg-white hover:text-blue-600"
+            className="flex items-center px-6 py-3  font-semibold shadow-md transition bg-teal-700 text-white hover:bg-white hover:text-teal-700"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >

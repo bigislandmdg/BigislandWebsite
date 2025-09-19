@@ -3,12 +3,13 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline';
-import { Languages, Laptop, Truck, Linkedin, Twitter, Facebook, Mail, Phone } from "lucide-react";
+import { Languages, Laptop, Truck, Linkedin, Twitter, Facebook, Mail, Phone, MessageCircle } from "lucide-react";
 import { useTranslation } from 'next-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import i18n from '@/i18n/init';
 import { FaLinkedin } from 'react-icons/fa';
+import LogoMinimal from '../utils/LogoMinimal';
 
 export default function Navbar() {
   const { t } = useTranslation('common');
@@ -87,8 +88,8 @@ export default function Navbar() {
   const navLinkClass = (id: string) =>
     `relative pb-1 transition-colors duration-200 ${
       activeSection === id
-        ? 'text-blue-600 font-medium after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-blue-600'
-        : 'text-gray-700 hover:text-blue-600'
+        ? 'text-sky-900 font-medium after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-sky-900'
+        : 'text-zinc-700 hover:text-sky-900'
     }`;
 
   // Fermer les dropdowns en cliquant à l'extérieur
@@ -204,34 +205,34 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-gradient-to-l from-gray-50 to-gray-50 shadow border-b border-gray-300'
-          : 'bg-gradient-to-l from-gray-50 to-gray-50 shadow-none border-none'
+          ? 'bg-gradient-to-l from-zinc-50 to-zinc-50 shadow border-b border-zinc-300'
+          : 'bg-gradient-to-l from-zinc-50 to-zinc-50 shadow-none border-none'
       }`}
     >
      {/* Top Bar */}
-<div className="bg-gray-50 border-b border-gray-200 text-sm">
-  <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 flex justify-end items-center h-10 gap-6">
+     <div className="bg-gray-50 border-b border-gray-200 text-sm">
+     <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 flex justify-end items-center h-10 gap-6">
     
     {/* Numéro de téléphone */}
     {/* Numéro de téléphone / WhatsApp */}
-<a
-  href="https://wa.me/261330000000"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex items-center gap-1 text-gray-700 hover:text-blue-700 transition-colors"
->
-  <Phone className="w-4 h-4" />
-  +261 33 00 000 00
-</a>
+    <a
+      href="https://wa.me/261330000000"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1 text-gray-700 hover:text-sky-900 transition-colors"
+     >
+     <Phone className="w-4 h-4" />
+      +261 33 00 000 00
+    </a>
 
     {/* Social Links */}
-     <Link href="https://facebook.com" target="_blank" className="text-gray-500 hover:text-blue-700">
+     <Link href="https://facebook.com" target="_blank" className="text-zinc-500 hover:text-sky-900">
       <Facebook className="w-4 h-4" />
     </Link>
-    <Link href="https://linkedin.com/in/big-island-mdg" target="_blank" className="text-gray-500 hover:text-blue-600">
+    <Link href="https://linkedin.com/in/big-island-mdg" target="_blank" className="text-zinc-500 hover:text-sky-900">
       <Linkedin className="w-4 h-4" />
     </Link>
-    <Link href="mailto:contact@bigisland.com" className="text-gray-500 hover:text-blue-400">
+    <Link href="mailto:contact@bigisland.com" className="text-zinc-500 hover:text-sky-900">
       <Mail className="w-4 h-4" />
     </Link>
    
@@ -240,7 +241,7 @@ export default function Navbar() {
     <div className="relative">
       <button
         onClick={() => setLangOpen(!langOpen)}
-        className="flex items-center gap-1 px-2 py-1 text-gray-700 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
+        className="flex items-center gap-1 px-2 py-1 text-zinc-700 hover:text-sky-900 rounded-md hover:bg-gray-100 transition-colors"
       >
         <Languages className="w-5 h-5" />
         <span className="uppercase text-sm">{lang}</span>
@@ -253,7 +254,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+            className="absolute right-0 mt-2 w-32 bg-white border border-zinc-200 rounded-lg shadow-lg z-50"
           >
             {['en', 'fr'].map((lng) => (
               <button
@@ -278,22 +279,18 @@ export default function Navbar() {
   </div>
 </div>
 
-
-      <nav className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-7" aria-label="Global">
+      <nav className="mx-auto max-w-7xl px-6 sm:px-5 lg:px-8" aria-label="Global">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5 flex items-center" onClick={handleLinkClick}>
-              <span className="text-3xl font-bold text-blue-600">BigIsland</span>
-              <span className="text-3xl font-bold text-gray-900">MDG</span>
-            </Link>
-          </div>
+            <LogoMinimal />
+            </div>
           
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-500 hover:text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
+              className="p-2 text-gray-500 hover:text-sky-900 rounded-md hover:bg-zinc-600 transition-colors"
               aria-label={t('navbar.search')}
             >
               <MagnifyingGlassIcon className="h-5 w-5" />
@@ -301,7 +298,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="-m-1.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-blue-600 transition-colors"
+              className="-m-1.5 inline-flex items-center justify-center rounded-md p-2.5 text-zinc-600 hover:text-blue-600 transition-colors"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">{t('navbar.openMenu')}</span>
@@ -342,15 +339,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5"
+            className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-zinc-900/5"
           >
           <div className="p-4">
           {expertisesLinks.map((item) => (
             <div
               key={item.label}
-              className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 transition-colors"
+              className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-zinc-50 transition-colors"
             >
-              <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white text-blue-600">
+              <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-zinc-50 group-hover:bg-white text-sky-900">
                 <item.icon className="h-6 w-6" />
               </div>
               <div className="flex-auto">
@@ -386,23 +383,37 @@ export default function Navbar() {
             {/* Bouton Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-500 hover:text-blue-600 transition-colors duration-200 flex items-end gap-1 rounded-md hover:bg-gray-100"
+              className="p-2 text-zinc-500 hover:text-sky-800 transition-colors duration-200 flex items-end gap-1 rounded-md hover:bg-gray-100"
               aria-label={t('navbar.search')}
             >
               <MagnifyingGlassIcon className="h-5 w-5" />
               <span className="text-xs text-gray-400">CTRL+K</span>
             </button>
 
-            
 
-            {/* Bouton Devis */}
-            <Link
-              href="/contact"
-              className="rounded-md bg-blue-600 px-4.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
-              onClick={handleLinkClick}
+            {/* Bouton Devis */}  
+            <motion.div
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               transition={{ type: "spring", stiffness: 300 }}
             >
-              {t('navbar.requestQuote')}
-            </Link>
+         <Link
+              href="/contact"
+              onClick={handleLinkClick}
+               className="inline-flex items-center gap-2 bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-md  hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+         >
+         <motion.span
+            initial={{ x: -5, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="flex items-center"
+          >
+         <MessageCircle className="w-4 h-4" />
+    </motion.span>
+    {t("navbar.requestQuote")}
+  </Link>
+</motion.div>
+
           </div>
         </div>
 
