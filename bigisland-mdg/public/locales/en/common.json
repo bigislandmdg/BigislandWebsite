@@ -479,14 +479,14 @@
 
   "viewProject": "View Project",
  "projects": {
-  "project1": {
-    "title": "Smart Vehicle Rental Platform",
-    "description": "Book and manage cars easily, securely, and in real time."
-  },
-  "project2": {
-    "title": "Complete Call Center Management Solution",
-    "description": "Boost customer service with a cloud-based call center linked to your CRM."
-  },
+    "project1": {
+      "title": "20MinutesADay – Mobile E-learning App",
+      "description": "Learn English in just 20 minutes a day with interactive, fun, and personalized lessons."
+    },
+    "project2": {
+      "title": "5 Vocabs-a-Day – Progressive Learning",
+      "description": "Memorize 5 new words each day with an intelligent spaced repetition (SRS) system."
+    },
   "project3": {
     "title": "Custom ERP for Inventory Management",
     "description": "Automate stock tracking and streamline your logistics with ease."
@@ -502,10 +502,6 @@
   "project6": {
     "title": "Innovative B2B Marketplace",
     "description": "Simplify business purchases with a centralized e-commerce platform."
-  },
-  "project7": {
-    "title": "Digital Rental Contract Management",
-    "description": "Create, sign, and store rental contracts securely online."
   }
 }
 },

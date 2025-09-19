@@ -1,41 +1,45 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Tab } from '@headlessui/react';
-import { ArrowDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+type CguSection = {
+  title: string;
+  content: string;
+  image?: string;
+};
 
 export default function CguScreen() {
-  const { t } = useTranslation('common');
-  const contentRef = useRef<HTMLDivElement>(null);
+  const { t, i18n } = useTranslation('common');
+  const ref = useRef<HTMLDivElement>(null);
+  const [sections, setSections] = useState<CguSection[]>([]);
 
-  const sections = [
-    {
-      title: t('cguPage.sections.section1.title'),
-      content: t('cguPage.sections.section1.content'),
-    },
-    {
-      title: t('cguPage.sections.section2.title'),
-      content: t('cguPage.sections.section2.content'),
-    },
-    {
-      title: t('cguPage.sections.section3.title'),
-      content: t('cguPage.sections.section3.content'),
-    },
-  ];
+  useEffect(() => {
+    setSections([
+      {
+        title: t('cguPage.sections.section1.title'),
+        content: t('cguPage.sections.section1.content'),
+        image: '/images/cgu/conditions.jpg',
+      },
+      {
+        title: t('cguPage.sections.section2.title'),
+        content: t('cguPage.sections.section2.content'),
+        image: '/images/cgu/terms-condition.jpg',
+      },
+      {
+        title: t('cguPage.sections.section3.title'),
+        content: t('cguPage.sections.section3.content'),
+        image: '/images/cgu/terms-cond.jpg',
+      },
+    ]);
+  }, [i18n.language, t]);
 
-  const scrollToContent = () => {
-    contentRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToContent = () => ref.current?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <main className="bg-white min-h-screen">
-
       {/* ===== Hero Section ===== */}
       <section className="relative bg-gray-50">
         <div
@@ -49,12 +53,12 @@ export default function CguScreen() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-32 min-h-[400px]">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-34 flex flex-col justify-center items-start text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-4"
+            className="mt-12 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8"
           >
             {t('cguPage.pageTitle')}
           </motion.h1>
@@ -62,7 +66,7 @@ export default function CguScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed"
+            className="mt-8 max-w-3xl text-lg md:text-xl text-zinc-200 leading-relaxed"
           >
             {t('cguPage.metaDescription')}
           </motion.p>
@@ -70,68 +74,100 @@ export default function CguScreen() {
             onClick={scrollToContent}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+            className="mt-12 inline-flex items-center gap-2 rounded bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-700 transition"
           >
             {t('cguPage.cta') || 'Voir les sections'}
-            <ArrowDown className="w-4 h-4" />
+            <motion.span
+              className="inline-block"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ArrowDown className="w-5 h-5" />
+            </motion.span>
           </motion.button>
         </div>
       </section>
 
-      {/* ===== Sections Tabs ===== */}
-      <section className="max-w-5xl mx-auto px-6 py-20" ref={contentRef}>
-        <Tab.Group>
-          <Tab.List className="flex space-x-2 overflow-x-auto border-b border-gray-200 pb-2 mb-6">
+      {/* ===== Sections as Cards ===== */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 py-20" ref={ref}>
+        <AnimatePresence>
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             {sections.map((section, idx) => (
-              <Tab
+              <motion.div
                 key={idx}
-                className={({ selected }) =>
-                  classNames(
-                    'px-4 py-2 text-sm font-medium rounded-md focus:outline-none',
-                    selected ? 'bg-blue-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100'
-                  )
-                }
+                className="relative w-full h-110 overflow-hidden shadow-lg cursor-pointer group"
+                whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
               >
-                {section.title}
-              </Tab>
+                {section.image && (
+                  <img
+                    src={section.image}
+                    alt={section.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 bg-sky-700 backdrop-blur-md p-6 border-t-4 text-white flex flex-col gap-3"
+                  style={{ clipPath: 'polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0% 100%)' }}
+                  initial={{ y: 0 }}
+                  whileHover={{ y: -20 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                >
+                  <h5 className="text-lg font-bold text-teal-500">{section.title}</h5>
+                  <p className="text-sm line-clamp-4">{section.content}</p>
+                  <motion.a
+                    href="#"
+                    className="inline-flex items-center justify-center w-10 h-10 text-white border border-white hover:bg-white hover:text-sky-700 transition-colors"
+                    whileHover={{ y: -10 }}
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.a>
+                </motion.div>
+              </motion.div>
             ))}
-          </Tab.List>
-          <Tab.Panels>
-            {sections.map((section, idx) => (
-              <Tab.Panel key={idx} className="bg-white p-6 rounded-xl shadow-md">
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">{section.content}</p>
-              </Tab.Panel>
-            ))}
-          </Tab.Panels>
-        </Tab.Group>
+          </motion.div>
+        </AnimatePresence>
 
-        {/* ===== CTA Final amélioré (CGU) ===== */}
-<motion.section
-  className="max-w-7xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-lg p-8 mt-12 flex flex-col md:flex-row items-center justify-between gap-4"
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.5 }}
->
-  <div className="text-center md:text-left flex-1">
-    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-      {t('cguPage.needHelp') || 'Besoin d’aide concernant les CGU ?'}
-    </h3>
-    <p className="text-gray-700">
-      {t('cguPage.contactUs') || 'Contactez-nous à contact@exemple.com'}
-    </p>
-  </div>
-  <div className="flex-shrink-0">
-    <a
-      href="mailto:contact@exemple.com"
-      className="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-xl shadow hover:bg-blue-700 transition"
-    >
-      {t('cguPage.contactButton', 'Nous écrire')}
-    </a>
-  </div>
-</motion.section>
-
+        {/* ===== CTA Final ===== */}
+        <motion.section
+          className="max-w-7xl mx-auto bg-white border border-zinc-200  shadow-lg p-8 mt-12 flex flex-col md:flex-row items-center justify-between gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="text-center md:text-left flex-1">
+            <h3 className="text-2xl font-bold text-zinc-900 mb-2">
+              {t('cguPage.needHelp') || 'Besoin d’aide concernant les CGU ?'}
+            </h3>
+            <p className="text-gray-700">
+              {t('cguPage.contactUs') || 'Contactez-nous à contact@exemple.com'}
+            </p>
+          </div>
+        
+           <div className="flex-shrink-0">
+           <motion.a
+               href="mailto:cgu@example.com"
+               className="inline-flex items-center gap-2 px-6 py-3 bg-teal-700 text-white font-bold shadow hover:bg-teal-800 transition"
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+            >
+            {t('cguPage.contactButton', 'Nous écrire')}
+            <motion.span
+              className="inline-block"
+              animate={{ x: [0, 4, 0] }} // léger mouvement gauche-droite
+              transition={{ repeat: Infinity, duration: 1, ease: 'easeInOut' }}
+            >
+      <ArrowRight className="w-5 h-5" />
+    </motion.span>
+  </motion.a>
+</div>
+        </motion.section>
       </section>
     </main>
   );
 }
-

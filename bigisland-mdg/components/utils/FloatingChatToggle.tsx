@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Mail, MessageCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import ContactModal from '../layout/ModalContact';
 import { useTranslation } from 'react-i18next';

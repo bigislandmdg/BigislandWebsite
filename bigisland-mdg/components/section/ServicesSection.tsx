@@ -20,14 +20,14 @@ export default function ServicesSection() {
     {
       title: t('services.it.title'),
       description: t('services.it.description'),
-      image: '/images/it/it-solutions.jpg',
+      image: '/images/it/it-support.jpg',
       Icon: Laptop,
       link: '/services/it',
     },
     {
       title: t('services.supply.title'),
       description: t('services.supply.description'),
-      image: '/images/fournisseur/supply-packs.jpg',
+      image: '/images/fournisseur/supply-support.jpg',
       Icon: PackagePlus,
       link: '/services/fournisseurs',
     },

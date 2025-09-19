@@ -43,15 +43,15 @@ export default function ItScreen() {
             backgroundPosition: 'center',
           }}
         >
-        
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center items-start text-left px-6 py-32 min-h-[500px] max-w-7xl mx-auto">
+           <div className="relative z-10 max-w-7xl mx-auto px-6 py-34 flex flex-col justify-center items-start text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg max-w-2xl"
+             className="mt-12 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8"
           >
             {t('itPage.title')}
           </motion.h1>
@@ -59,14 +59,14 @@ export default function ItScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
+            className="mt-8 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
           >
             {t('itPage.description')}
           </motion.p>
           <motion.a
             href="#services"
             onClick={scrollToContent}
-            className="mt-6 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-800 transition"
+            className="mt-12 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-800 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

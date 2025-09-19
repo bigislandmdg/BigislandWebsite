@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 type Project = { title: string; description: string; link: string; image: string };
 
@@ -15,18 +15,17 @@ export default function ProjetScreen() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [page, setPage] = useState(0);
 
-  const projectsPerPage = 4;
+  const projectsPerPage = 3;
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
   useEffect(() => {
     setProjects([
-      { title: t('projectPage.projects.project1.title'), description: t('projectPage.projects.project1.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project1.jpg' },
-      { title: t('projectPage.projects.project2.title'), description: t('projectPage.projects.project2.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project2.jpg' },
-      { title: t('projectPage.projects.project3.title'), description: t('projectPage.projects.project3.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project3.jpg' },
-      { title: t('projectPage.projects.project4.title'), description: t('projectPage.projects.project4.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project4.jpg' },
-      { title: t('projectPage.projects.project5.title'), description: t('projectPage.projects.project5.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project5.jpg' },
-      { title: t('projectPage.projects.project6.title'), description: t('projectPage.projects.project6.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project6.jpg' },
-      { title: t('projectPage.projects.project7.title'), description: t('projectPage.projects.project7.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/project7.jpg' },
+      { title: t('projectPage.projects.project1.title'), description: t('projectPage.projects.project1.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/learning-app.jpg' },
+      { title: t('projectPage.projects.project2.title'), description: t('projectPage.projects.project2.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/online-course.jpg' },
+      { title: t('projectPage.projects.project3.title'), description: t('projectPage.projects.project3.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/furniture.jpg' },
+      { title: t('projectPage.projects.project4.title'), description: t('projectPage.projects.project4.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/fleet-management.jpg' },
+      { title: t('projectPage.projects.project5.title'), description: t('projectPage.projects.project5.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/call-center.jpg' },
+      { title: t('projectPage.projects.project6.title'), description: t('projectPage.projects.project6.description'), link: 'https://github.com/bigislandmdg', image: '/images/projects/marketing-crm.jpg' },
     ]);
   }, [i18n.language, t]);
 
@@ -56,12 +55,12 @@ export default function ProjetScreen() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center items-start text-left px-6 py-32 min-h-[500px] max-w-7xl mx-auto">
+        <div className="relative z-10 flex flex-col justify-center items-start text-left px-6 py-34 min-h-[500px] max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-4 max-w-2xl"
+            className="mt-12 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8"
           >
             {t('projectPage.title')}
           </motion.h1>
@@ -69,14 +68,14 @@ export default function ProjetScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
+            className="mt-8 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
           >
             {t('projectPage.description')}
           </motion.p>
           <motion.a
             href="#projects"
             onClick={scrollToContent}
-            className="mt-6 inline-flex items-center gap-2  bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-800 transition"
+            className="mt-12 inline-flex items-center gap-2  bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-800 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -98,7 +97,7 @@ export default function ProjetScreen() {
           <AnimatePresence mode="wait">
             <motion.div
               key={page} // clé unique pour chaque "page"
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
@@ -107,7 +106,7 @@ export default function ProjetScreen() {
               {visibleProjects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="relative w-full h-96 overflow-hidden shadow-lg  cursor-pointer group"
+                  className="relative w-full h-110 overflow-hidden shadow-lg  cursor-pointer group"
                   whileHover="hover"
                 >
                   <Image
@@ -117,7 +116,7 @@ export default function ProjetScreen() {
                     className="object-cover w-full h-full"
                   />
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 bg-sky-800 backdrop-blur-md p-6 border-t-4 text-white flex flex-col gap-3"
+                    className="absolute bottom-0 left-0 right-0 bg-sky-700 backdrop-blur-md p-6 border-t-4 text-white flex flex-col gap-3"
                     style={{
                       clipPath:
                         "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0% 100%)",
@@ -153,7 +152,7 @@ export default function ProjetScreen() {
               onClick={() => setPage((p) => Math.max(p - 1, 0))}
               className="p-3 bg-sky-900 text-white hover:bg-sky-700 disabled:opacity-40"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ArrowLeft className="w-6 h-6" />
             </button>
             <span className="text-sm text-zinc-500">
                {page + 1} / {totalPages}
@@ -163,7 +162,7 @@ export default function ProjetScreen() {
               onClick={() => setPage((p) => Math.min(p + 1, totalPages - 1))}
               className="p-3 bg-sky-900 text-white hover:bg-sky-700 disabled:opacity-40"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ArrowRight className="w-6 h-6" />
             </button>
           </div>
         </div>

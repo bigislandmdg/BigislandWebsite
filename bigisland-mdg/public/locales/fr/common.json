@@ -480,14 +480,14 @@
 
   "viewProject": "Découvrir",
   "projects": {
-  "project1": {
-    "title": "Plateforme intelligente de location de véhicules",
-    "description": "Réservez et gérez vos voitures en toute simplicité, en temps réel et en toute sécurité."
-  },
-  "project2": {
-    "title": "Solution complète de gestion de Call Center",
-    "description": "Améliorez votre relation client avec un call center cloud relié à votre CRM."
-  },
+   "project1": {
+      "title": "20MinutesADay – Application mobile e-learning",
+      "description": "Apprenez l’anglais en seulement 20 minutes par jour grâce à des leçons interactives, ludiques et adaptées à votre rythme."
+    },
+    "project2": {
+      "title": "5 Vocabs-a-Day – Apprentissage progressif",
+      "description": "Mémorisez 5 nouveaux mots chaque jour avec un système intelligent de répétition espacée (SRS)."
+    },
   "project3": {
     "title": "ERP sur mesure pour la gestion des stocks",
     "description": "Optimisez vos inventaires et flux logistiques grâce à un ERP automatisé."
@@ -503,10 +503,6 @@
   "project6": {
     "title": "Marketplace B2B innovante",
     "description": "Simplifiez vos achats pro grâce à une plateforme e-commerce centralisée."
-  },
-  "project7": {
-    "title": "Gestion digitale des contrats de location",
-    "description": "Créez, signez et archivez vos contrats en ligne de manière sécurisée."
   }
 }
 

@@ -12,7 +12,7 @@ interface LoaderProps {
 
 export default function Loader({
   size = 70,
-  color = '#3b82f6', // blue-500
+  color = '#0d635dff', // blue-500
   speed = 1.5,
   lineType = 'solid',
   bgColor = 'white'

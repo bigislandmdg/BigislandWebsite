@@ -11,19 +11,19 @@ const teamMembers = [
   {
     nameKey: 'team.ceo.name',
     roleKey: 'team.ceo.role',
-    image: '/images/ceo.jpg',
+    image: '/images/manager/ceo.jpg',
     linkedin: 'https://www.linkedin.com/in/ceo-profile',
   },
   {
     nameKey: 'team.director.name',
     roleKey: 'team.director.role',
-    image: '/images/drh.jpg',
+    image: '/images/manager/drh.jpg',
     linkedin: 'https://www.linkedin.com/in/director-profile',
   },
   {
     nameKey: 'team.it.name',
     roleKey: 'team.it.role',
-    image: '/images/it.jpg',
+    image: '/images/manager/it.jpg',
     linkedin: 'https://www.linkedin.com/in/it-profile',
   },
 ];

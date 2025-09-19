@@ -17,63 +17,58 @@ const clientData = [
 export default function ClientSection() {
   const { t } = useTranslation('common');
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section id="clients" className="py-4 sm:py-3
-    bg-gradient-to-l from-sky-50 to-sky-100  flex items-center" ref={ref}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section
+      id="clients"
+      className="py-20 bg-gradient-to-b from-sky-50 to-sky-100 relative overflow-hidden"
+      ref={ref}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+        {/* ===== Titre & Description ===== */}
+        <motion.h2
+          className="text-3xl sm:text-4xl font-extrabold text-teal-700 tracking-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          {t('clients.title')}
+        </motion.h2>
+        <motion.p
+          className="mt-4 max-w-2xl mx-auto text-lg text-gray-600"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {t('clients.description')}
+        </motion.p>
 
-        {/* Titre + description */}
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.h2
-            className="text-3xl font-bold tracking-tight text-teal-700 sm:text-4xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            {t('clients.title')}
-          </motion.h2>
-          <motion.p
-            className="mt-4 text-lg leading-7 text-gray-600"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {t('clients.description')}
-          </motion.p>
-        </div>
-
-        {/* Carousel logos */}
-        <div className="relative mt-12 overflow-hidden">
+        {/* ===== Carousel logos ===== */}
+        <div className="relative mt-16">
           {/* Dégradés gauche/droite */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-sky-100 to-transparent z-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-sky-100 to-transparent z-20" />
 
-          {/* Animation défilante */}
           <motion.div
             className="flex space-x-12"
-            animate={{ x: ['0%', '-100%'] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 25,
-              ease: 'linear',
-            }}
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, repeatType: 'loop', duration: 25, ease: 'linear' }}
           >
             {[...clientData, ...clientData].map((client, i) => (
-              <div
+              <motion.div
                 key={`${client.key}-${i}`}
-                className="flex justify-center items-center flex-shrink-0 w-40"
+                className="flex justify-center items-center flex-shrink-0 w-40 p-4 bg-white  shadow hover:shadow-lg cursor-pointer transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -5 }}
               >
                 <Image
                   src={client.src}
                   alt={t(`clients.list.${client.key}.name`)}
-                  width={120}
-                  height={60}
-                  className="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  width={140}
+                  height={70}
+                  className="w-auto h-16 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -81,4 +76,3 @@ export default function ClientSection() {
     </section>
   );
 }
-

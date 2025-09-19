@@ -210,7 +210,7 @@ export default function Navbar() {
       }`}
     >
      {/* Top Bar */}
-     <div className="bg-gray-50 border-b border-gray-200 text-sm">
+     <div className="bg-zinc-50 border-b border-zinc-200 text-sm">
      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 flex justify-end items-center h-10 gap-6">
     
     {/* Numéro de téléphone */}
@@ -241,7 +241,7 @@ export default function Navbar() {
     <div className="relative">
       <button
         onClick={() => setLangOpen(!langOpen)}
-        className="flex items-center gap-1 px-2 py-1 text-zinc-700 hover:text-sky-900 rounded-md hover:bg-gray-100 transition-colors"
+        className="flex items-center gap-1 px-2 py-1 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
       >
         <Languages className="w-5 h-5" />
         <span className="uppercase text-sm">{lang}</span>
@@ -254,14 +254,14 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-32 bg-white border border-zinc-200 rounded-lg shadow-lg z-50"
+            className="absolute right-0 mt-2 w-32 bg-white border border-zinc-200 shadow-lg z-50"
           >
             {['en', 'fr'].map((lng) => (
               <button
                 key={lng}
                 onClick={() => changeLanguage(lng as 'en' | 'fr')}
                 className={`flex items-center gap-2 w-full px-4 py-2 text-sm ${
-                  lang === lng ? 'bg-blue-100 text-blue-600 font-semibold' : 'text-gray-700 hover:bg-gray-100'
+                  lang === lng ? 'bg-sky-100 text-blue-600 font-semibold' : 'text-zinc-700 hover:bg-zinc-100'
                 }`}
               >
                 <img
@@ -290,7 +290,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-gray-500 hover:text-sky-900 rounded-md hover:bg-zinc-600 transition-colors"
+              className="p-2 text-zinc-500 hover:text-sky-900  hover:bg-zinc-600 transition-colors"
               aria-label={t('navbar.search')}
             >
               <MagnifyingGlassIcon className="h-5 w-5" />
@@ -298,7 +298,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="-m-1.5 inline-flex items-center justify-center rounded-md p-2.5 text-zinc-600 hover:text-blue-600 transition-colors"
+              className="-m-1.5 inline-flex items-center justify-center p-2.5 text-zinc-600 hover:text-sky-700 transition-colors"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">{t('navbar.openMenu')}</span>
@@ -325,7 +325,7 @@ export default function Navbar() {
             >
             <button 
                type="button"
-               className={`flex items-center gap-x-1 text-sm font-bold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-blue-600' : ''}`}
+               className={`flex items-center gap-x-1 text-sm font-bold leading-6 ${navLinkClass('')} ${openDropdown === 'expertises' ? 'text-sky-700' : ''}`}
                aria-expanded={openDropdown === 'expertises'}
             >
              {t('navbar.expertises')}
@@ -339,15 +339,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-zinc-900/5"
+            className="absolute -left-4 top-full z-10 mt-3 w-screen max-w-md overflow-hidden bg-white shadow-lg ring-1 ring-zinc-900/5"
           >
           <div className="p-4">
           {expertisesLinks.map((item) => (
             <div
               key={item.label}
-              className="group relative flex items-center gap-x-3 rounded-lg p-4 text-sm leading-6 hover:bg-zinc-50 transition-colors"
+              className="group relative flex items-center gap-x-3 p-4 text-sm leading-6 hover:bg-zinc-50 transition-colors"
             >
-              <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-zinc-50 group-hover:bg-white text-sky-900">
+              <div className="flex h-11 w-11 flex-none items-center justify-center bg-zinc-50 group-hover:bg-white text-sky-900">
                 <item.icon className="h-6 w-6" />
               </div>
               <div className="flex-auto">

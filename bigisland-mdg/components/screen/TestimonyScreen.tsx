@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Head from 'next/head';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // TiltCard générique
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -24,7 +24,7 @@ function TiltCard({ children, className = '' }: { children: React.ReactNode; cla
 
   return (
     <motion.div
-      className={`bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
+      className={`bg-stone mx-auto px-6 lg:px-8  shadow-xl overflow-hidden transition-transform duration-300 ease-in-out ${className}`}
       style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetStyle}
@@ -83,12 +83,12 @@ export default function TestimonyScreen() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center items-start text-left px-6 py-32 min-h-[500px] max-w-7xl mx-auto">
+   <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-36 flex flex-col justify-center items-start text-left">    
   <motion.h1
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8 max-w-2xl"
+    className="mt-1 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg py-8"
   >
     {t('testimonyPage.title')}
   </motion.h1>
@@ -96,14 +96,14 @@ export default function TestimonyScreen() {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 0.2, duration: 0.8 }}
-    className="mt-4 text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl"
+    className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
   >
     {t('testimonyPage.description')}
   </motion.p>
     <motion.a
   href="#"
   onClick={scrollToContent}
-  className="mt-6 inline-flex items-center gap-2 rounded bg-blue-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-blue-700 transition"
+  className="mt-6 inline-flex items-center gap-2  bg-teal-700 px-6 py-3 text-white font-bold shadow-lg hover:bg-teal-700 transition"
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
 >
@@ -138,12 +138,12 @@ export default function TestimonyScreen() {
                     <img
                       src={testimonies[activeIndex].avatar}
                       alt={testimonies[activeIndex].name}
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-xl font-semibold text-blue-600">{testimonies[activeIndex].name}</h3>
-                    <p className="mt-2 text-gray-600 italic leading-relaxed text-lg">
+                    <h3 className="text-xl font-semibold text-sky-700">{testimonies[activeIndex].name}</h3>
+                    <p className="mt-2 text-zinc-600 italic leading-relaxed text-lg">
                       "{testimonies[activeIndex].message}"
                     </p>
                   </div>
@@ -157,26 +157,26 @@ export default function TestimonyScreen() {
             <div className="flex justify-center gap-6 mt-10 items-center">
               <button
                 onClick={goPrev}
-                className="p-3 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors shadow-sm hover:shadow-md"
+                className="p-3  bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors shadow-sm hover:shadow-md"
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ArrowLeft className="h-6 w-6" />
               </button>
               <div className="flex items-center gap-3">
                 {testimonies.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                      activeIndex === index ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+                    className={`w-4 h-4  transition-all duration-300 ${
+                      activeIndex === index ? 'bg-zinc-600 w-8' : 'bg-zinc-300 hover:bg-zinc-400'
                     }`}
                   />
                 ))}
               </div>
               <button
                 onClick={goNext}
-                className="p-3 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors shadow-sm hover:shadow-md"
+                className="p-3 bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors shadow-sm hover:shadow-md"
               >
-                <ChevronRight className="h-6 w-6" />
+                <ArrowRight className="h-6 w-6" />
               </button>
             </div>
           )}

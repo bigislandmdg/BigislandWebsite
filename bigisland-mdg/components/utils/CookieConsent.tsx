@@ -31,7 +31,7 @@ export default function CookieConsent() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="fixed bottom-4 left-0 max-w-lg w-full sm:w-[400px] px-4 z-50"
         >
-          <div className="bg-white border border-zinc-300 rounded-2xl shadow-lg p-4 flex items-start justify-between gap-4">
+          <div className="bg-white border border-zinc-300 shadow-lg p-4 flex items-start justify-between gap-4">
             {/* Texte */}
             <div className="flex items-start gap-2">
               <Cookie className="h-10 w-10 text-amber-300 mt-1" />
@@ -50,13 +50,13 @@ export default function CookieConsent() {
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={acceptCookies}
-                className="px-3 py-1.5 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition"
+                className="px-3 py-1.5 bg-blue-600 text-white text-sm  hover:bg-blue-700 transition"
               >
                 {t("cookie.accept")}
               </button>
               <button
                 onClick={() => setVisible(false)}
-                className="p-1 rounded-full text-gray-500 hover:bg-gray-100"
+                className="p-1 rounded-full text-zinc-500 hover:bg-zinc-100"
                 aria-label={t("cookie.close")}
               >
                 <X className="h-4 w-4" />

@@ -92,7 +92,7 @@ export default function BlogScreen({ layout = "grid" }: { layout?: "grid" | "lis
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="mt-1 text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg py-4"
+    className="mt-12 text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg py-8"
   >
     {t('blog.title')}
   </motion.h1>
@@ -100,7 +100,7 @@ export default function BlogScreen({ layout = "grid" }: { layout?: "grid" | "lis
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 0.2, duration: 0.8 }}
-    className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
+    className="mt-8 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
   >
     {t('blog.subtitle')}
   </motion.p>
@@ -108,7 +108,7 @@ export default function BlogScreen({ layout = "grid" }: { layout?: "grid" | "lis
  
     
     <motion.span
-      className="mt-6 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-medium shadow-lg hover:bg-teal-700 transition"
+      className="mt-12 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-medium shadow-lg hover:bg-teal-700 transition"
       onClick={scrollToContent}
       whileHover={{ x: 5 }}  // Déplacement horizontal au survol
       whileTap={{ scale: 0.9 }} // Légère compression au clic

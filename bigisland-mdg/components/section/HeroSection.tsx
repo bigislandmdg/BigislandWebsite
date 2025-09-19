@@ -48,12 +48,12 @@ export default function Hero() {
       </div>
 
       {/* Contenu texte */}
-      <div className="relative z-50 mx-0 max-w-3xl px-6 sm:px-5 lg:px-8 py-5 text-left text-white mr-auto">
+      <div className="relative z-50 mx-0 max-w-3xl px-6 py-34 text-left text-white mr-auto">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mt-10 text-6xl font-bold tracking-tight sm:text-5xl"
+          className="mt-12 text-6xl font-bold tracking-tight sm:text-5xl"
         >
           <TypewriterText
             text={t('hero.title')}
@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="mt-10 flex flex-col sm:flex-row sm:gap-4 gap-6"
+          className="mt-12 flex flex-col sm:flex-row sm:gap-4 gap-6"
         >
           <motion.button
             onClick={() => router.push('/services/it')}

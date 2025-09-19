@@ -95,12 +95,12 @@ export default function AboutScreen() {
         </div>
 
         {/* Wrapper central */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 flex flex-col justify-center items-start text-left">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-34 flex flex-col justify-center items-start text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mt-1 text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg py-4"
+            className="mt-12 text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg py-8"
           >
             {t('aboutPage.title')}
           </motion.h1>
@@ -108,7 +108,7 @@ export default function AboutScreen() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-4 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
+            className="mt-8 text-lg md:text-xl text-zinc-200 leading-relaxed max-w-xl"
           >
             {t('aboutPage.subtitle')}
           </motion.p>
@@ -117,7 +117,7 @@ export default function AboutScreen() {
             onClick={scrollToContent}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-medium shadow-lg hover:bg-teal-700 transition"
+            className="mt-12 inline-flex items-center gap-2 bg-teal-700 px-6 py-3 text-white font-medium shadow-lg hover:bg-teal-700 transition"
           >
             {t('aboutPage.cta')}
             <ArrowRight className="w-4 h-4" />
